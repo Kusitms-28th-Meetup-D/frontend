@@ -1,7 +1,7 @@
-function App() {
+function Router() {
   // const a = 1;
 
   return <div>test!</div>;
 }
 
-export default App;
+export default Router;
