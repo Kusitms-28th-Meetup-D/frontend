@@ -13,3 +13,7 @@ export const kakaoAccessTokenState = atom({
   key: 'kakaoAccessTokenState',
   default: '',
 });
+export const loginState = atom<boolean>({
+  key: 'loginState',
+  default: false,
+});

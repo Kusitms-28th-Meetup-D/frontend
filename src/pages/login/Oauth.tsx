@@ -3,12 +3,17 @@ import fetchKakaoAccessToken from '../../apis/login/fetchKakaoAccessToken';
 import { kakao } from '../../components/login/KakaoLogin';
 import fetchKakaoUserInfo from '../../apis/login/fetchKakaoUserInfo';
 import { useSetRecoilState } from 'recoil';
-import { kakaoAccessTokenState, kakaoNameState } from '../../recoil/atom';
+import {
+  kakaoAccessTokenState,
+  kakaoNameState,
+  loginState,
+} from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
 
 const Oauth = () => {
   const setKakaoAccessTokenState = useSetRecoilState(kakaoAccessTokenState);
   const setKakaoNameState = useSetRecoilState(kakaoNameState);
+  const setloginState = useSetRecoilState(loginState);
   const navigate = useNavigate();
   /** 카카오 인가 코드를 통해 카카오 어세스 토큰을 받아오는 함수
    *
@@ -21,6 +26,7 @@ const Oauth = () => {
       );
       console.log('getKakaoAccessTokencomplete', responseKakaoAccessCode);
       setKakaoAccessTokenState(responseKakaoAccessCode.data.access_token);
+      setloginState(true);
       localStorage.setItem(
         'kakaoAccessToken',
         responseKakaoAccessCode.data.access_token,

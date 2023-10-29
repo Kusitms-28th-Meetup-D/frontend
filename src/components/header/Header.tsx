@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import KakaoLogin from '../login/KakaoLogin';
 import { useRecoilValue } from 'recoil';
-import { kakaoNameState } from '../../recoil/atom';
+import { kakaoNameState, loginState } from '../../recoil/atom';
+import KakaoLogout from '../logout/KakaoLogout';
 const Header = () => {
   const kakaoName = useRecoilValue(kakaoNameState);
+  const isLogin = useRecoilValue(loginState);
 
   return (
     <HeaderLayout>
@@ -12,7 +14,7 @@ const Header = () => {
       <HeaderItem>공모전 리스트</HeaderItem>
       <HeaderItem>내팀</HeaderItem>
       <HeaderItem>{kakaoName}님 어서오세요</HeaderItem>
-      <KakaoLogin></KakaoLogin>
+      {isLogin ? <KakaoLogout /> : <KakaoLogin />}
       <LoginLink to={'/login'}>로그인</LoginLink>
     </HeaderLayout>
   );
