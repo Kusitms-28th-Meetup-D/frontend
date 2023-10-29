@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import KakaoLogin from './KakaoLogin';
 const Header = () => {
   return (
     <HeaderLayout>
@@ -7,6 +8,7 @@ const Header = () => {
       <HeaderItem>공모전 리스트</HeaderItem>
       <HeaderItem>내팀</HeaderItem>
       <HeaderItem>마이페이지</HeaderItem>
+      <KakaoLogin></KakaoLogin>
       <LoginLink to={'/login'}>로그인</LoginLink>
     </HeaderLayout>
   );

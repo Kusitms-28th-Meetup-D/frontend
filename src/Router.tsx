@@ -10,7 +10,9 @@ function Router() {
       <Header />
       <Routes>
         <Route path="/" element={<div>main</div>} />
-        <Route path="/login" element={<div>login</div>} />
+        <Route path="/login" element={<div>login</div>}>
+          <Route path="oauth" element={<div>oauth</div>} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
