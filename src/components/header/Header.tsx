@@ -5,6 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { kakaoNameState } from '../../recoil/atom';
 const Header = () => {
   const kakaoName = useRecoilValue(kakaoNameState);
+
   return (
     <HeaderLayout>
       <HeaderItem>로고</HeaderItem>

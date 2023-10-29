@@ -21,6 +21,10 @@ const Oauth = () => {
       );
       console.log('getKakaoAccessTokencomplete', responseKakaoAccessCode);
       setKakaoAccessTokenState(responseKakaoAccessCode.data.access_token);
+      localStorage.setItem(
+        'kakaoAccessToken',
+        responseKakaoAccessCode.data.access_token,
+      );
 
       //받아온 토큰을 setAcessToken하기
       kakao.Auth.setAccessToken(responseKakaoAccessCode.data.access_token);
@@ -46,10 +50,16 @@ const Oauth = () => {
     }
   };
 
+  // const maintainLoginWithToken = (kakaoAccessToken: string) => {
+  //   kakao.Auth.setAccessToken(kakaoAccessToken);
+  //   console.log('새로고침해도그대로라구');
+  // };
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const kakaoAccessCode = params.get('code');
 
+    // const localStorageKakaoToken = localStorage.getItem('kakaoAccessToken');
+    //if (localStorageKakaoToken) maintainLoginWithToken(localStorageKakaoToken);
     getKakaoAccessToken(kakaoAccessCode as string);
     navigate('/');
   }, []);
