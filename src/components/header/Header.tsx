@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import KakaoLogin from '../login/KakaoLogin';
+import { useRecoilValue } from 'recoil';
+import { kakaoNameState } from '../../recoil/atom';
 const Header = () => {
+  const kakaoName = useRecoilValue(kakaoNameState);
   return (
     <HeaderLayout>
       <HeaderItem>로고</HeaderItem>
       <HeaderItem>공모전 리스트</HeaderItem>
       <HeaderItem>내팀</HeaderItem>
-      <HeaderItem>마이페이지</HeaderItem>
+      <HeaderItem>{kakaoName}님 어서오세요</HeaderItem>
       <KakaoLogin></KakaoLogin>
       <LoginLink to={'/login'}>로그인</LoginLink>
     </HeaderLayout>
