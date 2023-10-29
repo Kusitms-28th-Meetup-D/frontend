@@ -1,14 +1,14 @@
 export const kakao = (window as any).Kakao;
 
 const KakaoLogin = () => {
-  const url = 'http://localhost:5173/login/oauth';
+  const redirectUri = 'http://localhost:5173/login/oauth';
   return (
     <>
       <img
         src="assets/images/header/kakaoLogin.png"
         onClick={() =>
           kakao.Auth.authorize({
-            redirectUri: `${url}`,
+            redirectUri: `${redirectUri}`,
             scope: 'profile_nickname,profile_image,account_email',
             // prompt: "select_account",
           })
@@ -19,7 +19,7 @@ const KakaoLogin = () => {
         src="assets/kakaoLogout.png"
         onClick={() =>
           kakao.Auth.authorize({
-            redirectUri: `${url}`,
+            redirectUri: `${redirectUri}`,
             scope: 'profile_nickname,profile_image,account_email',
           })
         }
