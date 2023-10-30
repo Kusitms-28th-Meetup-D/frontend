@@ -62,12 +62,19 @@ const Oauth = () => {
     }
   };
 
+  /** 카카오 어세스 토큰를 통해 서버에 존재하는 회원인지 확인하는 함수
+   * 
+   * @param kakaoAccessToken 카카오 어세스 토큰
+   */
   const validateKakaoToken = async (kakaoAccessToken: string) => {
     try {
       const responseValitadion = await postKakaoToken(kakaoAccessToken);
       console.log('responseValitadion Complete', responseValitadion);
-    } catch (error) {
+    } catch (error: any) {
       console.log('카카오토큰 validation 에러', error);
+      if (error.response.data.status == 404) {
+        navigate('/login/join',{state :{"nickname" :"jinwoo" }});
+      }
     }
   };
 
@@ -83,6 +90,7 @@ const Oauth = () => {
     //if (localStorageKakaoToken) maintainLoginWithToken(localStorageKakaoToken);
 
     const kakaoAccessToken = getKakaoAccessToken(kakaoAccessCode as string);
+    kakaoAccessToken;
     //우리팀 서버에 카카오 토큰 유효성 검증하기
 
     navigate('/');
