@@ -1,34 +1,125 @@
 import styled from 'styled-components';
-
+import React, { useState } from 'react';
+const REGIONS = [
+  '무관',
+  '서울',
+  '부산',
+  '대구',
+  '인천',
+  '광주',
+  '대전',
+  '울산',
+  '세종',
+  '경기',
+  '충북',
+  '충남',
+  '전북',
+  '전남',
+  '경북',
+  '경남',
+  '제주',
+  '강원',
+];
+interface IJoin {
+  name: string;
+  email: string;
+  birth: string;
+  gender: string;
+  region: string;
+  major: string;
+  job: string;
+}
 const Join = () => {
-  const regions = ['서울', '경기', '충청'];
+  const [inputValue, setInputValue] = useState<IJoin>({
+    name: 'jinwoo',
+    email: 'jinyoung@babo.kr',
+    birth: 'YYYY-MM-DD',
+    gender: 'xe',
+    region: 'ex',
+    major: 'ex',
+    job: 'xex',
+  });
+  const handleSubmit = (event: React.FormEvent) => {
+    
+  };
+  const handleChange = (event: any) => {
+    setInputValue((curr) => {
+      const newObj: IJoin = { ...curr };
+      const keyName = event.target.name as keyof IJoin;
+      newObj[keyName] = event.target.value;
+      console.log(newObj);
+      return newObj;
+    });
+  };
   return (
     <JoinLayout>
-      <form>
-        {' '}
-        <Input type="date" id='birth' placeholder="생년월일" />
+      <FormContainer action="#" onSubmit={handleSubmit}>
+        <Input
+          type="text"
+          name="name"
+          onChange={handleChange}
+          placeholder="이름"
+        />
+        <Input
+          type="text"
+          name="email"
+          onChange={handleChange}
+          placeholder="이메일"
+        />
+        <Input
+          type="date"
+          name="birth"
+          onChange={handleChange}
+          placeholder="생년월일"
+        />
         <label>
-          <Input type="radio" name="gender" /> 남성
+          <Input
+            type="radio"
+            name="gender"
+            value="female"
+            onChange={handleChange}
+          />{' '}
+          남성
         </label>
         <label>
-          <Input type="radio" name="gender" /> 여성
+          <Input
+            type="radio"
+            name="gender"
+            value="male"
+            onChange={handleChange}
+          />{' '}
+          여성
         </label>
-        {regions.map((each, idx) => (
-          <label key={idx}>
-            <Input type="radio" name="region" />
-            {each}
-          </label>
-        ))}
-        <Input type="text" id='major' placeholder="전공" />
-        <Submit type="submit"/>
-      </form>
+        <label htmlFor="region">지역</label>
+        <select name="region" id="region" onChange={handleChange}>
+          {REGIONS.map((each, idx) => (
+            <option key={idx} value={each}>
+              {each}
+            </option>
+          ))}
+        </select>
+        <Input
+          type="text"
+          name="major"
+          onChange={handleChange}
+          placeholder="전공"
+        />{' '}
+        <Input
+          type="text"
+          name="job"
+          onChange={handleChange}
+          placeholder="직무"
+        />
+        <Submit type="submit" />
+      </FormContainer>
     </JoinLayout>
   );
 };
 
 export default Join;
 
-const JoinLayout = styled.div`
+const JoinLayout = styled.div``;
+const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;

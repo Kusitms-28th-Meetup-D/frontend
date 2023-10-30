@@ -71,7 +71,8 @@ const Oauth = () => {
       const responseValitadion = await postKakaoToken(kakaoAccessToken);
       console.log('responseValitadion Complete', responseValitadion);
     } catch (error: any) {
-      console.log('카카오토큰 validation 에러', error);
+      //console.log('카카오토큰 validation 에러', error);
+      //회원가입 페이지로 연결
       if (error.response.data.status == 404) {
         navigate('/login/join',{state :{"nickname" :"jinwoo" }});
       }
