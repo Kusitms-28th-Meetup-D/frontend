@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
+import postJoin from '../../apis/join/postJoin';
+import { useLocation } from 'react-router-dom';
 const REGIONS = [
   '무관',
   '서울',
@@ -20,7 +22,7 @@ const REGIONS = [
   '제주',
   '강원',
 ];
-interface IJoin {
+export interface IJoin {
   name: string;
   email: string;
   birth: string;
@@ -30,6 +32,10 @@ interface IJoin {
   job: string;
 }
 const Join = () => {
+  //navigate의 state로 온 토큰을 받기 위함
+
+  const location = useLocation();
+  const kakaoAccessToken = location.state.kakaoAccessToken;
   const [inputValue, setInputValue] = useState<IJoin>({
     name: 'jinwoo',
     email: 'jinyoung@babo.kr',
@@ -39,17 +45,26 @@ const Join = () => {
     major: 'ex',
     job: 'xex',
   });
-  const handleSubmit = (event: React.FormEvent) => {
-    
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log(kakaoAccessToken);
+    try {
+      const responseJoin = await postJoin(kakaoAccessToken, inputValue);
+      console.log('responseJoin 결과:', responseJoin);
+    } catch (error) {
+      console.log('responseJoin 실패:', error);
+    }
   };
   const handleChange = (event: any) => {
     setInputValue((curr) => {
       const newObj: IJoin = { ...curr };
       const keyName = event.target.name as keyof IJoin;
       newObj[keyName] = event.target.value;
-      console.log(newObj);
+      // console.log(newObj);
+
       return newObj;
     });
+    
   };
   return (
     <JoinLayout>

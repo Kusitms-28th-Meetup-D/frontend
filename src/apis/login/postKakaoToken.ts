@@ -4,12 +4,12 @@ const postKakaoToken = (kakaoAccessToken: string) =>
   Axios.post(
     '/api/auth/login',
     {
-      "kakaoAccessToken": kakaoAccessToken,
-      "redirectUrl": 'test',
+      kakaoAccessToken: kakaoAccessToken,
+      redirectUrl: 'test',
     },
     {
       headers: {
-        "Accept": 'application/json',
+        Accept: 'application/json',
       },
     },
   );

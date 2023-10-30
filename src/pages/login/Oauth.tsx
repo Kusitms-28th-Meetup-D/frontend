@@ -63,7 +63,7 @@ const Oauth = () => {
   };
 
   /** 카카오 어세스 토큰를 통해 서버에 존재하는 회원인지 확인하는 함수
-   * 
+   *
    * @param kakaoAccessToken 카카오 어세스 토큰
    */
   const validateKakaoToken = async (kakaoAccessToken: string) => {
@@ -74,7 +74,9 @@ const Oauth = () => {
       //console.log('카카오토큰 validation 에러', error);
       //회원가입 페이지로 연결
       if (error.response.data.status == 404) {
-        navigate('/login/join',{state :{"nickname" :"jinwoo" }});
+        navigate('/login/join', {
+          state: { kakaoAccessToken: kakaoAccessToken },
+        });
       }
     }
   };
