@@ -8,8 +8,7 @@ const KakaoLogin = () => {
       onClick={() =>
         kakao.Auth.authorize({
           redirectUri: `${redirectUri}`,
-          scope: 'profile_nickname,profile_image,account_email',
-          // prompt: "select_account",
+          scope: 'profile_nickname,profile_image,account_email,account_email',
         })
       }
     ></img>
