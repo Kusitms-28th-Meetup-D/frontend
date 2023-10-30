@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const fetchKakaoUserInfo = (kakaoAccessToken: string) =>
+const getKakaoUserInfo = (kakaoAccessToken: string) =>
   axios.get('https://kapi.kakao.com/v2/user/me', {
     headers: {
       Authorization: `Bearer ${kakaoAccessToken}`,
@@ -8,4 +8,4 @@ const fetchKakaoUserInfo = (kakaoAccessToken: string) =>
     },
   });
 
-export default fetchKakaoUserInfo;
+export default getKakaoUserInfo;

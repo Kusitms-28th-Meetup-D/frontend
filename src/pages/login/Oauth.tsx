@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import fetchKakaoAccessToken from '../../apis/login/fetchKakaoAccessToken';
+import fetchKakaoAccessToken from '../../apis/login/postKakaoAccessToken';
 import { kakao } from '../../components/login/KakaoLogin';
-import fetchKakaoUserInfo from '../../apis/login/fetchKakaoUserInfo';
+import fetchKakaoUserInfo from '../../apis/login/getKakaoUserInfo';
 import { useSetRecoilState } from 'recoil';
 import {
   kakaoAccessTokenState,
@@ -9,6 +9,7 @@ import {
   loginState,
 } from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
+import postKakaoToken from '../../apis/login/postKakaoToken';
 
 const Oauth = () => {
   const setKakaoAccessTokenState = useSetRecoilState(kakaoAccessTokenState);
@@ -37,6 +38,11 @@ const Oauth = () => {
 
       //카카오 access토큰으로 사용자 정보 가져오기
       getKakaoUserInfo(responseKakaoAccessCode.data.access_token);
+
+      //카카오토큰 유효성 검증
+      validateKakaoToken(responseKakaoAccessCode.data.access_token);
+
+      return responseKakaoAccessCode.data.access_token;
     } catch (error) {
       console.log('kakaoAccessToken', error);
     }
@@ -56,6 +62,15 @@ const Oauth = () => {
     }
   };
 
+  const validateKakaoToken = async (kakaoAccessToken: string) => {
+    try {
+      const responseValitadion = await postKakaoToken(kakaoAccessToken);
+      console.log('responseValitadion Complete', responseValitadion);
+    } catch (error) {
+      console.log('카카오토큰 validation 에러', error);
+    }
+  };
+
   // const maintainLoginWithToken = (kakaoAccessToken: string) => {
   //   kakao.Auth.setAccessToken(kakaoAccessToken);
   //   console.log('새로고침해도그대로라구');
@@ -66,7 +81,10 @@ const Oauth = () => {
 
     // const localStorageKakaoToken = localStorage.getItem('kakaoAccessToken');
     //if (localStorageKakaoToken) maintainLoginWithToken(localStorageKakaoToken);
-    getKakaoAccessToken(kakaoAccessCode as string);
+
+    const kakaoAccessToken = getKakaoAccessToken(kakaoAccessCode as string);
+    //우리팀 서버에 카카오 토큰 유효성 검증하기
+
     navigate('/');
   }, []);
   return <div>auth</div>;

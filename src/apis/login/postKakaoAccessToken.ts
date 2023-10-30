@@ -5,7 +5,7 @@ const client_id = import.meta.env.VITE_KAKAO_CLIENT_ID;
 const redirect_uri = 'http://localhost:5173/login/oauth';
 const postUrl = 'https://kauth.kakao.com/oauth/token';
 
-const fetchKakaoAccessToken = (accessCode: string) =>
+const postKakaoAccessToken = (accessCode: string) =>
   axios.post(
     postUrl,
     {
@@ -21,4 +21,4 @@ const fetchKakaoAccessToken = (accessCode: string) =>
     },
   );
 
-export default fetchKakaoAccessToken;
+export default postKakaoAccessToken;
