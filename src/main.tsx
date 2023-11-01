@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import Router from './Router.tsx';
 import GlobalStyle from './styles/globalStyles.ts';
-import { theme } from './theme.ts';
+import { theme } from './styles/theme.ts';
 import { ThemeProvider } from 'styled-components';
 import { RecoilRoot } from 'recoil';
 

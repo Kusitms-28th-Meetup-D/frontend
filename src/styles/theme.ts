@@ -36,8 +36,6 @@ const colors = {
   success20: '#D1EBCD',
 } as const;
 
-export type ColorsTypes = typeof colors;
-
 interface Font {
   weight: number;
   size: number;
@@ -170,9 +168,24 @@ const fonts = {
   }),
 };
 
+const deviceSizes = {
+  mobile: '390px',
+  tablet: '768px',
+  desktop: '1536px',
+};
+
+const devices = {
+  mobile: `screen and (min-width: ${deviceSizes.mobile})`,
+  tablet: `screen and (min-width: ${deviceSizes.tablet})`,
+  desktop: `screen and (min-width: ${deviceSizes.desktop})`,
+};
+
+export type ColorsTypes = typeof colors;
 export type FontsTypes = typeof fonts;
+export type DevicesTypes = typeof devices;
 
 export const theme: DefaultTheme = {
   colors,
   fonts,
+  devices,
 };
