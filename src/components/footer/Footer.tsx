@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Footer = () => {
-  return <Test>Footer styled-font!</Test>;
+  return <Test>이거 프리텐다드맞아? 앓앓앍만밝붹뷁쫧   i am asdwq asdxwqeZQA</Test>;
 };
 export default Footer;
 
