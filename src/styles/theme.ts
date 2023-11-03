@@ -84,7 +84,7 @@ const fonts = {
   }),
   heading3: FONT({
     weight: 600,
-    size: 3.2,
+    size: 2.8,
     lineHeight: 1.6,
   }),
   heading4: FONT({
