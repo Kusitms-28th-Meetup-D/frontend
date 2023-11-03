@@ -46,125 +46,190 @@ const FONT = ({ weight, size, lineHeight }: Font): string => {
   return `
     font-weight : ${weight};
     font-size : ${size}rem;
-    line-height : ${lineHeight}rem;
+    line-height : ${lineHeight}%;
     `;
 };
 
 const fonts = {
+  //logo
   logo1: FONT({
     weight: 800,
     size: 5.6,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   logo2: FONT({
     weight: 800,
     size: 4.8,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   logo3: FONT({
     weight: 800,
     size: 3.2,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   logo4: FONT({
     weight: 800,
     size: 2.4,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
 
+  //heading
   heading1: FONT({
-    weight: 600,
+    weight: 700,
     size: 5.6,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   heading2: FONT({
-    weight: 600,
+    weight: 700,
     size: 4.8,
-    lineHeight: 1.6,
+    lineHeight: 160,
+  }),
+  heading2_1: FONT({
+    weight: 700,
+    size: 3.6,
+    lineHeight: 160,
   }),
   heading3: FONT({
-    weight: 600,
+    weight: 700,
     size: 2.8,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   heading4: FONT({
-    weight: 600,
+    weight: 700,
     size: 2.4,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   heading5: FONT({
-    weight: 600,
+    weight: 700,
     size: 2.0,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   heading6: FONT({
+    weight: 700,
+    size: 1.8,
+    lineHeight: 160,
+  }),
+
+  //subtitle
+  subtitleXXL: FONT({
+    weight: 600,
+    size: 2.4,
+    lineHeight: 160,
+  }),
+  subtitleXL: FONT({
+    weight: 600,
+    size: 2,
+    lineHeight: 160,
+  }),
+  subtitleL: FONT({
     weight: 600,
     size: 1.8,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
-
   subtitleM: FONT({
-    weight: 500,
-    size: 1.6,
-    lineHeight: 1.6,
+    weight: 600,
+    size: 160,
+    lineHeight: 160,
   }),
   subtitleS: FONT({
-    weight: 500,
-    size: 1.4,
-    lineHeight: 1.6,
+    weight: 600,
+    size: 140,
+    lineHeight: 160,
+  }),
+  subtitleXS: FONT({
+    weight: 600,
+    size: 1.2,
+    lineHeight: 160,
+  }),
+  subtitleXXS: FONT({
+    weight: 600,
+    size: 1,
+    lineHeight: 160,
   }),
 
+  //body
+  bodyXXL: FONT({
+    weight: 400,
+    size: 2.4,
+    lineHeight: 160,
+  }),
+  bodyXL: FONT({
+    weight: 400,
+    size: 2,
+    lineHeight: 160,
+  }),
   bodyL: FONT({
     weight: 400,
     size: 1.8,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   bodyM: FONT({
     weight: 400,
     size: 1.6,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   bodyS: FONT({
     weight: 400,
     size: 1.4,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   bodyXS: FONT({
     weight: 400,
     size: 1.2,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
   bodyXXS: FONT({
     weight: 400,
     size: 1.0,
-    lineHeight: 1.6,
+    lineHeight: 160,
   }),
 
-  buttonL: FONT({
+  //button
+  buttonXXL: FONT({
+    weight: 500,
+    size: 2.4,
+    lineHeight: 140,
+  }),
+  buttonXL: FONT({
     weight: 500,
     size: 2.0,
-    lineHeight: 1.4,
+    lineHeight: 140,
+  }),
+  buttonL: FONT({
+    weight: 500,
+    size: 1.8,
+    lineHeight: 140,
   }),
   buttonM: FONT({
     weight: 500,
     size: 1.6,
-    lineHeight: 1.4,
+    lineHeight: 140,
   }),
   buttonS: FONT({
     weight: 500,
     size: 1.4,
-    lineHeight: 1.4,
+    lineHeight: 140,
+  }),
+  buttonXS: FONT({
+    weight: 500,
+    size: 1.2,
+    lineHeight: 140,
+  }),
+  buttonXXS: FONT({
+    weight: 500,
+    size: 1,
+    lineHeight: 140,
   }),
 
   caption: FONT({
-    weight: 600,
+    weight: 500,
     size: 2.0,
-    lineHeight: 1.4,
+    lineHeight: 140,
   }),
   menuTabs: FONT({
     weight: 500,
     size: 1.6,
-    lineHeight: 1.4,
+    lineHeight: 140,
   }),
 };
 
