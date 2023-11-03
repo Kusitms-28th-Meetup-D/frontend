@@ -46,7 +46,7 @@ const HeaderLayout = styled.header`
 const Logo = styled.img`
   width: 20.3rem;
   height: 4.2rem;
-  background-color: red;
+  /* background-color: red; */
   cursor: pointer;
 `;
 const HeaderContainer = styled.div`
