@@ -1,10 +1,11 @@
 import { DefaultTheme } from 'styled-components';
 
 const colors = {
-  primary90: '#1214A5',
-  primary60: '#3134E9',
-  primary40: '#7376F0',
-  primary20: '#A6A7F6',
+  primary90: '#404079',
+  primary60: '#5C5FFA',
+  primary40: '#898BF8',
+  primary20: '#EEEFFD',
+  primary10: '#F5F5FE',
 
   gray100: '#15161B',
   gray90: '#3C3E48',
@@ -16,9 +17,12 @@ const colors = {
   gray30: '#CFD0D6',
   gray20: '#DBDCE1',
   gray10: '#EEEFF1',
+  gray5: '#F9F9FA',
 
   white: '#FFFFFF',
-  overay: '#2B2B2E',
+
+  overay50: '#2B2B2E',
+  overay20: '#CDCEFA',
 
   error90: '#CB3830',
   error60: '#D9635D',
