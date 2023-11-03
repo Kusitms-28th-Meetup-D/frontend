@@ -4,16 +4,17 @@ import KakaoLogin from '../login/KakaoLogin';
 import { useRecoilValue } from 'recoil';
 import { kakaoNameState, loginState } from '../../recoil/atom';
 // import KakaoLogout from '../logout/KakaoLogout';
+
+import logoSrc from '../../../public/assets/images/header/wanteam-logo.svg'
+
+
 const Header = () => {
   const kakaoName = useRecoilValue(kakaoNameState);
   const isLogin = useRecoilValue(loginState);
   const navigate = useNavigate();
   return (
     <HeaderLayout>
-      <Logo
-        src="assets/images/header/wanteam-logo.svg"
-        onClick={() => navigate('/')}
-      />
+      <Logo src={logoSrc} onClick={() => navigate('/')} />
       <HeaderContainer>
         <HeaderItem>공모전 리스트</HeaderItem>
         {isLogin ? (
