@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
-     /* font-family:
-      'Pretendard'; */
+    font-family:
+      "Pretendard"; 
     box-sizing: border-box;
     outline: none;
   }
