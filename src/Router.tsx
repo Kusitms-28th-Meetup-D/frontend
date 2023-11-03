@@ -15,7 +15,7 @@ function Router() {
         <Route path="/login" element={<div>login</div>} />
         <Route path="/login/oauth" element={<Oauth />} />
         <Route path="/login/join" element={<Join />} />
-        <Route path="/profile/:userid" element={<Profile/>}/>
+        <Route path="/profile/:userId" element={<Profile/>}/>
       </Routes>
       <Footer />
     </BrowserRouter>
