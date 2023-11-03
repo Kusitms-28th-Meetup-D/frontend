@@ -1,4 +1,10 @@
+import styled from 'styled-components';
+
 const Footer = () => {
-  return <div>i am Footer</div>;
+  return <Test>Footer styled-font!</Test>;
 };
 export default Footer;
+
+const Test = styled.div`
+  ${(props) => props.theme.fonts.heading6}
+`;
