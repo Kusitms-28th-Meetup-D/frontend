@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ProfileInfo, {
   ProfileInfoProps,
 } from '../../components/profile/ProfileInfo';
+import ProfileSubInfo from '../../components/profile/ProfileSubInfo';
 
 const profileDatas: ProfileInfoProps = {
   part: '서비스 기획',
@@ -12,12 +13,14 @@ const profileDatas: ProfileInfoProps = {
   major: '언어학과/국어국문학과',
   introduce: '사슴을 좋아합니다. 밤비치고짱귀여워',
 };
+
 const Profile = () => {
   const { userId } = useParams();
+  userId;
   return (
     <ProfileLayout>
-      {userId}
       <ProfileInfo profileData={profileDatas} />
+      <ProfileSubInfo/>
     </ProfileLayout>
   );
 };
