@@ -1,21 +1,31 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import KakaoLogin from '../login/KakaoLogin';
 import { useRecoilValue } from 'recoil';
 import { kakaoNameState, loginState } from '../../recoil/atom';
-import KakaoLogout from '../logout/KakaoLogout';
+// import KakaoLogout from '../logout/KakaoLogout';
 const Header = () => {
   const kakaoName = useRecoilValue(kakaoNameState);
   const isLogin = useRecoilValue(loginState);
-
+  const navigate = useNavigate();
   return (
     <HeaderLayout>
-      <HeaderItem>로고</HeaderItem>
-      <HeaderItem>공모전 리스트</HeaderItem>
-      <HeaderItem>내팀</HeaderItem>
-      <HeaderItem>{kakaoName}님 어서오세요</HeaderItem>
-      {isLogin ? <KakaoLogout /> : <KakaoLogin />}
-      <LoginLink to={'/login'}>로그인</LoginLink>
+      <Logo
+        src="assets/images/header/wanteam-logo.svg"
+        onClick={() => navigate('/')}
+      />
+      <HeaderContainer>
+        <HeaderItem>공모전 리스트</HeaderItem>
+        {isLogin ? (
+          <>
+            <HeaderItem>내팀</HeaderItem>
+            <HeaderItem>{kakaoName}님 </HeaderItem>
+          </>
+        ) : (
+          <KakaoLogin />
+        )}
+      </HeaderContainer>
+      {/* {isLogin ? <KakaoLogout /> : <KakaoLogin />} */}
     </HeaderLayout>
   );
 };
@@ -23,10 +33,23 @@ export default Header;
 
 const HeaderLayout = styled.header`
   //width: 153.6rem;
-  min-width: 128rem;
+  max-width: 122.4rem;
   height: 10rem;
-  background-color: ${(props) => props.theme.colors.blue1};
+  margin: auto;
+  background-color: ${(props) => props.theme.colors.gray10};
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+`;
+const Logo = styled.img`
+  width: 20.3rem;
+  height: 4.2rem;
+  background-color: red;
+  cursor: pointer;
+`;
+const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -34,8 +57,4 @@ const HeaderLayout = styled.header`
 `;
 const HeaderItem = styled.div`
   font-size: 2rem;
-`;
-const LoginLink = styled(Link)`
-  font-size: 2rem;
-  cursor: pointer;
 `;
