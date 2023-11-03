@@ -1,4 +1,4 @@
-import kakaoLoginImageSrc from '../../../public/assets/images/header/kakaoLogin.png';
+import kakaoLoginImageSrc from '/assets/images/header/kakaoLogin.png';
 
 export const kakao = (window as any).Kakao;
 
