@@ -41,13 +41,15 @@ const colors = {
 } as const;
 
 interface Font {
+  font: string;
   weight: number;
   size: number;
   lineHeight: number;
 }
 
-const FONT = ({ weight, size, lineHeight }: Font): string => {
+const FONT = ({ font, weight, size, lineHeight }: Font): string => {
   return `
+    font-family : "${font}";
     font-weight : ${weight};
     font-size : ${size}rem;
     line-height : ${lineHeight}%;
@@ -56,59 +58,50 @@ const FONT = ({ weight, size, lineHeight }: Font): string => {
 
 const fonts = {
   //logo
-  logo1: FONT({
-    weight: 800,
-    size: 5.6,
-    lineHeight: 160,
-  }),
-  logo2: FONT({
-    weight: 800,
-    size: 4.8,
-    lineHeight: 160,
-  }),
-  logo3: FONT({
-    weight: 800,
-    size: 3.2,
-    lineHeight: 160,
-  }),
-  logo4: FONT({
-    weight: 800,
-    size: 2.4,
-    lineHeight: 160,
-  }),
+  logo1: FONT({ font: 'Suit', weight: 800, size: 5.6, lineHeight: 160 }),
+  logo2: FONT({ font: 'Suit', weight: 800, size: 4.8, lineHeight: 160 }),
+  logo3: FONT({ font: 'Suit', weight: 800, size: 3.2, lineHeight: 160 }),
+  logo4: FONT({ font: 'Suit', weight: 800, size: 2.4, lineHeight: 160 }),
 
   //heading
   heading1: FONT({
+    font: 'Pretendard',
     weight: 700,
     size: 5.6,
     lineHeight: 160,
   }),
   heading2: FONT({
+    font: 'Pretendard',
     weight: 700,
     size: 4.8,
     lineHeight: 160,
   }),
   heading2_1: FONT({
+    font: 'Pretendard',
     weight: 700,
     size: 3.6,
     lineHeight: 160,
   }),
   heading3: FONT({
+    font: 'Pretendard',
     weight: 700,
     size: 2.8,
     lineHeight: 160,
   }),
   heading4: FONT({
+    font: 'Pretendard',
     weight: 700,
     size: 2.4,
     lineHeight: 160,
   }),
   heading5: FONT({
+    font: 'Pretendard',
     weight: 700,
     size: 2.0,
     lineHeight: 160,
   }),
   heading6: FONT({
+    font: 'Pretendard',
     weight: 700,
     size: 1.8,
     lineHeight: 160,
@@ -116,36 +109,43 @@ const fonts = {
 
   //subtitle
   subtitleXXL: FONT({
+    font: 'Pretendard',
     weight: 600,
     size: 2.4,
     lineHeight: 160,
   }),
   subtitleXL: FONT({
+    font: 'Pretendard',
     weight: 600,
     size: 2,
     lineHeight: 160,
   }),
   subtitleL: FONT({
+    font: 'Pretendard',
     weight: 600,
     size: 1.8,
     lineHeight: 160,
   }),
   subtitleM: FONT({
+    font: 'Pretendard',
     weight: 600,
     size: 160,
     lineHeight: 160,
   }),
   subtitleS: FONT({
+    font: 'Pretendard',
     weight: 600,
     size: 140,
     lineHeight: 160,
   }),
   subtitleXS: FONT({
+    font: 'Pretendard',
     weight: 600,
     size: 1.2,
     lineHeight: 160,
   }),
   subtitleXXS: FONT({
+    font: 'Pretendard',
     weight: 600,
     size: 1,
     lineHeight: 160,
@@ -153,36 +153,18 @@ const fonts = {
 
   //body
   bodyXXL: FONT({
+    font: 'Pretendard',
     weight: 400,
     size: 2.4,
     lineHeight: 160,
   }),
-  bodyXL: FONT({
-    weight: 400,
-    size: 2,
-    lineHeight: 160,
-  }),
-  bodyL: FONT({
-    weight: 400,
-    size: 1.8,
-    lineHeight: 160,
-  }),
-  bodyM: FONT({
-    weight: 400,
-    size: 1.6,
-    lineHeight: 160,
-  }),
-  bodyS: FONT({
-    weight: 400,
-    size: 1.4,
-    lineHeight: 160,
-  }),
-  bodyXS: FONT({
-    weight: 400,
-    size: 1.2,
-    lineHeight: 160,
-  }),
+  bodyXL: FONT({ font: 'Pretendard', weight: 400, size: 2, lineHeight: 160 }),
+  bodyL: FONT({ font: 'Pretendard', weight: 400, size: 1.8, lineHeight: 160 }),
+  bodyM: FONT({ font: 'Pretendard', weight: 400, size: 1.6, lineHeight: 160 }),
+  bodyS: FONT({ font: 'Pretendard', weight: 400, size: 1.4, lineHeight: 160 }),
+  bodyXS: FONT({ font: 'Pretendard', weight: 400, size: 1.2, lineHeight: 160 }),
   bodyXXS: FONT({
+    font: 'Pretendard',
     weight: 400,
     size: 1.0,
     lineHeight: 160,
@@ -190,47 +172,56 @@ const fonts = {
 
   //button
   buttonXXL: FONT({
+    font: 'Pretendard',
     weight: 500,
     size: 2.4,
     lineHeight: 140,
   }),
   buttonXL: FONT({
+    font: 'Pretendard',
     weight: 500,
     size: 2.0,
     lineHeight: 140,
   }),
   buttonL: FONT({
+    font: 'Pretendard',
     weight: 500,
     size: 1.8,
     lineHeight: 140,
   }),
   buttonM: FONT({
+    font: 'Pretendard',
     weight: 500,
     size: 1.6,
     lineHeight: 140,
   }),
   buttonS: FONT({
+    font: 'Pretendard',
     weight: 500,
     size: 1.4,
     lineHeight: 140,
   }),
   buttonXS: FONT({
+    font: 'Pretendard',
     weight: 500,
     size: 1.2,
     lineHeight: 140,
   }),
   buttonXXS: FONT({
+    font: 'Pretendard',
     weight: 500,
     size: 1,
     lineHeight: 140,
   }),
 
   caption: FONT({
+    font: 'Pretendard',
     weight: 500,
     size: 2.0,
     lineHeight: 140,
   }),
   menuTabs: FONT({
+    font: 'Pretendard',
     weight: 500,
     size: 1.6,
     lineHeight: 140,

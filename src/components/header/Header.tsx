@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import KakaoLogin from '../login/KakaoLogin';
 import { useRecoilValue } from 'recoil';
 import { kakaoNameState, loginState } from '../../recoil/atom';
-// import KakaoLogout from '../logout/KakaoLogout';
 
-import logoSrc from '../../../public/assets/images/header/wanteam-logo.svg';
+import logoSrc from '/assets/images/header/wanteam-logo.svg';
 
 const Header = () => {
   const kakaoName = useRecoilValue(kakaoNameState);
