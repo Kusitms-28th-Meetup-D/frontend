@@ -6,17 +6,27 @@ import ProfileInfo, {
 import ProfileSubInfo from '../../components/profile/ProfileSubInfo';
 import ProfileKeyword from '../../components/profile/ProfileKeyword';
 import ProfileRecommendation from '../../components/profile/ProfileRecommendation';
+import ProfilePersonality from '../../components/profile/ProfilePersonality';
 export interface IKeyword {
   keywordType: number;
   count: number;
 }
+export interface IQuestion {
+  questionType: number;
+  percent: number;
+}
+// export interface IWorkMethods {
+//   questionType: number;
+//   percent: number;
+// }
 export interface IRecommendation {
   recommendation: string;
   category: string;
 }
 interface IReviewDatas {
   keywords: IKeyword[];
-  personality: number[];
+  teamCultures: IQuestion[];
+  workMethods: IQuestion[];
   recommendation: IRecommendation[];
 }
 const profileDatas: ProfileInfoProps = {
@@ -71,7 +81,34 @@ const reviewDatas: IReviewDatas = {
       count: 12,
     },
   ],
-  personality: [25, 0, 100, 50, 70, 56, 11],
+  teamCultures: [
+    {
+      questionType: 0,
+      percent: 0,
+    },
+    {
+      questionType: 1,
+      percent: 100,
+    },
+    {
+      questionType: 2,
+      percent: 50,
+    },
+  ],
+  workMethods: [
+    {
+      questionType: 0,
+      percent: 30,
+    },
+    {
+      questionType: 1,
+      percent: 60,
+    },
+    {
+      questionType: 2,
+      percent: 57,
+    },
+  ],
   recommendation: [
     {
       recommendation:
@@ -104,6 +141,11 @@ const Profile = () => {
       <ProfileSubInfo />
       <ProfileKeyword
         keywordData={reviewDatas.keywords}
+        name={profileDatas.name}
+      />
+      <ProfilePersonality
+        teamCurturesData={reviewDatas.teamCultures}
+        workMethodsData={reviewDatas.workMethods}
         name={profileDatas.name}
       />
       <ProfileRecommendation

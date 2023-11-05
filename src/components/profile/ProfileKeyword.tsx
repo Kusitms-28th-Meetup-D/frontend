@@ -3,7 +3,7 @@ import { IKeyword } from '../../pages/profile/Profile';
 const KEYWORDS = [
   '🔥계획 마스터',
   '불타는 열정왕',
-  '전공스킬 넘사벽,',
+  '전공스킬 넘사벽',
   '💬소통의 귀재',
   '🧠논리의 왕',
   '😎분위기 메이커',
@@ -52,7 +52,7 @@ const ProfileKeywordDetail = styled.div`
   ${(props) => props.theme.fonts.bodyL};
   color: ${(props) => props.theme.colors.gray70};
 
-  margin-top: 2.5rem;
+  margin: 3rem 0;
 
   white-space: break-spaces;
 `;
@@ -65,6 +65,6 @@ const ProfileKeywordContent = styled.div`
   border: 1px solid ${(props) => props.theme.colors.primary20};
 
   padding: 1.2rem;
-  margin-left: 1.2rem;
+  margin: 1.2rem 1.2rem 1.2rem 0;
 `;
 export default ProfileKeyword;

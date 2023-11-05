@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export interface ProfileInfoProps {
-  name: string; 
+  name: string;
   part: string;
   imageUrl: string;
   region: string;
@@ -38,6 +38,7 @@ const ProfileInfo = ({ profileData }: { profileData: ProfileInfoProps }) => {
 const ProfileText = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.primary90};
+  margin: 3rem 0;
 `;
 const ProfileContainer = styled.div`
   width: 100%;

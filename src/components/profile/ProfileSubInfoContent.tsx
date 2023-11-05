@@ -25,10 +25,10 @@ const ProfileSubInfoContents = ({
 const ContentsContainer = styled.div`
   background-color: ${(props) => props.theme.colors.primary10};
   width: 60rem;
-  height: 28.4rem;
+  /* height: 28.4rem; */
 
   border-radius: 1.2rem;
-  padding: 0 3rem;
+  padding: 2rem 3rem;
 `;
 
 const ContentsSubTitle = styled.div`
