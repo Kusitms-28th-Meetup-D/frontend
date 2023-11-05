@@ -5,8 +5,9 @@ import Oauth from './pages/login/Oauth';
 import Join from './pages/join/Join';
 import Profile from './pages/profile/Profile';
 
-function Router() {
+import Recommendation from './pages/recommendation/Recommendation';
 
+function Router() {
   return (
     <BrowserRouter>
       <Header />
@@ -16,6 +17,7 @@ function Router() {
         <Route path="/login/oauth" element={<Oauth />} />
         <Route path="/login/join" element={<Join />} />
         <Route path="/profile/:userId" element={<Profile/>}/>
+        <Route path="/recommendation" element={<Recommendation />} />
       </Routes>
       <Footer />
     </BrowserRouter>

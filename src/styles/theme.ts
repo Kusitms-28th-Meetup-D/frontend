@@ -38,6 +38,9 @@ const colors = {
   success60: '#83C877',
   success40: '#ABDAA3',
   success20: '#D1EBCD',
+
+  linear1: 'linear-gradient(90deg, #B1B4FC 100%, #DADCFE 70%, #DBDDFF 0%)',
+  linear2: 'linear-gradient(90deg, #7376F0 0%, #3B3EF1 100%)',
 } as const;
 
 interface Font {
@@ -117,13 +120,13 @@ const fonts = {
   subtitleXL: FONT({
     font: 'Pretendard',
     weight: 600,
-    size: 2,
+    size: 2.0,
     lineHeight: 160,
   }),
   subtitleL: FONT({
     font: 'Pretendard',
     weight: 600,
-    size: 1.8,
+    size: 2,
     lineHeight: 160,
   }),
   subtitleM: FONT({
