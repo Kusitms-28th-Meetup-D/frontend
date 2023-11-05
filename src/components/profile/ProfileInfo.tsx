@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export interface ProfileInfoProps {
+  name: string; 
   part: string;
   imageUrl: string;
-  name: string;
   region: string;
   major: string;
   introduce: string;
