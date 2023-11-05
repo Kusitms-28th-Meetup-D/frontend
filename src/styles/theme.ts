@@ -129,13 +129,13 @@ const fonts = {
   subtitleM: FONT({
     font: 'Pretendard',
     weight: 600,
-    size: 160,
+    size: 1.6,
     lineHeight: 160,
   }),
   subtitleS: FONT({
     font: 'Pretendard',
     weight: 600,
-    size: 140,
+    size: 1.4,
     lineHeight: 160,
   }),
   subtitleXS: FONT({
