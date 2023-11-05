@@ -5,14 +5,19 @@ import ProfileInfo, {
 } from '../../components/profile/ProfileInfo';
 import ProfileSubInfo from '../../components/profile/ProfileSubInfo';
 import ProfileKeyword from '../../components/profile/ProfileKeyword';
+import ProfileRecommendation from '../../components/profile/ProfileRecommendation';
 export interface IKeyword {
   keywordType: number;
   count: number;
 }
+export interface IRecommendation {
+  recommendation: string;
+  category: string;
+}
 interface IReviewDatas {
   keywords: IKeyword[];
   personality: number[];
-  recommendation: string[];
+  recommendation: IRecommendation[];
 }
 const profileDatas: ProfileInfoProps = {
   name: '민혜린',
@@ -68,10 +73,26 @@ const reviewDatas: IReviewDatas = {
   ],
   personality: [25, 0, 100, 50, 70, 56, 11],
   recommendation: [
-    '어쩌구 저쩌구 칭찬의 말을 블라블라 쏼라쏼라 칭찬합니다 칭찬합니다 큐시즘의 민혜린을 칭찬합니다 글자 수 제한은 140자 넘 길어용 할 말이 없어용우아어암ㅁ아ㅓ래ㅑㅕㅐㅑ러ㅏㅣㅁ앎 칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다다',
-    '에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져',
-    '큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다',
-    '이사람은 천재입니다. ',
+    {
+      recommendation:
+        '어쩌구 저쩌구 칭찬의 말을 블라블라 쏼라쏼라 칭찬합니다 칭찬합니다 큐시즘의 민혜린을 칭찬합니다 글자 수 제한은 140자 넘 길어용 할 말이 없어용우아어암ㅁ아ㅓ래ㅑㅕㅐㅑ러ㅏㅣㅁ앎 칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다다',
+      category: '<과자 빨리 먹기> 공모전',
+    },
+    {
+      recommendation:
+        '에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져',
+      category: '<과자 빨리 먹기> 공모전',
+    },
+    {
+      recommendation:
+        '큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다',
+
+      category: '<과자 빨리 먹기> 공모전',
+    },
+    {
+      recommendation: '이사람은 천재입니다. ',
+      category: '<과자 빨리 먹기> 공모전',
+    },
   ],
 };
 const Profile = () => {
@@ -83,6 +104,10 @@ const Profile = () => {
       <ProfileSubInfo />
       <ProfileKeyword
         keywordData={reviewDatas.keywords}
+        name={profileDatas.name}
+      />
+      <ProfileRecommendation
+        recommendationData={reviewDatas.recommendation}
         name={profileDatas.name}
       />
     </ProfileLayout>
