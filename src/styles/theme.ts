@@ -118,33 +118,27 @@ const fonts = {
     lineHeight: 160,
   }),
   subtitleXL: FONT({
-    weight: 500,
+    font: 'Pretendard',
+    weight: 600,
     size: 2.0,
     lineHeight: 160,
   }),
   subtitleL: FONT({
-    weight: 500,
     font: 'Pretendard',
     weight: 600,
     size: 2,
     lineHeight: 160,
   }),
-  subtitleL: FONT({
-    font: 'Pretendard',
-    weight: 600,
-    size: 1.8,
-    lineHeight: 160,
-  }),
   subtitleM: FONT({
     font: 'Pretendard',
     weight: 600,
-    size: 160,
+    size: 1.6,
     lineHeight: 160,
   }),
   subtitleS: FONT({
     font: 'Pretendard',
     weight: 600,
-    size: 140,
+    size: 1.4,
     lineHeight: 160,
   }),
   subtitleXS: FONT({
