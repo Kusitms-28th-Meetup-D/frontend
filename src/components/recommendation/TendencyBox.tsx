@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import Keyword from './Keyword';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Question {
   id: number;
@@ -18,6 +18,22 @@ const TendencyBox = ({ boxName, question }: TendencyBoxProps) => {
   const [selectedAnswers, setSelectedAnswers] = useState<{
     [key: number]: string;
   }>({});
+
+  useState<{ [key: number]: string }>(
+    question.reduce((acc: { [key: number]: string }, currentQuestion) => {
+      acc[currentQuestion.id] = currentQuestion.answer1;
+      return acc;
+    }, {} as { [key: number]: string }),
+  );
+
+  useEffect(() => {
+    setSelectedAnswers(
+      question.reduce((acc: { [key: number]: string }, currentQuestion) => {
+        acc[currentQuestion.id] = currentQuestion.answer1;
+        return acc;
+      }, {} as { [key: number]: string }),
+    );
+  }, [question]);
 
   const handleToggleKeyword = (questionId: number, selectedKeyword: string) => {
     setSelectedAnswers((prevSelected) => ({
