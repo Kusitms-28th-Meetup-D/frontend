@@ -1,16 +1,12 @@
 import { styled } from 'styled-components';
 import RecommendationHeader from '../../components/recommendation/RecommendationHeader';
-import RecommendationProfiles from '../../components/recommendation/RecommendationProfiles';
-import RecommendationKeywords from '../../components/recommendation/RecommendationKeywords';
-import RecommendationTendency from '../../components/recommendation/RecommendationTendency';
+import { Outlet } from 'react-router-dom';
 
 const Recommendation = () => {
   return (
     <RecommendationLayout>
       <RecommendationHeader />
-      <RecommendationProfiles />
-      <RecommendationKeywords />
-      <RecommendationTendency />
+      <Outlet />
     </RecommendationLayout>
   );
 };
