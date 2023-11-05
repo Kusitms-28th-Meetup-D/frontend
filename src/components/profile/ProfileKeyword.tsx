@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-const KEYWARDS = [
+import { IKeyword } from '../../pages/profile/Profile';
+const KEYWORDS = [
   '🔥계획 마스터',
   '불타는 열정왕',
   '전공스킬 넘사벽,',
@@ -13,37 +14,41 @@ const KEYWARDS = [
 ];
 const DETAIL =
   '키워드 옆의 레벨은 해당 키워드를 받은 횟수를 의미해요.\n키워드는 가장 많이 받은 순서대로 상위 5개까지만 노출돼요.';
-const ProfileKeyward = ({
-  keywardData,
+const ProfileKeyword = ({
+  keywordData,
   name,
 }: {
-  keywardData: any;
+  keywordData: IKeyword[];
   name: string;
 }) => {
   return (
-    <ProfileKeywardContainer>
-      <ProfileKeywardTitle>{name} 님의 장점 키워드</ProfileKeywardTitle>
-      <ProfileKeywardDetail>{DETAIL}</ProfileKeywardDetail>
-      {keywardData.map((data, index) => {
-        const key = +Object.keys(data);
-        const value = Object.values(data);
+    <ProfileKeywordContainer>
+      <ProfileKeywordTitle>{name} 님의 장점 키워드</ProfileKeywordTitle>
+      <ProfileKeywordDetail>{DETAIL}</ProfileKeywordDetail>
+      {/* {Object.entries(keywordData).map(([key, value], index) => (
+        <ProfileKeywordContent key={index}>
+          {`KEYWORDS[${key}] | Lv.${value}`}
+        </ProfileKeywordContent>
+      ))} */}
+      {keywordData.map((data: any, index: number) => {
+        const [keywordIdx, count] = Object.values(data) as [number, number];
         return (
-          <ProfileKeywardContent key={index}>
-            {KEYWARDS[key]} | Lv.{value}
-          </ProfileKeywardContent>
+          <ProfileKeywordContent key={index}>
+            {KEYWORDS[keywordIdx]} | Lv.{count}
+          </ProfileKeywordContent>
         );
       })}
-    </ProfileKeywardContainer>
+    </ProfileKeywordContainer>
   );
 };
-const ProfileKeywardContainer = styled.div``;
-const ProfileKeywardTitle = styled.div`
+const ProfileKeywordContainer = styled.div``;
+const ProfileKeywordTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray100};
 
   margin-top: 8rem;
 `;
-const ProfileKeywardDetail = styled.div`
+const ProfileKeywordDetail = styled.div`
   ${(props) => props.theme.fonts.bodyL};
   color: ${(props) => props.theme.colors.gray70};
 
@@ -51,7 +56,7 @@ const ProfileKeywardDetail = styled.div`
 
   white-space: break-spaces;
 `;
-const ProfileKeywardContent = styled.div`
+const ProfileKeywordContent = styled.div`
   ${(props) => props.theme.fonts.subtitleL};
   color: ${(props) => props.theme.colors.primary90};
 
@@ -62,4 +67,4 @@ const ProfileKeywardContent = styled.div`
   padding: 1.2rem;
   margin-left: 1.2rem;
 `;
-export default ProfileKeyward;
+export default ProfileKeyword;

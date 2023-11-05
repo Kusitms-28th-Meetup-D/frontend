@@ -4,8 +4,16 @@ import ProfileInfo, {
   ProfileInfoProps,
 } from '../../components/profile/ProfileInfo';
 import ProfileSubInfo from '../../components/profile/ProfileSubInfo';
-import ProfileKeyward from '../../components/profile/ProfileKeyward';
-
+import ProfileKeyword from '../../components/profile/ProfileKeyword';
+export interface IKeyword {
+  keywordType: number;
+  count: number;
+}
+interface IReviewDatas {
+  keywords: IKeyword[];
+  personality: number[];
+  recommendation: string[];
+}
 const profileDatas: ProfileInfoProps = {
   name: '민혜린',
   part: '서비스 기획',
@@ -14,20 +22,50 @@ const profileDatas: ProfileInfoProps = {
   major: '언어학과/국어국문학과',
   introduce: '사슴을 좋아합니다. 밤비치고짱귀여워',
 };
-const KEYWARDS = [
-  '🔥계획 마스터',
-  '불타는 열정왕',
-  '전공스킬 넘사벽,',
-  '💬소통의 귀재',
-  '🧠논리의 왕',
-  '😎분위기 메이커',
-  '꽉찬 리더십',
-  '경험가득 고인물',
-  '올라운더',
-  '빛의 작업속도',
-];
-const reviewDatas = {
-  keywards: [{ '0': 1 }, { '3': 4 }, { '4': 3 }, { '5': 3 }],
+
+const reviewDatas: IReviewDatas = {
+  keywords: [
+    {
+      keywordType: 0,
+      count: 2,
+    },
+    {
+      keywordType: 1,
+      count: 6,
+    },
+    {
+      keywordType: 2,
+      count: 12,
+    },
+    {
+      keywordType: 3,
+      count: 3,
+    },
+    {
+      keywordType: 4,
+      count: 0,
+    },
+    {
+      keywordType: 5,
+      count: 0,
+    },
+    {
+      keywordType: 6,
+      count: 0,
+    },
+    {
+      keywordType: 7,
+      count: 0,
+    },
+    {
+      keywordType: 8,
+      count: 0,
+    },
+    {
+      keywordType: 9,
+      count: 12,
+    },
+  ],
   personality: [25, 0, 100, 50, 70, 56, 11],
   recommendation: [
     '어쩌구 저쩌구 칭찬의 말을 블라블라 쏼라쏼라 칭찬합니다 칭찬합니다 큐시즘의 민혜린을 칭찬합니다 글자 수 제한은 140자 넘 길어용 할 말이 없어용우아어암ㅁ아ㅓ래ㅑㅕㅐㅑ러ㅏㅣㅁ앎 칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다다',
@@ -43,7 +81,10 @@ const Profile = () => {
     <ProfileLayout>
       <ProfileInfo profileData={profileDatas} />
       <ProfileSubInfo />
-      <ProfileKeyward keywardData={reviewDatas.keywards} name={profileDatas.name}/>
+      <ProfileKeyword
+        keywordData={reviewDatas.keywords}
+        name={profileDatas.name}
+      />
     </ProfileLayout>
   );
 };
