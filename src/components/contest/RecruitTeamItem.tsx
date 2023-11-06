@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import LeaderInfoBox from './LeaderInfoBox';
 
-const RecruitTeamItem = ({ data }) => {
+const RecruitTeamItem = ({ data }: { data: any }) => {
   return (
     <ItemLayout>
       <LeaderBox>
         <Role>팀장</Role>
+        <LeaderInfoBox infoData = {data.leader} />
       </LeaderBox>
       <MemberBox>
         <Role>팀원</Role>
@@ -110,4 +112,5 @@ const GoTeamButton = styled.button`
   width: 100%;
   padding: 0.5rem;
 `;
+
 export default RecruitTeamItem;
