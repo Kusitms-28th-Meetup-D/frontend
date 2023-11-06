@@ -4,6 +4,8 @@ import Footer from './components/footer/Footer';
 import Oauth from './pages/login/Oauth';
 import Join from './pages/join/Join';
 import Profile from './pages/profile/Profile';
+
+import Profile from './pages/profile/Profile';
 import Recommendation from './pages/recommendation/Recommendation';
 
 function Router() {
