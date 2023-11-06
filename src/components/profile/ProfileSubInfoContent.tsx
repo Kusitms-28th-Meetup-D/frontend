@@ -28,13 +28,13 @@ const ContentsContainer = styled.div`
   /* height: 28.4rem; */
 
   border-radius: 1.2rem;
-  padding: 2rem 3rem;
+  padding: 3rem 3rem;
 `;
 
 const ContentsSubTitle = styled.div`
   ${(props) => props.theme.fonts.heading4};
   color: ${(props) => props.theme.colors.gray100};
-  padding: 2rem 0 1rem 0;
+  padding: 1rem 0;
 `;
 const ContentsDetail = styled.div`
   ${(props) => props.theme.fonts.bodyM};

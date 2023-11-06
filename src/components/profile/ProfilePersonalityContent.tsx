@@ -4,6 +4,7 @@ import starBulletSrc from '/assets/images/profile/star-list-type.png';
 import starLeandSrc from '/assets/images/profile/star-leand.svg';
 import rangeBgSrc from '/assets/images/profile/range-bg.png';
 import { ICategory, IQuestion } from '../../interface/Profile';
+import React from 'react';
 
 const ProfilePersonalityContent = ({
   datas,
@@ -19,7 +20,7 @@ const ProfilePersonalityContent = ({
       <TendencyBottomBox>
         {datas.map((data, index) => {
           return (
-            <>
+            <React.Fragment key={index}>
               <div>
                 <StarBullet src={starBulletSrc} />
                 <TendencySubTitle>
@@ -27,21 +28,21 @@ const ProfilePersonalityContent = ({
                 </TendencySubTitle>
               </div>
               <SwiperBox>
-                <SwiperText $isBold={datas[index].percent < 49}>
+                <SwiperText $isBold={data.percent < 49}>
                   {category.category[index].leftValue}
                 </SwiperText>
                 <RangeBox
                   type="range"
-                  value={datas[index].percent}
+                  value={data.percent}
                   $imgUrl={starLeandSrc}
                   $bgUrl={rangeBgSrc}
                   readOnly
                 />
-                <SwiperText $isBold={datas[index].percent > 51}>
+                <SwiperText $isBold={data.percent > 51}>
                   {category.category[index].rightValue}
                 </SwiperText>
               </SwiperBox>
-            </>
+            </React.Fragment>
           );
         })}
       </TendencyBottomBox>
@@ -109,8 +110,9 @@ const SwiperText = styled.div<{ $isBold: boolean }>`
   ${(props) => (props.$isBold ? props.theme.fonts.subtitleL : null)};
   color: ${(props) => (props.$isBold ? props.theme.colors.primary60 : null)};
 
-  width: 20%;
+  width: 25%;
   white-space: nowrap;
+  
 `;
 const RangeBox = styled.input<{ $imgUrl: string; $bgUrl: string }>`
   width: 50%;
