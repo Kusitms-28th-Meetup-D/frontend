@@ -15,9 +15,9 @@ const Header = () => {
       <Logo src={logoSrc} onClick={() => navigate('/')} />
       <HeaderContainer>
         <HeaderItem>공모전 리스트</HeaderItem>
+        <HeaderItem>내팀</HeaderItem>
         {isLogin ? (
           <>
-            <HeaderItem>내팀</HeaderItem>
             <HeaderItem>{kakaoName}님 </HeaderItem>
           </>
         ) : (

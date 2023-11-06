@@ -3,6 +3,8 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Oauth from './pages/login/Oauth';
 import Join from './pages/join/Join';
+import Profile from './pages/profile/Profile';
+
 import Recommendation from './pages/recommendation/Recommendation';
 import MultipleChoice from './pages/recommendation/MultipleChoice';
 import Subjective from './pages/recommendation/Subjective';
@@ -20,6 +22,7 @@ function Router() {
           <Route path="subjective" element={<Subjective />} />
           <Route path="multipleChoice" element={<MultipleChoice />} />
         </Route>
+        <Route path="/profile/:userId" element={<Profile />} />
       </Routes>
       <Footer />
     </BrowserRouter>
