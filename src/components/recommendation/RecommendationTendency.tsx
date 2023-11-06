@@ -2,7 +2,7 @@ import { useRecoilValue } from 'recoil';
 import { selectedNameAtom } from '../../recoil/recommendation';
 import { styled } from 'styled-components';
 import TendencyBox from './TendencyBox';
-import { question1, question2 } from '../../constants/TendencyQuestion';
+import { question1, question2 } from '../../constants/recommendation';
 
 const RecommendationTendency = () => {
   const selectedName = useRecoilValue(selectedNameAtom);

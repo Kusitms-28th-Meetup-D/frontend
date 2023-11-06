@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import HeroBox from './HeroBox';
-import { heroList } from '../../constants/HeroList';
+import { heroList } from '../../constants/recommendation';
 
 const RecommendationHero = () => {
   return (

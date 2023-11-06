@@ -3,7 +3,7 @@ import RecommendationProfile from './RecommendationProfile';
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { selectedNameAtom } from '../../recoil/recommendation';
-import { profiles } from '../../constants/ProfileList';
+import { profiles } from '../../constants/recommendation';
 
 const RecommendationProfiles = () => {
   const [activeProfileId, setActiveProfileId] = useState(1);
