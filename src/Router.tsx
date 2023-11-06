@@ -8,6 +8,7 @@ import Profile from './pages/profile/Profile';
 import Recommendation from './pages/recommendation/Recommendation';
 import MultipleChoice from './pages/recommendation/MultipleChoice';
 import Subjective from './pages/recommendation/Subjective';
+import Contest from './pages/contest/Contest';
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
           <Route path="multipleChoice" element={<MultipleChoice />} />
         </Route>
         <Route path="/profile/:userId" element={<Profile />} />
+        <Route path='/list/:postId' element={<Contest/>}/>
       </Routes>
       <Footer />
     </BrowserRouter>
