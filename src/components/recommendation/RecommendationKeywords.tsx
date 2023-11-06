@@ -3,7 +3,7 @@ import Keyword from './Keyword';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { selectedNameAtom } from '../../recoil/recommendation';
-import { keywordList } from '../../constants/KeywordList';
+import { keywordList } from '../../constants/recommendation';
 
 const RecommendationKeywords = () => {
   const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
