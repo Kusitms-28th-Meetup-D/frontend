@@ -1,12 +1,14 @@
 import styled from 'styled-components';
+import ContestInfo from '../../components/contest/ContestInfo';
 
 const Contest = () => {
-  return <ContestLayout></ContestLayout>;
+  return (
+    <ContestLayout>
+      <ContestInfo />
+    </ContestLayout>
+  );
 };
 const ContestLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-
   max-width: 122.4rem;
   margin: auto;
 `;
