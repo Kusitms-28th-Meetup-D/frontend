@@ -25,6 +25,7 @@ function Router() {
         </Route>
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path='/list/:postId' element={<Contest/>}/>
+        <Route path='/list/:postId/:teamId' element={<div>팀 생성페이지입니다</div>}/>
       </Routes>
       <Footer />
     </BrowserRouter>

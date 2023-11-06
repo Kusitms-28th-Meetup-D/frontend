@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 import { TEAMS_DATA } from '../../constants/Contest';
 import RecruitTeamItem from './RecruitTeamItem';
+import { useNavigate } from 'react-router-dom';
 
 const RecruitTeamList = () => {
+  const navigate = useNavigate();
+  const handleBtnClicked = () => {
+    navigate('3');
+  };
   return (
     <RecruitTeamListLayout>
       <RecruitTeamListTopContainer>
         <RecruitTeamListTitle>모집 중인 팀</RecruitTeamListTitle>
-        <RecruitTeamButton>+팀 오픈하러 가기</RecruitTeamButton>
+        <RecruitTeamButton onClick={handleBtnClicked}>
+          +팀 오픈하러 가기
+        </RecruitTeamButton>
       </RecruitTeamListTopContainer>{' '}
       <RecruitTeamContainer>
         {TEAMS_DATA.map((data, index) => {
