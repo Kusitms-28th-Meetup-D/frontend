@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { IQuestion } from '../../pages/profile/Profile';
-import { ICategory } from './ProfilePersonality';
 
 import starBulletSrc from '/assets/images/profile/star-list-type.png';
 import starLeandSrc from '/assets/images/profile/star-leand.svg';
 import rangeBgSrc from '/assets/images/profile/range-bg.png';
+import { ICategory, IQuestion } from '../../interface/Profile';
 
 const ProfilePersonalityContent = ({
   datas,

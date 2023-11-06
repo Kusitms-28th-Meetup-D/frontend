@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { IRecommendation } from '../../pages/profile/Profile';
 
 import quoteOpenSrc from '/assets/images/profile/quotes_open.svg';
 import quoteCloseSrc from '/assets/images/profile/quotes_close.svg';
+import { IRecommendation } from '../../interface/Profile';
 
 const ProfileRecommendationContentsBox = ({
   recommendationData,

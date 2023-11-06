@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SubInfoContentsProps } from './ProfileSubInfo';
+import { SubInfoContentsProps } from '../../interface/Profile';
 
 const ProfileSubInfoContents = ({
   props1,

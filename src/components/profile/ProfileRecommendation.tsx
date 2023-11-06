@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { IRecommendation } from '../../pages/profile/Profile';
 import ProfileRecommendationContentsBox from './ProfileRecommendationContentsBox';
+import { IRecommendation } from '../../interface/Profile';
 
 const ProfileRecommendation = ({
   recommendationData,
