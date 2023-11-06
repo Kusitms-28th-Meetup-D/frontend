@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import LeaderInfoBox from './LeaderInfoBox';
+import MemberInfoBox from './MemberInfoBox';
 
 const RecruitTeamItem = ({ data }: { data: any }) => {
   return (
     <ItemLayout>
       <LeaderBox>
         <Role>팀장</Role>
-        <LeaderInfoBox infoData = {data.leader} />
+        <LeaderInfoBox infoData={data.leader} />
       </LeaderBox>
       <MemberBox>
         <Role>팀원</Role>
@@ -18,6 +19,11 @@ const RecruitTeamItem = ({ data }: { data: any }) => {
           <IntroduceContent>{data.talk}</IntroduceContent>
           <GoTeamButton>팀 자세히 보러가기</GoTeamButton>
         </TeamInfoBox>
+        <MemberInfoContainer>
+          {data.members.map((member: any, index: any) => (
+            <MemberInfoBox infoData={member} key={index} />
+          ))}
+        </MemberInfoContainer>
       </MemberBox>
     </ItemLayout>
   );
@@ -55,6 +61,7 @@ const LeaderBox = styled.div`
 `;
 const MemberBox = styled.div`
   position: relative;
+  display: flex;
 
   ${(props) => props.theme.fonts.subtitleS};
   color: ${(props) => props.theme.colors.white};
@@ -112,5 +119,25 @@ const GoTeamButton = styled.button`
   width: 100%;
   padding: 0.5rem;
 `;
+const MemberInfoContainer = styled.div`
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: scroll;
 
+  max-width: 72rem;
+  /* max-width: 100%; */
+
+  padding: 2.8rem;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.colors.primary60};
+    border-radius: 6px;
+  }
+`;
 export default RecruitTeamItem;
