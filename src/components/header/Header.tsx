@@ -1,36 +1,48 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import KakaoLogin, { kakaoAuthorize } from '../login/KakaoLogin';
+import { kakaoAuthorize } from '../login/KakaoLogin';
 import { useRecoilValue } from 'recoil';
-import { kakaoNameState, loginState } from '../../recoil/atom';
+import {
+  headerSelectedState,
+  kakaoNameState,
+  loginState,
+} from '../../recoil/atom';
 
 import logoSrc from '/assets/images/header/wanteam-logo.svg';
 import starSrc from '/assets/images/header/header-star.svg';
+import { Headers } from '../../constants/Header';
 
 const Header = () => {
   const kakaoName = useRecoilValue(kakaoNameState);
   const isLogin = useRecoilValue(loginState);
+  const headerSelectedIndex = useRecoilValue(headerSelectedState);
   const navigate = useNavigate();
   return (
     <HeaderLayout>
       <Logo src={logoSrc} onClick={() => navigate('/')} />
       <HeaderContainer>
-        <HeaderItem>
+        <HeaderItem $isSelected={headerSelectedIndex === Headers.list}>
           <HeaderStar src={starSrc} />
           공모전 리스트
         </HeaderItem>
-        <HeaderItem>
+        <HeaderItem $isSelected={headerSelectedIndex === Headers.myTeam}>
           <HeaderStar src={starSrc} />내 팀
         </HeaderItem>
         {isLogin ? (
           <>
-            <HeaderItem>
+            <HeaderItem $isSelected={headerSelectedIndex === Headers.myPage}>
               <HeaderStar src={starSrc} />
               {kakaoName}님{' '}
             </HeaderItem>
           </>
         ) : (
-          <HeaderItem onClick={kakaoAuthorize}>로그인/회원가입</HeaderItem>
+          <HeaderItem
+            $isSelected={headerSelectedIndex === Headers.login}
+            onClick={kakaoAuthorize}
+          >
+            <HeaderStar src={starSrc} />
+            로그인/회원가입
+          </HeaderItem>
         )}
       </HeaderContainer>
       {/* {isLogin ? <KakaoLogout /> : <KakaoLogin />} */}
@@ -66,9 +78,16 @@ const HeaderContainer = styled.div`
   align-items: center;
   /* gap: 3rem; */
 `;
-const HeaderItem = styled.div`
-  ${(props) => props.theme.fonts.bodyM};
+const HeaderItem = styled.button<{ $isSelected: boolean }>`
   color: ${(props) => props.theme.colors.gray80};
+
+  ${(props) =>
+    props.$isSelected ? props.theme.fonts.subtitleM : props.theme.fonts.bodyM};
+
+  color: ${(props) =>
+    props.$isSelected
+      ? props.theme.colors.primary60
+      : props.theme.colors.gray80};
 
   display: flex;
   justify-content: center;
@@ -83,6 +102,9 @@ const HeaderItem = styled.div`
   padding: 1.2rem 0.8rem;
   margin: 0 2rem;
   /* border: 1px solid red; */
+  > img {
+    display: ${(props) => (props.$isSelected ? 'default' : 'none')};
+  }
 `;
 const HeaderStar = styled.img`
   width: 2rem;
