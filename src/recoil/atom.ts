@@ -6,7 +6,10 @@ export type HeaderSelectedType =
   | 'myTeam'
   | 'login'
   | 'myPage'; //추가 가능
-
+export const headerSelectedState = atom<HeaderSelectedType>({
+  key: 'headerSelectedState',
+  default: Headers.none,
+});
 export const kakaoNameState = atom({
   key: 'kakaoNameState',
   default: 'noname',
@@ -19,7 +22,4 @@ export const loginState = atom<boolean>({
   key: 'loginState',
   default: false,
 });
-export const headerSelectedState = atom<HeaderSelectedType>({
-  key: 'headerSelectedState',
-  default: Headers.myPage,
-});
+
