@@ -39,7 +39,9 @@ const PaginationWrapper = styled.div`
   gap: 0.8rem;
 `;
 
-const PaginationButton = styled.button<{ active?: boolean }>`
+const PaginationButton = styled('button').withConfig({
+  shouldForwardProp: (prop) => !['active'].includes(prop),
+})<{ active: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
