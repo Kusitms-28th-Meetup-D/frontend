@@ -35,6 +35,7 @@ const RecruitingLayout = styled.div`
   justify-content: center;
   align-items: center;
   border: 1px solid ${({ theme }) => theme.colors.gray20};
+  cursor: pointer;
 `;
 
 const RecruitingHr = styled.hr`
