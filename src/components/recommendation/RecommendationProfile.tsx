@@ -8,10 +8,6 @@ interface ProfileProps {
   onClick: (id: number) => void;
 }
 
-interface ActiveProps {
-  active: boolean;
-}
-
 const RecommendationProfile = ({
   id,
   src,
@@ -46,7 +42,9 @@ const ProfileBox = styled.div`
   position: relative;
 `;
 
-const Profile = styled.img<ActiveProps>`
+const Profile = styled('div').withConfig({
+  shouldForwardProp: (prop) => !['active'].includes(prop),
+})<{ active: boolean }>`
   width: 15.4rem;
   height: 15.4rem;
   border-radius: 50%;
@@ -77,7 +75,9 @@ const ProfileBackground = styled.div`
   z-index: -1;
 `;
 
-const ProfileName = styled.div<ActiveProps>`
+const ProfileName = styled('div').withConfig({
+  shouldForwardProp: (prop) => !['active'].includes(prop),
+})<{ active: boolean }>`
   ${({ theme }) => theme.fonts.bodyL};
   color: ${({ theme }) => theme.colors.gray90};
 
