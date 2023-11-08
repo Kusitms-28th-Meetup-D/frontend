@@ -42,7 +42,7 @@ const ProfileBox = styled.div`
   position: relative;
 `;
 
-const Profile = styled('div').withConfig({
+const Profile = styled('img').withConfig({
   shouldForwardProp: (prop) => !['active'].includes(prop),
 })<{ active: boolean }>`
   width: 15.4rem;
