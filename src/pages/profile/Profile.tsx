@@ -6,10 +6,18 @@ import ProfileKeyword from '../../components/profile/ProfileKeyword';
 import ProfileRecommendation from '../../components/profile/ProfileRecommendation';
 import ProfilePersonality from '../../components/profile/ProfilePersonality';
 import { profileDatas, reviewDatas } from '../../constants/Profile';
+import { useSetRecoilState } from 'recoil';
+import { headerSelectedState } from '../../recoil/atom';
+import { useEffect } from 'react';
+import { Headers } from '../../constants/Header';
 
 const Profile = () => {
   const { userId } = useParams();
-  userId;
+  const setHeaderSelected = useSetRecoilState(headerSelectedState);
+  userId; //이거는 일단 무시해주세요
+
+  useEffect(() => setHeaderSelected(Headers.list));
+
   return (
     <ProfileLayout>
       <ProfileInfo profileData={profileDatas} />
