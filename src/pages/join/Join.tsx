@@ -74,6 +74,7 @@ const Join = () => {
 
   return (
     <JoinLayout>
+      <JoinContainer></JoinContainer>
       <FormContainer action="#" onSubmit={handleSubmit}>
         <Input
           type="text"
@@ -139,7 +140,25 @@ const Join = () => {
 
 export default Join;
 
-const JoinLayout = styled.div``;
+const JoinLayout = styled.div`
+  width: 100%;
+  background: ;
+`;
+const JoinContainer = styled.div`
+  width: 78rem;
+  height: 70rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid ${(props) => props.theme.colors.linear2};
+  border-radius: 2.4rem;
+
+  backdrop-filter: blur(12px);
+`;
+
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;

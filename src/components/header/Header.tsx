@@ -9,7 +9,7 @@ import {
 } from '../../recoil/atom';
 
 import logoSrc from '/assets/images/header/wanteam-logo.svg';
-import starSrc from '/assets/images/header/header-star.svg';
+import starSrc from '/assets/images/common/star.svg';
 import { Headers } from '../../constants/Header';
 
 const Header = () => {
@@ -38,7 +38,7 @@ const Header = () => {
         ) : (
           <HeaderItem
             $isSelected={headerSelectedIndex === Headers.login}
-            onClick={kakaoAuthorize}
+            onClick={kakaoAuthorgize}
           >
             <HeaderStar src={starSrc} />
             로그인/회원가입
