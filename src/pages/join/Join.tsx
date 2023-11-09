@@ -12,66 +12,44 @@ import TextInput from '../../components/join/TextInput';
 import { INPUT_PROPS } from '../../constants/Join';
 import SelectInput from '../../components/join/SelectInput';
 import TextAreaInput from '../../components/join/TextAreaInput';
-const REGIONS = [
-  '무관',
-  '서울',
-  '부산',
-  '대구',
-  '인천',
-  '광주',
-  '대전',
-  '울산',
-  '세종',
-  '경기',
-  '충북',
-  '충남',
-  '전북',
-  '전남',
-  '경북',
-  '경남',
-  '제주',
-  '강원',
-];
-export interface IJoin {
-  name: string;
-  email: string;
-  birth: string;
-  gender: string;
-  region: string;
-  major: string;
-  job: string;
-}
+import { RequestJoin } from '../../interface/Join';
+
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
+  //이게 아니고, 스토리지에서 꺼내서 확인하는 로직이 되어야 할듯
 
-  const location = useLocation();
-  const kakaoAccessToken = location.state.kakaoAccessToken;
-  const [inputValue, setInputValue] = useState<IJoin>({
-    name: 'jinwoo',
-    email: 'jinyoung@babo.kr',
-    birth: 'YYYY-MM-DD',
-    gender: 'xe',
-    region: 'ex',
-    major: 'ex',
-    job: 'xex',
+  //const location = useLocation();
+  //const kakaoAccessToken = location.state.kakaoAccessToken;
+  const [inputValue, setInputValue] = useState<RequestJoin>({
+    name: '민정리',
+    region: '서울특별시',
+    major: '미디어뭐더라',
+    part: 'IT/희망직종',
+    introduce: '감자맛있단다',
+    email: 'minjeong@legend.gosu',
   });
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(kakaoAccessToken);
-    try {
-      const responseJoin = await postJoin(kakaoAccessToken, inputValue);
-      console.log('responseJoin 결과:', responseJoin);
-    } catch (error) {
-      console.log('responseJoin 실패:', error);
-    }
+    console.log(inputValue);
+    // console.log(kakaoAccessToken);
+    // try {
+    //   const responseJoin = await postJoin(kakaoAccessToken, inputValue);
+    //   console.log('responseJoin 결과:', responseJoin);
+    // } catch (error) {
+    //   console.log('responseJoin 실패:', error);
+    // }
   };
-  const handleChange = (event: any) => {
+  const handleChange = (
+    // event: React.FormEvent<
+    //   HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    // >,
+    event: any,
+  ) => {
     setInputValue((curr) => {
-      const newObj: IJoin = { ...curr };
-      const keyName = event.target.name as keyof IJoin;
+      const newObj: RequestJoin = { ...curr };
+      const keyName = event.target.name as keyof RequestJoin;
       newObj[keyName] = event.target.value;
-      // console.log(newObj);
-
+      console.log(newObj);
       return newObj;
     });
   };
@@ -81,78 +59,22 @@ const Join = () => {
 
   return (
     <JoinLayout>
-      <JoinContainer>
+      <JoinFormContainer action="#" onSubmit={handleSubmit}>
         <TitleBox>
           <TitleStarImg src={starSrc} />
           <TitleText>똑똑한 회원님의 정보를 알려주세요!</TitleText>
         </TitleBox>
-        <TextInput inputProps={INPUT_PROPS[0]} />
-        <SelectInput />
-        <TextInput inputProps={INPUT_PROPS[1]} />
-        <TextInput inputProps={INPUT_PROPS[2]} />
-        <TextAreaInput inputProps={INPUT_PROPS[3]} />
+        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[0]} />
+        <SelectInput onChangeFunc={handleChange} />
+        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[1]} />
+        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[2]} />
+        <TextAreaInput
+          onChangeFunc={handleChange}
+          inputProps={INPUT_PROPS[3]}
+        />
 
-        <StartButton>원팀 시작하기 →</StartButton>
-      </JoinContainer>
-      {/* <FormContainer action="#" onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          name="name"
-          onChange={handleChange}
-          placeholder="이름"
-        />
-        <Input
-          type="text"
-          name="email"
-          onChange={handleChange}
-          placeholder="이메일"
-        />
-        <Input
-          type="date"
-          name="birth"
-          onChange={handleChange}
-          placeholder="생년월일"
-        />
-        <label>
-          <Input
-            type="radio"
-            name="gender"
-            value="female"
-            onChange={handleChange}
-          />{' '}
-          남성
-        </label>
-        <label>
-          <Input
-            type="radio"
-            name="gender"
-            value="male"
-            onChange={handleChange}
-          />{' '}
-          여성
-        </label>
-        <label htmlFor="region">지역</label>
-        <select name="region" id="region" onChange={handleChange}>
-          {REGIONS.map((each, idx) => (
-            <option key={idx} value={each}>
-              {each}
-            </option>
-          ))}
-        </select>
-        <Input
-          type="text"
-          name="major"
-          onChange={handleChange}
-          placeholder="전공"
-        />{' '}
-        <Input
-          type="text"
-          name="job"
-          onChange={handleChange}
-          placeholder="직무"
-        />
-        <Submit type="submit" />
-      </FormContainer> */}
+        <StartButton type="submit">원팀 시작하기 →</StartButton>
+      </JoinFormContainer>
     </JoinLayout>
   );
 };
@@ -171,7 +93,7 @@ const JoinLayout = styled.div`
 
   margin: auto;
 `;
-const JoinContainer = styled.div`
+const JoinFormContainer = styled.form`
   width: 78rem;
   /* height: 70rem; */
 

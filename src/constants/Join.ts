@@ -29,20 +29,24 @@ export const INPUT_PROPS: InputProps[] = [
     label: '이름',
     placeholder: '이름을 입력해주세요',
     errorText: ERROR_MESSAGES.이름,
+    elemName: 'name',
   },
   {
     label: '전공',
     placeholder: '학과를 입력해주세요',
     errorText: ERROR_MESSAGES.전공,
+    elemName: 'major',
   },
   {
     label: '희망 직무',
     placeholder: '희망 직무를 입력해주세요',
     errorText: ERROR_MESSAGES.희망직무,
+    elemName: 'part',
   },
   {
     label: '한줄 소개',
     placeholder: '한줄 소개를 입력해주세요',
     errorText: ERROR_MESSAGES.한줄소개,
+    elemName: 'introduce',
   },
 ];

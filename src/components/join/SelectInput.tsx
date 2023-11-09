@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { REGIONS } from '../../constants/Join';
 
-const SelectInput = () => {
+const SelectInput = ({ onChangeFunc }: { onChangeFunc: any }) => {
   return (
     <SelectContainer>
       <Label>활동 지역</Label>
-      <Select>
+      <Select onChange={onChangeFunc} name="region">
         {REGIONS.map((each, idx) => (
           <Option key={idx} value={each}>
             {each}

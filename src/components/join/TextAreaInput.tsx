@@ -3,12 +3,19 @@ import { InputProps } from '../../interface/Join';
 import React, { useState } from 'react';
 import ErrorMessage from './ErrorMessage';
 
-const TextAreaInput = ({ inputProps }: { inputProps: InputProps }) => {
+const TextAreaInput = ({
+  inputProps,
+  onChangeFunc,
+}: {
+  inputProps: InputProps;
+  onChangeFunc: any;
+}) => {
   const MIN_LENGTH = 10;
   const MAX_LENGTH = 140;
   const [text, setText] = useState('');
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(event.target.value);
+    onChangeFunc(event);
   };
   return (
     <InputContainer>
@@ -18,6 +25,7 @@ const TextAreaInput = ({ inputProps }: { inputProps: InputProps }) => {
         onChange={handleChange}
         minLength={MIN_LENGTH}
         maxLength={MAX_LENGTH}
+        name={inputProps.elemName}
       ></Input>
       <LengthCount>
         {text.length}/{MAX_LENGTH}
