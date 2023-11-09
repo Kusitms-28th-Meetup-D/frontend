@@ -70,7 +70,7 @@ const Join = () => {
   };
 
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
-  useEffect(() => setHeaderSelected(Headers.none));
+  useEffect(() => setHeaderSelected(Headers.login));
 
   return (
     <JoinLayout>
