@@ -21,7 +21,7 @@ const Pagination = ({
       {pages.map((page) => (
         <PaginationButton
           key={page}
-          active={currentPage === page}
+          $isSelected={currentPage === page}
           onClick={() => setCurrentPage(page)}
         >
           {page}
@@ -39,19 +39,19 @@ const PaginationWrapper = styled.div`
   gap: 0.8rem;
 `;
 
-const PaginationButton = styled('button').withConfig({
-  shouldForwardProp: (prop) => !['active'].includes(prop),
-})<{ active: boolean }>`
+const PaginationButton = styled.button<{ $isSelected: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 2rem;
   height: 2rem;
   padding: 5px 10px;
-  background-color: ${({ active, theme }) =>
-    active ? theme.colors.primary40 : theme.colors.gray20};
-  color: ${({ active, theme }) =>
-    active ? theme.colors.white : theme.colors.gray90};
+  background: ${(props) =>
+    props.$isSelected
+      ? props.theme.colors.primary40
+      : props.theme.colors.gray20};
+  color: ${(props) =>
+    props.$isSelected ? props.theme.colors.white : props.theme.colors.gray90};
   cursor: pointer;
   border-radius: 7px;
 
