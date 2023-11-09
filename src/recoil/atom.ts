@@ -1,10 +1,15 @@
 import { atom } from 'recoil';
-export type HeaderColorType = 'transparent' | 'white'; //추가 가능
-export const currHeaderAtom = atom<HeaderColorType>({
-  key: 'currHeader',
-  default: 'white',
+import { Headers } from '../constants/Header';
+export type HeaderSelectedType =
+  | 'none'
+  | 'list'
+  | 'myTeam'
+  | 'login'
+  | 'myPage'; //추가 가능
+export const headerSelectedState = atom<HeaderSelectedType>({
+  key: 'headerSelectedState',
+  default: Headers.none,
 });
-
 export const kakaoNameState = atom({
   key: 'kakaoNameState',
   default: 'noname',
@@ -17,3 +22,4 @@ export const loginState = atom<boolean>({
   key: 'loginState',
   default: false,
 });
+

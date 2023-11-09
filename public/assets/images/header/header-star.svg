@@ -1,0 +1,15 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="recommend/ic/star">
+<g id="Star 15" filter="url(#filter0_b_798_8773)">
+<path d="M9.44251 2.07054C9.59589 1.50088 10.4041 1.50088 10.5575 2.07054L12.0349 7.55771C12.0884 7.7564 12.2436 7.9116 12.4423 7.9651L17.9295 9.44251C18.4991 9.59589 18.4991 10.4041 17.9295 10.5575L12.4423 12.0349C12.2436 12.0884 12.0884 12.2436 12.0349 12.4423L10.5575 17.9295C10.4041 18.4991 9.59589 18.4991 9.44251 17.9295L7.9651 12.4423C7.9116 12.2436 7.7564 12.0884 7.55771 12.0349L2.07054 10.5575C1.50088 10.4041 1.50088 9.59589 2.07054 9.44251L7.55771 7.9651C7.7564 7.9116 7.9116 7.7564 7.9651 7.55771L9.44251 2.07054Z" fill="#5C5FFA"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_798_8773" x="-1.84899" y="-1.84703" width="23.698" height="23.6941" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="1.74481"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_798_8773"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_798_8773" result="shape"/>
+</filter>
+</defs>
+</svg>
