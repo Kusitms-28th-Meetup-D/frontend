@@ -5,6 +5,9 @@ import { useLocation } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { headerSelectedState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
+
+import bgSrc from '/assets/images/join/join-bg.png';
+import starSrc from '/assets/images/common/star.svg';
 const REGIONS = [
   '무관',
   '서울',
@@ -74,8 +77,20 @@ const Join = () => {
 
   return (
     <JoinLayout>
-      <JoinContainer></JoinContainer>
-      <FormContainer action="#" onSubmit={handleSubmit}>
+      <JoinContainer>
+        <TitleBox>
+          <TitleStarImg src={starSrc} />
+          <TitleText>똑똑한 회원님의 정보를 알려주세요!</TitleText>
+        </TitleBox>
+        <Input
+          type="text"
+          name="name"
+          onChange={handleChange}
+          placeholder="이름"
+        />
+        <StartButton>원팀 시작하기 →</StartButton>
+      </JoinContainer>
+      {/* <FormContainer action="#" onSubmit={handleSubmit}>
         <Input
           type="text"
           name="name"
@@ -133,7 +148,7 @@ const Join = () => {
           placeholder="직무"
         />
         <Submit type="submit" />
-      </FormContainer>
+      </FormContainer> */}
     </JoinLayout>
   );
 };
@@ -142,7 +157,15 @@ export default Join;
 
 const JoinLayout = styled.div`
   width: 100%;
-  background: ;
+  height: 100%;
+  background: url(${bgSrc}) left top no-repeat;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
 `;
 const JoinContainer = styled.div`
   width: 78rem;
@@ -153,17 +176,37 @@ const JoinContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  border: 1px solid ${(props) => props.theme.colors.linear2};
+  border: 1px solid #3b3ef1;
   border-radius: 2.4rem;
+
+  background-color: rgba(239, 239, 253, 0.2);
 
   backdrop-filter: blur(12px);
 `;
-
-const FormContainer = styled.form`
+const TitleBox = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
+const TitleStarImg = styled.img`
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1.2rem;
+`;
+const TitleText = styled.div`
+  ${(props) => props.theme.fonts.heading4};
+  color: ${(props) => props.theme.colors.gray90};
+`;
 const Input = styled.input``;
-const Submit = styled.input``;
+// const Submit = styled.input``;
+const StartButton = styled.button`
+  width: 25.5rem;
+  height: 6.4rem;
+
+  border-radius: 3.2rem;
+  border: 1px solid ${(props) => props.theme.colors.primary20};
+  background-color: ${(props) => props.theme.colors.primary60};
+
+  ${(props) => props.theme.fonts.buttonL};
+  color: ${(props) => props.theme.colors.white};
+`;
