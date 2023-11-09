@@ -38,7 +38,7 @@ const Header = () => {
         ) : (
           <HeaderItem
             $isSelected={headerSelectedIndex === Headers.login}
-            onClick={kakaoAuthorgize}
+            onClick={kakaoAuthorize}
           >
             <HeaderStar src={starSrc} />
             로그인/회원가입
