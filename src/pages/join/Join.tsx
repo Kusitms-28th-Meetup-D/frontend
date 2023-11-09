@@ -8,6 +8,9 @@ import { Headers } from '../../constants/Header';
 
 import bgSrc from '/assets/images/join/join-bg.png';
 import starSrc from '/assets/images/common/star.svg';
+import TextInput from '../../components/join/TextInput';
+import { INPUT_PROPS } from '../../constants/Join';
+import SelectInput from '../../components/join/SelectInput';
 const REGIONS = [
   '무관',
   '서울',
@@ -82,12 +85,12 @@ const Join = () => {
           <TitleStarImg src={starSrc} />
           <TitleText>똑똑한 회원님의 정보를 알려주세요!</TitleText>
         </TitleBox>
-        <Input
-          type="text"
-          name="name"
-          onChange={handleChange}
-          placeholder="이름"
-        />
+        <TextInput inputProps={INPUT_PROPS[0]} />
+        <SelectInput />
+        <TextInput inputProps={INPUT_PROPS[1]} />
+        <TextInput inputProps={INPUT_PROPS[2]} />
+        <TextInput inputProps={INPUT_PROPS[3]} />
+
         <StartButton>원팀 시작하기 →</StartButton>
       </JoinContainer>
       {/* <FormContainer action="#" onSubmit={handleSubmit}>
@@ -157,7 +160,7 @@ export default Join;
 
 const JoinLayout = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100%; //수정 필요
   background: url(${bgSrc}) left top no-repeat;
   background-size: cover;
 
@@ -169,23 +172,27 @@ const JoinLayout = styled.div`
 `;
 const JoinContainer = styled.div`
   width: 78rem;
-  height: 70rem;
+  /* height: 70rem; */
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2.4rem;
 
   border: 1px solid #3b3ef1;
   border-radius: 2.4rem;
 
   background-color: rgba(239, 239, 253, 0.2);
-
   backdrop-filter: blur(12px);
+
+  padding: 3.3rem 6.6rem;
+  margin: 4rem 0;
 `;
 const TitleBox = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  /* justify-content: left; */
   align-items: center;
 `;
 const TitleStarImg = styled.img`
@@ -197,8 +204,6 @@ const TitleText = styled.div`
   ${(props) => props.theme.fonts.heading4};
   color: ${(props) => props.theme.colors.gray90};
 `;
-const Input = styled.input``;
-// const Submit = styled.input``;
 const StartButton = styled.button`
   width: 25.5rem;
   height: 6.4rem;

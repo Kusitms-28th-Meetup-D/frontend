@@ -1,3 +1,5 @@
+import { InputProps } from '../interface/Join';
+
 export const REGIONS = [
   '서울특별시',
   '인천광역시',
@@ -15,4 +17,22 @@ export const REGIONS = [
   '경상북도',
   '경상남도',
   '제주특별자치도',
+];
+export const INPUT_PROPS: InputProps[] = [
+  {
+    label: '이름',
+    placeholder: '이름을 입력해주세요',
+  },
+  {
+    label: '전공',
+    placeholder: '학과를 입력해주세요',
+  },
+  {
+    label: '희망 직무',
+    placeholder: '희망 직무를 입력해주세요',
+  },
+  {
+    label: '한줄 소개',
+    placeholder: '한줄 소개를 입력해주세요',
+  },
 ];
