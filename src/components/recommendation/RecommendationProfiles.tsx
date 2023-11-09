@@ -22,7 +22,7 @@ const RecommendationProfiles = () => {
           key={profile.id}
           src={profile.src}
           name={profile.name}
-          active={profile.id === activeProfileId}
+          isSelected={profile.id === activeProfileId}
           onClick={handleProfileClick}
         />
       ))}
