@@ -9,13 +9,17 @@ interface BeforeNextButtonProps {
 const BeforeNextButton = ({ next, route }: BeforeNextButtonProps) => {
   const navigate = useNavigate();
 
+  const handleBeforeButtonClick = () => {
+    navigate(-1);
+  };
+
   const handleNextButtonClick = () => {
     navigate(`${route}`);
   };
 
   return (
     <ButtonBox>
-      <BeforeButton>
+      <BeforeButton onClick={handleBeforeButtonClick}>
         <img
           src="/assets/images/recommendation/beforeArrow.svg"
           alt="arrow-before"

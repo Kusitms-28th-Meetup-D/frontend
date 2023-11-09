@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import postJoin from '../../apis/join/postJoin';
 import { useLocation } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { headerSelectedState } from '../../recoil/atom';
+import { Headers } from '../../constants/Header';
 const REGIONS = [
   '무관',
   '서울',
@@ -64,8 +67,11 @@ const Join = () => {
 
       return newObj;
     });
-    
   };
+
+  const setHeaderSelected = useSetRecoilState(headerSelectedState);
+  useEffect(() => setHeaderSelected(Headers.none));
+
   return (
     <JoinLayout>
       <FormContainer action="#" onSubmit={handleSubmit}>
