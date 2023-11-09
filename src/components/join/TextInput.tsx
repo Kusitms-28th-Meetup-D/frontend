@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 import { InputProps } from '../../interface/Join';
+import ErrorMessage from './ErrorMessage';
 
 const TextInput = ({ inputProps }: { inputProps: InputProps }) => {
   return (
     <InputContainer>
       <Label>{inputProps.label}</Label>
       <Input type="text" placeholder={inputProps.placeholder}></Input>
+      <ErrorMessage errorText={inputProps.errorText} />
     </InputContainer>
   );
 };
 const InputContainer = styled.div`
+  position: relative;
+
   width: 100%;
   height: 6rem;
 

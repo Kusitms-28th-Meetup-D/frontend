@@ -1,4 +1,10 @@
 import { InputProps } from '../interface/Join';
+export enum ERROR_MESSAGES {
+  이름 = '최소 1자, 최대 5자로 입력해주세요',
+  전공 = '최소 1자, 최대 20자로 입력해주세요',
+  희망직무 = '최소 1자, 최대 10자로 입력해주세요',
+  한줄소개 = '최소 10자 이상 입력해주세요',
+}
 
 export const REGIONS = [
   '서울특별시',
@@ -22,17 +28,21 @@ export const INPUT_PROPS: InputProps[] = [
   {
     label: '이름',
     placeholder: '이름을 입력해주세요',
+    errorText: ERROR_MESSAGES.이름,
   },
   {
     label: '전공',
     placeholder: '학과를 입력해주세요',
+    errorText: ERROR_MESSAGES.전공,
   },
   {
     label: '희망 직무',
     placeholder: '희망 직무를 입력해주세요',
+    errorText: ERROR_MESSAGES.희망직무,
   },
   {
     label: '한줄 소개',
     placeholder: '한줄 소개를 입력해주세요',
+    errorText: ERROR_MESSAGES.한줄소개,
   },
 ];

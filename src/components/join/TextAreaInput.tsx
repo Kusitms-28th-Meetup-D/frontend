@@ -1,15 +1,34 @@
 import styled from 'styled-components';
 import { InputProps } from '../../interface/Join';
+import React, { useState } from 'react';
+import ErrorMessage from './ErrorMessage';
 
 const TextAreaInput = ({ inputProps }: { inputProps: InputProps }) => {
+  const MIN_LENGTH = 10;
+  const MAX_LENGTH = 140;
+  const [text, setText] = useState('');
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setText(event.target.value);
+  };
   return (
     <InputContainer>
       <Label>{inputProps.label}</Label>
-      <Input placeholder={inputProps.placeholder}></Input>
+      <Input
+        placeholder={inputProps.placeholder}
+        onChange={handleChange}
+        minLength={MIN_LENGTH}
+        maxLength={MAX_LENGTH}
+      ></Input>
+      <LengthCount>
+        {text.length}/{MAX_LENGTH}
+      </LengthCount>
+      <ErrorMessage errorText={inputProps.errorText} />
     </InputContainer>
   );
 };
 const InputContainer = styled.div`
+  position: relative;
+
   width: 100%;
 
   display: flex;
@@ -36,6 +55,14 @@ const Input = styled.textarea`
   ${(props) => props.theme.fonts.bodyL};
 
   border: none;
+  resize: none;
+`;
+const LengthCount = styled.div`
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
 
+  color: ${(props) => props.theme.colors.gray50};
+  ${(props) => props.theme.fonts.buttonXXS};
 `;
 export default TextAreaInput;
