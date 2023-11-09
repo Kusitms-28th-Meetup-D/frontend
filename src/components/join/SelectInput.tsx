@@ -26,14 +26,14 @@ const SelectContainer = styled.div`
   border-radius: 0.5rem;
   border: 1px solid ${(props) => props.theme.colors.gray20};
   background-color: white;
+
+  padding: 1.4rem 2.4rem;
 `;
 
 const Label = styled.label`
-  width: 10rem;
+  width: 12rem;
   color: ${(props) => props.theme.colors.gray80};
   ${(props) => props.theme.fonts.subtitleL};
-
-  margin: 0 2.4rem;
 `;
 const Select = styled.select`
   width: 100%;
@@ -41,6 +41,8 @@ const Select = styled.select`
 
   color: ${(props) => props.theme.colors.gray80};
   ${(props) => props.theme.fonts.bodyL};
+
+  border: none;
 `;
 const Option = styled.option`
   color: ${(props) => props.theme.colors.gray80};

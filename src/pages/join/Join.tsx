@@ -11,6 +11,7 @@ import starSrc from '/assets/images/common/star.svg';
 import TextInput from '../../components/join/TextInput';
 import { INPUT_PROPS } from '../../constants/Join';
 import SelectInput from '../../components/join/SelectInput';
+import TextAreaInput from '../../components/join/TextAreaInput';
 const REGIONS = [
   '무관',
   '서울',
@@ -89,7 +90,7 @@ const Join = () => {
         <SelectInput />
         <TextInput inputProps={INPUT_PROPS[1]} />
         <TextInput inputProps={INPUT_PROPS[2]} />
-        <TextInput inputProps={INPUT_PROPS[3]} />
+        <TextAreaInput inputProps={INPUT_PROPS[3]} />
 
         <StartButton>원팀 시작하기 →</StartButton>
       </JoinContainer>

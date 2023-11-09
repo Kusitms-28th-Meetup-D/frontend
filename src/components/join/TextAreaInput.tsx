@@ -1,21 +1,20 @@
 import styled from 'styled-components';
 import { InputProps } from '../../interface/Join';
 
-const TextInput = ({ inputProps }: { inputProps: InputProps }) => {
+const TextAreaInput = ({ inputProps }: { inputProps: InputProps }) => {
   return (
     <InputContainer>
       <Label>{inputProps.label}</Label>
-      <Input type="text" placeholder={inputProps.placeholder}></Input>
+      <Input placeholder={inputProps.placeholder}></Input>
     </InputContainer>
   );
 };
 const InputContainer = styled.div`
   width: 100%;
-  height: 6rem;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 
   border-radius: 0.5rem;
   border: 1px solid ${(props) => props.theme.colors.gray20};
@@ -29,13 +28,14 @@ const Label = styled.label`
   color: ${(props) => props.theme.colors.gray80};
   ${(props) => props.theme.fonts.subtitleL};
 `;
-const Input = styled.input`
+const Input = styled.textarea`
   width: 100%;
-  /* flex: 1; */
+  min-height: 10rem;
 
   color: ${(props) => props.theme.colors.gray80};
   ${(props) => props.theme.fonts.bodyL};
 
   border: none;
+
 `;
-export default TextInput;
+export default TextAreaInput;
