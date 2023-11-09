@@ -54,7 +54,7 @@ export default Header;
 const HeaderLayout = styled.header`
   //width: 153.6rem;
   max-width: 122.4rem;
-  height: 10rem;
+  height: 8.2rem;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid ${(props) => props.theme.colors.gray10};
