@@ -21,7 +21,10 @@ const Header = () => {
     <HeaderLayout>
       <Logo src={logoSrc} onClick={() => navigate('/')} />
       <HeaderContainer>
-        <HeaderItem $isSelected={headerSelectedIndex === Headers.list}>
+        <HeaderItem
+          $isSelected={headerSelectedIndex === Headers.list}
+          onClick={() => navigate('/list')}
+        >
           <HeaderStar src={starSrc} />
           공모전 리스트
         </HeaderItem>

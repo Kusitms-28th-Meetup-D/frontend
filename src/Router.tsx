@@ -10,6 +10,7 @@ import MultipleChoice from './pages/recommendation/MultipleChoice';
 import Subjective from './pages/recommendation/Subjective';
 import Contest from './pages/contest/Contest';
 import CompetitionList from './pages/competitionList/CompetitionList';
+import PaymentComplete from './pages/payment/PaymentComplete';
 
 function Router() {
   return (
@@ -25,9 +26,13 @@ function Router() {
           <Route path="multipleChoice" element={<MultipleChoice />} />
         </Route>
         <Route path="/profile/:userId" element={<Profile />} />
-        <Route path='/list/:postId' element={<Contest/>}/>
-        <Route path='/list/:postId/:teamId' element={<div>팀 생성페이지입니다</div>}/>
+        <Route path="/list/:postId" element={<Contest />} />
+        <Route
+          path="/list/:postId/:teamId"
+          element={<div>팀 생성페이지입니다</div>}
+        />
         <Route path="/list" element={<CompetitionList />} />
+        <Route path="/payment/complete" element={<PaymentComplete />} />
       </Routes>
       <Footer />
     </BrowserRouter>
