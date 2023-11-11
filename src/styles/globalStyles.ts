@@ -129,6 +129,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     //font-family: 'Pretendard';
+    /* margin-top: 8.2rem; */
   }
 
   ol,

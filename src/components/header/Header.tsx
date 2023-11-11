@@ -22,51 +22,72 @@ const Header = () => {
     // if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
   }, []);
   return (
-    <HeaderLayout>
-      <Logo src={logoSrc} onClick={() => navigate('/')} />
-      <HeaderContainer>
-        <HeaderItem
-          $isSelected={headerSelectedIndex === Headers.list}
-          onClick={() => navigate('/list')}
-        >
-          <HeaderStar src={starSrc} />
-          공모전 리스트
-        </HeaderItem>
-        <HeaderItem $isSelected={headerSelectedIndex === Headers.myTeam}>
-          <HeaderStar src={starSrc} />내 팀
-        </HeaderItem>
-        {isLogin ? (
-          <>
-            <HeaderItem $isSelected={headerSelectedIndex === Headers.myPage}>
+    <>
+      <Spacer />
+      <HeaderLayout>
+        <HeaderContentContainer>
+          <Logo src={logoSrc} onClick={() => navigate('/')} />
+          <HeaderContainer>
+            <HeaderItem
+              $isSelected={headerSelectedIndex === Headers.list}
+              onClick={() => navigate('/list')}
+            >
               <HeaderStar src={starSrc} />
-              {kakaoName}님{' '}
+              공모전 리스트
             </HeaderItem>
-          </>
-        ) : (
-          <HeaderItem
-            $isSelected={headerSelectedIndex === Headers.login}
-            onClick={() => navigate('/login')}
-          >
-            <HeaderStar src={starSrc} />
-            로그인/회원가입
-          </HeaderItem>
-        )}
-      </HeaderContainer>
-      {/* {isLogin ? <KakaoLogout /> : <KakaoLogin />} */}
-    </HeaderLayout>
+            <HeaderItem $isSelected={headerSelectedIndex === Headers.myTeam}>
+              <HeaderStar src={starSrc} />내 팀
+            </HeaderItem>
+            {isLogin ? (
+              <>
+                <HeaderItem
+                  $isSelected={headerSelectedIndex === Headers.myPage}
+                >
+                  <HeaderStar src={starSrc} />
+                  {kakaoName}님{' '}
+                </HeaderItem>
+              </>
+            ) : (
+              <HeaderItem
+                $isSelected={headerSelectedIndex === Headers.login}
+                onClick={() => navigate('/login')}
+              >
+                <HeaderStar src={starSrc} />
+                로그인/회원가입
+              </HeaderItem>
+            )}
+          </HeaderContainer>
+        </HeaderContentContainer>
+      </HeaderLayout>
+    </>
   );
 };
 export default Header;
 
-const HeaderLayout = styled.header`
-  //width: 153.6rem;
-  max-width: 122.4rem;
+const Spacer = styled.div`
   height: 8.2rem;
-  margin: auto;
+`;
+const HeaderLayout = styled.header`
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid ${(props) => props.theme.colors.gray10};
-
   backdrop-filter: blur(8px);
+
+  width: 100%;
+  height: 8.2rem;
+
+  display: flex;
+
+  z-index: 999;
+`;
+const HeaderContentContainer = styled.div`
+  width: 122.4rem;
+  height: 100%;
+  /* height: 8.2rem; */
+  margin: auto;
 
   display: flex;
   justify-content: space-between;
