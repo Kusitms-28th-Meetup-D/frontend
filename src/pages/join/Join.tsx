@@ -1,150 +1,138 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
-import postJoin from '../../apis/join/postJoin';
-import { useLocation } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { headerSelectedState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
-const REGIONS = [
-  '무관',
-  '서울',
-  '부산',
-  '대구',
-  '인천',
-  '광주',
-  '대전',
-  '울산',
-  '세종',
-  '경기',
-  '충북',
-  '충남',
-  '전북',
-  '전남',
-  '경북',
-  '경남',
-  '제주',
-  '강원',
-];
-export interface IJoin {
-  name: string;
-  email: string;
-  birth: string;
-  gender: string;
-  region: string;
-  major: string;
-  job: string;
-}
+
+import bgSrc from '/assets/images/join/join-bg.png';
+import starSrc from '/assets/images/common/star.svg';
+import TextInput from '../../components/join/TextInput';
+import { INPUT_PROPS } from '../../constants/Join';
+import SelectInput from '../../components/join/SelectInput';
+import TextAreaInput from '../../components/join/TextAreaInput';
+import { RequestJoin } from '../../interface/Join';
+
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
+  //이게 아니고, 스토리지에서 꺼내서 확인하는 로직이 되어야 할듯
 
-  const location = useLocation();
-  const kakaoAccessToken = location.state.kakaoAccessToken;
-  const [inputValue, setInputValue] = useState<IJoin>({
-    name: 'jinwoo',
-    email: 'jinyoung@babo.kr',
-    birth: 'YYYY-MM-DD',
-    gender: 'xe',
-    region: 'ex',
-    major: 'ex',
-    job: 'xex',
+  //const location = useLocation();
+  //const kakaoAccessToken = location.state.kakaoAccessToken;
+  const [inputValue, setInputValue] = useState<RequestJoin>({
+    name: '민정리',
+    region: '서울특별시',
+    major: '미디어뭐더라',
+    part: 'IT/희망직종',
+    introduce: '감자맛있단다',
+    email: 'minjeong@legend.gosu',
   });
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(kakaoAccessToken);
-    try {
-      const responseJoin = await postJoin(kakaoAccessToken, inputValue);
-      console.log('responseJoin 결과:', responseJoin);
-    } catch (error) {
-      console.log('responseJoin 실패:', error);
-    }
+    console.log(inputValue);
+    // console.log(kakaoAccessToken);
+    // try {
+    //   const responseJoin = await postJoin(kakaoAccessToken, inputValue);
+    //   console.log('responseJoin 결과:', responseJoin);
+    // } catch (error) {
+    //   console.log('responseJoin 실패:', error);
+    // }
   };
-  const handleChange = (event: any) => {
+  const handleChange = (
+    // event: React.FormEvent<
+    //   HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    // >,
+    event: any,
+  ) => {
     setInputValue((curr) => {
-      const newObj: IJoin = { ...curr };
-      const keyName = event.target.name as keyof IJoin;
+      const newObj: RequestJoin = { ...curr };
+      const keyName = event.target.name as keyof RequestJoin;
       newObj[keyName] = event.target.value;
-      // console.log(newObj);
-
+      console.log(newObj);
       return newObj;
     });
   };
 
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
-  useEffect(() => setHeaderSelected(Headers.none));
+  useEffect(() => setHeaderSelected(Headers.login));
 
   return (
     <JoinLayout>
-      <FormContainer action="#" onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          name="name"
-          onChange={handleChange}
-          placeholder="이름"
+      <JoinFormContainer action="#" onSubmit={handleSubmit}>
+        <TitleBox>
+          <TitleStarImg src={starSrc} />
+          <TitleText>똑똑한 회원님의 정보를 알려주세요!</TitleText>
+        </TitleBox>
+        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[0]} />
+        <SelectInput onChangeFunc={handleChange} />
+        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[1]} />
+        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[2]} />
+        <TextAreaInput
+          onChangeFunc={handleChange}
+          inputProps={INPUT_PROPS[3]}
         />
-        <Input
-          type="text"
-          name="email"
-          onChange={handleChange}
-          placeholder="이메일"
-        />
-        <Input
-          type="date"
-          name="birth"
-          onChange={handleChange}
-          placeholder="생년월일"
-        />
-        <label>
-          <Input
-            type="radio"
-            name="gender"
-            value="female"
-            onChange={handleChange}
-          />{' '}
-          남성
-        </label>
-        <label>
-          <Input
-            type="radio"
-            name="gender"
-            value="male"
-            onChange={handleChange}
-          />{' '}
-          여성
-        </label>
-        <label htmlFor="region">지역</label>
-        <select name="region" id="region" onChange={handleChange}>
-          {REGIONS.map((each, idx) => (
-            <option key={idx} value={each}>
-              {each}
-            </option>
-          ))}
-        </select>
-        <Input
-          type="text"
-          name="major"
-          onChange={handleChange}
-          placeholder="전공"
-        />{' '}
-        <Input
-          type="text"
-          name="job"
-          onChange={handleChange}
-          placeholder="직무"
-        />
-        <Submit type="submit" />
-      </FormContainer>
+
+        <StartButton type="submit">원팀 시작하기 →</StartButton>
+      </JoinFormContainer>
     </JoinLayout>
   );
 };
 
 export default Join;
 
-const JoinLayout = styled.div``;
-const FormContainer = styled.form`
+const JoinLayout = styled.div`
+  width: 100%;
+  height: 100%; //수정 필요
+  background: url(${bgSrc}) left top no-repeat;
+  background-size: cover;
+
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin: auto;
 `;
-const Input = styled.input``;
-const Submit = styled.input``;
+const JoinFormContainer = styled.form`
+  width: 78rem;
+  /* height: 70rem; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+
+  border: 1px solid #3b3ef1;
+  border-radius: 2.4rem;
+
+  background-color: rgba(239, 239, 253, 0.2);
+  backdrop-filter: blur(12px);
+
+  padding: 3.3rem 6.6rem;
+  margin: 4rem 0;
+`;
+const TitleBox = styled.div`
+  width: 100%;
+  display: flex;
+  /* justify-content: left; */
+  align-items: center;
+`;
+const TitleStarImg = styled.img`
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1.2rem;
+`;
+const TitleText = styled.div`
+  ${(props) => props.theme.fonts.heading4};
+  color: ${(props) => props.theme.colors.gray90};
+`;
+const StartButton = styled.button`
+  width: 25.5rem;
+  height: 6.4rem;
+
+  border-radius: 3.2rem;
+  border: 1px solid ${(props) => props.theme.colors.primary20};
+  background-color: ${(props) => props.theme.colors.primary60};
+
+  ${(props) => props.theme.fonts.buttonL};
+  color: ${(props) => props.theme.colors.white};
+`;

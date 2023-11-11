@@ -1,7 +1,7 @@
-import { IJoin } from '../../pages/join/Join';
+import { RequestJoin } from '../../interface/Join';
 import Axios from '../axios';
 
-const postJoin = (kakaoAccessToken: string, joinData: IJoin) =>
+const postJoin = (kakaoAccessToken: string, joinData: RequestJoin) =>
   Axios.post(
     '/api/auth/register',
     {
