@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
-import postJoin from '../../apis/join/postJoin';
-import { useLocation } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { headerSelectedState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';

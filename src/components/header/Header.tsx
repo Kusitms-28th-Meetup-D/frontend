@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { kakaoAuthorize } from '../login/KakaoLogin';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   headerSelectedState,
@@ -19,6 +18,7 @@ const Header = () => {
   const headerSelectedIndex = useRecoilValue(headerSelectedState);
   const navigate = useNavigate();
   useEffect(() => {
+    if (localStorage.getItem('kawq;ejqwken')) setIsLogin(true);
     // if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
   }, []);
   return (

@@ -3,11 +3,7 @@ import fetchKakaoAccessToken from '../../apis/login/postKakaoAccessToken';
 import { kakao } from '../../components/login/KakaoLogin';
 import fetchKakaoUserInfo from '../../apis/login/getKakaoUserInfo';
 import { useSetRecoilState } from 'recoil';
-import {
-  kakaoAccessTokenState,
-  kakaoNameState,
-  loginState,
-} from '../../recoil/atom';
+import { kakaoAccessTokenState, kakaoNameState } from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
 import postKakaoToken from '../../apis/login/postKakaoToken';
 
