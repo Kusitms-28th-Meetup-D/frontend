@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bgSrc from '/assets/images/login/login-bg.png';
+import bgSrc from '/assets/images/login/login-bg.svg';
 import btnSrc from '/assets/images/login/login-button.svg';
 import { kakaoAuthorize } from '../../components/login/KakaoLogin';
 
