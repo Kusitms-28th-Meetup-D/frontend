@@ -19,7 +19,7 @@ const Header = () => {
   const headerSelectedIndex = useRecoilValue(headerSelectedState);
   const navigate = useNavigate();
   useEffect(() => {
-    if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
+    // if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
   }, []);
   return (
     <HeaderLayout>
@@ -42,7 +42,7 @@ const Header = () => {
         ) : (
           <HeaderItem
             $isSelected={headerSelectedIndex === Headers.login}
-            onClick={kakaoAuthorize}
+            onClick={() => navigate('/login')}
           >
             <HeaderStar src={starSrc} />
             로그인/회원가입
