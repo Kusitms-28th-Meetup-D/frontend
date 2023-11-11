@@ -11,6 +11,7 @@ import Subjective from './pages/recommendation/Subjective';
 import Contest from './pages/contest/Contest';
 import CompetitionList from './pages/competitionList/CompetitionList';
 import Login from './pages/login/Login';
+import PaymentComplete from './pages/payment/PaymentComplete';
 
 function Router() {
   return (
@@ -32,6 +33,7 @@ function Router() {
           element={<div>팀 생성페이지입니다</div>}
         />
         <Route path="/list" element={<CompetitionList />} />
+        <Route path="/payment/complete" element={<PaymentComplete />} />
       </Routes>
       <Footer />
     </BrowserRouter>

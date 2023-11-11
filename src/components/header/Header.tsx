@@ -32,6 +32,7 @@ const Header = () => {
               $isSelected={headerSelectedIndex === Headers.list}
               onClick={() => navigate('/list')}
             >
+    
               <HeaderStar src={starSrc} />
               공모전 리스트
             </HeaderItem>
