@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { kakaoAuthorize } from '../login/KakaoLogin';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   headerSelectedState,
   kakaoNameState,
@@ -11,12 +11,16 @@ import {
 import logoSrc from '/assets/images/header/wanteam-logo.svg';
 import starSrc from '/assets/images/common/star.svg';
 import { Headers } from '../../constants/Header';
+import { useEffect } from 'react';
 
 const Header = () => {
   const kakaoName = useRecoilValue(kakaoNameState);
-  const isLogin = useRecoilValue(loginState);
+  const [isLogin, setIsLogin] = useRecoilState(loginState);
   const headerSelectedIndex = useRecoilValue(headerSelectedState);
   const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
+  }, []);
   return (
     <HeaderLayout>
       <Logo src={logoSrc} onClick={() => navigate('/')} />
