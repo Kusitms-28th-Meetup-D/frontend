@@ -17,7 +17,7 @@ function Router() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<div>main</div>} />
+        {/* <Route path="/" element={<div>main</div>} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/login/oauth" element={<Oauth />} />
         <Route path="/login/join" element={<Join />} />

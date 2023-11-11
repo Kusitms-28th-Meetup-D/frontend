@@ -2,8 +2,15 @@ import styled from 'styled-components';
 import bgSrc from '/assets/images/login/login-bg.svg';
 import btnSrc from '/assets/images/login/login-button.svg';
 import { kakaoAuthorize } from '../../components/login/KakaoLogin';
+import { useSetRecoilState } from 'recoil';
+import { headerSelectedState } from '../../recoil/atom';
+import { useEffect } from 'react';
+import { Headers } from '../../constants/Header';
 
 const Login = () => {
+  
+  const setHeaderSelected = useSetRecoilState(headerSelectedState);
+  useEffect(() => setHeaderSelected(Headers.login));
   return (
     <LoginLayout>
       <LoginTextContainer>
