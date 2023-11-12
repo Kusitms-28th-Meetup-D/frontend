@@ -1,13 +1,39 @@
 import styled from 'styled-components';
 import { REGIONS } from '../../constants/Join';
+import { InputDataArray } from '../../interface/Join';
 
-const SelectInput = ({ onChangeFunc }: { onChangeFunc: any }) => {
+const SelectInput = ({
+  onChangeFunc,
+  buttonActiveSetFunc,
+  index,
+}: {
+  onChangeFunc: any;
+  buttonActiveSetFunc: any;
+  index: number;
+}) => {
+  const handleChange = (event: any) => {
+    onChangeFunc(event);
+    // console.log(event.target.value);
+    if (event.target.value > 0)
+      buttonActiveSetFunc((curr: InputDataArray) => {
+        const newArr = [...curr];
+        newArr[index] = true;
+        return newArr;
+      });
+    else {
+      buttonActiveSetFunc((curr: InputDataArray) => {
+        const newArr = [...curr];
+        newArr[index] = false;
+        return newArr;
+      });
+    }
+  };
   return (
     <SelectContainer>
       <Label>활동 지역</Label>
-      <Select onChange={onChangeFunc} name="region">
+      <Select onChange={handleChange} name="region">
         {REGIONS.map((each, idx) => (
-          <Option key={idx} value={each}>
+          <Option key={idx} value={idx}>
             {each}
           </Option>
         ))}

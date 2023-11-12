@@ -12,3 +12,4 @@ export interface RequestJoin {
   introduce: string; //한줄소개
   email: string; //카카오이메일
 }
+export type InputDataArray = [boolean, boolean, boolean, boolean, boolean];

@@ -10,7 +10,7 @@ import TextInput from '../../components/join/TextInput';
 import { INPUT_PROPS } from '../../constants/Join';
 import SelectInput from '../../components/join/SelectInput';
 import TextAreaInput from '../../components/join/TextAreaInput';
-import { RequestJoin } from '../../interface/Join';
+import { InputDataArray, RequestJoin } from '../../interface/Join';
 
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
@@ -26,6 +26,13 @@ const Join = () => {
     introduce: '감자맛있단다',
     email: 'minjeong@legend.gosu',
   });
+  const [buttonActiveCount, setButtonActiveCount] = useState<InputDataArray>([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     console.log(inputValue);
@@ -51,7 +58,10 @@ const Join = () => {
       return newObj;
     });
   };
-
+  const isAcvivateButton = (buttonActiveArr: InputDataArray) => {
+    if (buttonActiveArr.every((value) => value === true)) return true;
+    else return false;
+  };
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.login));
 
@@ -62,23 +72,48 @@ const Join = () => {
           <TitleStarImg src={starSrc} />
           <TitleText>똑똑한 회원님의 정보를 알려주세요!</TitleText>
         </TitleBox>
-        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[0]} />
-        <SelectInput onChangeFunc={handleChange} />
-        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[1]} />
-        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[2]} />
+        <TextInput
+          buttonActiveSetFunc={setButtonActiveCount}
+          onChangeFunc={handleChange}
+          inputProps={INPUT_PROPS[0]}
+          index={0}
+        />
+        <SelectInput
+          buttonActiveSetFunc={setButtonActiveCount}
+          onChangeFunc={handleChange}
+          index={1}
+        />
+        <TextInput
+          buttonActiveSetFunc={setButtonActiveCount}
+          onChangeFunc={handleChange}
+          inputProps={INPUT_PROPS[1]}
+          index={2}
+        />
+        <TextInput
+          buttonActiveSetFunc={setButtonActiveCount}
+          onChangeFunc={handleChange}
+          inputProps={INPUT_PROPS[2]}
+          index={3}
+        />
         <TextAreaInput
+          buttonActiveSetFunc={setButtonActiveCount}
           onChangeFunc={handleChange}
           inputProps={INPUT_PROPS[3]}
+          index={4}
         />
 
-        <StartButton type="submit">원팀 시작하기 →</StartButton>
+        <StartButton
+          type="submit"
+          $isActive={isAcvivateButton(buttonActiveCount)}
+        >
+          원팀 시작하기 →
+        </StartButton>
       </JoinFormContainer>
     </JoinLayout>
   );
 };
 
 export default Join;
-
 const JoinLayout = styled.div`
   width: 100%;
   height: 100%; //수정 필요
@@ -125,14 +160,23 @@ const TitleText = styled.div`
   ${(props) => props.theme.fonts.heading4};
   color: ${(props) => props.theme.colors.gray90};
 `;
-const StartButton = styled.button`
+const StartButton = styled.button<{ $isActive: boolean }>`
   width: 25.5rem;
   height: 6.4rem;
 
   border-radius: 3.2rem;
-  border: 1px solid ${(props) => props.theme.colors.primary20};
-  background-color: ${(props) => props.theme.colors.primary60};
+  border: 1px solid
+    ${(props) =>
+      props.$isActive
+        ? props.theme.colors.primary20
+        : props.theme.colors.gray50};
+
+  background-color: ${(props) =>
+    props.$isActive ? props.theme.colors.primary60 : props.theme.colors.gray10};
 
   ${(props) => props.theme.fonts.buttonL};
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) =>
+    props.$isActive ? props.theme.colors.white : props.theme.colors.gray40};
+
+  cursor: ${(props) => (props.$isActive ? 'pointer' : 'default')};
 `;

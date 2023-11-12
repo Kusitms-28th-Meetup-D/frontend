@@ -7,6 +7,7 @@ export enum ERROR_MESSAGES {
 }
 
 export const REGIONS = [
+  '선택해주세요',
   '서울특별시',
   '인천광역시',
   '대전광역시',

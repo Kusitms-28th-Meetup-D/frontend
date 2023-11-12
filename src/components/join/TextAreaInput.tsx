@@ -1,19 +1,35 @@
 import styled from 'styled-components';
-import { InputProps } from '../../interface/Join';
+import { InputDataArray, InputProps } from '../../interface/Join';
 import React, { useState } from 'react';
-import ErrorMessage from './ErrorMessage';
 
 const TextAreaInput = ({
   inputProps,
   onChangeFunc,
+  buttonActiveSetFunc,
+  index,
 }: {
   inputProps: InputProps;
   onChangeFunc: any;
+  buttonActiveSetFunc: any;
+  index: number;
 }) => {
-  const MIN_LENGTH = 10;
   const MAX_LENGTH = 140;
   const [text, setText] = useState('');
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (event.target.value.length > 0)
+      buttonActiveSetFunc((curr: InputDataArray) => {
+        const newArr = [...curr];
+        newArr[index] = true;
+        return newArr;
+      });
+    else {
+      buttonActiveSetFunc((curr: InputDataArray) => {
+        const newArr = [...curr];
+        newArr[index] = false;
+        return newArr;
+      });
+    }
+
     setText(event.target.value);
     onChangeFunc(event);
   };
@@ -23,14 +39,12 @@ const TextAreaInput = ({
       <Input
         placeholder={inputProps.placeholder}
         onChange={handleChange}
-        minLength={MIN_LENGTH}
         maxLength={MAX_LENGTH}
         name={inputProps.elemName}
       ></Input>
       <LengthCount>
         {text.length}/{MAX_LENGTH}
       </LengthCount>
-      <ErrorMessage errorText={inputProps.errorText} />
     </InputContainer>
   );
 };
