@@ -4,11 +4,11 @@ export type HeaderSelectedType =
   | 'none'
   | 'list'
   | 'myTeam'
-  | 'login'
-  | 'myPage'; //추가 가능
+  | 'myProfile'
+  | 'login'; //추가 가능
 export const headerSelectedState = atom<HeaderSelectedType>({
   key: 'headerSelectedState',
-  default: Headers.none,
+  default: Headers.myProfile,
 });
 export const kakaoNameState = atom({
   key: 'kakaoNameState',
@@ -22,4 +22,3 @@ export const loginState = atom<boolean>({
   key: 'loginState',
   default: false,
 });
-

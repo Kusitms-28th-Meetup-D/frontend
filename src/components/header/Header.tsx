@@ -26,38 +26,40 @@ const Header = () => {
       <Spacer />
       <HeaderLayout>
         <HeaderContentContainer>
-          <Logo src={logoSrc} onClick={() => navigate('/')} />
           <HeaderContainer>
+            <Logo src={logoSrc} onClick={() => navigate('/')} />
             <HeaderItem
               $isSelected={headerSelectedIndex === Headers.list}
               onClick={() => navigate('/list')}
             >
-    
               <HeaderStar src={starSrc} />
               공모전 리스트
             </HeaderItem>
             <HeaderItem $isSelected={headerSelectedIndex === Headers.myTeam}>
               <HeaderStar src={starSrc} />내 팀
             </HeaderItem>
-            {isLogin ? (
-              <>
-                <HeaderItem
-                  $isSelected={headerSelectedIndex === Headers.myPage}
-                >
-                  <HeaderStar src={starSrc} />
-                  {kakaoName}님{' '}
-                </HeaderItem>
-              </>
-            ) : (
+            <HeaderItem $isSelected={headerSelectedIndex === Headers.myProfile}>
+              <HeaderStar src={starSrc} />내 프로필
+            </HeaderItem>
+          </HeaderContainer>{' '}
+          {isLogin ? (
+            <>
               <HeaderItem
-                $isSelected={headerSelectedIndex === Headers.login}
-                onClick={() => navigate('/login')}
+                $isSelected={headerSelectedIndex === Headers.myProfile}
               >
                 <HeaderStar src={starSrc} />
-                로그인/회원가입
+                {kakaoName}님{' '}
               </HeaderItem>
-            )}
-          </HeaderContainer>
+            </>
+          ) : (
+            <HeaderItem
+              $isSelected={headerSelectedIndex === Headers.login}
+              onClick={() => navigate('/login')}
+            >
+              <HeaderStar src={starSrc} />
+              로그인/회원가입
+            </HeaderItem>
+          )}
         </HeaderContentContainer>
       </HeaderLayout>
     </>
@@ -100,12 +102,14 @@ const Logo = styled.img`
   height: 4.2rem;
   /* background-color: red; */
   cursor: pointer;
+
+  margin-right: 3rem;
 `;
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* gap: 3rem; */
+  gap: 5rem;
 `;
 const HeaderItem = styled.button<{ $isSelected: boolean }>`
   color: ${(props) => props.theme.colors.gray80};
@@ -129,12 +133,12 @@ const HeaderItem = styled.button<{ $isSelected: boolean }>`
   text-align: center;
 
   padding: 1.2rem 0.8rem;
-  margin: 0 2rem;
   /* border: 1px solid red; */
   > img {
     display: ${(props) => (props.$isSelected ? 'default' : 'none')};
   }
 `;
+
 const HeaderStar = styled.img`
   width: 2rem;
   height: 2rem;
