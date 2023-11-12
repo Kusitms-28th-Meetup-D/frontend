@@ -19,12 +19,11 @@ const Join = () => {
   //const location = useLocation();
   //const kakaoAccessToken = location.state.kakaoAccessToken;
   const [inputValue, setInputValue] = useState<RequestJoin>({
-    name: '민정리',
-    region: '서울특별시',
+    username: '민정리',
+    location: '서울특별시',
     major: '미디어뭐더라',
-    part: 'IT/희망직종',
-    introduce: '감자맛있단다',
-    email: 'minjeong@legend.gosu',
+    task: 'IT/희망직종',
+    selfIntroduce: '감자맛있단다',
   });
   const [buttonActiveCount, setButtonActiveCount] = useState<InputDataArray>([
     false,
@@ -54,7 +53,6 @@ const Join = () => {
       const newObj: RequestJoin = { ...curr };
       const keyName = event.target.name as keyof RequestJoin;
       newObj[keyName] = event.target.value;
-      console.log(newObj);
       return newObj;
     });
   };

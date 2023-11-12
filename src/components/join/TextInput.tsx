@@ -25,8 +25,8 @@ const TextInput = ({
         newArr[index] = false;
         return newArr;
       });
-      onChangeFunc(event);
     }
+    onChangeFunc(event);
   };
   return (
     <InputContainer>

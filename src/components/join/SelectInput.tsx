@@ -31,7 +31,7 @@ const SelectInput = ({
   return (
     <SelectContainer>
       <Label>활동 지역</Label>
-      <Select onChange={handleChange} name="region">
+      <Select onChange={handleChange} name="location">
         {REGIONS.map((each, idx) => (
           <Option key={idx} value={idx}>
             {each}
