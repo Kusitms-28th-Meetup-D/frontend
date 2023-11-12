@@ -11,19 +11,21 @@ import { INPUT_PROPS } from '../../constants/Join';
 import SelectInput from '../../components/join/SelectInput';
 import TextAreaInput from '../../components/join/TextAreaInput';
 import { InputDataArray, RequestJoin } from '../../interface/Join';
+import postJoin from '../../apis/join/postJoin';
 
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
   //이게 아니고, 스토리지에서 꺼내서 확인하는 로직이 되어야 할듯
 
   //const location = useLocation();
-  //const kakaoAccessToken = location.state.kakaoAccessToken;
+  const kakaoAccessToken = localStorage.getItem('kakaoAccessToken');
   const [inputValue, setInputValue] = useState<RequestJoin>({
     username: '민정리',
     location: '서울특별시',
     major: '미디어뭐더라',
     task: 'IT/희망직종',
     selfIntroduce: '감자맛있단다',
+    kakaoAccessToken: 'noToken',
   });
   const [buttonActiveCount, setButtonActiveCount] = useState<InputDataArray>([
     false,
@@ -34,14 +36,16 @@ const Join = () => {
   ]);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(inputValue);
-    // console.log(kakaoAccessToken);
-    // try {
-    //   const responseJoin = await postJoin(kakaoAccessToken, inputValue);
-    //   console.log('responseJoin 결과:', responseJoin);
-    // } catch (error) {
-    //   console.log('responseJoin 실패:', error);
-    // }
+    console.log({ ...inputValue, kakaoAccessToken: kakaoAccessToken });
+    try {
+      const responseJoin = await postJoin({
+        ...inputValue,
+        kakaoAccessToken: kakaoAccessToken as string,
+      });
+      console.log('responseJoin 결과:', responseJoin);
+    } catch (error) {
+      console.log('responseJoin 실패:', error);
+    }
   };
   const handleChange = (
     // event: React.FormEvent<

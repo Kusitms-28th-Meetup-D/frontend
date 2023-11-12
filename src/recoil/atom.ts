@@ -17,7 +17,6 @@ export const kakaoInfoState = atom<KakaoInfo>({
     name: 'name',
     image:
       'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi2.ruliweb.com%2Fimg%2F22%2F06%2F06%2F1813491dcbf563e92.jpg&type=ofullfill340_600_png',
-    email: 'email',
   },
 });
 export const kakaoAccessTokenState = atom({

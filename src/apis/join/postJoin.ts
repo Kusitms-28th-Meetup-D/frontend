@@ -1,13 +1,11 @@
 import { RequestJoin } from '../../interface/Join';
 import Axios from '../axios';
 
-const postJoin = (kakaoAccessToken: string, joinData: RequestJoin) =>
+const postJoin = (requestData : RequestJoin  ) =>
   Axios.post(
     '/api/auth/register',
     {
-      kakaoAccessToken: kakaoAccessToken,
-      username: joinData.name,
-      age: 987654,
+      ...requestData
     },
     {
       headers: {

@@ -5,7 +5,9 @@ import fetchKakaoUserInfo from '../../apis/login/getKakaoUserInfo';
 import { useSetRecoilState } from 'recoil';
 import { kakaoAccessTokenState, kakaoInfoState } from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
-import postKakaoToken from '../../apis/login/postKakaoToken';
+import postLoginWithKakaoToken from '../../apis/login/postLoginWithKakaoToken';
+import { ResponseLogin } from '../../interface/Join';
+import { AxiosResponse } from 'axios';
 
 const Oauth = () => {
   const setKakaoAccessTokenState = useSetRecoilState(kakaoAccessTokenState);
@@ -35,8 +37,8 @@ const Oauth = () => {
       //카카오 access토큰으로 사용자 정보 가져오기
       getKakaoUserInfo(responseKakaoAccessCode.data.access_token);
 
-      //카카오토큰 유효성 검증
-      validateKakaoToken(responseKakaoAccessCode.data.access_token);
+      //카카오토큰으로 로그인하기
+      loginWithKakaoToken(responseKakaoAccessCode.data.access_token);
 
       return responseKakaoAccessCode.data.access_token;
     } catch (error) {
@@ -55,21 +57,25 @@ const Oauth = () => {
       setKakaoInfoState({
         name: responseUserInfo.data.properties.nickname,
         image: responseUserInfo.data.properties.profile_image,
-        email: responseUserInfo.data.kakao_account.email,
       });
     } catch (error) {
       console.log('카카오 정보 가져오기 에러', error);
     }
   };
 
-  /** 카카오 어세스 토큰를 통해 서버에 존재하는 회원인지 확인하는 함수
+  /** 카카오 어세스 토큰를 통해 로그인 하는 함수
    *
    * @param kakaoAccessToken 카카오 어세스 토큰
    */
-  const validateKakaoToken = async (kakaoAccessToken: string) => {
+  const loginWithKakaoToken = async (kakaoAccessToken: string) => {
     try {
-      const responseValitadion = await postKakaoToken(kakaoAccessToken);
-      console.log('responseValitadion Complete', responseValitadion);
+      const responseLogin: AxiosResponse<ResponseLogin> =
+        await postLoginWithKakaoToken(kakaoAccessToken);
+      console.log('responseValitadion Complete', responseLogin);
+      setKakaoInfoState({
+        name: responseLogin.data.data.name,
+        image: responseLogin.data.data.profileImage,
+      });
     } catch (error: any) {
       //console.log('카카오토큰 validation 에러', error);
       //회원가입 페이지로 연결
