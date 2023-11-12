@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { headerSelectedState, loginState } from '../../recoil/atom';
 
@@ -14,16 +14,17 @@ const Header = () => {
   const headerSelectedIndex = useRecoilValue(headerSelectedState);
   const navigate = useNavigate();
   useEffect(() => {
-    if (localStorage.getItem('kawq;ejqwken')) setIsLogin(true);
-    // if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
-  }, []);
+    if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
+  }, [isLogin]);
   return (
     <>
       <Spacer />
       <HeaderLayout>
         <HeaderContentContainer>
           <HeaderContainer>
-            <Logo src={logoSrc} onClick={() => navigate('/')} />
+            <Link to={'/'}>
+              <Logo src={logoSrc} />
+            </Link>
             <HeaderItem
               $isSelected={headerSelectedIndex === Headers.list}
               onClick={() => navigate('/list')}
@@ -39,14 +40,7 @@ const Header = () => {
             </HeaderItem>
           </HeaderContainer>{' '}
           {isLogin ? (
-            <>
-              <HeaderItem
-                $isSelected={headerSelectedIndex === Headers.myProfile}
-              >
-                <LoginProfile />
-                <HeaderStar src={starSrc} />님{' '}
-              </HeaderItem>
-            </>
+            <LoginProfile />
           ) : (
             <HeaderItem
               $isSelected={headerSelectedIndex === Headers.login}
