@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import fetchKakaoAccessToken from '../../apis/login/postKakaoAccessToken';
 import { kakao } from '../../components/login/KakaoLogin';
 import fetchKakaoUserInfo from '../../apis/login/getKakaoUserInfo';
 import { useSetRecoilState } from 'recoil';
@@ -8,24 +7,26 @@ import { useNavigate } from 'react-router-dom';
 import postLoginWithKakaoToken from '../../apis/login/postLoginWithKakaoToken';
 import { ResponseLogin } from '../../interface/Join';
 import { AxiosResponse } from 'axios';
+import postKakaoAccessTokenFromCode from '../../apis/login/postKakaoAccessTokenFromCode';
 
 const Oauth = () => {
   const setKakaoAccessTokenState = useSetRecoilState(kakaoAccessTokenState);
   const setKakaoInfoState = useSetRecoilState(kakaoInfoState);
   // const setloginState = useSetRecoilState(loginState);
   const navigate = useNavigate();
+
+
   /** 카카오 인가 코드를 통해 카카오 어세스 토큰을 받아오는 함수
    *
    * @param kakaoAccessCode 로그인 후 받아온 카카오 인가  코드
    */
-  const getKakaoAccessToken = async (kakaoAccessCode: string) => {
+  const getKakaoAccessTokenWithCode = async (kakaoAccessCode: string) => {
     try {
-      const responseKakaoAccessCode = await fetchKakaoAccessToken(
+      const responseKakaoAccessCode = await postKakaoAccessTokenFromCode(
         kakaoAccessCode,
       );
-      console.log('getKakaoAccessTokencomplete', responseKakaoAccessCode);
+      console.log('인가코드로 accesstoken 받기 성공', responseKakaoAccessCode);
       setKakaoAccessTokenState(responseKakaoAccessCode.data.access_token);
-      // setloginState(true);
       localStorage.setItem(
         'kakaoAccessToken',
         responseKakaoAccessCode.data.access_token,
@@ -42,7 +43,7 @@ const Oauth = () => {
 
       return responseKakaoAccessCode.data.access_token;
     } catch (error) {
-      console.log('kakaoAccessToken', error);
+      console.log('getKakaoAccessTokenWithCode', error);
     }
   };
 
@@ -71,13 +72,14 @@ const Oauth = () => {
     try {
       const responseLogin: AxiosResponse<ResponseLogin> =
         await postLoginWithKakaoToken(kakaoAccessToken);
-      console.log('responseValitadion Complete', responseLogin);
+      console.log('loginWithKakaoToken Complete', responseLogin);
       setKakaoInfoState({
         name: responseLogin.data.data.name,
         image: responseLogin.data.data.profileImage,
       });
     } catch (error: any) {
-      //console.log('카카오토큰 validation 에러', error);
+      console.log('loginWithKakaoToken Error', error);
+      //여기에 setlogin하면 될듯
       //회원가입 페이지로 연결
       if (error.response.data.status == 404) {
         navigate('/login/join', {
@@ -87,18 +89,11 @@ const Oauth = () => {
     }
   };
 
-  // const maintainLoginWithToken = (kakaoAccessToken: string) => {
-  //   kakao.Auth.setAccessToken(kakaoAccessToken);
-  //   console.log('새로고침해도그대로라구');
-  // };
+ 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const kakaoAccessCode = params.get('code');
-
-    // const localStorageKakaoToken = localStorage.getItem('kakaoAccessToken');
-    //if (localStorageKakaoToken) maintainLoginWithToken(localStorageKakaoToken);
-
-    const kakaoAccessToken = getKakaoAccessToken(kakaoAccessCode as string);
+    const kakaoAccessToken = getKakaoAccessTokenWithCode(kakaoAccessCode as string);
     kakaoAccessToken;
     //우리팀 서버에 카카오 토큰 유효성 검증하기
 

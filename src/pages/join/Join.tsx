@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { headerSelectedState } from '../../recoil/atom';
+import { headerSelectedState, loginState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
 
 import bgSrc from '/assets/images/join/join-bg.png';
@@ -12,13 +12,14 @@ import SelectInput from '../../components/join/SelectInput';
 import TextAreaInput from '../../components/join/TextAreaInput';
 import { InputDataArray, RequestJoin } from '../../interface/Join';
 import postJoin from '../../apis/join/postJoin';
+import { useNavigate } from 'react-router-dom';
 
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
   //이게 아니고, 스토리지에서 꺼내서 확인하는 로직이 되어야 할듯
-
-  //const location = useLocation();
+  const navigate = useNavigate();
   const kakaoAccessToken = localStorage.getItem('kakaoAccessToken');
+  const setIsLoginState = useSetRecoilState(loginState);
   const [inputValue, setInputValue] = useState<RequestJoin>({
     username: '민정리',
     location: '서울특별시',
@@ -43,6 +44,8 @@ const Join = () => {
         kakaoAccessToken: kakaoAccessToken as string,
       });
       console.log('responseJoin 결과:', responseJoin);
+      setIsLoginState(true);
+      navigate('/');
     } catch (error) {
       console.log('responseJoin 실패:', error);
     }
