@@ -3,13 +3,13 @@ import fetchKakaoAccessToken from '../../apis/login/postKakaoAccessToken';
 import { kakao } from '../../components/login/KakaoLogin';
 import fetchKakaoUserInfo from '../../apis/login/getKakaoUserInfo';
 import { useSetRecoilState } from 'recoil';
-import { kakaoAccessTokenState, kakaoNameState } from '../../recoil/atom';
+import { kakaoAccessTokenState, kakaoInfoState } from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
 import postKakaoToken from '../../apis/login/postKakaoToken';
 
 const Oauth = () => {
   const setKakaoAccessTokenState = useSetRecoilState(kakaoAccessTokenState);
-  const setKakaoNameState = useSetRecoilState(kakaoNameState);
+  const setKakaoInfoState = useSetRecoilState(kakaoInfoState);
   // const setloginState = useSetRecoilState(loginState);
   const navigate = useNavigate();
   /** 카카오 인가 코드를 통해 카카오 어세스 토큰을 받아오는 함수
@@ -52,7 +52,11 @@ const Oauth = () => {
     try {
       const responseUserInfo = await fetchKakaoUserInfo(kakaoAccessToken);
       console.log('responseUserInfo Complete', responseUserInfo);
-      setKakaoNameState(responseUserInfo.data.properties.nickname);
+      setKakaoInfoState({
+        name: responseUserInfo.data.properties.nickname,
+        image: responseUserInfo.data.properties.profile_image,
+        email: responseUserInfo.data.kakao_account.email,
+      });
     } catch (error) {
       console.log('카카오 정보 가져오기 에러', error);
     }

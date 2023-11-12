@@ -1,19 +1,15 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import {
-  headerSelectedState,
-  kakaoNameState,
-  loginState,
-} from '../../recoil/atom';
+import { headerSelectedState, loginState } from '../../recoil/atom';
 
 import logoSrc from '/assets/images/header/wanteam-logo.svg';
 import starSrc from '/assets/images/common/star.svg';
 import { Headers } from '../../constants/Header';
 import { useEffect } from 'react';
+import LoginProfile from './LoginProfile';
 
 const Header = () => {
-  const kakaoName = useRecoilValue(kakaoNameState);
   const [isLogin, setIsLogin] = useRecoilState(loginState);
   const headerSelectedIndex = useRecoilValue(headerSelectedState);
   const navigate = useNavigate();
@@ -47,8 +43,8 @@ const Header = () => {
               <HeaderItem
                 $isSelected={headerSelectedIndex === Headers.myProfile}
               >
-                <HeaderStar src={starSrc} />
-                {kakaoName}님{' '}
+                <LoginProfile />
+                <HeaderStar src={starSrc} />님{' '}
               </HeaderItem>
             </>
           ) : (
