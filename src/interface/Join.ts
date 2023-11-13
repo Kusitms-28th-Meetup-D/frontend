@@ -5,10 +5,11 @@ export interface InputProps {
   elemName: string;
 }
 export interface RequestJoin {
-  name: string; //이름
-  region: string; //활동지역
+  username: string; //이름
+  location: string; //활동지역
   major: string; //전공
-  part: string; //희망직무
-  introduce: string; //한줄소개
-  email: string; //카카오이메일
+  task: string; //희망직무
+  selfIntroduce: string; //한줄소개
+  kakaoAccessToken: string; //토큰
 }
+export type InputDataArray = [boolean, boolean, boolean, boolean, boolean];

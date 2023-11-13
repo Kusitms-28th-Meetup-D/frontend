@@ -7,6 +7,7 @@ export enum ERROR_MESSAGES {
 }
 
 export const REGIONS = [
+  '선택해주세요',
   '서울특별시',
   '인천광역시',
   '대전광역시',
@@ -29,7 +30,7 @@ export const INPUT_PROPS: InputProps[] = [
     label: '이름',
     placeholder: '이름을 입력해주세요',
     errorText: ERROR_MESSAGES.이름,
-    elemName: 'name',
+    elemName: 'username',
   },
   {
     label: '전공',
@@ -41,12 +42,12 @@ export const INPUT_PROPS: InputProps[] = [
     label: '희망 직무',
     placeholder: '희망 직무를 입력해주세요',
     errorText: ERROR_MESSAGES.희망직무,
-    elemName: 'part',
+    elemName: 'task',
   },
   {
     label: '한줄 소개',
     placeholder: '한줄 소개를 입력해주세요',
     errorText: ERROR_MESSAGES.한줄소개,
-    elemName: 'introduce',
+    elemName: 'selfIntroduce',
   },
 ];

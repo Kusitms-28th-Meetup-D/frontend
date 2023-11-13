@@ -1,16 +1,30 @@
 import styled from 'styled-components';
 import bgSrc from '/assets/images/login/login-bg.svg';
 import btnSrc from '/assets/images/login/login-button.svg';
-import { kakaoAuthorize } from '../../components/login/KakaoLogin';
-import { useSetRecoilState } from 'recoil';
-import { headerSelectedState } from '../../recoil/atom';
+import {
+  kakaoAuthorize,
+  // loginWithKakaoToken,
+} from '../../components/login/KakaoLogin';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { headerSelectedState, kakaoAccessTokenState } from '../../recoil/atom';
 import { useEffect } from 'react';
 import { Headers } from '../../constants/Header';
+import useLoginWithKakaoToken from '../../hooks/useLoginWithKakaoToken';
 
 const Login = () => {
-  
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
+  const kakaoAccessToken = useRecoilValue(kakaoAccessTokenState);
+  const { handleLogin } = useLoginWithKakaoToken();
   useEffect(() => setHeaderSelected(Headers.login));
+  
+  const handleClick = () => {
+    if (kakaoAccessToken) {
+      console.log('kakao토큰보유중', kakaoAccessToken);
+      handleLogin(kakaoAccessToken);
+    } else {
+      kakaoAuthorize();
+    }
+  };
   return (
     <LoginLayout>
       <LoginTextContainer>
@@ -19,7 +33,7 @@ const Login = () => {
           <span>{'똑똑한 팀 모집'}</span>
           {'을 시작해보세요'}
         </div>
-        <LoginButton src={btnSrc} onClick={kakaoAuthorize} />
+        <LoginButton src={btnSrc} onClick={handleClick} />
       </LoginTextContainer>
       <LoginBgImg src={bgSrc} />
     </LoginLayout>

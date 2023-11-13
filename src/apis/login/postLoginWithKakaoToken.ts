@@ -1,6 +1,6 @@
 import Axios from '../axios';
 
-const postKakaoToken = (kakaoAccessToken: string) =>
+const postLoginWithKakaoToken = (kakaoAccessToken: string) =>
   Axios.post(
     '/api/auth/login',
     {
@@ -14,4 +14,4 @@ const postKakaoToken = (kakaoAccessToken: string) =>
     },
   );
 
-export default postKakaoToken;
+export default postLoginWithKakaoToken;

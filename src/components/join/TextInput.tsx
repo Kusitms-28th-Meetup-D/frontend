@@ -1,24 +1,42 @@
 import styled from 'styled-components';
-import { InputProps } from '../../interface/Join';
-import ErrorMessage from './ErrorMessage';
+import { InputDataArray, InputProps } from '../../interface/Join';
 
 const TextInput = ({
   inputProps,
   onChangeFunc,
+  buttonActiveSetFunc,
+  index,
 }: {
   inputProps: InputProps;
   onChangeFunc: any;
+  buttonActiveSetFunc: any;
+  index: number;
 }) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length > 0)
+      buttonActiveSetFunc((curr: InputDataArray) => {
+        const newArr = [...curr];
+        newArr[index] = true;
+        return newArr;
+      });
+    else {
+      buttonActiveSetFunc((curr: InputDataArray) => {
+        const newArr = [...curr];
+        newArr[index] = false;
+        return newArr;
+      });
+    }
+    onChangeFunc(event);
+  };
   return (
     <InputContainer>
       <Label>{inputProps.label}</Label>
       <Input
-        onChange={onChangeFunc}
+        onChange={handleChange}
         type="text"
         placeholder={inputProps.placeholder}
         name={inputProps.elemName}
       ></Input>
-      <ErrorMessage errorText={inputProps.errorText} />
     </InputContainer>
   );
 };

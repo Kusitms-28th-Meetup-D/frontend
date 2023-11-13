@@ -1,63 +1,54 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import {
-  headerSelectedState,
-  kakaoNameState,
-  loginState,
-} from '../../recoil/atom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { headerSelectedState, loginInfoState } from '../../recoil/atom';
 
 import logoSrc from '/assets/images/header/wanteam-logo.svg';
 import starSrc from '/assets/images/common/star.svg';
 import { Headers } from '../../constants/Header';
-import { useEffect } from 'react';
+import LoginProfile from './LoginProfile';
 
 const Header = () => {
-  const kakaoName = useRecoilValue(kakaoNameState);
-  const [isLogin, setIsLogin] = useRecoilState(loginState);
+  const loginInfo = useRecoilValue(loginInfoState);
   const headerSelectedIndex = useRecoilValue(headerSelectedState);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (localStorage.getItem('kawq;ejqwken')) setIsLogin(true);
-    // if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
+  // }, [isLogin]);
   return (
     <>
       <Spacer />
       <HeaderLayout>
         <HeaderContentContainer>
-          <Logo src={logoSrc} onClick={() => navigate('/')} />
           <HeaderContainer>
+            <Link to={'/'}>
+              <Logo src={logoSrc} />
+            </Link>
             <HeaderItem
               $isSelected={headerSelectedIndex === Headers.list}
               onClick={() => navigate('/list')}
             >
-    
               <HeaderStar src={starSrc} />
               공모전 리스트
             </HeaderItem>
             <HeaderItem $isSelected={headerSelectedIndex === Headers.myTeam}>
               <HeaderStar src={starSrc} />내 팀
             </HeaderItem>
-            {isLogin ? (
-              <>
-                <HeaderItem
-                  $isSelected={headerSelectedIndex === Headers.myPage}
-                >
-                  <HeaderStar src={starSrc} />
-                  {kakaoName}님{' '}
-                </HeaderItem>
-              </>
-            ) : (
-              <HeaderItem
-                $isSelected={headerSelectedIndex === Headers.login}
-                onClick={() => navigate('/login')}
-              >
-                <HeaderStar src={starSrc} />
-                로그인/회원가입
-              </HeaderItem>
-            )}
-          </HeaderContainer>
+            <HeaderItem $isSelected={headerSelectedIndex === Headers.myProfile}>
+              <HeaderStar src={starSrc} />내 프로필
+            </HeaderItem>
+          </HeaderContainer>{' '}
+          {loginInfo.isLogin ? (
+            <LoginProfile />
+          ) : (
+            <HeaderItem
+              $isSelected={headerSelectedIndex === Headers.login}
+              onClick={() => navigate('/login')}
+            >
+              <HeaderStar src={starSrc} />
+              로그인/회원가입
+            </HeaderItem>
+          )}
         </HeaderContentContainer>
       </HeaderLayout>
     </>
@@ -100,12 +91,14 @@ const Logo = styled.img`
   height: 4.2rem;
   /* background-color: red; */
   cursor: pointer;
+
+  margin-right: 3rem;
 `;
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* gap: 3rem; */
+  gap: 5rem;
 `;
 const HeaderItem = styled.button<{ $isSelected: boolean }>`
   color: ${(props) => props.theme.colors.gray80};
@@ -129,12 +122,12 @@ const HeaderItem = styled.button<{ $isSelected: boolean }>`
   text-align: center;
 
   padding: 1.2rem 0.8rem;
-  margin: 0 2rem;
   /* border: 1px solid red; */
   > img {
     display: ${(props) => (props.$isSelected ? 'default' : 'none')};
   }
 `;
+
 const HeaderStar = styled.img`
   width: 2rem;
   height: 2rem;

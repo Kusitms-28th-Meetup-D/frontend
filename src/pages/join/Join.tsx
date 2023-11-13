@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
-import { headerSelectedState } from '../../recoil/atom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { headerSelectedState, kakaoAccessTokenState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
 
 import bgSrc from '/assets/images/join/join-bg.png';
@@ -10,33 +10,51 @@ import TextInput from '../../components/join/TextInput';
 import { INPUT_PROPS } from '../../constants/Join';
 import SelectInput from '../../components/join/SelectInput';
 import TextAreaInput from '../../components/join/TextAreaInput';
-import { RequestJoin } from '../../interface/Join';
+import { InputDataArray, RequestJoin } from '../../interface/Join';
+import postJoin from '../../apis/join/postJoin';
+import { useNavigate } from 'react-router-dom';
+import useLoginWithKakaoToken from '../../hooks/useLoginWithKakaoToken';
 
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
   //이게 아니고, 스토리지에서 꺼내서 확인하는 로직이 되어야 할듯
-
-  //const location = useLocation();
-  //const kakaoAccessToken = location.state.kakaoAccessToken;
+  const navigate = useNavigate();
+  const kakaoAccessToken = useRecoilValue(kakaoAccessTokenState);
+  const { handleLogin } = useLoginWithKakaoToken();
   const [inputValue, setInputValue] = useState<RequestJoin>({
-    name: '민정리',
-    region: '서울특별시',
+    username: '민정리',
+    location: '서울특별시',
     major: '미디어뭐더라',
-    part: 'IT/희망직종',
-    introduce: '감자맛있단다',
-    email: 'minjeong@legend.gosu',
+    task: 'IT/희망직종',
+    selfIntroduce: '감자맛있단다',
+    kakaoAccessToken: 'noToken',
   });
+  const [buttonActiveCount, setButtonActiveCount] = useState<InputDataArray>([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(inputValue);
-    // console.log(kakaoAccessToken);
-    // try {
-    //   const responseJoin = await postJoin(kakaoAccessToken, inputValue);
-    //   console.log('responseJoin 결과:', responseJoin);
-    // } catch (error) {
-    //   console.log('responseJoin 실패:', error);
-    // }
+    console.log({ ...inputValue, kakaoAccessToken: kakaoAccessToken });
+    try {
+      const responseJoin = await postJoin({
+        ...inputValue,
+        kakaoAccessToken: kakaoAccessToken as string,
+      });
+      console.log('responseJoin 결과 성공:', responseJoin);
+
+      // 바로 즉시 로그인
+      handleLogin(kakaoAccessToken);
+
+      navigate('/');
+    } catch (error) {
+      console.log('responseJoin 실패:', error);
+    }
   };
+
   const handleChange = (
     // event: React.FormEvent<
     //   HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -47,11 +65,13 @@ const Join = () => {
       const newObj: RequestJoin = { ...curr };
       const keyName = event.target.name as keyof RequestJoin;
       newObj[keyName] = event.target.value;
-      console.log(newObj);
       return newObj;
     });
   };
-
+  const isAcvivateButton = (buttonActiveArr: InputDataArray) => {
+    if (buttonActiveArr.every((value) => value === true)) return true;
+    else return false;
+  };
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.login));
 
@@ -62,23 +82,48 @@ const Join = () => {
           <TitleStarImg src={starSrc} />
           <TitleText>똑똑한 회원님의 정보를 알려주세요!</TitleText>
         </TitleBox>
-        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[0]} />
-        <SelectInput onChangeFunc={handleChange} />
-        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[1]} />
-        <TextInput onChangeFunc={handleChange} inputProps={INPUT_PROPS[2]} />
+        <TextInput
+          buttonActiveSetFunc={setButtonActiveCount}
+          onChangeFunc={handleChange}
+          inputProps={INPUT_PROPS[0]}
+          index={0}
+        />
+        <SelectInput
+          buttonActiveSetFunc={setButtonActiveCount}
+          onChangeFunc={handleChange}
+          index={1}
+        />
+        <TextInput
+          buttonActiveSetFunc={setButtonActiveCount}
+          onChangeFunc={handleChange}
+          inputProps={INPUT_PROPS[1]}
+          index={2}
+        />
+        <TextInput
+          buttonActiveSetFunc={setButtonActiveCount}
+          onChangeFunc={handleChange}
+          inputProps={INPUT_PROPS[2]}
+          index={3}
+        />
         <TextAreaInput
+          buttonActiveSetFunc={setButtonActiveCount}
           onChangeFunc={handleChange}
           inputProps={INPUT_PROPS[3]}
+          index={4}
         />
 
-        <StartButton type="submit">원팀 시작하기 →</StartButton>
+        <StartButton
+          type="submit"
+          $isActive={isAcvivateButton(buttonActiveCount)}
+        >
+          원팀 시작하기 →
+        </StartButton>
       </JoinFormContainer>
     </JoinLayout>
   );
 };
 
 export default Join;
-
 const JoinLayout = styled.div`
   width: 100%;
   height: 100%; //수정 필요
@@ -125,14 +170,23 @@ const TitleText = styled.div`
   ${(props) => props.theme.fonts.heading4};
   color: ${(props) => props.theme.colors.gray90};
 `;
-const StartButton = styled.button`
+const StartButton = styled.button<{ $isActive: boolean }>`
   width: 25.5rem;
   height: 6.4rem;
 
   border-radius: 3.2rem;
-  border: 1px solid ${(props) => props.theme.colors.primary20};
-  background-color: ${(props) => props.theme.colors.primary60};
+  border: 1px solid
+    ${(props) =>
+      props.$isActive
+        ? props.theme.colors.primary20
+        : props.theme.colors.gray50};
+
+  background-color: ${(props) =>
+    props.$isActive ? props.theme.colors.primary60 : props.theme.colors.gray10};
 
   ${(props) => props.theme.fonts.buttonL};
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) =>
+    props.$isActive ? props.theme.colors.white : props.theme.colors.gray40};
+
+  cursor: ${(props) => (props.$isActive ? 'pointer' : 'default')};
 `;
