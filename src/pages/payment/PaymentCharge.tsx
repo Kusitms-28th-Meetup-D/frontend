@@ -1,10 +1,12 @@
 import { styled } from 'styled-components';
-import ChargeHeader from '../../components/payment/ChargeHeader';
+import PaymentChargeHeader from '../../components/payment/PaymentChargeHeader';
+import PaymentChargeBox from '../../components/payment/PaymentChargeBox';
 
 const PaymentCharge = () => {
   return (
     <PaymentChargeContainer>
-      <ChargeHeader />
+      <PaymentChargeHeader />
+      <PaymentChargeBox />
     </PaymentChargeContainer>
   );
 };
