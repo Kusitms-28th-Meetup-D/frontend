@@ -1,7 +1,12 @@
 import TwoButtonModal from '../common/TwoButtonModal';
 import ModalInner from './ModalInner';
 
-const JoinCompleteModal = () => {
+interface JoinCompleteModalProps {
+  $isModalVisible: boolean;
+}
+const JoinCompleteModal: React.FC<JoinCompleteModalProps> = ({
+  $isModalVisible,
+}) => {
   const handleLeftButtonClick = () => {
     console.log('left clicked');
   };
@@ -10,6 +15,7 @@ const JoinCompleteModal = () => {
   };
   return (
     <TwoButtonModal
+      $isModalVisible={$isModalVisible}
       leftButton={{
         text: '다음에 할래요',
         onClickFunc: handleLeftButtonClick,

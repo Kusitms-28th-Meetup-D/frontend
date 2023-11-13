@@ -13,15 +13,17 @@ interface TwoButtonModalProps {
     text: string;
     onClickFunc: any;
   };
+  $isModalVisible: boolean;
 }
 const TwoButtonModal: React.FC<TwoButtonModalProps> = ({
   children,
   leftButton,
   rightButton,
+  $isModalVisible,
 }) => {
   const handleClick = () => {};
   return (
-    <BlurLayout>
+    <BlurLayout $isModalVisible={$isModalVisible}>
       <ModalContainer>
         <CloseImg src={closeSrc} onClick={handleClick} />
         {children}
@@ -37,7 +39,7 @@ const TwoButtonModal: React.FC<TwoButtonModalProps> = ({
     </BlurLayout>
   );
 };
-const BlurLayout = styled.div`
+const BlurLayout = styled.div<{ $isModalVisible: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -48,7 +50,7 @@ const BlurLayout = styled.div`
   color: ${({ theme }) => theme.colors.white};
   z-index: 999;
 
-  display: flex;
+  display: ${(props) => (props.$isModalVisible ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
 `;

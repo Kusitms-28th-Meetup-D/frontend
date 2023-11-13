@@ -19,9 +19,9 @@ import JoinCompleteModal from '../../components/join/JoinCompleteModal';
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
   //이게 아니고, 스토리지에서 꺼내서 확인하는 로직이 되어야 할듯
-  const navigate = useNavigate();
   const kakaoAccessToken = useRecoilValue(kakaoAccessTokenState);
   const { handleLogin } = useLoginWithKakaoToken();
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState<RequestJoin>({
     username: '민정리',
     location: '서울특별시',
@@ -47,10 +47,9 @@ const Join = () => {
       });
       console.log('responseJoin 결과 성공:', responseJoin);
 
+      setIsModalVisible(true);
       // 바로 즉시 로그인
       handleLogin(kakaoAccessToken);
-
-      navigate('/');
     } catch (error) {
       console.log('responseJoin 실패:', error);
     }
@@ -62,6 +61,7 @@ const Join = () => {
     // >,
     event: any,
   ) => {
+    // setIsModalVisible(true); //테스트용
     setInputValue((curr) => {
       const newObj: RequestJoin = { ...curr };
       const keyName = event.target.name as keyof RequestJoin;
@@ -78,7 +78,7 @@ const Join = () => {
 
   return (
     <JoinLayout>
-      <JoinCompleteModal />
+      <JoinCompleteModal $isModalVisible={isModalVisible} />
 
       <JoinFormContainer action="#" onSubmit={handleSubmit}>
         <TitleBox>
