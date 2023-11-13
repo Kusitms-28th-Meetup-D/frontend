@@ -12,7 +12,6 @@ import SelectInput from '../../components/join/SelectInput';
 import TextAreaInput from '../../components/join/TextAreaInput';
 import { InputDataArray, RequestJoin } from '../../interface/Join';
 import postJoin from '../../apis/join/postJoin';
-import { useNavigate } from 'react-router-dom';
 import useLoginWithKakaoToken from '../../hooks/useLoginWithKakaoToken';
 import JoinCompleteModal from '../../components/join/JoinCompleteModal';
 
@@ -61,7 +60,7 @@ const Join = () => {
     // >,
     event: any,
   ) => {
-    // setIsModalVisible(true); //테스트용
+    //setIsModalVisible(true); //테스트용 모달
     setInputValue((curr) => {
       const newObj: RequestJoin = { ...curr };
       const keyName = event.target.name as keyof RequestJoin;

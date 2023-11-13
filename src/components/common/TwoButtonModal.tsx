@@ -4,28 +4,29 @@ import { ReactNode } from 'react';
 import closeSrc from '/assets/images/common/closeButton.svg';
 
 interface TwoButtonModalProps {
-  children: ReactNode;
+  children: ReactNode; // 자식 컴포넌트
   leftButton: {
-    text: string;
-    onClickFunc: any;
+    text: string; // 왼쪽 버튼 텍스트
+    onClickFunc: () => void; // 왼쪽버튼 onClick 콜백 함수
   };
   rightButton: {
-    text: string;
-    onClickFunc: any;
+    text: string; // 오른쪽 버튼 텍스트
+    onClickFunc: () => void; // 오른쪽버튼 onClick 콜백 함수
   };
-  $isModalVisible: boolean;
+  onCloseClickFunc: () => void; // x버튼 onClick 콜백 함수
+  $isModalVisible: boolean; // 모달창이 보여지는지 여부
 }
 const TwoButtonModal: React.FC<TwoButtonModalProps> = ({
   children,
   leftButton,
   rightButton,
+  onCloseClickFunc,
   $isModalVisible,
 }) => {
-  const handleClick = () => {};
   return (
     <BlurLayout $isModalVisible={$isModalVisible}>
       <ModalContainer>
-        <CloseImg src={closeSrc} onClick={handleClick} />
+        <CloseImg src={closeSrc} onClick={onCloseClickFunc} />
         {children}
         <TwoButtonBox>
           <LeftButton onClick={leftButton.onClickFunc}>
