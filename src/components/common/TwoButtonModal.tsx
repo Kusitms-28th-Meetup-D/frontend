@@ -1,16 +1,37 @@
 import styled from 'styled-components';
+import { ReactNode } from 'react';
 
 import closeSrc from '/assets/images/common/closeButton.svg';
-const TwoButtonModal = ({ chlidren }) => {
+
+interface TwoButtonModalProps {
+  children: ReactNode;
+  leftButton: {
+    text: string;
+    onClickFunc: any;
+  };
+  rightButton: {
+    text: string;
+    onClickFunc: any;
+  };
+}
+const TwoButtonModal: React.FC<TwoButtonModalProps> = ({
+  children,
+  leftButton,
+  rightButton,
+}) => {
   const handleClick = () => {};
   return (
     <BlurLayout>
       <ModalContainer>
         <CloseImg src={closeSrc} onClick={handleClick} />
-        {chlidren}
+        {children}
         <TwoButtonBox>
-          <LeftButton></LeftButton>
-          <RightButton></RightButton>
+          <LeftButton onClick={leftButton.onClickFunc}>
+            {leftButton.text}
+          </LeftButton>
+          <RightButton onClick={rightButton.onClickFunc}>
+            {rightButton.text}
+          </RightButton>
         </TwoButtonBox>
       </ModalContainer>
     </BlurLayout>
@@ -34,7 +55,7 @@ const BlurLayout = styled.div`
 const ModalContainer = styled.div`
   position: relative;
   width: 60rem;
-  height: 36rem;
+  /* height: 36rem; */
 
   border-radius: 1.2rem;
   border: 1px solid ${({ theme }) => theme.colors.gray20};
@@ -42,6 +63,9 @@ const ModalContainer = styled.div`
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
 
   //모달창을 벗어나지 않음
   overflow: hidden;
@@ -62,16 +86,25 @@ const TwoButtonBox = styled.div`
   ${({ theme }) => theme.fonts.heading5};
 
   display: flex;
+  flex-grow: 0;
+
+  > div {
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+  }
 `;
 const LeftButton = styled.div`
   width: 42%;
-  height: 100%;
   background-color: ${({ theme }) => theme.colors.gray20};
   color: ${({ theme }) => theme.colors.gray80};
 `;
 const RightButton = styled.div`
   width: 58%;
-  height: 100%;
   background-color: ${({ theme }) => theme.colors.primary60};
   color: ${({ theme }) => theme.colors.white};
 `;

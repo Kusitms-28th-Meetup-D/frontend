@@ -14,6 +14,7 @@ import { InputDataArray, RequestJoin } from '../../interface/Join';
 import postJoin from '../../apis/join/postJoin';
 import { useNavigate } from 'react-router-dom';
 import useLoginWithKakaoToken from '../../hooks/useLoginWithKakaoToken';
+import JoinCompleteModal from '../../components/join/JoinCompleteModal';
 
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
@@ -77,6 +78,8 @@ const Join = () => {
 
   return (
     <JoinLayout>
+      <JoinCompleteModal />
+
       <JoinFormContainer action="#" onSubmit={handleSubmit}>
         <TitleBox>
           <TitleStarImg src={starSrc} />
