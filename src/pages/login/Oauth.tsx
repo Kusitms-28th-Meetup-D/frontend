@@ -2,7 +2,11 @@ import { useEffect } from 'react';
 import { kakao } from '../../components/login/KakaoLogin';
 import fetchKakaoUserInfo from '../../apis/login/getKakaoUserInfo';
 import { useSetRecoilState } from 'recoil';
-import { kakaoAccessTokenState, kakaoInfoState } from '../../recoil/atom';
+import {
+  kakaoAccessTokenState,
+  kakaoInfoState,
+  loginState,
+} from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
 import postLoginWithKakaoToken from '../../apis/login/postLoginWithKakaoToken';
 import { ResponseLogin } from '../../interface/Join';
@@ -12,9 +16,8 @@ import postKakaoAccessTokenFromCode from '../../apis/login/postKakaoAccessTokenF
 const Oauth = () => {
   const setKakaoAccessTokenState = useSetRecoilState(kakaoAccessTokenState);
   const setKakaoInfoState = useSetRecoilState(kakaoInfoState);
-  // const setloginState = useSetRecoilState(loginState);
+  const setloginState = useSetRecoilState(loginState);
   const navigate = useNavigate();
-
 
   /** 카카오 인가 코드를 통해 카카오 어세스 토큰을 받아오는 함수
    *
@@ -77,6 +80,7 @@ const Oauth = () => {
         name: responseLogin.data.data.name,
         image: responseLogin.data.data.profileImage,
       });
+      setloginState(true);
     } catch (error: any) {
       console.log('loginWithKakaoToken Error', error);
       //여기에 setlogin하면 될듯
@@ -89,11 +93,12 @@ const Oauth = () => {
     }
   };
 
- 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const kakaoAccessCode = params.get('code');
-    const kakaoAccessToken = getKakaoAccessTokenWithCode(kakaoAccessCode as string);
+    const kakaoAccessToken = getKakaoAccessTokenWithCode(
+      kakaoAccessCode as string,
+    );
     kakaoAccessToken;
     //우리팀 서버에 카카오 토큰 유효성 검증하기
 
