@@ -15,8 +15,6 @@ const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  white-space: nowrap;
-  gap: 1rem;
 
   background: ${({ theme }) => theme.colors.primary60};
   color: ${({ theme }) => theme.colors.white};
