@@ -44,7 +44,7 @@ const Join = () => {
         kakaoAccessToken: kakaoAccessToken as string,
       });
       console.log('responseJoin 결과:', responseJoin);
-      loginWithKakaoToken(kakaoAccessToken)
+      // loginWithKakaoToken(kakaoAccessToken)
       navigate('/');
     } catch (error) {
       console.log('responseJoin 실패:', error);

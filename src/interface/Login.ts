@@ -8,3 +8,9 @@ export interface LoginInfo {
     name: string;
   };
 }
+
+export interface LoginResult {
+  isSuccess: boolean;
+  statusCode: number;
+  error?: any;
+}
