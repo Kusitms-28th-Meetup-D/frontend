@@ -2,8 +2,7 @@
 
 import { AxiosResponse } from 'axios';
 import postLoginWithKakaoToken from '../../apis/login/postLoginWithKakaoToken';
-import { ResponseLogin } from '../../interface/Join';
-import { LoginResult } from '../../interface/Login';
+import { LoginResult, ResponseLogin } from '../../interface/Login';
 
 export const kakao = (window as any).Kakao;
 
@@ -13,8 +12,6 @@ export const kakaoAuthorize = () => {
     redirectUri: `${redirectUri}`,
     scope: 'profile_nickname,profile_image,account_email,account_email',
   });
-
-  
 };
 
 export const loginWithKakaoToken = async (kakaoAccessToken: string) => {
@@ -27,8 +24,11 @@ export const loginWithKakaoToken = async (kakaoAccessToken: string) => {
     const loginResult: LoginResult = {
       isSuccess: true,
       statusCode: responseLogin.status,
+      responseData: responseLogin.data, //???타입에러 왜 안나지 data.data
     };
     return loginResult;
+
+    //실패시
   } catch (error: any) {
     console.log('loginWithKakaoToken Error', error);
     const loginResult: LoginResult = {

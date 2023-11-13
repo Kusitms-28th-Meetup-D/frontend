@@ -13,15 +13,3 @@ export interface RequestJoin {
   kakaoAccessToken: string; //토큰
 }
 export type InputDataArray = [boolean, boolean, boolean, boolean, boolean];
-export interface ResponseLogin {
-  status: number;
-  message: string;
-  data: {
-    userId: number;
-    redirectUrl: string;
-    refreshToken: string;
-    accessToken: string;
-    profileImage: string;
-    name: string;
-  };
-}

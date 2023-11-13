@@ -3,21 +3,24 @@ import bgSrc from '/assets/images/login/login-bg.svg';
 import btnSrc from '/assets/images/login/login-button.svg';
 import {
   kakaoAuthorize,
-  loginWithKakaoToken,
+  // loginWithKakaoToken,
 } from '../../components/login/KakaoLogin';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { headerSelectedState, kakaoAccessTokenState } from '../../recoil/atom';
 import { useEffect } from 'react';
 import { Headers } from '../../constants/Header';
+import useLoginWithKakaoToken from '../../hooks/useLoginWithKakaoToken';
 
 const Login = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   const kakaoAccessToken = useRecoilValue(kakaoAccessTokenState);
+  const { handleLogin } = useLoginWithKakaoToken();
   useEffect(() => setHeaderSelected(Headers.login));
+  
   const handleClick = () => {
     if (kakaoAccessToken) {
       console.log('kakao토큰보유중', kakaoAccessToken);
-      loginWithKakaoToken(kakaoAccessToken);
+      handleLogin(kakaoAccessToken);
     } else {
       kakaoAuthorize();
     }

@@ -2,16 +2,16 @@ import { useEffect } from 'react';
 import { kakao } from '../../components/login/KakaoLogin';
 import fetchKakaoUserInfo from '../../apis/login/getKakaoUserInfo';
 import { useSetRecoilState } from 'recoil';
-import { kakaoAccessTokenState, loginInfoState } from '../../recoil/atom';
+import { kakaoAccessTokenState } from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
-import postLoginWithKakaoToken from '../../apis/login/postLoginWithKakaoToken';
-import { ResponseLogin } from '../../interface/Join';
-import { AxiosResponse } from 'axios';
+
 import postKakaoAccessTokenFromCode from '../../apis/login/postKakaoAccessTokenFromCode';
+import useLoginWithKakaoToken from '../../hooks/useLoginWithKakaoToken';
 
 const Oauth = () => {
   const setKakaoAccessTokenState = useSetRecoilState(kakaoAccessTokenState);
-  const setLoginInfoState = useSetRecoilState(loginInfoState);
+  const { handleLogin } = useLoginWithKakaoToken();
+
   const navigate = useNavigate();
 
   /** 카카오 인가 코드를 통해 카카오 어세스 토큰을 받아오는 함수
@@ -33,7 +33,8 @@ const Oauth = () => {
       getKakaoUserInfo(responseKakaoAccessCode.data.access_token);
 
       //카카오토큰으로 로그인하기
-      loginWithKakaoToken(responseKakaoAccessCode.data.access_token);
+      handleLogin(responseKakaoAccessCode.data.access_token);
+      //loginWithKakaoToken(responseKakaoAccessCode.data.access_token);
 
       return responseKakaoAccessCode.data.access_token;
     } catch (error) {
@@ -54,37 +55,37 @@ const Oauth = () => {
     }
   };
 
-  /** 카카오 어세스 토큰를 통해 로그인 하는 함수
-   *
-   * @param kakaoAccessToken 카카오 어세스 토큰
-   */
-  const loginWithKakaoToken = async (kakaoAccessToken: string) => {
-    try {
-      const responseLogin: AxiosResponse<ResponseLogin> =
-        await postLoginWithKakaoToken(kakaoAccessToken);
-      console.log('loginWithKakaoToken Complete', responseLogin);
+  // /** 카카오 어세스 토큰를 통해 로그인 하는 함수
+  //  *
+  //  * @param kakaoAccessToken 카카오 어세스 토큰
+  //  */
+  // const loginWithKakaoToken = async (kakaoAccessToken: string) => {
+  //   try {
+  //     const responseLogin: AxiosResponse<ResponseLogin> =
+  //       await postLoginWithKakaoToken(kakaoAccessToken);
+  //     console.log('loginWithKakaoToken Complete', responseLogin);
 
-      setLoginInfoState({
-        isLogin: true,
-        data: {
-          userId: responseLogin.data.data.userId,
-          refreshToken: responseLogin.data.data.refreshToken,
-          accessToken: responseLogin.data.data.accessToken,
-          profileImage: responseLogin.data.data.profileImage,
-          name: responseLogin.data.data.name,
-        },
-      });
-    } catch (error: any) {
-      console.log('loginWithKakaoToken Error', error);
-      //여기에 setlogin하면 될듯
-      //회원가입 페이지로 연결
-      if (error.response.data.status == 404) {
-        navigate('/login/join', {
-          state: { kakaoAccessToken: kakaoAccessToken },
-        });
-      }
-    }
-  };
+  //     setLoginInfoState({
+  //       isLogin: true,
+  //       data: {
+  //         userId: responseLogin.data.data.userId,
+  //         refreshToken: responseLogin.data.data.refreshToken,
+  //         accessToken: responseLogin.data.data.accessToken,
+  //         profileImage: responseLogin.data.data.profileImage,
+  //         name: responseLogin.data.data.name,
+  //       },
+  //     });
+  //   } catch (error: any) {
+  //     console.log('loginWithKakaoToken Error', error);
+  //     //여기에 setlogin하면 될듯
+  //     //회원가입 페이지로 연결
+  //     if (error.response.data.status == 404) {
+  //       navigate('/login/join', {
+  //         state: { kakaoAccessToken: kakaoAccessToken },
+  //       });
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);

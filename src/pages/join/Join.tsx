@@ -13,13 +13,14 @@ import TextAreaInput from '../../components/join/TextAreaInput';
 import { InputDataArray, RequestJoin } from '../../interface/Join';
 import postJoin from '../../apis/join/postJoin';
 import { useNavigate } from 'react-router-dom';
+import useLoginWithKakaoToken from '../../hooks/useLoginWithKakaoToken';
 
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
   //이게 아니고, 스토리지에서 꺼내서 확인하는 로직이 되어야 할듯
   const navigate = useNavigate();
   const kakaoAccessToken = useRecoilValue(kakaoAccessTokenState);
-  // const setLoginInfo = useSetRecoilState(loginInfoState);
+  const { handleLogin } = useLoginWithKakaoToken();
   const [inputValue, setInputValue] = useState<RequestJoin>({
     username: '민정리',
     location: '서울특별시',
@@ -43,13 +44,17 @@ const Join = () => {
         ...inputValue,
         kakaoAccessToken: kakaoAccessToken as string,
       });
-      console.log('responseJoin 결과:', responseJoin);
-      // loginWithKakaoToken(kakaoAccessToken)
+      console.log('responseJoin 결과 성공:', responseJoin);
+
+      // 바로 즉시 로그인
+      handleLogin(kakaoAccessToken);
+
       navigate('/');
     } catch (error) {
       console.log('responseJoin 실패:', error);
     }
   };
+
   const handleChange = (
     // event: React.FormEvent<
     //   HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
