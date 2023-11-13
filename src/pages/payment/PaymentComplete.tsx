@@ -19,6 +19,6 @@ const PaymentCompleteContainer = styled.div`
   @media ${({ theme }) => theme.devices.tablet} {
   }
   @media ${({ theme }) => theme.devices.desktop} {
-    width: 64.6rem;
+    max-width: 122.4rem;
   }
 `;
