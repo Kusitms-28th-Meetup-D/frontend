@@ -18,6 +18,7 @@ const useLoginWithKakaoToken = () => {
       );
       if (responseLogin.isSuccess && responseLogin.responseData !== undefined) {
         console.log('로그인성공', responseLogin);
+
         setLoginInfo({
           isLogin: true,
           data: {
@@ -28,6 +29,7 @@ const useLoginWithKakaoToken = () => {
             name: responseLogin.responseData?.data.name,
           },
         });
+        navigate('/');
       } else {
         if (responseLogin.statusCode == 404) {
           console.log('로그인실패 회원이 아님', responseLogin);
