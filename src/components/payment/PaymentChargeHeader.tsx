@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import Title from '../common/Title';
 
-const ChargeHeader = () => {
+const PaymentChargeHeader = () => {
   const navigate = useNavigate();
 
   return (
@@ -16,10 +16,14 @@ const ChargeHeader = () => {
           <h1>티켓 충전</h1>
           <Title>티켓이란?</Title>
           <DescriptionBox>
-            다른 유저의 <span>'한 줄 추천사'</span>를 오픈할 수 있는 WANTEAM
-            서비스 내 결제 수단입니다. 1장만 사용하셔도 해당 유저의 '한 줄
-            추천사'를
-            <span>영구적으로 열람</span>하실 수 있습니다.
+            <p>
+              다른 유저의 <span>'한 줄 추천사'</span>를 오픈할 수 있는 WANTEAM
+              서비스 내 결제 수단입니다.
+            </p>
+            <p>
+              1장만 사용하셔도 해당 유저의 '한 줄 추천사'를{' '}
+              <span>영구적으로 열람</span>하실 수 있습니다.
+            </p>
           </DescriptionBox>
         </div>
         <Ticket src={'/assets/images/payment/headerTicket.svg'} />
@@ -28,7 +32,7 @@ const ChargeHeader = () => {
   );
 };
 
-export default ChargeHeader;
+export default PaymentChargeHeader;
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -47,11 +51,11 @@ const HeaderContainer = styled.div`
 const HeaderContent = styled.div`
   width: 100%;
   align-items: center;
-  padding: 0 1rem;
   max-width: 122.4rem;
   background: ${({ theme }) => theme.colors.primary10};
   display: flex;
-  gap: 20rem;
+  gap: 18rem;
+  padding-right: 7rem;
 
   h1 {
     ${({ theme }) => theme.fonts.heading2_1};

@@ -2,11 +2,12 @@ import { styled } from 'styled-components';
 
 interface TitleProps {
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
-const Title = ({ children }: TitleProps) => {
+const Title = ({ children, style }: TitleProps) => {
   return (
-    <TitleContainer>
+    <TitleContainer style={style}>
       <Star src="/assets/images/recommendation/star.svg" alt="star" />
       {children}
     </TitleContainer>
