@@ -1,21 +1,20 @@
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { headerSelectedState, loginState } from '../../recoil/atom';
+import { useRecoilValue } from 'recoil';
+import { headerSelectedState, loginInfoState } from '../../recoil/atom';
 
 import logoSrc from '/assets/images/header/wanteam-logo.svg';
 import starSrc from '/assets/images/common/star.svg';
 import { Headers } from '../../constants/Header';
-import { useEffect } from 'react';
 import LoginProfile from './LoginProfile';
 
 const Header = () => {
-  const [isLogin, setIsLogin] = useRecoilState(loginState);
+  const loginInfo = useRecoilValue(loginInfoState);
   const headerSelectedIndex = useRecoilValue(headerSelectedState);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
-  }, [isLogin]);
+  // useEffect(() => {
+  //   if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
+  // }, [isLogin]);
   return (
     <>
       <Spacer />
@@ -39,7 +38,7 @@ const Header = () => {
               <HeaderStar src={starSrc} />내 프로필
             </HeaderItem>
           </HeaderContainer>{' '}
-          {isLogin ? (
+          {loginInfo.isLogin ? (
             <LoginProfile />
           ) : (
             <HeaderItem

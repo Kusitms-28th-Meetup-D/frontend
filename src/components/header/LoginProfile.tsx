@@ -1,20 +1,20 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { kakaoInfoState } from '../../recoil/atom';
+import { loginInfoState } from '../../recoil/atom';
 import { useState } from 'react';
 
 import dropSrc from '/assets/images/header/dropdown-button.svg';
 
 const LoginProfile = () => {
-  const kakaoInfo = useRecoilValue(kakaoInfoState);
+  const loginState = useRecoilValue(loginInfoState);
   const [isDrop, setIsDrop] = useState(false);
   const handleClick = () => {
     setIsDrop((curr) => !curr);
   };
   return (
     <ProfileContainer onClick={handleClick}>
-      <ProfileImg src={kakaoInfo.image} />
-      <ProfileName>{kakaoInfo.name}</ProfileName>
+      <ProfileImg src={loginState.data?.profileImage} />
+      <ProfileName>{loginState.data?.name}</ProfileName>
       {/* 실제이름으로 변경하기 */}
       <ProfileDropdown $isDrop={isDrop} src={dropSrc} />
       <Droppable $isDrop={isDrop}></Droppable>

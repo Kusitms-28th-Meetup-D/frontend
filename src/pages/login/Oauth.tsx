@@ -2,11 +2,7 @@ import { useEffect } from 'react';
 import { kakao } from '../../components/login/KakaoLogin';
 import fetchKakaoUserInfo from '../../apis/login/getKakaoUserInfo';
 import { useSetRecoilState } from 'recoil';
-import {
-  kakaoAccessTokenState,
-  kakaoInfoState,
-  loginState,
-} from '../../recoil/atom';
+import { kakaoAccessTokenState, loginInfoState } from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
 import postLoginWithKakaoToken from '../../apis/login/postLoginWithKakaoToken';
 import { ResponseLogin } from '../../interface/Join';
@@ -15,8 +11,7 @@ import postKakaoAccessTokenFromCode from '../../apis/login/postKakaoAccessTokenF
 
 const Oauth = () => {
   const setKakaoAccessTokenState = useSetRecoilState(kakaoAccessTokenState);
-  const setKakaoInfoState = useSetRecoilState(kakaoInfoState);
-  const setloginState = useSetRecoilState(loginState);
+  const setLoginInfoState = useSetRecoilState(loginInfoState);
   const navigate = useNavigate();
 
   /** 카카오 인가 코드를 통해 카카오 어세스 토큰을 받아오는 함수
@@ -30,10 +25,6 @@ const Oauth = () => {
       );
       console.log('인가코드로 accesstoken 받기 성공', responseKakaoAccessCode);
       setKakaoAccessTokenState(responseKakaoAccessCode.data.access_token);
-      localStorage.setItem(
-        'kakaoAccessToken',
-        responseKakaoAccessCode.data.access_token,
-      );
 
       //받아온 토큰을 setAcessToken하기
       kakao.Auth.setAccessToken(responseKakaoAccessCode.data.access_token);
@@ -58,10 +49,6 @@ const Oauth = () => {
     try {
       const responseUserInfo = await fetchKakaoUserInfo(kakaoAccessToken);
       console.log('responseUserInfo Complete', responseUserInfo);
-      setKakaoInfoState({
-        name: responseUserInfo.data.properties.nickname,
-        image: responseUserInfo.data.properties.profile_image,
-      });
     } catch (error) {
       console.log('카카오 정보 가져오기 에러', error);
     }
@@ -76,11 +63,17 @@ const Oauth = () => {
       const responseLogin: AxiosResponse<ResponseLogin> =
         await postLoginWithKakaoToken(kakaoAccessToken);
       console.log('loginWithKakaoToken Complete', responseLogin);
-      setKakaoInfoState({
-        name: responseLogin.data.data.name,
-        image: responseLogin.data.data.profileImage,
+
+      setLoginInfoState({
+        isLogin: true,
+        data: {
+          userId: responseLogin.data.data.userId,
+          refreshToken: responseLogin.data.data.refreshToken,
+          accessToken: responseLogin.data.data.accessToken,
+          profileImage: responseLogin.data.data.profileImage,
+          name: responseLogin.data.data.name,
+        },
       });
-      setloginState(true);
     } catch (error: any) {
       console.log('loginWithKakaoToken Error', error);
       //여기에 setlogin하면 될듯
