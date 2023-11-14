@@ -42,7 +42,7 @@ const Request = () => {
   return (
     <RequestLayout>
       <JoinCompleteModal $isModalVisible={isJoinModalVisible} />
-      <RequestBackGround src={bgSrc} />
+
       <OneButtonModal
         $isModalVisible={isPreviewModalVisible}
         button={{
@@ -54,6 +54,7 @@ const Request = () => {
         <ModalInner />
       </OneButtonModal>
       <TextContainer>
+        <RequestBackGround src={bgSrc} />
         <TextTitle>
           <StarImg src={starSrc} />
           {TITLE}
@@ -68,7 +69,7 @@ const Request = () => {
           <TextContent>{CONTENT[3]}</TextContent>
         </TextContentBox>
         <KakaoTalkPreview onClick={handleClick}>
-          발송 메세지 예시 미리보기
+          {'    발송 메세지 예시 미리보기    '}
         </KakaoTalkPreview>
         <KakaoTalkSendImg src={kakaotalkSrc} onClick={handleKakaoMessageSend} />
         <Button
@@ -106,7 +107,7 @@ const RequestBackGround = styled.img`
 `;
 const TextContainer = styled.div`
   width: 80.8rem;
-  height: 70rem;
+  /* height: 70rem; */
 
   border: 1px solid #3b3ef1;
   border-radius: 2.4rem;
@@ -118,6 +119,8 @@ const TextContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+
+  padding: 5rem 0;
 `;
 const StarImg = styled.img`
   height: 3rem;
@@ -126,11 +129,14 @@ const StarImg = styled.img`
 const TextTitle = styled.div`
   ${({ theme }) => theme.fonts.heading4};
   color: ${({ theme }) => theme.colors.gray90};
+  /* width: 100%; */
 
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  margin-right: 10rem; //가운데 정렬에서 조금 옮기기
 `;
 const TextContentBox = styled.div`
   ${({ theme }) => theme.fonts.bodyXL};
@@ -156,8 +162,10 @@ const KakaoTalkPreview = styled.div`
   ${({ theme }) => theme.fonts.bodyXL};
   color: ${({ theme }) => theme.colors.primary90};
 
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  border-bottom: 1px solid ${({ theme }) => theme.colors.primary90};
 
+  /* white-space: nowrap; */
   cursor: pointer;
   z-index: 30;
 `;
