@@ -4,7 +4,8 @@ import { useState } from 'react';
 import bgSrc from '/assets/images/request/request-bg.png';
 import starSrc from '/assets/images/common/star.svg';
 import kakaotalkSrc from '/assets/images/request/request-kakaotalk.svg';
-import KakaoPreviewModal from '../../components/request/KakaoPreviewModal';
+import OneButtonModal from '../../components/common/OneButtonModal';
+import ModalInner from '../../components/request/ModalInner';
 const TITLE = '매력적인 프로필 완성을 위해 추천사를 요청해보세요.';
 const CONTENT = [
   '나와 딱 맞는 탁월한 팀원을 한번에 찾고 싶다면,\n나보다 나를 더 잘 아는 동료에게 추천사를 요청해 멋진 프로필을 완성하세요.',
@@ -17,9 +18,22 @@ const Request = () => {
   const handleClick = () => {
     setIsModalVisible(true);
   };
+  const handleButtonClick = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <RequestLayout>
-      <KakaoPreviewModal $isModalVisible={isModalVisible} />
+      <OneButtonModal
+        $isModalVisible={isModalVisible}
+        button={{
+          text: '닫기',
+          onClickFunc: handleButtonClick,
+        }}
+        onCloseClickFunc={handleButtonClick}
+      >
+        <ModalInner />
+      </OneButtonModal>
       <RequestBackGround src={bgSrc} />
       <TextContainer>
         <TextTitle>

@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 
-import joinSrc from '/assets/images/join/join-modal.svg';
+import modalSrc from '/assets/images/request/request-kakaotalk-modal.png';
 
 const ModalInner = () => {
-  const TEXT =
-    '아직 자기소개 프로필이 비어있어요!\n프로필을 자세히 작성할수록, 좋은 팀원을 구할 확률이 높아져요.';
+  const TITLE = '‘추천사 요청’ 카카오톡 예시';
+  const SUBTITLE =
+    '카카오톡으로 추천사를 요청하면, 아래와 같은 메시지가 전송됩니다.';
   return (
     <Container>
-      <Img src={joinSrc} />
-      <Title>
-        <span>Wanteam</span>에 가입 완료!
-      </Title>
-      <Content>{TEXT}</Content>
+      <Title>{TITLE}</Title>
+      <Subtitle>{SUBTITLE}</Subtitle>
+      <Img src={modalSrc} />
     </Container>
   );
 };
@@ -20,30 +19,30 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 2rem;
 
-  margin: 3rem;
+  margin: 2rem 3rem;
 `;
-const Img = styled.img`
-  width: 12rem;
-  height: 10.2rem;
-`;
+
 const Title = styled.div`
-  ${({ theme }) => theme.fonts.heading4};
+  ${({ theme }) => theme.fonts.heading2_1};
 
   color: ${({ theme }) => theme.colors.gray90};
-  span {
-    color: ${({ theme }) => theme.colors.primary60};
-  }
-
   text-align: center;
 `;
-const Content = styled.div`
-  ${({ theme }) => theme.fonts.bodyL};
-
-  color: ${({ theme }) => theme.colors.gray70};
+const Subtitle = styled.div`
+  ${({ theme }) => theme.fonts.bodyXL};
+  color: ${({ theme }) => theme.colors.gray90};
 
   text-align: center;
   white-space: break-spaces;
+`;
+const Img = styled.img`
+  width: 28.2rem;
+  height: 35.9rem;
+
+  /* border: 1px solid white; */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.46); /* 섀도우 설정 */
 `;
 export default ModalInner;

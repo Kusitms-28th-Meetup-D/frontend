@@ -62,7 +62,7 @@ const ModalContainer = styled.div`
   //모달창을 벗어나지 않음
   overflow: hidden;
 
-  margin: 3rem;
+  padding: 3rem;
 `;
 
 const CloseImg = styled.img`
@@ -77,6 +77,8 @@ const Button = styled.div`
   width: 20.8rem;
   height: 6.4rem;
 
+  border-radius: 3.2rem;
+
   ${({ theme }) => theme.fonts.buttonL};
   background-color: ${({ theme }) => theme.colors.primary60};
   color: ${({ theme }) => theme.colors.white};
@@ -84,6 +86,7 @@ const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export default OneButtonModal;
