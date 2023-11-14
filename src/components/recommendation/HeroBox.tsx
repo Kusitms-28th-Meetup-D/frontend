@@ -2,30 +2,42 @@ import { styled } from 'styled-components';
 
 interface HeroBoxProps {
   name: string;
-  selected?: boolean;
   src: string;
+  selected: boolean;
+  onSelect: () => void;
 }
 
-const HeroBox = ({ name, src }: HeroBoxProps) => {
+const HeroBox = ({ name, src, selected, onSelect }: HeroBoxProps) => {
   return (
-    <HeroBoxLayout>
-      <HeroImage src={src} alt="" />
+    <HeroBoxLayout $isSelected={selected}>
+      <HeroImage src={src} alt={name} />
       <HeroName>{name}</HeroName>
-      <HeroRadio type="radio" id="1" name="name" />
+      <Radio
+        type="radio"
+        id={name}
+        name="heroSelection"
+        checked={selected}
+        onChange={onSelect}
+      />
     </HeroBoxLayout>
   );
 };
 
 export default HeroBox;
 
-const HeroBoxLayout = styled.label`
+const HeroBoxLayout = styled.label<{ $isSelected: boolean }>`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background: ${({ theme }) => theme.colors.primary20};
   border-radius: 24px;
   width: 100%;
   padding: 1.2rem 3rem;
   cursor: pointer;
+
+  border: 2px solid
+    ${(props) =>
+      props.$isSelected ? props.theme.colors.primary40 : 'transparent'};
 `;
 
 const HeroImage = styled.img`
@@ -41,16 +53,25 @@ const HeroImage = styled.img`
 const HeroName = styled.div`
   ${({ theme }) => theme.fonts.subtitleXXL};
   color: ${({ theme }) => theme.colors.gray90};
+  width: 100%;
+  text-align: left;
 `;
 
-const HeroRadio = styled.input`
-  width: 3.2rem;
-  height: 3.2rem;
+const Radio = styled.input`
+  vertical-align: middle;
+  appearance: none;
+  width: 48px;
+  height: 30px;
+  border: 1px solid ${({ theme }) => theme.colors.gray50};
   border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.gray70};
-  margin-left: auto;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
   cursor: pointer;
+  background: transparent;
+  transition: background-image 0.3s, border-color 0.3s;
+
+  &:checked {
+    background-image: url('/assets/images/payment/radioSelected.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 `;
