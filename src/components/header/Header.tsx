@@ -34,7 +34,10 @@ const Header = () => {
             <HeaderItem $isSelected={headerSelectedIndex === Headers.myTeam}>
               <HeaderStar src={starSrc} />내 팀
             </HeaderItem>
-            <HeaderItem $isSelected={headerSelectedIndex === Headers.myProfile}>
+            <HeaderItem
+              onClick={() => navigate(`/profile/${loginInfo.data?.userId}`)}
+              $isSelected={headerSelectedIndex === Headers.myProfile}
+            >
               <HeaderStar src={starSrc} />내 프로필
             </HeaderItem>
           </HeaderContainer>{' '}

@@ -87,14 +87,16 @@ const Request = () => {
 const RequestLayout = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 
   /* background: url(${bgSrc}) right bottom no-repeat; */
   /* z-index: 20; */
+
+  padding: 5rem 0;
 `;
 const RequestBackGround = styled.img`
   position: absolute;
@@ -116,11 +118,12 @@ const TextContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   gap: 2rem;
 
-  padding: 5rem 0;
+  padding: 2rem 0;
+  /* margin: 5rem 0; */
 `;
 const StarImg = styled.img`
   height: 3rem;
@@ -136,7 +139,8 @@ const TextTitle = styled.div`
   align-items: center;
   gap: 1rem;
 
-  margin-right: 10rem; //가운데 정렬에서 조금 옮기기
+  //가운데 정렬에서 조금 옮기기
+  margin: 3rem 10rem 3rem 0;
 `;
 const TextContentBox = styled.div`
   ${({ theme }) => theme.fonts.bodyXL};
