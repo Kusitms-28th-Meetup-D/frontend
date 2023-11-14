@@ -12,7 +12,7 @@ import Contest from './pages/contest/Contest';
 import CompetitionList from './pages/competitionList/CompetitionList';
 import Login from './pages/login/Login';
 import PaymentComplete from './pages/payment/PaymentComplete';
-
+import Request from './pages/request/Request';
 
 function Router() {
   return (
@@ -23,6 +23,7 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/login/oauth" element={<Oauth />} />
         <Route path="/join" element={<Join />} />
+        <Route path="/join/request" element={<Request />} />
         <Route path="/recommendation" element={<Recommendation />}>
           <Route path="subjective" element={<Subjective />} />
           <Route path="multipleChoice" element={<MultipleChoice />} />
