@@ -13,7 +13,7 @@ import CompetitionList from './pages/competitionList/CompetitionList';
 import Login from './pages/login/Login';
 import PaymentComplete from './pages/payment/PaymentComplete';
 import Request from './pages/request/Request';
-import Main from './pages/main/main';
+import Main from './pages/main/Main';
 
 function Router() {
   return (
