@@ -45,7 +45,7 @@ const Join = () => {
       });
       console.log('responseJoin 결과 성공:', responseJoin);
 
-      setIsModalVisible(true);
+      // setIsModalVisible(true);
       // 바로 즉시 로그인
       handleLogin(kakaoAccessToken);
     } catch (error) {

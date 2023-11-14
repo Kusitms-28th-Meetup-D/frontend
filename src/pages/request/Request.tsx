@@ -112,7 +112,7 @@ const TextContainer = styled.div`
   border: 1px solid #3b3ef1;
   border-radius: 2.4rem;
   background-color: rgba(239, 239, 253, 0.2);
-  backdrop-filter: blur(12px);
+  //backdrop-filter: blur(12px); //이자식 position 문제일으킴
 
   display: flex;
   flex-direction: column;
