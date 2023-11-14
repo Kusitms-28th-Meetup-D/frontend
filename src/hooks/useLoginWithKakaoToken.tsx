@@ -33,7 +33,7 @@ const useLoginWithKakaoToken = () => {
       } else {
         if (responseLogin.statusCode == 404) {
           console.log('로그인실패 회원이 아님', responseLogin);
-          navigate('/login/join');
+          navigate('/join');
         } else {
           console.log('로그인실패, 이거 출력되면 안되는데', responseLogin);
         }

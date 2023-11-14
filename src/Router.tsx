@@ -22,7 +22,7 @@ function Router() {
         <Route path="/" element={<div>main</div>} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/oauth" element={<Oauth />} />
-        <Route path="/login/join" element={<Join />} />
+        <Route path="/join" element={<Join />} />
         <Route path="/recommendation" element={<Recommendation />}>
           <Route path="subjective" element={<Subjective />} />
           <Route path="multipleChoice" element={<MultipleChoice />} />
