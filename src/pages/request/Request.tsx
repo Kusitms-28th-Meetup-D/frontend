@@ -24,6 +24,7 @@ const Request = () => {
 
   return (
     <RequestLayout>
+      <RequestBackGround src={bgSrc} />
       <OneButtonModal
         $isModalVisible={isModalVisible}
         button={{
@@ -34,7 +35,6 @@ const Request = () => {
       >
         <ModalInner />
       </OneButtonModal>
-      <RequestBackGround src={bgSrc} />
       <TextContainer>
         <TextTitle>
           <StarImg src={starSrc} />
@@ -66,6 +66,9 @@ const RequestLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* background: url(${bgSrc}) right bottom no-repeat; */
+  /* z-index: 20; */
 `;
 const RequestBackGround = styled.img`
   position: absolute;
@@ -124,21 +127,24 @@ const TextContent = styled.div`
   white-space: break-spaces;
 `;
 const KakaoTalkPreview = styled.div`
+  position: relative;
   ${({ theme }) => theme.fonts.bodyXL};
   color: ${({ theme }) => theme.colors.primary90};
 
   text-decoration: underline;
 
   cursor: pointer;
+  z-index: 30;
 `;
 const KakaoTalkImg = styled.img`
+  position: relative;
   ${({ theme }) => theme.fonts.bodyXL};
   color: ${({ theme }) => theme.colors.primary90};
 
   width: 39.1rem;
   height: 5.8rem;
 
-  z-index: 19;
+  z-index: 20;
   cursor: pointer;
 `;
 const Button = styled.button<{ $isActive: boolean }>`
@@ -153,7 +159,7 @@ const Button = styled.button<{ $isActive: boolean }>`
   background-color: ${(props) => props.theme.colors.primary60};
   color: ${(props) => props.theme.colors.white};
 
-  z-index: 19;
+  z-index: 40;
   cursor: ${(props) => (props.$isActive ? 'pointer' : 'default')};
 `;
 
