@@ -9,6 +9,7 @@ import OneButtonModal from '../../components/common/OneButtonModal';
 import ModalInner from '../../components/request/ModalInner';
 import { kakao } from '../../components/login/KakaoLogin';
 import { loginInfoState } from '../../recoil/atom';
+import JoinCompleteModal from '../../components/join/JoinCompleteModal';
 const TITLE = '매력적인 프로필 완성을 위해 추천사를 요청해보세요.';
 const CONTENT = [
   '나와 딱 맞는 탁월한 팀원을 한번에 찾고 싶다면,\n나보다 나를 더 잘 아는 동료에게 추천사를 요청해 멋진 프로필을 완성하세요.',
@@ -17,12 +18,13 @@ const CONTENT = [
   '같이 동아리, 학회, 공모전 등 팀 프로젝트에 참여했던 지인에게\n아래 링크를 공유해 추천사를 받아주세요!',
 ];
 const Request = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isPreviewModalVisible, setIsPreviewModalVisible] = useState(false);
+  const [isJoinModalVisible, setIsJoinModalVisible] = useState(false);
   const handleClick = () => {
-    setIsModalVisible(true);
+    setIsPreviewModalVisible(true);
   };
   const handleButtonClick = () => {
-    setIsModalVisible(false);
+    setIsPreviewModalVisible(false);
   };
 
   const loginUserInfo = useRecoilValue(loginInfoState);
@@ -39,9 +41,10 @@ const Request = () => {
   };
   return (
     <RequestLayout>
+      <JoinCompleteModal $isModalVisible={isJoinModalVisible} />
       <RequestBackGround src={bgSrc} />
       <OneButtonModal
-        $isModalVisible={isModalVisible}
+        $isModalVisible={isPreviewModalVisible}
         button={{
           text: '닫기',
           onClickFunc: handleButtonClick,
@@ -68,7 +71,14 @@ const Request = () => {
           발송 메세지 예시 미리보기
         </KakaoTalkPreview>
         <KakaoTalkSendImg src={kakaotalkSrc} onClick={handleKakaoMessageSend} />
-        <Button $isActive={true}>추천사를 보냈어요 →</Button>
+        <Button
+          $isActive={true}
+          onClick={() => {
+            setIsJoinModalVisible(true);
+          }}
+        >
+          추천사를 보냈어요 →
+        </Button>
       </TextContainer>
     </RequestLayout>
   );
