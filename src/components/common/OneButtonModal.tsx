@@ -12,7 +12,7 @@ interface OneButtonModalProps {
   onCloseClickFunc: () => void; // x버튼 onClick 콜백 함수
   $isModalVisible: boolean; // 모달창이 보여지는지 여부
 }
-const TwoButtonModal: React.FC<OneButtonModalProps> = ({
+const OneButtonModal: React.FC<OneButtonModalProps> = ({
   children,
   button,
   onCloseClickFunc,
@@ -86,4 +86,4 @@ const Button = styled.div`
   align-items: center;
 `;
 
-export default TwoButtonModal;
+export default OneButtonModal;
