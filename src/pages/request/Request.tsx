@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
 import bgSrc from '/assets/images/request/request-bg.png';
 import starSrc from '/assets/images/common/star.svg';
 import kakaotalkSrc from '/assets/images/request/request-kakaotalk.svg';
 import OneButtonModal from '../../components/common/OneButtonModal';
 import ModalInner from '../../components/request/ModalInner';
+import { kakao } from '../../components/login/KakaoLogin';
+import { loginInfoState } from '../../recoil/atom';
 const TITLE = '매력적인 프로필 완성을 위해 추천사를 요청해보세요.';
 const CONTENT = [
   '나와 딱 맞는 탁월한 팀원을 한번에 찾고 싶다면,\n나보다 나를 더 잘 아는 동료에게 추천사를 요청해 멋진 프로필을 완성하세요.',
@@ -22,6 +25,18 @@ const Request = () => {
     setIsModalVisible(false);
   };
 
+  const loginUserInfo = useRecoilValue(loginInfoState);
+  const handleKakaoMessageSend = () => {
+    kakao.Share.sendCustom({
+      templateId: 99541,
+      templateArgs: {
+        name: loginUserInfo.data?.name,
+      },
+      // serverCallbackArgs: {
+      //   isSendSuccess: 'no', // 사용자 정의 파라미터 설정
+      // },
+    });
+  };
   return (
     <RequestLayout>
       <RequestBackGround src={bgSrc} />
@@ -52,7 +67,7 @@ const Request = () => {
         <KakaoTalkPreview onClick={handleClick}>
           발송 메세지 예시 미리보기
         </KakaoTalkPreview>
-        <KakaoTalkImg src={kakaotalkSrc} />
+        <KakaoTalkSendImg src={kakaotalkSrc} onClick={handleKakaoMessageSend} />
         <Button $isActive={true}>추천사를 보냈어요 →</Button>
       </TextContainer>
     </RequestLayout>
@@ -136,7 +151,7 @@ const KakaoTalkPreview = styled.div`
   cursor: pointer;
   z-index: 30;
 `;
-const KakaoTalkImg = styled.img`
+const KakaoTalkSendImg = styled.img`
   position: relative;
   ${({ theme }) => theme.fonts.bodyXL};
   color: ${({ theme }) => theme.colors.primary90};
