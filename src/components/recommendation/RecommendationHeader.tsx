@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import Title from '../common/Title';
 
 const RecommendationHeader = () => {
   return (
@@ -6,10 +7,7 @@ const RecommendationHeader = () => {
       <HeaderContent>
         <HeaderLeft>
           <HeaderTitle>
-            <div className="title-container">
-              <img src="/assets/images/recommendation/star.svg" alt="star" />
-              <h2>다음 팀 활동을 위해</h2>
-            </div>
+            <Title>다음 팀 활동을 위해</Title>
             <h1>팀원들에게 추천사를 남겨주세요!</h1>
           </HeaderTitle>
           <HeaderSubTitle>
@@ -62,18 +60,15 @@ const HeaderLeft = styled.div`
 const HeaderRight = styled.div``;
 
 const HeaderTitle = styled.div`
-  .title-container {
-    position: relative;
-    ${({ theme }) => theme.fonts.heading4};
-    color: ${({ theme }) => theme.colors.gray90};
+  position: relative;
+  ${({ theme }) => theme.fonts.heading4};
+  color: ${({ theme }) => theme.colors.gray90};
 
-    img {
-      position: absolute;
-      top: -1rem;
-      left: -2rem;
-    }
+  img {
+    position: absolute;
+    top: -1rem;
+    left: -2rem;
   }
-
   h1 {
     ${({ theme }) => theme.fonts.heading3};
     color: ${({ theme }) => theme.colors.primary60};
