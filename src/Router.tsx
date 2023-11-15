@@ -15,11 +15,12 @@ import PaymentComplete from './pages/payment/PaymentComplete';
 import PaymentCharge from './pages/payment/PaymentCharge';
 import Request from './pages/request/Request';
 import Main from './pages/main/Main';
+import ScrollToTop from './components/common/ScrollToTop';
 
 function Router() {
   return (
     <BrowserRouter>
-      <ScrollTop />
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
