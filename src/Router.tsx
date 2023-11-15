@@ -31,7 +31,7 @@ function Router() {
           <Route path="multipleChoice" element={<MultipleChoice />} />
         </Route>
         <Route path="/profile/:userId" element={<Profile />} />
-        <Route path="/list/:postId" element={<Contest />} />
+        <Route path="/list/:contestId" element={<Contest />} />
         <Route
           path="/list/:postId/:teamId"
           element={<div>팀 생성페이지입니다</div>}

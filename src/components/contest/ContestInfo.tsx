@@ -1,17 +1,23 @@
 import styled from 'styled-components';
 import { CONTEST_DATA } from '../../constants/Contest';
 import getContestInfo from '../../apis/contest/getContestInfo';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ResponseContestInfo } from '../../interface/Contest';
 import { AxiosResponse } from 'axios';
+import { useParams } from 'react-router-dom';
 
 const ContestInfo = () => {
+  const { contestId } = useParams();
+  const [contestInfo, setContestinfo] = useState<ResponseContestInfo>();
   const fetchContestInfo = async () => {
     try {
       const responseContestInfo: AxiosResponse<ResponseContestInfo> =
         await getContestInfo({
-          contestId: '6540d2d1c4c5fca30ca61e23',
+          contestId: contestId as string,
+          // contestId: '6540d2d1c4c5fca30ca61e23',
         });
+      setContestinfo(responseContestInfo.data); //data의 타입 주의!!
+
       console.log('responseContestInfo Complete', responseContestInfo);
     } catch (error) {
       console.log('responseContestInfo Error', error);
@@ -19,15 +25,40 @@ const ContestInfo = () => {
   };
   useEffect(() => {
     fetchContestInfo();
-  }, []);
+  }, [contestId]);
   return (
     <ContestInfoLayout>
-      <ContestInfoTitle>{CONTEST_DATA.title}</ContestInfoTitle>
+      <ContestInfoTitle>{contestInfo?.data.title}</ContestInfoTitle>
       <ContestContainer>
         <ContestImg src={CONTEST_DATA.images[0]} />
         <ContestTextBox>
-          <Dday>D-{CONTEST_DATA.remainDay}</Dday>
-          {CONTEST_DATA.data}
+          <Dday>D-{contestInfo?.data.contestId}</Dday>
+          <Description>
+            <span>모집 기간 : </span>
+            {contestInfo?.data.recruitDate}
+          </Description>
+          <Description>
+            <span>분야 : </span>
+            {contestInfo?.data.types.map((type) => (
+              <span>{type}, </span>
+            ))}
+          </Description>
+          <Description>
+            <span>주제 : </span>
+            {contestInfo?.data.subject}
+          </Description>
+          <Description>
+            <span>지원 자격 : </span>
+            {contestInfo?.data.qualification}
+          </Description>
+          <Description>
+            <span>전체 일정 : </span>
+            {contestInfo?.data.fullSchedule}
+          </Description>
+          <Description>
+            <span>시상 내역 : </span>
+            {contestInfo?.data.price}
+          </Description>
         </ContestTextBox>
       </ContestContainer>
     </ContestInfoLayout>
@@ -88,6 +119,16 @@ const ContestTextBox = styled.div`
 const Dday = styled.div`
   ${(props) => props.theme.fonts.heading5};
   color: ${(props) => props.theme.colors.error90};
+
+  margin-bottom: 2rem;
+`;
+const Description = styled.div`
+  ${(props) => props.theme.fonts.bodyM};
+  color: ${(props) => props.theme.colors.gray90};
+
+  > span:first-child {
+    ${(props) => props.theme.fonts.subtitleM};
+  }
 
   margin-bottom: 2rem;
 `;
