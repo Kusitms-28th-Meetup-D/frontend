@@ -7,7 +7,7 @@ import useContestInfo from '../../hooks/useContestInfo';
 const ContestInfo = () => {
   const { contestId } = useParams();
   const { contestInfoData } = useContestInfo(contestId as string);
-  
+
   return (
     <ContestInfoLayout>
       <ContestInfoTitle>{contestInfoData?.data.data.title}</ContestInfoTitle>
@@ -21,8 +21,8 @@ const ContestInfo = () => {
           </Description>
           <Description>
             <span>분야 : </span>
-            {contestInfoData?.data.data.types.map((type) => (
-              <span>{type}, </span>
+            {contestInfoData?.data.data.types.map((type, index) => (
+              <span key={index}>{type}, </span>
             ))}
           </Description>
           <Description>
