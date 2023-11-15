@@ -185,26 +185,26 @@ export const WORK_METHOD_CATEGORY: ICategory = {
 
 export const profileCreateInfo = [
   {
-    id: 1,
+    id: 0,
     title: '🔎 희망 직무와 관련있는 활동 경험을 적어주세요',
     example1: '삼양식품 마케팅 서포터즈 (6개월)',
     example2: '타임스퀘어 트렌드 마케터 15기 (1년)',
   },
   {
-    id: 2,
+    id: 1,
     title: '🏆 수상경력이 있다면 적어주세요',
     example1: '9회 아모레퍼시픽 마케팅 공모전 장려상',
     example2: '좋은 데이 대학생 마케팅 공모전 우수상',
   },
   {
-    id: 3,
+    id: 2,
     title: '🛠️ 어떤 협업, 작업 툴을 사용하실 수 있나요?',
     example1: '포토샵: (중) 사진 보정 및 포스터 작업 가능',
     example2: '프리미어프로: (상) 쇼츠 영상 광고 작업 가능',
     example3: '피그마: (중) 무리 없이 협업 가능',
   },
   {
-    id: 4,
+    id: 3,
     title: '🪪 가지고 계신 자격증이 있다면 알려주세요',
     example1: '온라인마케팅 실무전문가 자격증',
     example2: '검색광고 마케터 자격증',

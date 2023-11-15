@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { styled } from 'styled-components';
 
 interface ProfileCreateBoxProps {
+  id: number;
   title: string;
   example1: string;
   example2: string;
   example3?: string;
-  onValidate: (isValid: boolean) => void;
+  onValidate: (index: number, isValid: boolean) => void;
 }
 
 const ProfileCreateBox = ({
+  id,
   title,
   example1,
   example2,
@@ -17,20 +19,17 @@ const ProfileCreateBox = ({
   onValidate,
 }: ProfileCreateBoxProps) => {
   const [text, setText] = useState('');
-  const [showError, setShowError] = useState(false);
-
-  useEffect(() => {
-    const isValid = text.length >= 5;
-    onValidate(isValid);
-  }, [text, onValidate]);
+  const [showError, setShowError] = useState(true);
 
   const placeholderText = example3
     ? `ex)\n • ${example1}\n • ${example2}\n • ${example3}`
     : `ex)\n • ${example1}\n • ${example2}`;
 
-  useEffect(() => {
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setText(e.target.value);
+    onValidate(id, text.length >= 5);
     setShowError(text.length < 5);
-  }, [text]);
+  };
 
   return (
     <ProfileCreateTopContainer>
@@ -38,7 +37,7 @@ const ProfileCreateBox = ({
       <ProfileCreateBottomBox
         placeholder={placeholderText}
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={handleTextareaChange}
       />
       {showError && (
         <ErrorMessage>
