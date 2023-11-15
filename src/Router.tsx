@@ -19,6 +19,7 @@ import Main from './pages/main/Main';
 function Router() {
   return (
     <BrowserRouter>
+      <ScrollTop />
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
