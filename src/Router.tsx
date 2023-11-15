@@ -4,7 +4,7 @@ import Footer from './components/footer/Footer';
 import Oauth from './pages/login/Oauth';
 import Join from './pages/join/Join';
 import Profile from './pages/profile/Profile';
-
+import ProfileCreate from './pages/profile/ProfileCreate';
 import Recommendation from './pages/recommendation/Recommendation';
 import MultipleChoice from './pages/recommendation/MultipleChoice';
 import Subjective from './pages/recommendation/Subjective';
@@ -31,6 +31,7 @@ function Router() {
           <Route path="multipleChoice" element={<MultipleChoice />} />
         </Route>
         <Route path="/profile/:userId" element={<Profile />} />
+        <Route path="/profile/create" element={<ProfileCreate />} />
         <Route path="/list/:postId" element={<Contest />} />
         <Route
           path="/list/:postId/:teamId"
