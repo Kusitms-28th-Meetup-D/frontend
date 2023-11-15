@@ -1,63 +1,45 @@
 import styled from 'styled-components';
 import { CONTEST_DATA } from '../../constants/Contest';
-import getContestInfo from '../../apis/contest/getContestInfo';
-import { useEffect, useState } from 'react';
-import { ResponseContestInfo } from '../../interface/Contest';
-import { AxiosResponse } from 'axios';
+
 import { useParams } from 'react-router-dom';
+import useContestInfo from '../../hooks/useContestInfo';
 
 const ContestInfo = () => {
   const { contestId } = useParams();
-  const [contestInfo, setContestinfo] = useState<ResponseContestInfo>();
-  const fetchContestInfo = async () => {
-    try {
-      const responseContestInfo: AxiosResponse<ResponseContestInfo> =
-        await getContestInfo({
-          contestId: contestId as string,
-          // contestId: '6540d2d1c4c5fca30ca61e23',
-        });
-      setContestinfo(responseContestInfo.data); //data의 타입 주의!!
-
-      console.log('responseContestInfo Complete', responseContestInfo);
-    } catch (error) {
-      console.log('responseContestInfo Error', error);
-    }
-  };
-  useEffect(() => {
-    fetchContestInfo();
-  }, [contestId]);
+  const { contestInfoData } = useContestInfo(contestId as string);
+  
   return (
     <ContestInfoLayout>
-      <ContestInfoTitle>{contestInfo?.data.title}</ContestInfoTitle>
+      <ContestInfoTitle>{contestInfoData?.data.data.title}</ContestInfoTitle>
       <ContestContainer>
         <ContestImg src={CONTEST_DATA.images[0]} />
         <ContestTextBox>
-          <Dday>D-{contestInfo?.data.contestId}</Dday>
+          <Dday>D-{contestInfoData?.data.data.contestId}</Dday>
           <Description>
             <span>모집 기간 : </span>
-            {contestInfo?.data.recruitDate}
+            {contestInfoData?.data.data.recruitDate}
           </Description>
           <Description>
             <span>분야 : </span>
-            {contestInfo?.data.types.map((type) => (
+            {contestInfoData?.data.data.types.map((type) => (
               <span>{type}, </span>
             ))}
           </Description>
           <Description>
             <span>주제 : </span>
-            {contestInfo?.data.subject}
+            {contestInfoData?.data.data.subject}
           </Description>
           <Description>
             <span>지원 자격 : </span>
-            {contestInfo?.data.qualification}
+            {contestInfoData?.data.data.qualification}
           </Description>
           <Description>
             <span>전체 일정 : </span>
-            {contestInfo?.data.fullSchedule}
+            {contestInfoData?.data.data.fullSchedule}
           </Description>
           <Description>
             <span>시상 내역 : </span>
-            {contestInfo?.data.price}
+            {contestInfoData?.data.data.price}
           </Description>
         </ContestTextBox>
       </ContestContainer>
