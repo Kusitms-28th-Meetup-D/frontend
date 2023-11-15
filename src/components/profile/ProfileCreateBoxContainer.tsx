@@ -2,8 +2,15 @@ import { styled } from 'styled-components';
 import ProfileCreateBox from '../../components/profile/ProfileCreateBox';
 import { profileCreateInfo } from '../../constants/Profile';
 import BeforeNextButton from '../common/BeforeNextButton';
+import { useState } from 'react';
 
 const ProfileCreateBoxContainer = () => {
+  const [isTextValid, setIsTextValid] = useState(true);
+
+  const handleTextValidation = (isValid: boolean) => {
+    setIsTextValid(isValid);
+  };
+
   return (
     <>
       <ProfileCreateBoxLayout>
@@ -14,10 +21,15 @@ const ProfileCreateBoxContainer = () => {
             example1={info.example1}
             example2={info.example2}
             example3={info.example3}
+            onValidate={handleTextValidation}
           />
         ))}
       </ProfileCreateBoxLayout>
-      <BeforeNextButton next={'다음'} route={'/'} />
+      <BeforeNextButton
+        next={'다음'}
+        route={'/'}
+        isNextDisabled={!isTextValid}
+      />
     </>
   );
 };

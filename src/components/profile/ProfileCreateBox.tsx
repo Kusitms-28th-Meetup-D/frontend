@@ -6,6 +6,7 @@ interface ProfileCreateBoxProps {
   example1: string;
   example2: string;
   example3?: string;
+  onValidate: (isValid: boolean) => void;
 }
 
 const ProfileCreateBox = ({
@@ -13,9 +14,15 @@ const ProfileCreateBox = ({
   example1,
   example2,
   example3,
+  onValidate,
 }: ProfileCreateBoxProps) => {
   const [text, setText] = useState('');
   const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    const isValid = text.length >= 5;
+    onValidate(isValid);
+  }, [text, onValidate]);
 
   const placeholderText = example3
     ? `ex)\n • ${example1}\n • ${example2}\n • ${example3}`

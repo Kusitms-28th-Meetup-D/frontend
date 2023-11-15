@@ -4,9 +4,14 @@ import { styled } from 'styled-components';
 interface BeforeNextButtonProps {
   next: string;
   route: string;
+  isNextDisabled: boolean;
 }
 
-const BeforeNextButton = ({ next, route }: BeforeNextButtonProps) => {
+const BeforeNextButton = ({
+  next,
+  route,
+  isNextDisabled,
+}: BeforeNextButtonProps) => {
   const navigate = useNavigate();
 
   const handleBeforeButtonClick = () => {
@@ -26,7 +31,7 @@ const BeforeNextButton = ({ next, route }: BeforeNextButtonProps) => {
         />
         이전
       </BeforeButton>
-      <NextButton onClick={handleNextButtonClick}>
+      <NextButton onClick={handleNextButtonClick} disabled={isNextDisabled}>
         {next}
         <img
           src="/assets/images/recommendation/nextArrow.svg"
@@ -72,4 +77,8 @@ const NextButton = styled.button`
   ${({ theme }) => theme.fonts.buttonL};
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 3.6rem;
+
+  &:disabled {
+    cursor: default;
+  }
 `;
