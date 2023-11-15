@@ -7,7 +7,7 @@ const MultipleChoice = () => {
     <>
       <RecommendationHero />
       <RecommendationReason />
-      <BeforeNextButton next="제출하기" route="/" />
+      <BeforeNextButton next="제출하기" route="/" isNextDisabled={false} />
     </>
   );
 };

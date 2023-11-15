@@ -9,7 +9,11 @@ const Subjective = () => {
       <RecommendationProfiles />
       <RecommendationKeywords />
       <RecommendationTendency />
-      <BeforeNextButton next="다음" route="/recommendation/multipleChoice" />
+      <BeforeNextButton
+        next="다음"
+        route="/recommendation/multipleChoice"
+        isNextDisabled={false}
+      />
     </>
   );
 };
