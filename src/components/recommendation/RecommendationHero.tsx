@@ -1,14 +1,23 @@
 import { styled } from 'styled-components';
 import HeroBox from './HeroBox';
 import { heroList } from '../../constants/recommendation';
+import { useState } from 'react';
 
 const RecommendationHero = () => {
+  const [selectedHero, setSelectedHero] = useState('');
+
   return (
     <>
       <HeroTitle>추천사를 남길 주인공은?</HeroTitle>
       <HeroLayout>
         {heroList.map((hero) => (
-          <HeroBox key={hero.name} name={hero.name} src={hero.src} />
+          <HeroBox
+            key={hero.name}
+            name={hero.name}
+            src={hero.src}
+            selected={selectedHero === hero.name}
+            onSelect={() => setSelectedHero(hero.name)}
+          />
         ))}
       </HeroLayout>
     </>
