@@ -1,4 +1,4 @@
-import BeforeNextButton from '../../components/recommendation/BeforeNextButton';
+import BeforeNextButton from '../../components/common/BeforeNextButton';
 import RecommendationHero from '../../components/recommendation/RecommendationHero';
 import RecommendationReason from '../../components/recommendation/RecommendationReason';
 
