@@ -16,8 +16,7 @@ const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   userId; //이거는 일단 무시해주세요
 
-  useEffect(() => setHeaderSelected(Headers.list));
-
+  useEffect(() => setHeaderSelected(Headers.myProfile));
   return (
     <ProfileLayout>
       <ProfileInfo profileData={profileDatas} />

@@ -13,17 +13,19 @@ import CompetitionList from './pages/competitionList/CompetitionList';
 import Login from './pages/login/Login';
 import PaymentComplete from './pages/payment/PaymentComplete';
 import PaymentCharge from './pages/payment/PaymentCharge';
-
+import Request from './pages/request/Request';
+import Main from './pages/main/Main';
 
 function Router() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<div>main</div>} />
+        <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/oauth" element={<Oauth />} />
-        <Route path="/login/join" element={<Join />} />
+        <Route path="/join" element={<Join />} />
+        <Route path="/join/request" element={<Request />} />
         <Route path="/recommendation" element={<Recommendation />}>
           <Route path="subjective" element={<Subjective />} />
           <Route path="multipleChoice" element={<MultipleChoice />} />

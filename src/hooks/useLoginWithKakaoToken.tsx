@@ -29,11 +29,11 @@ const useLoginWithKakaoToken = () => {
             name: responseLogin.responseData?.data.name,
           },
         });
-        navigate('/');
+        navigate('/join/request');
       } else {
         if (responseLogin.statusCode == 404) {
           console.log('로그인실패 회원이 아님', responseLogin);
-          navigate('/login/join');
+          navigate('/join');
         } else {
           console.log('로그인실패, 이거 출력되면 안되는데', responseLogin);
         }
