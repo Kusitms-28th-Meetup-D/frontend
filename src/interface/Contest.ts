@@ -1,4 +1,4 @@
-export interface ResopnseContestInfo {
+export interface ResponseContestInfo {
   status: number;
   message: string;
   data: {
@@ -13,4 +13,7 @@ export interface ResopnseContestInfo {
     fullSchedule: string;
     price: string;
   };
+}
+export interface RequestContestInfo {
+  contestId: string;
 }

@@ -1,7 +1,25 @@
 import styled from 'styled-components';
 import { CONTEST_DATA } from '../../constants/Contest';
+import getContestInfo from '../../apis/contest/getContestInfo';
+import { useEffect } from 'react';
+import { ResponseContestInfo } from '../../interface/Contest';
+import { AxiosResponse } from 'axios';
 
 const ContestInfo = () => {
+  const fetchContestInfo = async () => {
+    try {
+      const responseContestInfo: AxiosResponse<ResponseContestInfo> =
+        await getContestInfo({
+          contestId: '6540d2d1c4c5fca30ca61e23',
+        });
+      console.log('responseContestInfo Complete', responseContestInfo);
+    } catch (error) {
+      console.log('responseContestInfo Error', error);
+    }
+  };
+  useEffect(() => {
+    fetchContestInfo();
+  }, []);
   return (
     <ContestInfoLayout>
       <ContestInfoTitle>{CONTEST_DATA.title}</ContestInfoTitle>
