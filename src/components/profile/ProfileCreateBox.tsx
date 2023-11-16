@@ -4,26 +4,20 @@ import { styled } from 'styled-components';
 interface ProfileCreateBoxProps {
   id: number;
   title: string;
-  example1: string;
-  example2: string;
-  example3?: string;
+  examples: string[];
   onUpdate: (title: string, data: string) => void;
 }
 
 const ProfileCreateBox = ({
   id,
   title,
-  example1,
-  example2,
-  example3,
+  examples,
   onUpdate,
 }: ProfileCreateBoxProps) => {
   const [text, setText] = useState('');
   const [showError, setShowError] = useState(true);
-
-  const placeholderText = example3
-    ? `ex)\n • ${example1}\n • ${example2}\n • ${example3}`
-    : `ex)\n • ${example1}\n • ${example2}`;
+  const placeholder =
+    `ex) \n` + examples.map((example) => ` • ${example}`).join('\n');
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
@@ -46,7 +40,7 @@ const ProfileCreateBox = ({
     <ProfileCreateTopContainer>
       <ProfileCreateTopBox>{title}</ProfileCreateTopBox>
       <ProfileCreateBottomBox
-        placeholder={placeholderText}
+        placeholder={placeholder}
         value={text}
         onChange={handleTextareaChange}
       />

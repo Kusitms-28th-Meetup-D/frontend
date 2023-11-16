@@ -38,9 +38,7 @@ const ProfileCreateBoxContainer = () => {
             key={info.id}
             id={info.id}
             title={info.title}
-            example1={info.example1}
-            example2={info.example2}
-            example3={info.example3}
+            examples={info.examples}
             onUpdate={handleProfilesData}
           />
         ))}
