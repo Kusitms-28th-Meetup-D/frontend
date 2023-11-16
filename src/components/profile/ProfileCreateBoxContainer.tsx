@@ -1,26 +1,34 @@
-import { useEffect } from 'react';
 import { styled } from 'styled-components';
 import ProfileCreateBox from '../../components/profile/ProfileCreateBox';
 import { profileCreateInfo } from '../../constants/Profile';
 import BeforeNextButton from '../common/BeforeNextButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useProfileCreate } from '../../hooks/profile/useProfileCreate';
 
 const ProfileCreateBoxContainer = () => {
-  const [isTextValid, setIsTextValid] = useState([false, false, false, false]);
   const [isNextDisabled, setIsNextDisabled] = useState(true);
+  const [profiles, setProfiles] = useState({
+    internships: '',
+    awards: '',
+    tools: '',
+    certificates: '',
+  });
 
-  const handleTextValidation = (index: number, isValid: boolean) => {
-    setIsTextValid((prevState) => {
-      const newState = [...prevState];
-      newState[index] = isValid;
-      return newState;
-    });
+  const handleProfilesData = (title: string, data: string) => {
+    setProfiles((prev: any) => ({ ...prev, [title]: data }));
   };
 
   useEffect(() => {
-    const allValid = isTextValid.every((value) => value === true);
-    setIsNextDisabled(!allValid);
-  }, [isTextValid]);
+    const allFieldsValid = Object.values(profiles).every(
+      (value) => value.length >= 5,
+    );
+    setIsNextDisabled(!allFieldsValid);
+  }, [profiles]);
+
+  const profileCreateMutation = useProfileCreate(profiles);
+  const handleNextButtonClick = () => {
+    profileCreateMutation.mutate();
+  };
 
   return (
     <>
@@ -33,7 +41,7 @@ const ProfileCreateBoxContainer = () => {
             example1={info.example1}
             example2={info.example2}
             example3={info.example3}
-            onValidate={handleTextValidation}
+            onUpdate={handleProfilesData}
           />
         ))}
       </ProfileCreateBoxLayout>
@@ -41,6 +49,7 @@ const ProfileCreateBoxContainer = () => {
         next={'다음'}
         route={'/'}
         isNextDisabled={isNextDisabled}
+        onClick={handleNextButtonClick}
       />
     </>
   );

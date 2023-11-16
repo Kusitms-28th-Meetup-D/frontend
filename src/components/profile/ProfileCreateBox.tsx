@@ -7,7 +7,7 @@ interface ProfileCreateBoxProps {
   example1: string;
   example2: string;
   example3?: string;
-  onValidate: (index: number, isValid: boolean) => void;
+  onUpdate: (title: string, data: string) => void;
 }
 
 const ProfileCreateBox = ({
@@ -16,7 +16,7 @@ const ProfileCreateBox = ({
   example1,
   example2,
   example3,
-  onValidate,
+  onUpdate,
 }: ProfileCreateBoxProps) => {
   const [text, setText] = useState('');
   const [showError, setShowError] = useState(true);
@@ -27,8 +27,19 @@ const ProfileCreateBox = ({
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
-    onValidate(id, text.length >= 5);
     setShowError(text.length < 5);
+
+    let title = '';
+    if (id === 0) {
+      title = 'internships';
+    } else if (id === 1) {
+      title = 'awards';
+    } else if (id === 2) {
+      title = 'tools';
+    } else if (id === 3) {
+      title = 'certificates';
+    }
+    onUpdate(title, e.target.value);
   };
 
   return (
