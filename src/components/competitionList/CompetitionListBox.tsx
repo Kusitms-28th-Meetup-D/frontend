@@ -1,11 +1,14 @@
 import { styled } from 'styled-components';
-import CompetitionBox from './CompetitionBox';
-import { competitionList } from '../../constants/competitionList';
+// import CompetitionBox from './CompetitionBox';
+import { useCompetitionList } from '../../hooks/competition/useCompetitionList';
 
 const CompetitionListBox = () => {
+  const { competitionList } = useCompetitionList();
+  console.log(competitionList);
+
   return (
     <CompetitionListLayout>
-      {competitionList.map((competition) => (
+      {/* {competitionList.map((competition) => (
         <CompetitionBox
           key={competition.contestId}
           title={competition.title}
@@ -14,7 +17,7 @@ const CompetitionListBox = () => {
           remainDay={competition.remainDay}
           company={competition.company}
         />
-      ))}
+      ))} */}
     </CompetitionListLayout>
   );
 };
