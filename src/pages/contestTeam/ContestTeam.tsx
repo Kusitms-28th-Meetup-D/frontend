@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-import {
-  ProfileBoxProps,
-  ResponseContestTeamDetailInfo,
-} from '../../interface/Contest';
+import { ProfileBoxProps, ProfileProps } from '../../interface/Contest';
 
 import undoSrc from '/assets/images/common/undo.svg';
 import { LeaderBox, Role } from '../../components/contest/RecruitTeamItem';
@@ -12,59 +9,34 @@ import { headerSelectedState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
 import { useEffect } from 'react';
 import useContestTeamDetailInfo from '../../hooks/useContestTeamDetailInfo';
-const DUMMY: ResponseContestTeamDetailInfo = {
-  status: 200,
-  message: '요청이 성공했습니다.',
-  data: {
-    leaderInfo: {
-      teamMemberId: 1,
-      teamMemberName: '오진영',
-      teamMemberImage:
-        'http://k.kakaocdn.net/dn/cY1oTv/btszi4PMkzZ/XEjRJGzXI6FR2clvBixTB0/img_640x640.jpg',
-      teamMemberTask: ['백엔드 개발자'],
-      teamMemberMajor: ['소프트웨어학과'],
-    },
-    leaderMessage: '봄 감자가 맛있답니다.',
-    max: 7,
-    cur: 2,
-    location: '서울특별시',
-    endDate: '2023-12-25 09:00:00.0',
-    notice:
-      '창업 학회, 마케팅 공모전 수상 경력이 여러 번 있어서 믿고 따라오셔도 될 것 같습니다!\n제가 전략 기획 쪽을 담당할 테니, UX/UI 디자인을 잘하시는 팀원을 만나고 싶어요!\n그리고 아이디어가 많으신 분들 환영합니다!\n+) 팀 모집은 제가 하지만, 팀 구성되고 난 후에는 따로 리더를 뽑을 계획입니다!',
-    leftMember: 5,
-    teamMemeberInfos: [
-      {
-        teamMemberId: 2,
-        teamMemberName: '갓진우',
-        teamMemberImage:
-          'http://k.kakaocdn.net/dn/cEd0CR/btrYlyKU8c9/CB2QnlVAd5GKEHHGHov2eK/img_640x640.jpg',
-        teamMemberTask: ['갓예진'],
-        teamMemberMajor: ['갓민정'],
-      },
-    ],
-    status: 1,
-  },
-};
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ContestTeam = () => {
-  const teamLeaderBoxProps: ProfileBoxProps = {
-    hasProfileButton: true,
-    isBgColorWhite: false,
-    memberInfo: DUMMY.data.leaderInfo,
-    hasBorder: false,
-  };
-  const { contestTeamDetailData } = useContestTeamDetailInfo(1);
+  const { teamId } = useParams();
+  const { contestTeamDetailData, isLoading } = useContestTeamDetailInfo(
+    teamId as string,
+  );
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
+  const navigate = useNavigate();
   useEffect(() => setHeaderSelected(Headers.list));
-  return (
+  const teamLeaderBoxProps: ProfileBoxProps = isLoading
+    ? ({} as ProfileBoxProps)
+    : {
+        hasProfileButton: true,
+        isBgColorWhite: false,
+        memberInfo: contestTeamDetailData?.data.data.leaderInfo as ProfileProps,
+        hasBorder: false,
+      };
+  return isLoading ? (
+    <div>로딩중</div>
+  ) : (
     <TeamLayout>
-      <TeamUndo>
+      <TeamUndo onClick={() => navigate(-1)}>
         <UndoImg src={undoSrc} />
         {'공모전으로 돌아가기'}
       </TeamUndo>
       <TeamTitle>
         {contestTeamDetailData?.data.data.leaderInfo.teamMemberName}님의 팀
-        {/* {DUMMY.data.leaderInfo.teamMemberName}님의 팀 */}
       </TeamTitle>
       <TeamLeaderContainer>
         <LeaderBox>
@@ -76,21 +48,29 @@ const ContestTeam = () => {
             팀장의 한 마디
             <div />
           </TeamLeaderTitle>
-          <TeamLeaderIntroduce>{DUMMY.data.leaderMessage}</TeamLeaderIntroduce>
+          <TeamLeaderIntroduce>
+            {contestTeamDetailData?.data.data.leaderMessage}
+          </TeamLeaderIntroduce>
           <TeamStatusBox>
             <TeamStatusItem>
-              모집 현황 : <span>{DUMMY.data.cur}명</span> / {DUMMY.data.max}명{' '}
+              모집 현황 : <span>{contestTeamDetailData?.data.data.cur}명</span>{' '}
+              / {contestTeamDetailData?.data.data.max}명{' '}
             </TeamStatusItem>
-            <TeamStatusItem> 활동 지역 : {DUMMY.data.location}</TeamStatusItem>
             <TeamStatusItem>
-              활동 종료 예정일 : {DUMMY.data.endDate}
+              {' '}
+              활동 지역 : {contestTeamDetailData?.data.data.location}
+            </TeamStatusItem>
+            <TeamStatusItem>
+              활동 종료 예정일 : {contestTeamDetailData?.data.data.endDate}
             </TeamStatusItem>
           </TeamStatusBox>
         </TeamLeaderInfoBox>
       </TeamLeaderContainer>
       <TeamNoticeContainer>
         <TeamNoticeTitle>모집 공고</TeamNoticeTitle>
-        <TeamNoticeContent>{DUMMY.data.notice}</TeamNoticeContent>
+        <TeamNoticeContent>
+          {contestTeamDetailData?.data.data.notice}
+        </TeamNoticeContent>
       </TeamNoticeContainer>
     </TeamLayout>
   );
@@ -110,7 +90,9 @@ const TeamUndo = styled.div`
   display: flex;
   align-items: center;
 
-  /* padding-top: 2rem 0; */
+  margin-top: 3rem;
+
+  cursor: pointer;
 `;
 const UndoImg = styled.img`
   width: 1.2rem;

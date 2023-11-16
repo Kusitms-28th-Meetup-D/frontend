@@ -36,7 +36,7 @@ function Router() {
         <Route path="/profile/:userId" element={<Profile />} />
 
         <Route path="/list/:contestId" element={<Contest />} />
-        <Route path="/list/:contestId/:teamid" element={<ContestTeam />} />
+        <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />
         <Route path="/profile/create" element={<ProfileCreate />} />
 
         <Route
