@@ -9,6 +9,7 @@ export interface ProfileBoxProps {
   hasProfileButton: boolean; //본 컴포넌트가 프로필보기 버튼을 가지는지 여부
   isBgColorWhite: boolean; //컴포넌트의 배경 색
   memberInfo: ProfileProps; // 유저 정보
+  hasBorder: boolean; //border 존재 여부
   width?: number;
   height?: number;
 }

@@ -1,24 +1,26 @@
 import styled from 'styled-components';
 
-import ProfileBox from '../common/ProfileBox';
 import {
   ContestTeamList,
   ProfileBoxProps,
   ProfileProps,
 } from '../../interface/Contest';
+import ProfileBoxMember from '../common/ProfileBoxMember';
+// import ProfileBoxLeader from '../common/ProfileBoxLeader';
 
 const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
   //props에서 팀 리더 데이터 추출
   const teamLeaderDataProps: ProfileBoxProps = {
     hasProfileButton: true,
     isBgColorWhite: false,
+    hasBorder: false,
     memberInfo: teamData.leaderInfo,
   };
   return (
     <ItemLayout>
       <LeaderBox>
         <Role>팀장</Role>
-        <ProfileBox {...teamLeaderDataProps} />
+        <ProfileBoxMember {...teamLeaderDataProps} />
         {/* <LeaderInfoBox infoData={data.leaer} /> */}
       </LeaderBox>
       <MemberBox>
@@ -27,18 +29,23 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
           <TO>
             모집 현황 : {teamData.cur}/{teamData.max}
           </TO>
-          <IntroduceTitle>팀장의 한 마디</IntroduceTitle>
+          <IntroduceTitle>
+            <Hr />
+            <div>팀장의 한 마디</div>
+            <Hr />
+          </IntroduceTitle>
           <IntroduceContent>{teamData.leaderMessage}</IntroduceContent>
           <GoTeamButton>팀 자세히 보러가기</GoTeamButton>
         </TeamInfoBox>
         <MemberInfoContainer>
           {teamData.teamMemeberInfos.map((member: ProfileProps, index: any) => {
             const teamMemberDataProps: ProfileBoxProps = {
-              hasProfileButton: true,
+              hasProfileButton: false,
               isBgColorWhite: false,
+              hasBorder: true,
               memberInfo: member,
             };
-            return <ProfileBox {...teamMemberDataProps} key={index} />;
+            return <ProfileBoxMember {...teamMemberDataProps} key={index} />;
           })}
         </MemberInfoContainer>
       </MemberBox>
@@ -73,7 +80,11 @@ const LeaderBox = styled.div`
   border: 1px solid ${(props) => props.theme.colors.primary40};
   border-radius: 0.8rem;
 
-  width: 17.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 20rem;
   /* height: 23rem; */
 `;
 const MemberBox = styled.div`
@@ -93,7 +104,7 @@ const MemberBox = styled.div`
 const TeamInfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: ce; */
   align-items: center;
   gap: 1rem;
 
@@ -111,6 +122,24 @@ const TO = styled.div`
 const IntroduceTitle = styled.div`
   ${(props) => props.theme.fonts.subtitleS};
   color: ${(props) => props.theme.colors.gray90};
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  width: 100%;
+  > div:nth-child(2) {
+    flex-shrink: 0; //너비만큼 차지
+  }
+`;
+const Hr = styled.div`
+  width: 30px;
+  height: 1px;
+
+  flex-grow: 1; //너비를 제외하고 최대로 차지
+
+  background-color: ${(props) => props.theme.colors.primary40};
 `;
 const IntroduceContent = styled.div`
   ${(props) => props.theme.fonts.subtitleM};
@@ -123,7 +152,11 @@ const IntroduceContent = styled.div`
   width: 100%;
   padding: 3.5rem;
 
-  text-align: center;
+  flex-grow: 1; //너비 최대로!!!!!!!
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const GoTeamButton = styled.button`
   ${(props) => props.theme.fonts.subtitleXS};
@@ -138,6 +171,8 @@ const GoTeamButton = styled.button`
 `;
 const MemberInfoContainer = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 1.2rem;
   overflow-x: scroll;
 

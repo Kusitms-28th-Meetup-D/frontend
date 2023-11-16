@@ -1,26 +1,33 @@
 import styled from 'styled-components';
 import { ProfileBoxProps } from '../../interface/Contest';
+import { useNavigate } from 'react-router-dom';
 
-const ProfileBox: React.FC<ProfileBoxProps> = ({
+const ProfileBoxMember: React.FC<ProfileBoxProps> = ({
   hasProfileButton,
   isBgColorWhite,
+  hasBorder,
   memberInfo,
 }) => {
+  const navigate = useNavigate();
   return (
-    <Container $isBgColorWhite={isBgColorWhite}>
+    <Container $isBgColorWhite={isBgColorWhite} $hasBorder={hasBorder}>
       <MemberImg src={memberInfo.teamMemberImage} />
       <Name>{memberInfo.teamMemberName}</Name>
       <Hr />
       <Part>{memberInfo.teamMemberTask[0]}</Part>
       {hasProfileButton ? (
-        <ViewProfileButton>프로필 보기</ViewProfileButton>
+        <ViewProfileButton
+          onClick={() => navigate(`/profile/${memberInfo.teamMemberId}`)}
+        >
+          프로필 보기
+        </ViewProfileButton>
       ) : (
         <Part>{memberInfo.teamMemberMajor[0]}</Part>
       )}
     </Container>
   );
 };
-const Container = styled.div<{ $isBgColorWhite: boolean }>`
+const Container = styled.div<{ $isBgColorWhite: boolean; $hasBorder: boolean }>`
   width: 16.6rem;
   height: 22.4rem;
 
@@ -32,13 +39,17 @@ const Container = styled.div<{ $isBgColorWhite: boolean }>`
 
   border: 1px solid ${(props) => props.theme.colors.gray20};
   border-radius: 0.8rem;
+  border: ${(props) =>
+    props.$hasBorder
+      ? '1px solid ${(props) => props.theme.colors.gray20}'
+      : 'none'};
 
   background-color: ${(props) =>
     props.$isBgColorWhite
       ? props.theme.colors.white
       : props.theme.colors.primary10};
 
-  padding: 2rem 3rem 2rem 3rem;
+  padding: 1rem 3rem 1rem 3rem;
 `;
 const MemberImg = styled.img`
   width: 7.8rem;
@@ -75,12 +86,17 @@ const ViewProfileButton = styled.div`
   width: 12rem;
   height: 3.6rem;
 
+  border: 1px solid ${(props) => props.theme.colors.primary60};
   border-radius: 1.8rem;
   ${(props) => props.theme.fonts.subtitleXS};
   color: ${(props) => props.theme.colors.primary60};
+  background-color: ${(props) => props.theme.colors.white};
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin: 1rem 0;
+  cursor: pointer;
 `;
-export default ProfileBox;
+export default ProfileBoxMember;
