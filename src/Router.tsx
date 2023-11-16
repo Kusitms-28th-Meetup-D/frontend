@@ -16,6 +16,7 @@ import PaymentCharge from './pages/payment/PaymentCharge';
 import Request from './pages/request/Request';
 import Main from './pages/main/Main';
 import ScrollToTop from './components/common/ScrollToTop';
+import ContestTeam from './pages/contestTeam/ContestTeam';
 
 function Router() {
   return (
@@ -35,7 +36,7 @@ function Router() {
         <Route path="/profile/:userId" element={<Profile />} />
 
         <Route path="/list/:contestId" element={<Contest />} />
-
+        <Route path="/list/:contestId/:teamid" element={<ContestTeam />} />
         <Route path="/profile/create" element={<ProfileCreate />} />
 
         <Route

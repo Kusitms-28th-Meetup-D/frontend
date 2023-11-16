@@ -6,6 +6,7 @@ import {
   ProfileProps,
 } from '../../interface/Contest';
 import ProfileBoxMember from '../common/ProfileBoxMember';
+import { useNavigate } from 'react-router-dom';
 // import ProfileBoxLeader from '../common/ProfileBoxLeader';
 
 const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
@@ -16,6 +17,7 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
     hasBorder: false,
     memberInfo: teamData.leaderInfo,
   };
+  const navigate = useNavigate();
   return (
     <ItemLayout>
       <LeaderBox>
@@ -35,7 +37,9 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
             <Hr />
           </IntroduceTitle>
           <IntroduceContent>{teamData.leaderMessage}</IntroduceContent>
-          <GoTeamButton>팀 자세히 보러가기</GoTeamButton>
+          <GoTeamButton onClick={() => navigate(`./12`)}>
+            팀 자세히 보러가기
+          </GoTeamButton>
         </TeamInfoBox>
         <MemberInfoContainer>
           {teamData.cur == 0 ? (
