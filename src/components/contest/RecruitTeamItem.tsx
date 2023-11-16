@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import LeaderInfoBox from './LeaderInfoBox';
 import MemberInfoBox from './MemberInfoBox';
-import ProfileBox, { ProfileBoxProps } from '../common/ProfileBox';
+import ProfileBox from '../common/ProfileBox';
+import { ProfileBoxProps } from '../../interface/Contest';
+
 const TEAM: ProfileBoxProps = {
   hasProfileButton: false,
   bgColor: 'white',
@@ -14,6 +16,7 @@ const TEAM: ProfileBoxProps = {
     teamMemberMajor: ['컴공가'],
   },
 };
+
 const RecruitTeamItem = ({ data }: { data: any }) => {
   return (
     <ItemLayout>

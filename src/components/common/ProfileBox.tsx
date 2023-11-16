@@ -1,19 +1,7 @@
 import styled from 'styled-components';
+import { ProfileBoxProps } from '../../interface/Contest';
 
-export interface ProfileProps {
-  teamMemberId: number;
-  teamMemberName: string;
-  teamMemberImage: string;
-  teamMemberTask: string[];
-  teamMemberMajor: string[];
-}
-export interface ProfileBoxProps {
-  hasProfileButton: boolean; //본 컴포넌트가 프로필보기 버튼을 가지는지 여부
-  bgColor: string; //컴포넌트의 배경 색
-  memberInfo: ProfileProps; // 유저 정보
-  width?: number;
-  height?: number;
-}
+
 const ProfileBox: React.FC<ProfileBoxProps> = ({
   hasProfileButton,
   bgColor,
