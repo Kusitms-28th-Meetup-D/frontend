@@ -1,13 +1,16 @@
 import styled from 'styled-components';
-import { TEAMS_DATA } from '../../constants/Contest';
 import RecruitTeamItem from './RecruitTeamItem';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import useContestTeamList from '../../hooks/useContestTeamList';
 
 const RecruitTeamList = () => {
   const navigate = useNavigate();
   const handleBtnClicked = () => {
     navigate('3');
   };
+  const { contestId } = useParams();
+  const { contestTeamListData } = useContestTeamList(contestId as string);
+  console.log(contestTeamListData?.data.data);
   return (
     <RecruitTeamListLayout>
       <RecruitTeamListTopContainer>
@@ -17,8 +20,8 @@ const RecruitTeamList = () => {
         </RecruitTeamButton>
       </RecruitTeamListTopContainer>{' '}
       <RecruitTeamContainer>
-        {TEAMS_DATA.map((data, index) => {
-          return <RecruitTeamItem data={data} key={index} />;
+        {contestTeamListData?.data.data.map((data, index) => {
+          return <RecruitTeamItem teamData={data} key={index} />;
         })}
       </RecruitTeamContainer>
     </RecruitTeamListLayout>
