@@ -1,6 +1,8 @@
 import axios from 'axios';
+
 const tokenString = sessionStorage.getItem('recoilPersistTest');
 const token = tokenString ? JSON.parse(tokenString) : null;
+
 const Axios = axios.create({
   baseURL: 'https://wanteam.site',
   headers: {

@@ -4,38 +4,47 @@ import { styled } from 'styled-components';
 interface ProfileCreateBoxProps {
   id: number;
   title: string;
-  example1: string;
-  example2: string;
-  example3?: string;
-  onValidate: (index: number, isValid: boolean) => void;
+  examples: string[];
+  onUpdate: (title: string, data: string[]) => void;
 }
 
 const ProfileCreateBox = ({
   id,
   title,
-  example1,
-  example2,
-  example3,
-  onValidate,
+  examples,
+  onUpdate,
 }: ProfileCreateBoxProps) => {
   const [text, setText] = useState('');
   const [showError, setShowError] = useState(true);
+  const placeholder =
+    `ex) \n` + examples.map((example) => ` • ${example}`).join('\n');
 
-  const placeholderText = example3
-    ? `ex)\n • ${example1}\n • ${example2}\n • ${example3}`
-    : `ex)\n • ${example1}\n • ${example2}`;
+  let content = '';
+  if (id === 0) {
+    content = 'internships';
+  } else if (id === 1) {
+    content = 'awards';
+  } else if (id === 2) {
+    content = 'tools';
+  } else if (id === 3) {
+    content = 'certificates';
+  }
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
-    onValidate(id, text.length >= 5);
-    setShowError(text.length < 5);
+    const inputValue = e.target.value;
+    setText(inputValue);
+    setShowError(inputValue.trim().length < 5);
+    const dataArray = inputValue
+      .split('\n')
+      .filter((line) => line.trim() !== '');
+    onUpdate(content, dataArray);
   };
 
   return (
     <ProfileCreateTopContainer>
       <ProfileCreateTopBox>{title}</ProfileCreateTopBox>
       <ProfileCreateBottomBox
-        placeholder={placeholderText}
+        placeholder={placeholder}
         value={text}
         onChange={handleTextareaChange}
       />

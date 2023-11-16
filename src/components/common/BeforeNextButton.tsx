@@ -5,12 +5,14 @@ interface BeforeNextButtonProps {
   next: string;
   route: string;
   isNextDisabled: boolean;
+  onClick?: () => void;
 }
 
 const BeforeNextButton = ({
   next,
   route,
   isNextDisabled,
+  onClick,
 }: BeforeNextButtonProps) => {
   const navigate = useNavigate();
 
@@ -31,7 +33,10 @@ const BeforeNextButton = ({
         />
         이전
       </BeforeButton>
-      <NextButton onClick={handleNextButtonClick} disabled={isNextDisabled}>
+      <NextButton
+        onClick={onClick ? onClick : handleNextButtonClick}
+        disabled={isNextDisabled}
+      >
         {next}
         <img
           src="/assets/images/recommendation/nextArrow.svg"
