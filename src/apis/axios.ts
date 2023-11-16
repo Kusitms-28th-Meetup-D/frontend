@@ -1,6 +1,13 @@
 import axios from 'axios';
 
-const Axios = axios.create();
-Axios.defaults.baseURL = 'https://wanteam.site';
+const token = sessionStorage.getItem('recoilPersistTest');
+
+const Axios = axios.create({
+  baseURL: 'https://wanteam.site',
+  headers: {
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
+  },
+});
 
 export default Axios;

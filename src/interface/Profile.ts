@@ -45,3 +45,10 @@ export interface IProfileSubInfoData {
   toolsData: SubInfoContentsProps;
   licensesData: SubInfoContentsProps;
 }
+
+export interface ProfileCraete {
+  internships: string;
+  awards: string;
+  tools: string;
+  certificates: string;
+}
