@@ -5,6 +5,7 @@ import BeforeNextButton from '../common/BeforeNextButton';
 import { useEffect, useState } from 'react';
 import OneButtonModal from '../common/OneButtonModal';
 import { useNavigate } from 'react-router-dom';
+import { useProfileCreate } from '../../hooks/profile/useProfileCreate';
 
 const ProfileCreateBoxContainer = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -28,9 +29,9 @@ const ProfileCreateBoxContainer = () => {
     setIsNextDisabled(!allFieldsValid);
   }, [profiles]);
 
-  // const profileCreateMutation = useProfileCreate(profiles);
+  const profileCreateMutation = useProfileCreate(profiles);
   const handleNextButtonClick = () => {
-    // profileCreateMutation.mutate();
+    profileCreateMutation.mutate();
     setModalOpen(true);
   };
 

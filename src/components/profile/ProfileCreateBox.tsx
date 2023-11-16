@@ -19,21 +19,21 @@ const ProfileCreateBox = ({
   const placeholder =
     `ex) \n` + examples.map((example) => ` • ${example}`).join('\n');
 
+  let content = '';
+  if (id === 0) {
+    content = 'internships';
+  } else if (id === 1) {
+    content = 'awards';
+  } else if (id === 2) {
+    content = 'tools';
+  } else if (id === 3) {
+    content = 'certificates';
+  }
+
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
     setShowError(text.length < 5);
-
-    let title = '';
-    if (id === 0) {
-      title = 'internships';
-    } else if (id === 1) {
-      title = 'awards';
-    } else if (id === 2) {
-      title = 'tools';
-    } else if (id === 3) {
-      title = 'certificates';
-    }
-    onUpdate(title, e.target.value);
+    onUpdate(content, e.target.value);
   };
 
   return (
