@@ -1,3 +1,4 @@
+
 export interface ProfileProps {
   teamMemberId: number;
   teamMemberName: string;
@@ -18,6 +19,7 @@ export interface ProfileBoxProps {
 export interface RequestContestInfo {
   contestId: string;
 }
+
 export interface ResponseContestInfo {
   status: number;
   message: string;
@@ -52,3 +54,5 @@ export interface ResponseContestTeamList {
   message: string;
   data: ContestTeamList[];
 }
+
+
