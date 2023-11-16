@@ -37,7 +37,7 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
             <Hr />
           </IntroduceTitle>
           <IntroduceContent>{teamData.leaderMessage}</IntroduceContent>
-          <GoTeamButton onClick={() => navigate(`./1`)}> 
+          <GoTeamButton onClick={() => navigate(`./${teamData.teamId}`)}>
             팀 자세히 보러가기
           </GoTeamButton>
         </TeamInfoBox>

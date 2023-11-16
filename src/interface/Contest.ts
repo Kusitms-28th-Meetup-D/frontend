@@ -41,6 +41,7 @@ export interface RequestContestTeamList {
   contestId: string;
 }
 export interface ContestTeamList {
+  teamId: number;
   max: number;
   cur: number;
   leaderMessage: string;
