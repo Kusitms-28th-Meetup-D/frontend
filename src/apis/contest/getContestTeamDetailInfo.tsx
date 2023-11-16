@@ -15,7 +15,7 @@ import {
 export const getContestTeamDetailInfo = (
   requestData: RequestContestTeamDetailInfo,
 ): AxiosPromise<ResponseContestTeamDetailInfo> =>
-  Axios.get(`/api/contests/detail/teamId=${requestData.teamId}`, {
+  Axios.get(`/api/teams/detail/${requestData.teamId}`, {
     headers: {
       Accept: 'application/json',
     },

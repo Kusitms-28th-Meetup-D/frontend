@@ -56,7 +56,7 @@ export interface ResponseContestTeamList {
 
 //공모전 상세보기 팀 세부 정보
 export interface RequestContestTeamDetailInfo {
-  teamId: string;
+  teamId: number;
 }
 export interface ContestTeamDetailInfo extends ContestTeamList {
   location: string;

@@ -53,7 +53,7 @@ const ContestTeam = () => {
     memberInfo: DUMMY.data.leaderInfo,
     hasBorder: false,
   };
-  // const { contestTeamDetailData } = useContestTeamDetailInfo('1');
+  const { contestTeamDetailData } = useContestTeamDetailInfo(1);
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.list));
   return (
@@ -63,8 +63,8 @@ const ContestTeam = () => {
         {'공모전으로 돌아가기'}
       </TeamUndo>
       <TeamTitle>
-        {/* {contestTeamDetailData?.data.data.leaderInfo.teamMemberName}님의 팀 */}
-        {DUMMY.data.leaderInfo.teamMemberName}님의 팀
+        {contestTeamDetailData?.data.data.leaderInfo.teamMemberName}님의 팀
+        {/* {DUMMY.data.leaderInfo.teamMemberName}님의 팀 */}
       </TeamTitle>
       <TeamLeaderContainer>
         <LeaderBox>
@@ -110,7 +110,7 @@ const TeamUndo = styled.div`
   display: flex;
   align-items: center;
 
-  /* margin-top: 2rem 0; */
+  /* padding-top: 2rem 0; */
 `;
 const UndoImg = styled.img`
   width: 1.2rem;
