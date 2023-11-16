@@ -7,7 +7,7 @@ export interface ProfileProps {
 }
 export interface ProfileBoxProps {
   hasProfileButton: boolean; //본 컴포넌트가 프로필보기 버튼을 가지는지 여부
-  bgColor: string; //컴포넌트의 배경 색
+  isBgColorWhite: boolean; //컴포넌트의 배경 색
   memberInfo: ProfileProps; // 유저 정보
   width?: number;
   height?: number;
@@ -38,15 +38,16 @@ export interface ResponseContestInfo {
 export interface RequestContestTeamList {
   contestId: string;
 }
+export interface ContestTeamList {
+  max: number;
+  cur: number;
+  leaderMessage: string;
+  leftMember: number;
+  leaderInfo: ProfileProps;
+  teamMemeberInfos: ProfileProps[];
+}
 export interface ResponseContestTeamList {
   status: number;
   message: string;
-  data: {
-    max: number;
-    cur: number;
-    leaderMessage: string;
-    leftMember: number;
-    leaderInfo: ProfileProps;
-    teamMemberInfos: ProfileProps[];
-  };
+  data: ContestTeamList[];
 }

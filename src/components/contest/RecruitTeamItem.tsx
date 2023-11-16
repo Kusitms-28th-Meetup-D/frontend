@@ -1,44 +1,45 @@
 import styled from 'styled-components';
-import LeaderInfoBox from './LeaderInfoBox';
-import MemberInfoBox from './MemberInfoBox';
+
 import ProfileBox from '../common/ProfileBox';
-import { ProfileBoxProps } from '../../interface/Contest';
+import {
+  ContestTeamList,
+  ProfileBoxProps,
+  ProfileProps,
+} from '../../interface/Contest';
 
-const TEAM: ProfileBoxProps = {
-  hasProfileButton: false,
-  bgColor: 'white',
-  memberInfo: {
-    teamMemberId: 2,
-    teamMemberName: '박진웆',
-    teamMemberImage:
-      'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2F81%2Fd3%2F7f%2F81d37f32571d3a43e9cec26691568da0--john-hamm-this-man.jpg&type=a340',
-    teamMemberTask: ['천재가될래요'],
-    teamMemberMajor: ['컴공가'],
-  },
-};
-
-const RecruitTeamItem = ({ data }: { data: any }) => {
+const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
+  //props에서 팀 리더 데이터 추출
+  const teamLeaderDataProps: ProfileBoxProps = {
+    hasProfileButton: true,
+    isBgColorWhite: false,
+    memberInfo: teamData.leaderInfo,
+  };
   return (
     <ItemLayout>
       <LeaderBox>
         <Role>팀장</Role>
-        <ProfileBox {...TEAM} />
-        <LeaderInfoBox infoData={data.leader} />
+        <ProfileBox {...teamLeaderDataProps} />
+        {/* <LeaderInfoBox infoData={data.leaer} /> */}
       </LeaderBox>
       <MemberBox>
         <Role>팀원</Role>
         <TeamInfoBox>
           <TO>
-            모집 현황 : {data.cur}/{data.max}
+            모집 현황 : {teamData.cur}/{teamData.max}
           </TO>
           <IntroduceTitle>팀장의 한 마디</IntroduceTitle>
-          <IntroduceContent>{data.talk}</IntroduceContent>
+          <IntroduceContent>{teamData.leaderMessage}</IntroduceContent>
           <GoTeamButton>팀 자세히 보러가기</GoTeamButton>
         </TeamInfoBox>
         <MemberInfoContainer>
-          {data.members.map((member: any, index: any) => (
-            <MemberInfoBox infoData={member} key={index} />
-          ))}
+          {teamData.teamMemeberInfos.map((member: ProfileProps, index: any) => {
+            const teamMemberDataProps: ProfileBoxProps = {
+              hasProfileButton: true,
+              isBgColorWhite: false,
+              memberInfo: member,
+            };
+            return <ProfileBox {...teamMemberDataProps} key={index} />;
+          })}
         </MemberInfoContainer>
       </MemberBox>
     </ItemLayout>

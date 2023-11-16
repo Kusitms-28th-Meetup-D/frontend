@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import { ProfileBoxProps } from '../../interface/Contest';
 
-
 const ProfileBox: React.FC<ProfileBoxProps> = ({
   hasProfileButton,
-  bgColor,
+  isBgColorWhite,
   memberInfo,
 }) => {
   return (
-    <Container $bgColor={bgColor}>
+    <Container $isBgColorWhite={isBgColorWhite}>
       <MemberImg src={memberInfo.teamMemberImage} />
       <Name>{memberInfo.teamMemberName}</Name>
       <Hr />
@@ -21,7 +20,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({
     </Container>
   );
 };
-const Container = styled.div<{ $bgColor: string }>`
+const Container = styled.div<{ $isBgColorWhite: boolean }>`
   width: 16.6rem;
   height: 22.4rem;
 
@@ -33,7 +32,11 @@ const Container = styled.div<{ $bgColor: string }>`
 
   border: 1px solid ${(props) => props.theme.colors.gray20};
   border-radius: 0.8rem;
-  background-color: ${(props) => props.$bgColor};
+
+  background-color: ${(props) =>
+    props.$isBgColorWhite
+      ? props.theme.colors.white
+      : props.theme.colors.primary10};
 
   padding: 2rem 3rem 2rem 3rem;
 `;
