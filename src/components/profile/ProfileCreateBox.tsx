@@ -5,7 +5,7 @@ interface ProfileCreateBoxProps {
   id: number;
   title: string;
   examples: string[];
-  onUpdate: (title: string, data: string) => void;
+  onUpdate: (title: string, data: string[]) => void;
 }
 
 const ProfileCreateBox = ({
@@ -31,9 +31,13 @@ const ProfileCreateBox = ({
   }
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
-    setShowError(text.length < 5);
-    onUpdate(content, e.target.value);
+    const inputValue = e.target.value;
+    setText(inputValue);
+    setShowError(inputValue.trim().length < 5);
+    const dataArray = inputValue
+      .split('\n')
+      .filter((line) => line.trim() !== '');
+    onUpdate(content, dataArray);
   };
 
   return (

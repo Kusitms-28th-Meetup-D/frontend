@@ -11,20 +11,18 @@ const ProfileCreateBoxContainer = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isNextDisabled, setIsNextDisabled] = useState(true);
   const [profiles, setProfiles] = useState({
-    internships: '',
-    awards: '',
-    tools: '',
-    certificates: '',
+    internships: [],
+    awards: [],
+    tools: [],
+    certificates: [],
   });
   const navigate = useNavigate();
-
-  const handleProfilesData = (title: string, data: string) => {
+  const handleProfilesData = (title: string, data: string[]) => {
     setProfiles((prev: any) => ({ ...prev, [title]: data }));
   };
-
   useEffect(() => {
     const allFieldsValid = Object.values(profiles).every(
-      (value) => value.length >= 5,
+      (value) => Array.isArray(value) && value.length > 0,
     );
     setIsNextDisabled(!allFieldsValid);
   }, [profiles]);

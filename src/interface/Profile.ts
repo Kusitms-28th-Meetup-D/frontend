@@ -47,8 +47,8 @@ export interface IProfileSubInfoData {
 }
 
 export interface ProfileCraete {
-  internships: string;
-  awards: string;
-  tools: string;
-  certificates: string;
+  internships: string[];
+  awards: string[];
+  tools: string[];
+  certificates: string[];
 }
