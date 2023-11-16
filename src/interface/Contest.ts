@@ -1,4 +1,3 @@
-
 export interface ProfileProps {
   teamMemberId: number;
   teamMemberName: string;
@@ -55,4 +54,18 @@ export interface ResponseContestTeamList {
   data: ContestTeamList[];
 }
 
-
+//공모전 상세보기 팀 세부 정보
+export interface RequestContestTeamDetailInfo {
+  teamId: string;
+}
+export interface ContestTeamDetailInfo extends ContestTeamList {
+  location: string;
+  endDate: string;
+  notice: string;
+  status: number;
+}
+export interface ResponseContestTeamDetailInfo {
+  status: number;
+  message: string;
+  data: ContestTeamDetailInfo;
+}
