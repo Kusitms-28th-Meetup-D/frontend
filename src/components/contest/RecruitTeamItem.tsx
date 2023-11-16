@@ -1,12 +1,25 @@
 import styled from 'styled-components';
 import LeaderInfoBox from './LeaderInfoBox';
 import MemberInfoBox from './MemberInfoBox';
-
+import ProfileBox, { ProfileBoxProps } from '../common/ProfileBox';
+const TEAM: ProfileBoxProps = {
+  hasProfileButton: false,
+  bgColor: 'white',
+  memberInfo: {
+    teamMemberId: 2,
+    teamMemberName: '박진웆',
+    teamMemberImage:
+      'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2F81%2Fd3%2F7f%2F81d37f32571d3a43e9cec26691568da0--john-hamm-this-man.jpg&type=a340',
+    teamMemberTask: ['천재가될래요'],
+    teamMemberMajor: ['컴공가'],
+  },
+};
 const RecruitTeamItem = ({ data }: { data: any }) => {
   return (
     <ItemLayout>
       <LeaderBox>
         <Role>팀장</Role>
+        <ProfileBox {...TEAM} />
         <LeaderInfoBox infoData={data.leader} />
       </LeaderBox>
       <MemberBox>
