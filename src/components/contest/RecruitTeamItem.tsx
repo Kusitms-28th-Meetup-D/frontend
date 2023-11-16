@@ -38,15 +38,23 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
           <GoTeamButton>팀 자세히 보러가기</GoTeamButton>
         </TeamInfoBox>
         <MemberInfoContainer>
-          {teamData.teamMemeberInfos.map((member: ProfileProps, index: any) => {
-            const teamMemberDataProps: ProfileBoxProps = {
-              hasProfileButton: false,
-              isBgColorWhite: false,
-              hasBorder: true,
-              memberInfo: member,
-            };
-            return <ProfileBoxMember {...teamMemberDataProps} key={index} />;
-          })}
+          {teamData.cur == 0 ? (
+            <NoMember>모집된 팀원이 없습니다.</NoMember>
+          ) : (
+            teamData.teamMemeberInfos.map(
+              (member: ProfileProps, index: any) => {
+                const teamMemberDataProps: ProfileBoxProps = {
+                  hasProfileButton: false,
+                  isBgColorWhite: false,
+                  hasBorder: true,
+                  memberInfo: member,
+                };
+                return (
+                  <ProfileBoxMember {...teamMemberDataProps} key={index} />
+                );
+              },
+            )
+          )}
         </MemberInfoContainer>
       </MemberBox>
     </ItemLayout>
@@ -93,9 +101,9 @@ const MemberBox = styled.div`
 
   ${(props) => props.theme.fonts.subtitleS};
   color: ${(props) => props.theme.colors.white};
-  background-color: ${(props) => props.theme.colors.primary10};
+  background-color: ${(props) => props.theme.colors.gray5};
 
-  border: 1px solid ${(props) => props.theme.colors.primary40};
+  border: 1px solid ${(props) => props.theme.colors.gray20};
   border-radius: 0.8rem;
 
   width: 100%;
@@ -191,5 +199,15 @@ const MemberInfoContainer = styled.div`
     background: ${(props) => props.theme.colors.primary60};
     border-radius: 6px;
   }
+`;
+const NoMember = styled.div`
+  color: ${(props) => props.theme.colors.primary90};
+  ${(props) => props.theme.fonts.subtitleM};
+
+  width: 72rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export default RecruitTeamItem;
