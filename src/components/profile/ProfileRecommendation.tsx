@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 import ProfileRecommendationContentsBox from './ProfileRecommendationContentsBox';
-import { IRecommendation } from '../../interface/Profile';
+import { Comment } from '../../interface/Profile';
 
 const ProfileRecommendation = ({
   recommendationData,
   name,
   isLocked,
 }: {
-  recommendationData: IRecommendation[];
-  name: string;
+  recommendationData?: Comment[];
+  name?: string;
   isLocked: boolean;
 }) => {
   const DETAIL_LOCKED_TICKET = isLocked
     ? `티켓을 사용하면 ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`
     : `티켓을 사용하셨군요. ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`;
-  const LOCKED_TICKET_AMMOUNT = isLocked ? '?' : recommendationData.length;
+  const LOCKED_TICKET_AMMOUNT = isLocked ? '?' : recommendationData?.length;
   return (
     <ProfileRecommendationContainer>
       <ProfileRecommendationTitle>

@@ -3,33 +3,33 @@ import styled from 'styled-components';
 import starBulletSrc from '/assets/images/profile/star-list-type.png';
 import starLeandSrc from '/assets/images/profile/star-leand.svg';
 import rangeBgSrc from '/assets/images/profile/range-bg.png';
-import { ICategory, IQuestion } from '../../interface/Profile';
+import { ICategory } from '../../interface/Profile';
 import React from 'react';
 
 const ProfilePersonalityContent = ({
   datas,
   category,
 }: {
-  datas: IQuestion[];
-  category: ICategory;
+  datas?: any[];
+  category?: ICategory;
 }) => {
   datas;
   return (
     <TendencyLayout>
-      <TendencyTopBox>{category.title}</TendencyTopBox>
+      <TendencyTopBox>{category?.title}</TendencyTopBox>
       <TendencyBottomBox>
-        {datas.map((data, index) => {
+        {datas?.map((data, index) => {
           return (
             <React.Fragment key={index}>
               <div>
                 <StarBullet src={starBulletSrc} />
                 <TendencySubTitle>
-                  {category.category[index].subtitle}
+                  {category?.category[index].subtitle}
                 </TendencySubTitle>
               </div>
               <SwiperBox>
                 <SwiperText $isBold={data.percent < 49}>
-                  {category.category[index].leftValue}
+                  {category?.category[index].leftValue}
                 </SwiperText>
                 <RangeBox
                   type="range"
@@ -39,7 +39,7 @@ const ProfilePersonalityContent = ({
                   readOnly
                 />
                 <SwiperText $isBold={data.percent > 51}>
-                  {category.category[index].rightValue}
+                  {category?.category[index].rightValue}
                 </SwiperText>
               </SwiperBox>
             </React.Fragment>
@@ -112,7 +112,6 @@ const SwiperText = styled.div<{ $isBold: boolean }>`
 
   width: 25%;
   white-space: nowrap;
-  
 `;
 const RangeBox = styled.input<{ $imgUrl: string; $bgUrl: string }>`
   width: 50%;

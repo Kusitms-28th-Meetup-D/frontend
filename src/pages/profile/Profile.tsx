@@ -4,7 +4,6 @@ import ProfileSubInfo from '../../components/profile/ProfileSubInfo';
 import ProfileKeyword from '../../components/profile/ProfileKeyword';
 import ProfileRecommendation from '../../components/profile/ProfileRecommendation';
 import ProfilePersonality from '../../components/profile/ProfilePersonality';
-import { profileDatas, reviewDatas } from '../../constants/Profile';
 import { useSetRecoilState } from 'recoil';
 import { headerSelectedState } from '../../recoil/atom';
 import { useEffect } from 'react';
@@ -44,16 +43,16 @@ const Profile = () => {
       />
       <ProfileKeyword
         keywords={profileRecommendationData?.data.data.keywords}
-        name={profileDatas.name}
+        name={profileData?.data.data.username}
       />
       <ProfilePersonality
-        teamCurturesData={reviewDatas.teamCultures}
-        workMethodsData={reviewDatas.workMethods}
-        name={profileDatas.name}
+        teamCurturesData={profileRecommendationData?.data.data.teamCultures}
+        workMethodsData={profileRecommendationData?.data.data.workMethods}
+        name={profileData?.data.data.username}
       />
       <ProfileRecommendation
-        recommendationData={reviewDatas.recommendation}
-        name={profileDatas.name}
+        recommendationData={profileRecommendationData?.data.data.comments}
+        name={profileData?.data.data.username}
         isLocked={true}
       />
     </ProfileLayout>

@@ -2,28 +2,28 @@ import styled from 'styled-components';
 
 import quoteOpenSrc from '/assets/images/profile/quotes_open.svg';
 import quoteCloseSrc from '/assets/images/profile/quotes_close.svg';
-import { IRecommendation } from '../../interface/Profile';
+import { Comment } from '../../interface/Profile';
 import ProfileLocked from './ProfileLocked';
 
 const ProfileRecommendationContentsBox = ({
   recommendationData,
   isLocked,
 }: {
-  recommendationData: IRecommendation[];
+  recommendationData?: Comment[];
   isLocked: boolean;
 }) => {
   return (
     <Container $isLocked={isLocked}>
-      <ProfileLocked />
-      {recommendationData.map((data, index) => {
+      {isLocked ? <ProfileLocked /> : null}
+      {recommendationData?.map((data, index) => {
         return (
           <ContentBox key={index}>
             <QuoteBox>
               <QuoteImg src={quoteOpenSrc} />
               <QuoteImg src={quoteCloseSrc} />
             </QuoteBox>
-            <Text> {data.recommendation}</Text>
-            <Category>{data.category}</Category>
+            <Text> {data.comments}</Text>
+            <Category>{data.contestName}</Category>
           </ContentBox>
         );
       })}

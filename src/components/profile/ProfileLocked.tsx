@@ -24,6 +24,7 @@ const ProfileLocked = () => {
   );
 };
 const LockedLayout = styled.div`
+  /* display: none; */
   position: absolute;
 
   width: 100%;
