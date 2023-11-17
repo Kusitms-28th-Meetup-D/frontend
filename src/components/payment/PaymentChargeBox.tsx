@@ -6,6 +6,9 @@ import Title from '../common/Title';
 import Button from '../common/Button';
 import { useTicketCount } from '../../hooks/payment/useTicketCount';
 import { useTicketBuy } from '../../hooks/payment/useTicketBuy';
+import OneButtonModal from '../common/OneButtonModal';
+import { useNavigate } from 'react-router-dom';
+import PossessionTicket from './PossessionTicket';
 
 const PaymentChargeBox = () => {
   const { ticketCount } = useTicketCount();
@@ -14,6 +17,8 @@ const PaymentChargeBox = () => {
   const [afterTicket, setAfterTicket] = useState(
     (ticketCount?.data?.ticketCount ?? 0) + chargeTicket,
   );
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     setAfterTicket((ticketCount?.data.ticketCount ?? 0) + chargeTicket);
@@ -33,14 +38,13 @@ const PaymentChargeBox = () => {
       setChargeTicket(20);
     }
   };
-  setChargeTicket;
-  setAfterTicket;
-
   const ticketChargeMutation = useTicketBuy({ buyAmount: chargeTicket });
-
   const handleTicketChargeClick = () => {
     ticketChargeMutation.mutate();
+    setModalOpen(true);
   };
+
+  const navigate = useNavigate();
 
   return (
     <PaymentChargeContainer>
@@ -90,6 +94,32 @@ const PaymentChargeBox = () => {
               티켓 충전하기
             </Button>
           </ButtonBox>
+          {modalOpen && (
+            <OneButtonModal
+              button={{
+                text: '닫기',
+                onClickFunc: () => {
+                  setModalOpen(false);
+                  navigate('/');
+                },
+              }}
+              onCloseClickFunc={() => {
+                setModalOpen(false);
+              }}
+              $isModalVisible={modalOpen}
+            >
+              <ModalImage
+                src={'/assets/images/payment/payment_complete_modal.svg'}
+                alt="payment_complete_modal"
+              />
+              <ModalTitle>티켓 충전이 완료되었어요!</ModalTitle>
+              <ModalContent>
+                <p>티켓으로 한 줄 추천사를 열람하고,</p>
+                <p>Wanteam에서 딱 맞는 팀원을 한번에 찾아보세요.</p>
+              </ModalContent>
+              <PossessionTicket />
+            </OneButtonModal>
+          )}
         </ChargeCalcBoxContainer>
       </PaymentChargeBoxContainer>
     </PaymentChargeContainer>
@@ -180,4 +210,20 @@ const TitleBox = styled.div`
 
 const ButtonBox = styled.div`
   padding: 0 6rem;
+`;
+
+const ModalImage = styled.img`
+  margin: 2rem 0;
+`;
+
+const ModalTitle = styled.div`
+  ${({ theme }) => theme.fonts.heading2_1};
+  color: ${({ theme }) => theme.colors.gray90};
+`;
+
+const ModalContent = styled.div`
+  ${({ theme }) => theme.fonts.bodyXL};
+  color: ${({ theme }) => theme.colors.gray70};
+  text-align: center;
+  margin: 3rem 0;
 `;
