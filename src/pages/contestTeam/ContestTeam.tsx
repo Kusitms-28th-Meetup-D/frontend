@@ -26,6 +26,8 @@ const ContestTeam = () => {
         isBgColorWhite: false,
         memberInfo: contestTeamDetailData?.data.data.leaderInfo as ProfileProps,
         hasBorder: false,
+        width: 20,
+        height: 27.6,
       };
   return isLoading ? (
     <div>로딩중</div>
