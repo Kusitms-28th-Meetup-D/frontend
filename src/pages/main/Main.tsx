@@ -5,16 +5,20 @@ import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import MainBox from '../../components/main/MainBox';
 import MainDescription from '../../components/main/MainDescription';
+import MainCompetition from '../../components/main/MainCompetition';
 
 const Main = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.none));
 
   return (
-    <MainLayout>
-      <MainBox />
-      <MainDescription />
-    </MainLayout>
+    <>
+      <MainLayout>
+        <MainBox />
+        <MainDescription />
+      </MainLayout>
+      <MainCompetition />
+    </>
   );
 };
 export default Main;
