@@ -6,6 +6,7 @@ import {
   ProfileProps,
 } from '../../interface/Contest';
 import ProfileBoxMember from '../common/ProfileBoxMember';
+import { useNavigate } from 'react-router-dom';
 // import ProfileBoxLeader from '../common/ProfileBoxLeader';
 
 const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
@@ -16,6 +17,7 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
     hasBorder: false,
     memberInfo: teamData.leaderInfo,
   };
+  const navigate = useNavigate();
   return (
     <ItemLayout>
       <LeaderBox>
@@ -35,7 +37,9 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
             <Hr />
           </IntroduceTitle>
           <IntroduceContent>{teamData.leaderMessage}</IntroduceContent>
-          <GoTeamButton>팀 자세히 보러가기</GoTeamButton>
+          <GoTeamButton onClick={() => navigate(`./${teamData.teamId}`)}>
+            팀 자세히 보러가기
+          </GoTeamButton>
         </TeamInfoBox>
         <MemberInfoContainer>
           {teamData.cur == 0 ? (
@@ -64,7 +68,7 @@ const ItemLayout = styled.div`
   display: flex;
   gap: 2.4rem;
 `;
-const Role = styled.div`
+export const Role = styled.div`
   position: absolute;
   left: -1px;
   top: -1.5rem;
@@ -78,7 +82,7 @@ const Role = styled.div`
   height: 3rem;
   padding: 0.4rem 0.8rem;
 `;
-const LeaderBox = styled.div`
+export const LeaderBox = styled.div`
   position: relative;
 
   ${(props) => props.theme.fonts.subtitleS};
@@ -106,7 +110,8 @@ const MemberBox = styled.div`
   border: 1px solid ${(props) => props.theme.colors.gray20};
   border-radius: 0.8rem;
 
-  width: 100%;
+  flex-grow: 1;
+  /* width: 100%; */
   /* height: 23rem; */
 `;
 const TeamInfoBox = styled.div`
@@ -147,7 +152,8 @@ const Hr = styled.div`
 
   flex-grow: 1; //너비를 제외하고 최대로 차지
 
-  background-color: ${(props) => props.theme.colors.primary40};
+  border-top: 1px solid ${(props) => props.theme.colors.primary40};
+  /* background-color: ${(props) => props.theme.colors.primary40}; */
 `;
 const IntroduceContent = styled.div`
   ${(props) => props.theme.fonts.subtitleM};
