@@ -4,6 +4,7 @@ import { headerSelectedState } from '../../recoil/atom';
 import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import MainBox from '../../components/main/MainBox';
+import MainDescription from '../../components/main/MainDescription';
 
 const Main = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
@@ -12,6 +13,7 @@ const Main = () => {
   return (
     <MainLayout>
       <MainBox />
+      <MainDescription />
     </MainLayout>
   );
 };
