@@ -1,16 +1,15 @@
 import { styled } from 'styled-components';
-import { useState } from 'react';
+import { useTicketCount } from '../../hooks/payment/useTicketCount';
 
 const PossessionTicket = () => {
-  const [ticketCount, setTicketCount] = useState(0);
-  setTicketCount; // 임시
+  const { ticketCount } = useTicketCount();
 
   return (
     <PossessionTicketContainer>
       <TicketLeft>충전 후 보유 티켓</TicketLeft>|
       <TicketRight>
         <TicketImage src="/assets/images/payment/ticketCount.svg" />
-        {ticketCount}장
+        {ticketCount?.data.ticketCount}장
       </TicketRight>
     </PossessionTicketContainer>
   );
@@ -28,6 +27,7 @@ const PossessionTicketContainer = styled.div`
   gap: 2rem;
   ${({ theme }) => theme.fonts.bodyM};
   color: ${({ theme }) => theme.colors.gray40};
+  margin-bottom: 4rem;
 `;
 
 const TicketLeft = styled.div`
