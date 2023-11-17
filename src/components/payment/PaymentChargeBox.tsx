@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Title from '../common/Title';
 import Button from '../common/Button';
 import { useTicketCount } from '../../hooks/payment/useTicketCount';
+import { useTicketBuy } from '../../hooks/payment/useTicketBuy';
 
 const PaymentChargeBox = () => {
   const { ticketCount } = useTicketCount();
@@ -32,10 +33,14 @@ const PaymentChargeBox = () => {
       setChargeTicket(20);
     }
   };
-  // 임시
-  // setCurrentTicket;
   setChargeTicket;
   setAfterTicket;
+
+  const ticketChargeMutation = useTicketBuy({ buyAmount: chargeTicket });
+
+  const handleTicketChargeClick = () => {
+    ticketChargeMutation.mutate();
+  };
 
   return (
     <PaymentChargeContainer>
@@ -80,7 +85,7 @@ const PaymentChargeBox = () => {
             <p>언제든지 자유롭게 열람하실 수 있어요!</p>
           </div>
           <ButtonBox>
-            <Button>
+            <Button onClick={handleTicketChargeClick}>
               <LightningIcon src={'/assets/images/payment/lightning.svg'} />
               티켓 충전하기
             </Button>
