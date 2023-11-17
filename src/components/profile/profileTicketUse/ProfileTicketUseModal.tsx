@@ -1,6 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ProfileTicketLackInner from './ProfileTicketUseInner';
 import TwoButtonModal from '../../common/TwoButtonModal';
+import { useUseTicket2 } from '../../../hooks/profile/useUseTicket';
 
 interface ProfileTicketUseModalProps {
   isModalVisible: boolean;
@@ -12,12 +13,14 @@ const ProfileTicketUseModal: React.FC<ProfileTicketUseModalProps> = ({
   setIsModalVisible,
   currTicketAmount,
 }) => {
-  const navigate = useNavigate();
+  const { userId } = useParams();
+  const handleUseTicket = useUseTicket2(userId as string);
   const handleLeftButtonClick = () => {
     setIsModalVisible(false);
   };
   const handleRightButtonClick = () => {
-    navigate('/payment/charge');
+    handleUseTicket.mutate();
+    setIsModalVisible(false);
   };
   const handleCloseButtonClick = () => {
     setIsModalVisible(false);

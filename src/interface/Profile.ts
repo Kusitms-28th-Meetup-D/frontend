@@ -146,3 +146,16 @@ export interface ResponseIsTicketUsed {
   message: string;
   data: IsTicketUsedData;
 }
+
+//티켓 사용하기 api
+export interface RequestUseTicket {
+  purchaseUserId?: string;
+}
+export interface UseTicketData {
+  remainTicket: number;
+}
+export interface ResponseUseTicket {
+  status: number;
+  message: string;
+  data: UseTicketData;
+}
