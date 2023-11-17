@@ -2,31 +2,49 @@ import styled from 'styled-components';
 
 import quoteOpenSrc from '/assets/images/profile/quotes_open.svg';
 import quoteCloseSrc from '/assets/images/profile/quotes_close.svg';
-import { IRecommendation } from '../../interface/Profile';
+import { Comment } from '../../interface/Profile';
+import ProfileLocked from './ProfileLocked';
 
 const ProfileRecommendationContentsBox = ({
   recommendationData,
+  isLocked,
+  name,
+  setIsLackModalVisible,
+  setIsUseModalVisible,
 }: {
-  recommendationData: IRecommendation[];
+  recommendationData?: Comment[];
+  isLocked?: boolean;
+  name?: string;
+  setIsLackModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsUseModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <Container>
-      {recommendationData.map((data, index) => {
+    <Container $isLocked={isLocked}>
+      {isLocked ? (
+        <ProfileLocked
+          name={name}
+          setIsLackModalVisible={setIsLackModalVisible}
+          setIsUseModalVisible={setIsUseModalVisible}
+        />
+      ) : null}
+      {recommendationData?.map((data, index) => {
         return (
           <ContentBox key={index}>
             <QuoteBox>
               <QuoteImg src={quoteOpenSrc} />
               <QuoteImg src={quoteCloseSrc} />
             </QuoteBox>
-            <Text> {data.recommendation}</Text>
-            <Category>{data.category}</Category>
+            <Text> {data.comments}</Text>
+            <Category>{data.contestName}</Category>
           </ContentBox>
         );
       })}
     </Container>
   );
 };
-const Container = styled.div`
+const Container = styled.div<{ $isLocked?: boolean }>`
+  position: relative;
+
   ${(props) => props.theme.fonts.bodyL};
   background-color: ${(props) => props.theme.colors.gray5};
   border-radius: 1.2rem;
@@ -37,6 +55,10 @@ const Container = styled.div`
   gap: 2rem;
 
   padding: 3rem;
+
+  /* ${(props) => (props.$isLocked ? '100px' : null)}; */
+  height: 40rem;
+  overflow: hidden;
 `;
 const ContentBox = styled.div`
   border-radius: 1.2rem;

@@ -6,7 +6,7 @@ import { kakaoAccessTokenState } from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
 
 import postKakaoAccessTokenFromCode from '../../apis/login/postKakaoAccessTokenFromCode';
-import useLoginWithKakaoToken from '../../hooks/useLoginWithKakaoToken';
+import useLoginWithKakaoToken from '../../hooks/login/useLoginWithKakaoToken';
 
 const Oauth = () => {
   const setKakaoAccessTokenState = useSetRecoilState(kakaoAccessTokenState);

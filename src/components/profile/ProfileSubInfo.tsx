@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import ProfileSubInfoContents from './ProfileSubInfoContent';
-import { ProfileSubInfoData } from '../../constants/Profile';
 
 /*
 const activitiesData: SubInfoContentsProps = {
@@ -37,21 +36,35 @@ const licensesData: SubInfoContentsProps = {
 };
 */
 
-const ProfileSubInfo = () => {
+const ProfileSubInfo = ({
+  internships,
+  awards,
+  tools,
+  certificates,
+}: {
+  internships?: string[];
+  awards?: string[];
+  tools?: string[];
+  certificates?: string[];
+}) => {
+  const titles1 = ['대외활동 및 인턴', '수상 경력'];
+  const titles2 = ['사용 가능 툴', '보유 자격증'];
   return (
     <ProfileSubInfoContainer>
       <ProfileSubInfoBox>
         <ProfileSubInfoTitle>이력</ProfileSubInfoTitle>
         <ProfileSubInfoContents
-          props1={ProfileSubInfoData.activitiesData}
-          props2={ProfileSubInfoData.awardsData}
+          props1={internships}
+          props2={awards}
+          titles={titles1}
         />
       </ProfileSubInfoBox>
       <ProfileSubInfoBox>
         <ProfileSubInfoTitle>스킬</ProfileSubInfoTitle>
         <ProfileSubInfoContents
-          props1={ProfileSubInfoData.toolsData}
-          props2={ProfileSubInfoData.licensesData}
+          props1={tools}
+          props2={certificates}
+          titles={titles2}
         />
       </ProfileSubInfoBox>
     </ProfileSubInfoContainer>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import RecruitTeamItem from './RecruitTeamItem';
 import { useNavigate, useParams } from 'react-router-dom';
-import useContestTeamList from '../../hooks/useContestTeamList';
+import useContestTeamList from '../../hooks/contest/useContestTeamList';
 
 const RecruitTeamList = () => {
   const navigate = useNavigate();

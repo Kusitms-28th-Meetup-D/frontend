@@ -1,21 +1,22 @@
 import styled from 'styled-components';
-import { SubInfoContentsProps } from '../../interface/Profile';
 
 const ProfileSubInfoContents = ({
   props1,
   props2,
+  titles,
 }: {
-  props1: SubInfoContentsProps;
-  props2: SubInfoContentsProps;
+  props1?: string[];
+  props2?: string[];
+  titles: string[];
 }) => {
   return (
     <ContentsContainer>
-      <ContentsSubTitle>{props1.title}</ContentsSubTitle>
-      {props1.contents.map((content, index) => (
+      <ContentsSubTitle>{titles[0]}</ContentsSubTitle>
+      {props1?.map((content: any, index: number) => (
         <ContentsDetail key={index}>{content}</ContentsDetail>
       ))}
-      <ContentsSubTitle>{props2.title}</ContentsSubTitle>
-      {props2.contents.map((content, index) => (
+      <ContentsSubTitle>{titles[1]}</ContentsSubTitle>
+      {props2?.map((content: any, index: number) => (
         <ContentsDetail key={index}>{content}</ContentsDetail>
       ))}
     </ContentsContainer>
