@@ -38,8 +38,6 @@ function Router() {
         <Route path="/list/:contestId" element={<Contest />} />
         <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />
         <Route path="/profile/create" element={<ProfileCreate />} />
-
-
         <Route
           path="/list/:postId/:teamId"
           element={<div>팀 생성페이지입니다</div>}

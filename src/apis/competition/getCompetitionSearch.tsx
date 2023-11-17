@@ -1,11 +1,11 @@
 import { ResponseCompetitionList } from '../../interface/Competition';
 import Axios from '../axios';
 
-export async function getCompetitionList(
-  contestType: number,
+export async function getCompetitionSearch(
+  searchText: string,
 ): Promise<ResponseCompetitionList> {
   const { data } = await Axios.get(
-    `/api/contests/categories?contestType=${contestType}`,
+    `/api/contests/search?searchText=${searchText}`,
   );
   return data;
 }
