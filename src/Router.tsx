@@ -18,6 +18,7 @@ import Main from './pages/main/Main';
 import ScrollToTop from './components/common/ScrollToTop';
 import MyTeam from './pages/myteam/MyTeam';
 import MyTeamOpen from './components/myteam/MyTeamOpen';
+import ContestTeam from './pages/contestTeam/ContestTeam';
 
 function Router() {
   return (
@@ -43,6 +44,9 @@ function Router() {
           <Route path="end" element={<div>활동했던 팀</div>} />
         </Route>
         <Route path="/list/:contestId" element={<Contest />} />
+        <Route path="/list/:contestId" element={<Contest />} />
+        <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />
+        <Route path="/profile/create" element={<ProfileCreate />} />
         <Route
           path="/list/:postId/:teamId"
           element={<div>팀 생성페이지입니다</div>}

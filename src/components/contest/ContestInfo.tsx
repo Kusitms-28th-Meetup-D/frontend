@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { CONTEST_DATA } from '../../constants/Contest';
 
 import { useParams } from 'react-router-dom';
 import useContestInfo from '../../hooks/useContestInfo';
@@ -12,7 +11,7 @@ const ContestInfo = () => {
     <ContestInfoLayout>
       <ContestInfoTitle>{contestInfoData?.data.data.title}</ContestInfoTitle>
       <ContestContainer>
-        <ContestImg src={CONTEST_DATA.images[0]} />
+        <ContestImg src={contestInfoData?.data.data.images[0]} />
         <ContestTextBox>
           <Dday>D-{contestInfoData?.data.data.contestId}</Dday>
           <Description>
