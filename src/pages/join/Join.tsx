@@ -12,14 +12,14 @@ import SelectInput from '../../components/join/SelectInput';
 import TextAreaInput from '../../components/join/TextAreaInput';
 import { InputDataArray, RequestJoin } from '../../interface/Join';
 import postJoin from '../../apis/join/postJoin';
-import useLoginWithKakaoToken from '../../hooks/useLoginWithKakaoToken';
+import useLoginWithKakaoToken from '../../hooks/login/useLoginWithKakaoToken';
 
 const Join = () => {
   //navigate의 state로 온 토큰을 받기 위함
   //이게 아니고, 스토리지에서 꺼내서 확인하는 로직이 되어야 할듯
   const kakaoAccessToken = useRecoilValue(kakaoAccessTokenState);
   const { handleLogin } = useLoginWithKakaoToken();
- 
+
   const [inputValue, setInputValue] = useState<RequestJoin>({
     username: '민정리',
     location: '서울특별시',

@@ -1,7 +1,7 @@
 import { useSetRecoilState } from 'recoil';
-import { loginWithKakaoToken } from '../components/login/KakaoLogin';
-import { LoginResult } from '../interface/Login';
-import { loginInfoState } from '../recoil/atom';
+import { loginWithKakaoToken } from '../../components/login/KakaoLogin';
+import { LoginResult } from '../../interface/Login';
+import { loginInfoState } from '../../recoil/atom';
 import { useNavigate } from 'react-router-dom';
 
 /** 카카오 어세스 토큰를 통해 로그인 하는 훅

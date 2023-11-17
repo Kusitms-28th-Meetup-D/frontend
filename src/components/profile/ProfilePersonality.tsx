@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import ProfilePersonalityContent from './ProfilePersonalityContent';
-import { IQuestion } from '../../interface/Profile';
-import { TEAM_CURTURE_CATEGORY, WORK_METHOD_CATEGORY } from '../../constants/Profile';
-
-
+import { TeamCulture, WorkMethod } from '../../interface/Profile';
+import {
+  TEAM_CURTURE_CATEGORY,
+  WORK_METHOD_CATEGORY,
+} from '../../constants/Profile';
 
 const ProfilePersonality = ({
   teamCurturesData,
   workMethodsData,
   name,
 }: {
-  teamCurturesData: IQuestion[];
-  workMethodsData: IQuestion[];
-  name: string;
+  teamCurturesData?: TeamCulture[];
+  workMethodsData?: WorkMethod[];
+  name?: string;
 }) => {
   return (
     <ProfilePersonalityContainer>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { useParams } from 'react-router-dom';
-import useContestInfo from '../../hooks/useContestInfo';
+import useContestInfo from '../../hooks/contest/useContestInfo';
 
 const ContestInfo = () => {
   const { contestId } = useParams();

@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import getContestInfo from '../apis/contest/getContestInfo';
+import getContestInfo from '../../apis/contest/getContestInfo';
 
 export const useContestInfo = (contestId: string) => {
   const { data: contestInfoData } = useQuery('contestInfo', () =>

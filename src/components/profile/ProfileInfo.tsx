@@ -1,33 +1,39 @@
 import styled from 'styled-components';
 
-export interface ProfileInfoProps {
-  name: string;
-  part: string;
-  imageUrl: string;
-  region: string;
-  major: string;
-  introduce: string;
-}
-const ProfileInfo = ({ profileData }: { profileData: ProfileInfoProps }) => {
+const ProfileInfo = ({
+  name,
+  profile_image,
+  task,
+  location,
+  major,
+  selfIntroduction,
+}: {
+  name?: string;
+  profile_image?: string;
+  task?: string;
+  location?: string;
+  major?: string;
+  selfIntroduction?: string;
+}) => {
   return (
     <>
-      <ProfileText>{profileData.name} 님의 프로필</ProfileText>
+      <ProfileText>{name} 님의 프로필</ProfileText>
       <ProfileContainer>
-        <ProfileImage src={profileData.imageUrl} />
+        <ProfileImage src={profile_image} />
         <ProfileTextBox>
-          <ProfileName>{profileData.name} </ProfileName>
-          <ProfilePart>{profileData.part}</ProfilePart>
+          <ProfileName>{name} </ProfileName>
+          <ProfilePart>{task}</ProfilePart>
           <div>
             <ProfileType>활동 지역</ProfileType>
-            <ProfileValue>{profileData.region}</ProfileValue>
+            <ProfileValue>{location}</ProfileValue>
           </div>
           <div>
             <ProfileType>전공</ProfileType>
-            <ProfileValue>{profileData.major}</ProfileValue>
+            <ProfileValue>{major}</ProfileValue>
           </div>
           <div>
             <ProfileType>한 줄 소개</ProfileType>
-            <ProfileValue>{profileData.introduce}</ProfileValue>
+            <ProfileValue>{selfIntroduction}</ProfileValue>
           </div>
         </ProfileTextBox>
       </ProfileContainer>
@@ -44,7 +50,10 @@ const ProfileContainer = styled.div`
   width: 100%;
   height: 29.6rem;
   background-color: ${(props) => props.theme.colors.primary10};
-  border-radius: 1.2rem;
+  border-radius: 1 as {
+    profiledata: ProfileData;
+    isloading: boolean;
+  }
 
   display: flex;
   align-items: center;

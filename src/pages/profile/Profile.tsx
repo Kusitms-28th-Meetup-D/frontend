@@ -1,38 +1,78 @@
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ProfileInfo from '../../components/profile/ProfileInfo';
 import ProfileSubInfo from '../../components/profile/ProfileSubInfo';
 import ProfileKeyword from '../../components/profile/ProfileKeyword';
 import ProfileRecommendation from '../../components/profile/ProfileRecommendation';
 import ProfilePersonality from '../../components/profile/ProfilePersonality';
-import { profileDatas, reviewDatas } from '../../constants/Profile';
 import { useSetRecoilState } from 'recoil';
 import { headerSelectedState } from '../../recoil/atom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Headers } from '../../constants/Header';
+import useProfile from '../../hooks/profile/useProfile';
+import Loading from '../../components/common/Loading';
+import useProfileRecommendation from '../../hooks/profile/useProfileRecommendation';
+import { useParams } from 'react-router-dom';
+import ProfileTicketLackModal from '../../components/profile/ProfileTicketLack/ProfileTicketLackModal';
+import useIsTicketUsed from '../../hooks/profile/useIsTicketUsed';
+import useTicketNumber from '../../hooks/profile/useTicketNumber';
+import ProfileTicketUseModal from '../../components/profile/profileTicketUse/ProfileTicketUseModal';
 
 const Profile = () => {
-  const { userId } = useParams();
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
-  userId; //이거는 일단 무시해주세요
+  const { userId } = useParams();
+  const { profileData, isLoading } = useProfile(userId as string);
+  const { profileRecommendationData, isLoadingRecommendation } =
+    useProfileRecommendation(userId as string);
 
+  const { IsTicketUsedData } = useIsTicketUsed(userId as string);
+  const { TicketNumberData } = useTicketNumber();
   useEffect(() => setHeaderSelected(Headers.myProfile));
-  return (
+
+  const [isLackModalVisible, setIsLackModalVisible] = useState(false);
+  const [isUseModalVisible, setIsUseModalVisible] = useState(false);
+  return isLoading || isLoadingRecommendation ? (
+    <Loading />
+  ) : (
     <ProfileLayout>
-      <ProfileInfo profileData={profileDatas} />
-      <ProfileSubInfo />
+      <ProfileTicketLackModal
+        isModalVisible={isLackModalVisible}
+        setIsModalVisible={setIsLackModalVisible}
+        currTicketAmount={TicketNumberData?.data.data.ticketCount}
+      />
+      <ProfileTicketUseModal
+        isModalVisible={isUseModalVisible}
+        setIsModalVisible={setIsUseModalVisible}
+        currTicketAmount={TicketNumberData?.data.data.ticketCount}
+      />
+      <ProfileInfo
+        name={profileData?.data.data.username}
+        profile_image={profileData?.data.data.profile_image}
+        task={profileData?.data.data.task[0]}
+        location={profileData?.data.data.location}
+        major={profileData?.data.data.major[0]}
+        selfIntroduction={profileData?.data.data.selfIntroduction}
+      />
+      <ProfileSubInfo
+        internships={profileData?.data.data.internships}
+        awards={profileData?.data.data.awards}
+        tools={profileData?.data.data.tools}
+        certificates={profileData?.data.data.certificates}
+      />
       <ProfileKeyword
-        keywordData={reviewDatas.keywords}
-        name={profileDatas.name}
+        keywords={profileRecommendationData?.data.data.keywords}
+        name={profileData?.data.data.username}
       />
       <ProfilePersonality
-        teamCurturesData={reviewDatas.teamCultures}
-        workMethodsData={reviewDatas.workMethods}
-        name={profileDatas.name}
+        teamCurturesData={profileRecommendationData?.data.data.teamCultures}
+        workMethodsData={profileRecommendationData?.data.data.workMethods}
+        name={profileData?.data.data.username}
       />
       <ProfileRecommendation
-        recommendationData={reviewDatas.recommendation}
-        name={profileDatas.name}
+        recommendationData={profileRecommendationData?.data.data.comments}
+        name={profileData?.data.data.username}
+        isLocked={!IsTicketUsedData?.data.data.isUsed}
+        setIsLackModalVisible={setIsLackModalVisible}
+        setIsUseModalVisible={setIsUseModalVisible}
       />
     </ProfileLayout>
   );
