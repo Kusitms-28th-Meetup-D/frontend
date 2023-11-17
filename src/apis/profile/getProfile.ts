@@ -1,10 +1,12 @@
 import { AxiosPromise } from 'axios';
 import Axios from '../axios';
 
-import { ResponseProfile } from '../../interface/Profile';
+import { RequestProfile, ResponseProfile } from '../../interface/Profile';
 
-export const getProfile = (): AxiosPromise<ResponseProfile> =>
-  Axios.get(`/api/users/mypage`, {
+export const getProfile = (
+  requestData: RequestProfile,
+): AxiosPromise<ResponseProfile> =>
+  Axios.get(`/api/users/profiles/${requestData.userId}`, {
     headers: {
       Accept: 'application/json',
     },

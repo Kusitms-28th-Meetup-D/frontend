@@ -2,8 +2,16 @@ export interface IKeyword {
   keywordType: number;
   count: number;
 }
-export interface IQuestion {
-  questionType: number;
+export interface ITeamCulture {
+  teamCultureType: number;
+  percent: number;
+}
+// export interface IQuestion {
+//   questionType: number;
+//   percent: number;
+// }
+export interface IWorkMethod {
+  workMethodType: number;
   percent: number;
 }
 
@@ -11,10 +19,10 @@ export interface IRecommendation {
   recommendation: string;
   category: string;
 }
-export interface IReviewDatas {
+export interface ProfileRecommendation {
   keywords: IKeyword[];
-  teamCultures: IQuestion[];
-  workMethods: IQuestion[];
+  teamCultures: ITeamCulture[];
+  workMethods: IWorkMethod[];
   recommendation: IRecommendation[];
 }
 
@@ -74,4 +82,41 @@ export interface ResponseProfile {
   status: number;
   message: string;
   data: ProfileData;
+}
+
+//프로필 정보 조회 - 추천사 api
+export interface Keyword {
+  keywordType: number;
+  count: number;
+}
+
+export interface TeamCulture {
+  teamCultureType: number;
+  percent: number;
+}
+
+export interface WorkMethod {
+  workMethodType: number;
+  percent: number;
+}
+
+export interface Comment {
+  comments: string;
+  contestName: string;
+}
+export interface RequestProfileRecommendation {
+  userId?: string;
+}
+export interface ProfileRecommendationData {
+  userId: number;
+  keywords: Keyword[];
+  teamCultures: TeamCulture[];
+  workMethods: WorkMethod[];
+  comments: Comment[];
+}
+
+export interface ResponseProfileRecommendation {
+  status: number;
+  message: string;
+  data: ProfileRecommendationData;
 }

@@ -11,14 +11,20 @@ import { useEffect } from 'react';
 import { Headers } from '../../constants/Header';
 import useProfile from '../../hooks/profile/useProfile';
 import Loading from '../../components/common/Loading';
+import useProfileRecommendation from '../../hooks/profile/useProfileRecommendation';
+import { useParams } from 'react-router-dom';
 
 const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
-  const { profileData, isLoading } = useProfile();
-
+  const { userId } = useParams();
+  const { profileData, isLoading } = useProfile(userId as string);
+  const { profileRecommendationData, isLoadingRecommendation } =
+    useProfileRecommendation(userId as string);
   useEffect(() => setHeaderSelected(Headers.myProfile));
 
-  return isLoading ? (
+  console.log(profileRecommendationData);
+
+  return isLoading || isLoadingRecommendation ? (
     <Loading />
   ) : (
     <ProfileLayout>
@@ -37,9 +43,8 @@ const Profile = () => {
         certificates={profileData?.data.data.certificates}
       />
       <ProfileKeyword
-        keywordData={reviewDatas.keywords}
+        keywords={profileRecommendationData?.data.data.keywords}
         name={profileDatas.name}
-        name={profileData?.data.data.username}
       />
       <ProfilePersonality
         teamCurturesData={reviewDatas.teamCultures}
