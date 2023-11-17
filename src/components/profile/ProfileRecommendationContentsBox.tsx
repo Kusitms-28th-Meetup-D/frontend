@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import quoteOpenSrc from '/assets/images/profile/quotes_open.svg';
 import quoteCloseSrc from '/assets/images/profile/quotes_close.svg';
 import { IRecommendation } from '../../interface/Profile';
+import ProfileLocked from './ProfileLocked';
 
 const ProfileRecommendationContentsBox = ({
   recommendationData,
@@ -13,6 +14,7 @@ const ProfileRecommendationContentsBox = ({
 }) => {
   return (
     <Container $isLocked={isLocked}>
+      <ProfileLocked />
       {recommendationData.map((data, index) => {
         return (
           <ContentBox key={index}>
@@ -29,6 +31,8 @@ const ProfileRecommendationContentsBox = ({
   );
 };
 const Container = styled.div<{ $isLocked: boolean }>`
+  position: relative;
+
   ${(props) => props.theme.fonts.bodyL};
   background-color: ${(props) => props.theme.colors.gray5};
   border-radius: 1.2rem;
