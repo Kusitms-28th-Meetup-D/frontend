@@ -15,6 +15,7 @@ import { useParams } from 'react-router-dom';
 import ProfileTicketLackModal from '../../components/profile/ProfileTicketLack/ProfileTicketLackModal';
 import useIsTicketUsed from '../../hooks/profile/useIsTicketUsed';
 import useTicketNumber from '../../hooks/profile/useTicketNumber';
+import ProfileTicketUseModal from '../../components/profile/profileTicketUse/ProfileTicketUseModal';
 
 const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
@@ -27,16 +28,20 @@ const Profile = () => {
   const { TicketNumberData } = useTicketNumber();
   useEffect(() => setHeaderSelected(Headers.myProfile));
 
-  const [isModalVisible, setIsModalVisible] = useState(true);
-
+  const [isLackModalVisible, setIsLackModalVisible] = useState(true);
+  const [isUseModalVisible, setIsUseModalVisible] = useState(true);
   return isLoading || isLoadingRecommendation ? (
     <Loading />
   ) : (
     <ProfileLayout>
       <ProfileTicketLackModal
-        isModalVisible={isModalVisible}
-        setIsModalVisible={setIsModalVisible}
-        // currTicketAmount={123}
+        isModalVisible={isLackModalVisible}
+        setIsModalVisible={setIsLackModalVisible}
+        currTicketAmount={TicketNumberData?.data.data.ticketCount}
+      />
+      <ProfileTicketUseModal
+        isModalVisible={isUseModalVisible}
+        setIsModalVisible={setIsUseModalVisible}
         currTicketAmount={TicketNumberData?.data.data.ticketCount}
       />
       <ProfileInfo
