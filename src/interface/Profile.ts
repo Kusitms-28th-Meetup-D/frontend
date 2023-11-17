@@ -52,3 +52,25 @@ export interface ProfileCraete {
   tools: string[];
   certificates: string[];
 }
+// 프로필 정보 조회 api
+export interface RequestProfile {
+  userId: string;
+}
+export interface ProfileData {
+  userId: number;
+  profile_image: string;
+  username: string;
+  task: string[];
+  location: string;
+  major: string[];
+  selfIntroduction: string;
+  internships: string[];
+  awards: string[];
+  tools: string[];
+  certificates: string[];
+}
+export interface ResponseProfile {
+  status: number;
+  message: string;
+  data: ProfileData;
+}

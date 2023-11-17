@@ -10,14 +10,18 @@ import { useSetRecoilState } from 'recoil';
 import { headerSelectedState } from '../../recoil/atom';
 import { useEffect } from 'react';
 import { Headers } from '../../constants/Header';
+import useProfile from '../../hooks/profile/useProfile';
+import Loading from '../../components/common/Loading';
 
 const Profile = () => {
   const { userId } = useParams();
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
-  userId; //이거는 일단 무시해주세요
+  const { profileData, isLoading } = useProfile(userId as string);
 
   useEffect(() => setHeaderSelected(Headers.myProfile));
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <ProfileLayout>
       <ProfileInfo profileData={profileDatas} />
       <ProfileSubInfo />
