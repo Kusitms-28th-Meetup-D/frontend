@@ -11,7 +11,6 @@ import Subjective from './pages/recommendation/Subjective';
 import Contest from './pages/contest/Contest';
 import CompetitionList from './pages/competitionList/CompetitionList';
 import Login from './pages/login/Login';
-import PaymentComplete from './pages/payment/PaymentComplete';
 import PaymentCharge from './pages/payment/PaymentCharge';
 import Request from './pages/request/Request';
 import Main from './pages/main/Main';
@@ -53,7 +52,6 @@ function Router() {
         />
         <Route path="/list" element={<CompetitionList />} />
         <Route path="/payment/charge" element={<PaymentCharge />} />
-        <Route path="/payment/complete" element={<PaymentComplete />} />
       </Routes>
       <Footer />
     </BrowserRouter>

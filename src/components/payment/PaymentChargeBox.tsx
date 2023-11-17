@@ -1,23 +1,50 @@
 import { styled } from 'styled-components';
 import { chargeList } from '../../constants/payment';
 import ChargeBox from './ChargeBox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Title from '../common/Title';
 import Button from '../common/Button';
+import { useTicketCount } from '../../hooks/payment/useTicketCount';
+import { useTicketBuy } from '../../hooks/payment/useTicketBuy';
+import OneButtonModal from '../common/OneButtonModal';
+import { useNavigate } from 'react-router-dom';
+import PossessionTicket from './PossessionTicket';
 
 const PaymentChargeBox = () => {
-  const [currentTicket, setCurrentTicket] = useState(3);
-  const [chargeTicket, setChargeTicket] = useState(5);
-  const [afterTicket, setAfterTicket] = useState(currentTicket + chargeTicket);
-  const [selectedChargeBoxId, setSelectedChargeBoxId] = useState(1);
+  const { ticketCount } = useTicketCount();
+  const [chargeTicket, setChargeTicket] = useState(1);
+  const [selectedChargeBoxId, setSelectedChargeBoxId] = useState(0);
+  const [afterTicket, setAfterTicket] = useState(
+    (ticketCount?.data?.ticketCount ?? 0) + chargeTicket,
+  );
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    setAfterTicket((ticketCount?.data.ticketCount ?? 0) + chargeTicket);
+  }, [ticketCount, chargeTicket]);
 
   const handleChargeBoxSelect = (id: number) => {
     setSelectedChargeBoxId(id);
+    if (id === 0) {
+      setChargeTicket(1);
+    } else if (id === 1) {
+      setChargeTicket(5);
+    } else if (id === 2) {
+      setChargeTicket(10);
+    } else if (id === 3) {
+      setChargeTicket(15);
+    } else if (id === 4) {
+      setChargeTicket(20);
+    }
   };
-  // 임시
-  setCurrentTicket;
-  setChargeTicket;
-  setAfterTicket;
+  const ticketChargeMutation = useTicketBuy({ buyAmount: chargeTicket });
+  const handleTicketChargeClick = () => {
+    ticketChargeMutation.mutate();
+    setModalOpen(true);
+  };
+
+  const navigate = useNavigate();
 
   return (
     <PaymentChargeContainer>
@@ -40,7 +67,7 @@ const PaymentChargeBox = () => {
           <CalcContent>
             현재 보유 티켓
             <Ticket src={'/assets/images/common/ticket.svg'} />
-            <p>{currentTicket}장</p>
+            <p>{ticketCount?.data.ticketCount}장</p>
           </CalcContent>
           <CalcContent>
             <h1>+</h1> 충전 티켓
@@ -62,11 +89,37 @@ const PaymentChargeBox = () => {
             <p>언제든지 자유롭게 열람하실 수 있어요!</p>
           </div>
           <ButtonBox>
-            <Button>
+            <Button onClick={handleTicketChargeClick}>
               <LightningIcon src={'/assets/images/payment/lightning.svg'} />
               티켓 충전하기
             </Button>
           </ButtonBox>
+          {modalOpen && (
+            <OneButtonModal
+              button={{
+                text: '닫기',
+                onClickFunc: () => {
+                  setModalOpen(false);
+                  navigate('/');
+                },
+              }}
+              onCloseClickFunc={() => {
+                setModalOpen(false);
+              }}
+              $isModalVisible={modalOpen}
+            >
+              <ModalImage
+                src={'/assets/images/payment/payment_complete_modal.svg'}
+                alt="payment_complete_modal"
+              />
+              <ModalTitle>티켓 충전이 완료되었어요!</ModalTitle>
+              <ModalContent>
+                <p>티켓으로 한 줄 추천사를 열람하고,</p>
+                <p>Wanteam에서 딱 맞는 팀원을 한번에 찾아보세요.</p>
+              </ModalContent>
+              <PossessionTicket />
+            </OneButtonModal>
+          )}
         </ChargeCalcBoxContainer>
       </PaymentChargeBoxContainer>
     </PaymentChargeContainer>
@@ -157,4 +210,20 @@ const TitleBox = styled.div`
 
 const ButtonBox = styled.div`
   padding: 0 6rem;
+`;
+
+const ModalImage = styled.img`
+  margin: 2rem 0;
+`;
+
+const ModalTitle = styled.div`
+  ${({ theme }) => theme.fonts.heading2_1};
+  color: ${({ theme }) => theme.colors.gray90};
+`;
+
+const ModalContent = styled.div`
+  ${({ theme }) => theme.fonts.bodyXL};
+  color: ${({ theme }) => theme.colors.gray70};
+  text-align: center;
+  margin: 3rem 0;
 `;

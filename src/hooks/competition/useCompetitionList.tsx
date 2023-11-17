@@ -7,9 +7,16 @@ interface UseCompetitionList {
   competitionList?: ResponseCompetitionList;
 }
 
-export function useCompetitionList(): UseCompetitionList {
-  const { data: competitionList } = useQuery(competitionKeys.all, () =>
-    getCompetitionList(),
+interface UseCompetitionListParams {
+  contestType: number;
+}
+
+export function useCompetitionList({
+  contestType,
+}: UseCompetitionListParams): UseCompetitionList {
+  const { data: competitionList } = useQuery(
+    [competitionKeys.all, contestType],
+    () => getCompetitionList(contestType),
   );
   return { competitionList };
 }
