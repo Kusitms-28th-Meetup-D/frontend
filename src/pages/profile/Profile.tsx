@@ -33,6 +33,7 @@ const Profile = () => {
       <ProfileRecommendation
         recommendationData={reviewDatas.recommendation}
         name={profileDatas.name}
+        isLocked={true}
       />
     </ProfileLayout>
   );

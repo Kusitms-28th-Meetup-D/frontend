@@ -6,11 +6,13 @@ import { IRecommendation } from '../../interface/Profile';
 
 const ProfileRecommendationContentsBox = ({
   recommendationData,
+  isLocked,
 }: {
   recommendationData: IRecommendation[];
+  isLocked: boolean;
 }) => {
   return (
-    <Container>
+    <Container $isLocked={isLocked}>
       {recommendationData.map((data, index) => {
         return (
           <ContentBox key={index}>
@@ -26,7 +28,7 @@ const ProfileRecommendationContentsBox = ({
     </Container>
   );
 };
-const Container = styled.div`
+const Container = styled.div<{ $isLocked: boolean }>`
   ${(props) => props.theme.fonts.bodyL};
   background-color: ${(props) => props.theme.colors.gray5};
   border-radius: 1.2rem;
@@ -37,6 +39,10 @@ const Container = styled.div`
   gap: 2rem;
 
   padding: 3rem;
+
+  /* ${(props) => (props.$isLocked ? '100px' : null)}; */
+  height: 40rem;
+  overflow: hidden;
 `;
 const ContentBox = styled.div`
   border-radius: 1.2rem;

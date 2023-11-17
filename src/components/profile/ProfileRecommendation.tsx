@@ -5,11 +5,16 @@ import { IRecommendation } from '../../interface/Profile';
 const ProfileRecommendation = ({
   recommendationData,
   name,
+  isLocked,
 }: {
   recommendationData: IRecommendation[];
   name: string;
+  isLocked: boolean;
 }) => {
-  const DETAIL_USE_TICKET = `티켓을 사용하셨군요. ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`;
+  const DETAIL_LOCKED_TICKET = isLocked
+    ? `티켓을 사용하면 ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`
+    : `티켓을 사용하셨군요. ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`;
+  const LOCKED_TICKET_AMMOUNT = isLocked ? '?' : recommendationData.length;
   return (
     <ProfileRecommendationContainer>
       <ProfileRecommendationTitle>
@@ -17,15 +22,16 @@ const ProfileRecommendation = ({
       </ProfileRecommendationTitle>
       <ProfileRecommendationDetailBox>
         <ProfileRecommendationDetail>
-          {DETAIL_USE_TICKET}
+          {DETAIL_LOCKED_TICKET}
         </ProfileRecommendationDetail>
         <ProfileRecommendationInfo>
-          한 줄 추천사 수<Count>{recommendationData.length}개</Count>
+          한 줄 추천사 수<Count>{LOCKED_TICKET_AMMOUNT}개</Count>
           <Align>최신순↑</Align>
         </ProfileRecommendationInfo>
       </ProfileRecommendationDetailBox>
       <ProfileRecommendationContentsBox
         recommendationData={recommendationData}
+        isLocked={isLocked}
       />
     </ProfileRecommendationContainer>
   );
