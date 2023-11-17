@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import { styled } from 'styled-components';
+import { searchTextAtom } from '../../recoil/competition';
 
 const SearchInput = () => {
-  const [value, setValue] = useState('');
+  const [searchText, setSearchText] = useRecoilState(searchTextAtom);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setSearchText(e.target.value);
   };
+
   return (
     <SearchBoxLayout>
       <SearchImage src="/assets/images/common/search.svg" alt="search" />
       <SearchInputBox
-        value={value}
+        value={searchText}
         onChange={handleChange}
         placeholder="원하는 공모전을 검색해보세요."
       />

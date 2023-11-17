@@ -8,7 +8,7 @@ export interface CompetitionList {
   contestId: string;
   title: string;
   company: string;
-  types: string[];
+  types?: string[];
   images: string[];
   remainDay: number;
   teamNum: number;
