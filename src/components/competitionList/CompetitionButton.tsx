@@ -1,22 +1,18 @@
 import { css, styled } from 'styled-components';
 
 interface competitionButtonProps {
-  text: string;
-  selected: boolean;
   onClick: () => void;
-}
-
-interface selectedProps {
+  text: string;
   selected: boolean;
 }
 
 const CompetitionButton = ({
-  text,
   selected,
   onClick,
+  text,
 }: competitionButtonProps) => {
   return (
-    <CompetitionButtonLayout selected={selected} onClick={onClick}>
+    <CompetitionButtonLayout $selected={selected} onClick={onClick}>
       {text}
     </CompetitionButtonLayout>
   );
@@ -24,7 +20,7 @@ const CompetitionButton = ({
 
 export default CompetitionButton;
 
-const CompetitionButtonLayout = styled.button<selectedProps>`
+const CompetitionButtonLayout = styled.button<{ $selected: boolean }>`
   padding: 0.5rem 1rem;
   border: 1px solid black;
   background: ${({ theme }) => theme.colors.gray10};
@@ -34,7 +30,7 @@ const CompetitionButtonLayout = styled.button<selectedProps>`
   white-space: nowrap;
 
   ${(props) =>
-    props.selected &&
+    props.$selected &&
     css`
       background: ${({ theme }) => theme.colors.primary60};
       color: ${({ theme }) => theme.colors.white};

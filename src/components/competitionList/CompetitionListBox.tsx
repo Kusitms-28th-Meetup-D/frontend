@@ -1,14 +1,15 @@
 import { styled } from 'styled-components';
 import CompetitionBox from './CompetitionBox';
 import { useRecoilValue } from 'recoil';
-import { searchTextAtom } from '../../recoil/competition';
+import { contestTypeAtom, searchTextAtom } from '../../recoil/competition';
 import { useCompetitionList } from '../../hooks/competition/useCompetitionList';
 import { useCompetitionSearch } from '../../hooks/competition/useCompeitionSearch';
 
 const CompetitionListBox = () => {
+  const contestType = useRecoilValue(contestTypeAtom);
   const searchText = useRecoilValue(searchTextAtom);
 
-  const { competitionList } = useCompetitionList();
+  const { competitionList } = useCompetitionList({ contestType: contestType });
   const { competitionSearch } = useCompetitionSearch({
     searchText: searchText,
   });

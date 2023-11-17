@@ -1,14 +1,15 @@
 import { styled } from 'styled-components';
 import SearchInput from './SearchInput';
 import CompetitionButton from './CompetitionButton';
-import { useState } from 'react';
 import { searchButtonList } from '../../constants/competitionList';
+import { useRecoilState } from 'recoil';
+import { contestTypeAtom } from '../../recoil/competition';
 
 const CompetitionSearch = () => {
-  const [selectedButton, setSelectedButton] = useState('전체');
+  const [contestType, setContestType] = useRecoilState(contestTypeAtom);
 
-  const handleButtonClick = (text: string) => {
-    setSelectedButton(text);
+  const handleButtonClick = (index: number) => {
+    setContestType(index);
   };
   return (
     <CompetitionSearchBox>
@@ -19,8 +20,8 @@ const CompetitionSearch = () => {
           <CompetitionButton
             key={index}
             text={text}
-            selected={selectedButton === text}
-            onClick={() => handleButtonClick(text)}
+            selected={contestType === index}
+            onClick={() => handleButtonClick(index)}
           />
         ))}
       </CompetitionButtonLayout>
