@@ -120,3 +120,15 @@ export interface ResponseProfileRecommendation {
   message: string;
   data: ProfileRecommendationData;
 }
+//내 티켓 개수 확인 api
+export interface RequestTicketNumber {
+  // userId?: string;
+}
+export interface TicketNumberData {
+  ticketCount: number;
+}
+export interface ResponseTicketNumber {
+  status: number;
+  message: string;
+  data: TicketNumberData;
+}

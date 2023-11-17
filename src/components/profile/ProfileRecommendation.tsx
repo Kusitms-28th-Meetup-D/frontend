@@ -32,6 +32,7 @@ const ProfileRecommendation = ({
       <ProfileRecommendationContentsBox
         recommendationData={recommendationData}
         isLocked={isLocked}
+        name={name}
       />
     </ProfileRecommendationContainer>
   );

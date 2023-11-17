@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import lockSrc from '/assets/images/profile/profile-lock.png';
 import ticketSrc from '/assets/images/profile/profile-ticket.svg';
-const ProfileLocked = () => {
+import useTicketNumber from '../../hooks/profile/useTicketNumber';
+const ProfileLocked = ({ name }: { name?: string }) => {
+  const { TicketNumberData } = useTicketNumber();
   return (
     <LockedLayout>
       <Lock src={lockSrc} />
@@ -10,13 +12,11 @@ const ProfileLocked = () => {
         <Title>지금은 한 줄 추천사가 잠겨 있어요!</Title>
         <Content>
           <span>티켓 1장</span>
-          {
-            '을 사용하시면 민혜린 님의 한 줄 추천사를\n언제든지 열람하실 수 있습니다.'
-          }
+          {`을 사용하시면 ${name} 님의 한 줄 추천사를\n언제든지 열람하실 수 있습니다.`}
         </Content>
         <CurrentTicket>
           현재 보유 티켓 : <TicketImg src={ticketSrc} />
-          <span>3장</span>
+          <span>{TicketNumberData?.data.data.ticketCount}장</span>
         </CurrentTicket>
         <TicketButton>티켓 사용하고 열람하기</TicketButton>
       </TextContainer>

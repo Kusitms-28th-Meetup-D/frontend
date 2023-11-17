@@ -8,13 +8,15 @@ import ProfileLocked from './ProfileLocked';
 const ProfileRecommendationContentsBox = ({
   recommendationData,
   isLocked,
+  name,
 }: {
   recommendationData?: Comment[];
   isLocked: boolean;
+  name?: string;
 }) => {
   return (
     <Container $isLocked={isLocked}>
-      {isLocked ? <ProfileLocked /> : null}
+      {isLocked ? <ProfileLocked name={name} /> : null}
       {recommendationData?.map((data, index) => {
         return (
           <ContentBox key={index}>
