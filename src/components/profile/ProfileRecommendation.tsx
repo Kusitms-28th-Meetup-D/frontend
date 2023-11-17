@@ -6,10 +6,14 @@ const ProfileRecommendation = ({
   recommendationData,
   name,
   isLocked,
+  setIsLackModalVisible,
+  setIsUseModalVisible,
 }: {
   recommendationData?: Comment[];
   name?: string;
   isLocked?: boolean;
+  setIsLackModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsUseModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const DETAIL_LOCKED_TICKET = isLocked
     ? `티켓을 사용하면 ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`
@@ -33,6 +37,8 @@ const ProfileRecommendation = ({
         recommendationData={recommendationData}
         isLocked={isLocked}
         name={name}
+        setIsLackModalVisible={setIsLackModalVisible}
+        setIsUseModalVisible={setIsUseModalVisible}
       />
     </ProfileRecommendationContainer>
   );

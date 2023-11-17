@@ -3,8 +3,24 @@ import styled from 'styled-components';
 import lockSrc from '/assets/images/profile/profile-lock.png';
 import ticketSrc from '/assets/images/profile/profile-ticket.svg';
 import useTicketNumber from '../../hooks/profile/useTicketNumber';
-const ProfileLocked = ({ name }: { name?: string }) => {
+const ProfileLocked = ({
+  name,
+  setIsLackModalVisible,
+  setIsUseModalVisible,
+}: {
+  name?: string;
+  setIsLackModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsUseModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { TicketNumberData } = useTicketNumber();
+  const handleClick = () => {
+    //보유 티켓 존재
+    if (TicketNumberData && TicketNumberData.data.data.ticketCount > 0) {
+      setIsUseModalVisible(true);
+    } else {
+      setIsLackModalVisible(true);
+    }
+  };
   return (
     <LockedLayout>
       <Lock src={lockSrc} />
@@ -18,7 +34,9 @@ const ProfileLocked = ({ name }: { name?: string }) => {
           현재 보유 티켓 : <TicketImg src={ticketSrc} />
           <span>{TicketNumberData?.data.data.ticketCount}장</span>
         </CurrentTicket>
-        <TicketButton>티켓 사용하고 열람하기</TicketButton>
+        <TicketButton onClick={handleClick}>
+          티켓 사용하고 열람하기
+        </TicketButton>
       </TextContainer>
     </LockedLayout>
   );

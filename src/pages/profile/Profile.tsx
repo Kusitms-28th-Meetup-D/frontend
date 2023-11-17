@@ -28,8 +28,8 @@ const Profile = () => {
   const { TicketNumberData } = useTicketNumber();
   useEffect(() => setHeaderSelected(Headers.myProfile));
 
-  const [isLackModalVisible, setIsLackModalVisible] = useState(true);
-  const [isUseModalVisible, setIsUseModalVisible] = useState(true);
+  const [isLackModalVisible, setIsLackModalVisible] = useState(false);
+  const [isUseModalVisible, setIsUseModalVisible] = useState(false);
   return isLoading || isLoadingRecommendation ? (
     <Loading />
   ) : (
@@ -71,6 +71,8 @@ const Profile = () => {
         recommendationData={profileRecommendationData?.data.data.comments}
         name={profileData?.data.data.username}
         isLocked={!IsTicketUsedData?.data.data.isUsed}
+        setIsLackModalVisible={setIsLackModalVisible}
+        setIsUseModalVisible={setIsUseModalVisible}
       />
     </ProfileLayout>
   );

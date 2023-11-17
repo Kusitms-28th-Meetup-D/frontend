@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import ProfileTicketLackInner from './ProfileTicketUseInner';
 import TwoButtonModal from '../../common/TwoButtonModal';
-import { useUseTicket2 } from '../../../hooks/profile/useUseTicket';
+import useUseTicket from '../../../hooks/profile/useUseTicket';
 
 interface ProfileTicketUseModalProps {
   isModalVisible: boolean;
@@ -14,7 +14,7 @@ const ProfileTicketUseModal: React.FC<ProfileTicketUseModalProps> = ({
   currTicketAmount,
 }) => {
   const { userId } = useParams();
-  const handleUseTicket = useUseTicket2(userId as string);
+  const handleUseTicket = useUseTicket(userId as string);
   const handleLeftButtonClick = () => {
     setIsModalVisible(false);
   };

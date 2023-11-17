@@ -9,14 +9,24 @@ const ProfileRecommendationContentsBox = ({
   recommendationData,
   isLocked,
   name,
+  setIsLackModalVisible,
+  setIsUseModalVisible,
 }: {
   recommendationData?: Comment[];
   isLocked?: boolean;
   name?: string;
+  setIsLackModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsUseModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <Container $isLocked={isLocked}>
-      {isLocked ? <ProfileLocked name={name} /> : null}
+      {isLocked ? (
+        <ProfileLocked
+          name={name}
+          setIsLackModalVisible={setIsLackModalVisible}
+          setIsUseModalVisible={setIsUseModalVisible}
+        />
+      ) : null}
       {recommendationData?.map((data, index) => {
         return (
           <ContentBox key={index}>
