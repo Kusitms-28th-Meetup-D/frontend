@@ -6,13 +6,15 @@ import ProfileRecommendation from '../../components/profile/ProfileRecommendatio
 import ProfilePersonality from '../../components/profile/ProfilePersonality';
 import { useSetRecoilState } from 'recoil';
 import { headerSelectedState } from '../../recoil/atom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Headers } from '../../constants/Header';
 import useProfile from '../../hooks/profile/useProfile';
 import Loading from '../../components/common/Loading';
 import useProfileRecommendation from '../../hooks/profile/useProfileRecommendation';
 import { useParams } from 'react-router-dom';
-import useIsTicketUsed from '../../hooks/profile/useisTicketUsed';
+import ProfileTicketLackModal from '../../components/profile/ProfileTicketLack/ProfileTicketLackModal';
+import useIsTicketUsed from '../../hooks/profile/useIsTicketUsed';
+import useTicketNumber from '../../hooks/profile/useTicketNumber';
 
 const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
@@ -22,13 +24,21 @@ const Profile = () => {
     useProfileRecommendation(userId as string);
 
   const { IsTicketUsedData } = useIsTicketUsed(userId as string);
+  const { TicketNumberData } = useTicketNumber();
   useEffect(() => setHeaderSelected(Headers.myProfile));
 
-  console.log(IsTicketUsedData);
+  const [isModalVisible, setIsModalVisible] = useState(true);
+
   return isLoading || isLoadingRecommendation ? (
     <Loading />
   ) : (
     <ProfileLayout>
+      <ProfileTicketLackModal
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+        // currTicketAmount={123}
+        currTicketAmount={TicketNumberData?.data.data.ticketCount}
+      />
       <ProfileInfo
         name={profileData?.data.data.username}
         profile_image={profileData?.data.data.profile_image}
