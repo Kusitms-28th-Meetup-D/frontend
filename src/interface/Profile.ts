@@ -120,6 +120,7 @@ export interface ResponseProfileRecommendation {
   message: string;
   data: ProfileRecommendationData;
 }
+
 //내 티켓 개수 확인 api
 export interface RequestTicketNumber {
   // userId?: string;
@@ -131,4 +132,17 @@ export interface ResponseTicketNumber {
   status: number;
   message: string;
   data: TicketNumberData;
+}
+
+//상대에게 티켓을 사용했는지 여부 api
+export interface RequestIsTicketUsed {
+  targetUserId?: string;
+}
+export interface IsTicketUsedData {
+  isUsed: boolean;
+}
+export interface ResponseIsTicketUsed {
+  status: number;
+  message: string;
+  data: IsTicketUsedData;
 }

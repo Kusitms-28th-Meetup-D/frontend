@@ -11,7 +11,7 @@ const ProfileRecommendationContentsBox = ({
   name,
 }: {
   recommendationData?: Comment[];
-  isLocked: boolean;
+  isLocked?: boolean;
   name?: string;
 }) => {
   return (
@@ -32,7 +32,7 @@ const ProfileRecommendationContentsBox = ({
     </Container>
   );
 };
-const Container = styled.div<{ $isLocked: boolean }>`
+const Container = styled.div<{ $isLocked?: boolean }>`
   position: relative;
 
   ${(props) => props.theme.fonts.bodyL};

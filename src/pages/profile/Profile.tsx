@@ -12,6 +12,7 @@ import useProfile from '../../hooks/profile/useProfile';
 import Loading from '../../components/common/Loading';
 import useProfileRecommendation from '../../hooks/profile/useProfileRecommendation';
 import { useParams } from 'react-router-dom';
+import useIsTicketUsed from '../../hooks/profile/useisTicketUsed';
 
 const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
@@ -19,10 +20,11 @@ const Profile = () => {
   const { profileData, isLoading } = useProfile(userId as string);
   const { profileRecommendationData, isLoadingRecommendation } =
     useProfileRecommendation(userId as string);
+
+  const { IsTicketUsedData } = useIsTicketUsed(userId as string);
   useEffect(() => setHeaderSelected(Headers.myProfile));
 
-  console.log(profileRecommendationData);
-
+  console.log(IsTicketUsedData);
   return isLoading || isLoadingRecommendation ? (
     <Loading />
   ) : (
@@ -53,7 +55,7 @@ const Profile = () => {
       <ProfileRecommendation
         recommendationData={profileRecommendationData?.data.data.comments}
         name={profileData?.data.data.username}
-        isLocked={true}
+        isLocked={!IsTicketUsedData?.data.data.isUsed}
       />
     </ProfileLayout>
   );

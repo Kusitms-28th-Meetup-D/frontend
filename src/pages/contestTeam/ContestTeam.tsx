@@ -8,7 +8,7 @@ import { useSetRecoilState } from 'recoil';
 import { headerSelectedState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
 import { useEffect } from 'react';
-import useContestTeamDetailInfo from '../../hooks/useContestTeamDetailInfo';
+import useContestTeamDetailInfo from '../../hooks/contest/useContestTeamDetailInfo';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const ContestTeam = () => {
