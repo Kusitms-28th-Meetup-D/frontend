@@ -21,6 +21,7 @@ const ProfileTicketUseModal: React.FC<ProfileTicketUseModalProps> = ({
   const handleRightButtonClick = () => {
     handleUseTicket.mutate();
     setIsModalVisible(false);
+    window.location.reload();
   };
   const handleCloseButtonClick = () => {
     setIsModalVisible(false);
