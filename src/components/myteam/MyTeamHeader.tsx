@@ -1,11 +1,25 @@
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { styled } from 'styled-components';
 import { selectedTeamAtom } from '../../recoil/myteam';
+import { useNavigate } from 'react-router-dom';
+import { loginInfoState } from '../../recoil/atom';
 
 const MyTeamHeader = () => {
+  const navigate = useNavigate();
+  const loginInfo = useRecoilValue(loginInfoState);
   const [selectedTeam, setSelectedTeam] = useRecoilState(selectedTeamAtom);
+
   const handleCategoryClick = (id: number) => {
     setSelectedTeam(id);
+    if (id === 0) {
+      navigate(`/myteam/:${loginInfo.data?.userId}/open`);
+    } else if (id === 1) {
+      navigate(`/myteam/:${loginInfo.data?.userId}/apply`);
+    } else if (id === 2) {
+      navigate(`/myteam/:${loginInfo.data?.userId}/active`);
+    } else if (id === 3) {
+      navigate(`/myteam/:${loginInfo.data?.userId}/end`);
+    }
   };
 
   return (

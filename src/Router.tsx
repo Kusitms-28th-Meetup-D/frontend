@@ -16,7 +16,8 @@ import PaymentCharge from './pages/payment/PaymentCharge';
 import Request from './pages/request/Request';
 import Main from './pages/main/Main';
 import ScrollToTop from './components/common/ScrollToTop';
-import MyTeam from './pages/team/MyTeam';
+import MyTeam from './pages/myteam/MyTeam';
+import MyTeamOpen from './components/myteam/MyTeamOpen';
 
 function Router() {
   return (
@@ -35,7 +36,12 @@ function Router() {
         </Route>
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/profile/:userId/create" element={<ProfileCreate />} />
-        <Route path="/team/:userId" element={<MyTeam />} />
+        <Route path="/myteam/:userId" element={<MyTeam />}>
+          <Route path="open" element={<MyTeamOpen />} />
+          <Route path="apply" element={<div>지원한 팀</div>} />
+          <Route path="active" element={<div>활동중인 팀</div>} />
+          <Route path="end" element={<div>활동했던 팀</div>} />
+        </Route>
         <Route path="/list/:contestId" element={<Contest />} />
         <Route
           path="/list/:postId/:teamId"

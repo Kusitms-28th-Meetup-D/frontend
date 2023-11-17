@@ -32,7 +32,7 @@ const Header = () => {
               공모전 리스트
             </HeaderItem>
             <HeaderItem
-              onClick={() => navigate(`/team/${loginInfo.data?.userId}`)}
+              onClick={() => navigate(`/myteam/${loginInfo.data?.userId}/open`)}
               $isSelected={headerSelectedIndex === Headers.myTeam}
             >
               <HeaderStar src={starSrc} />내 팀
