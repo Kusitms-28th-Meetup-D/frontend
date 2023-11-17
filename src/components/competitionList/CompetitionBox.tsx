@@ -1,27 +1,20 @@
 import { styled } from 'styled-components';
-
-interface CompetitionBoxProps {
-  title: string;
-  images: string;
-  teamNum: number;
-  remainDay: number;
-  company: string;
-}
+import { CompetitionList } from '../../interface/Competition';
 
 const CompetitionBox = ({
   title,
-  images,
-  teamNum,
-  remainDay,
   company,
-}: CompetitionBoxProps) => {
+  images,
+  remainDay,
+  teamNum,
+}: CompetitionList) => {
   return (
     <CompetitionBoxLayout>
       <CompetitionTop>
         <CompetitionremainDay>D-{remainDay}</CompetitionremainDay>
         <CompetitionteamNum>모집 중인 팀 : {teamNum}팀</CompetitionteamNum>
       </CompetitionTop>
-      <CompetitionImage src={images} />
+      <CompetitionImage src={images[0]} />
       <CompetitionTitle>{title}</CompetitionTitle>
       <Competitioncompany>{company}</Competitioncompany>
     </CompetitionBoxLayout>

@@ -1,23 +1,22 @@
 import { styled } from 'styled-components';
-// import CompetitionBox from './CompetitionBox';
+import CompetitionBox from './CompetitionBox';
 import { useCompetitionList } from '../../hooks/competition/useCompetitionList';
 
 const CompetitionListBox = () => {
   const { competitionList } = useCompetitionList();
-  console.log(competitionList);
 
   return (
     <CompetitionListLayout>
-      {/* {competitionList.map((competition) => (
+      {competitionList?.data.map((competition) => (
         <CompetitionBox
-          key={competition.contestId}
+          contestId={competition.contestId}
           title={competition.title}
           images={competition.images}
           teamNum={competition.teamNum}
           remainDay={competition.remainDay}
           company={competition.company}
         />
-      ))} */}
+      ))}
     </CompetitionListLayout>
   );
 };

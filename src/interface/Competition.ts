@@ -5,10 +5,10 @@ export interface ResponseCompetitionList {
 }
 
 export interface CompetitionList {
-  contestId: string;
+  contestId?: string;
   title: string;
   company: string;
-  types: string[];
+  types?: string[];
   images: string[];
   remainDay: number;
   teamNum: number;
