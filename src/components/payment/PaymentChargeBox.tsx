@@ -1,21 +1,39 @@
 import { styled } from 'styled-components';
 import { chargeList } from '../../constants/payment';
 import ChargeBox from './ChargeBox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Title from '../common/Title';
 import Button from '../common/Button';
+import { useTicketCount } from '../../hooks/payment/useTicketCount';
 
 const PaymentChargeBox = () => {
-  const [currentTicket, setCurrentTicket] = useState(3);
-  const [chargeTicket, setChargeTicket] = useState(5);
-  const [afterTicket, setAfterTicket] = useState(currentTicket + chargeTicket);
-  const [selectedChargeBoxId, setSelectedChargeBoxId] = useState(1);
+  const { ticketCount } = useTicketCount();
+  const [chargeTicket, setChargeTicket] = useState(1);
+  const [selectedChargeBoxId, setSelectedChargeBoxId] = useState(0);
+  const [afterTicket, setAfterTicket] = useState(
+    (ticketCount?.data?.ticketCount ?? 0) + chargeTicket,
+  );
+
+  useEffect(() => {
+    setAfterTicket((ticketCount?.data.ticketCount ?? 0) + chargeTicket);
+  }, [ticketCount, chargeTicket]);
 
   const handleChargeBoxSelect = (id: number) => {
     setSelectedChargeBoxId(id);
+    if (id === 0) {
+      setChargeTicket(1);
+    } else if (id === 1) {
+      setChargeTicket(5);
+    } else if (id === 2) {
+      setChargeTicket(10);
+    } else if (id === 3) {
+      setChargeTicket(15);
+    } else if (id === 4) {
+      setChargeTicket(20);
+    }
   };
   // 임시
-  setCurrentTicket;
+  // setCurrentTicket;
   setChargeTicket;
   setAfterTicket;
 
@@ -40,7 +58,7 @@ const PaymentChargeBox = () => {
           <CalcContent>
             현재 보유 티켓
             <Ticket src={'/assets/images/common/ticket.svg'} />
-            <p>{currentTicket}장</p>
+            <p>{ticketCount?.data.ticketCount}장</p>
           </CalcContent>
           <CalcContent>
             <h1>+</h1> 충전 티켓
