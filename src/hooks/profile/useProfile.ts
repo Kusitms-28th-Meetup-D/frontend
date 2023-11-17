@@ -1,11 +1,9 @@
 import getProfile from '../../apis/profile/getProfile';
 import { useQuery } from 'react-query';
 
-export const useProfile = (userId: string) => {
+export const useProfile = () => {
   const { data: profileData, isLoading } = useQuery('profile', () =>
-    getProfile({
-      userId: userId,
-    }),
+    getProfile(),
   );
 
   return { profileData, isLoading };

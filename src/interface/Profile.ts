@@ -54,16 +54,17 @@ export interface ProfileCraete {
 }
 // 프로필 정보 조회 api
 export interface RequestProfile {
-  userId: string;
+  userId?: string;
 }
 export interface ProfileData {
-  userId: number;
-  profile_image: string;
   username: string;
   task: string[];
   location: string;
   major: string[];
+  userId: number;
   selfIntroduction: string;
+  profile_image: string;
+
   internships: string[];
   awards: string[];
   tools: string[];

@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ProfileInfo from '../../components/profile/ProfileInfo';
 import ProfileSubInfo from '../../components/profile/ProfileSubInfo';
@@ -14,17 +13,29 @@ import useProfile from '../../hooks/profile/useProfile';
 import Loading from '../../components/common/Loading';
 
 const Profile = () => {
-  const { userId } = useParams();
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
-  const { profileData, isLoading } = useProfile(userId as string);
+  const { profileData, isLoading } = useProfile();
 
   useEffect(() => setHeaderSelected(Headers.myProfile));
+
   return isLoading ? (
     <Loading />
   ) : (
     <ProfileLayout>
-      <ProfileInfo profileData={profileDatas} />
-      <ProfileSubInfo />
+      <ProfileInfo
+        name={profileData?.data.data.username}
+        profile_image={profileData?.data.data.profile_image}
+        task={profileData?.data.data.task[0]}
+        location={profileData?.data.data.location}
+        major={profileData?.data.data.major[0]}
+        selfIntroduction={profileData?.data.data.selfIntroduction}
+      />
+      <ProfileSubInfo
+        internships={profileData?.data.data.internships}
+        awards={profileData?.data.data.awards}
+        tools={profileData?.data.data.tools}
+        certificates={profileData?.data.data.certificates}
+      />
       <ProfileKeyword
         keywordData={reviewDatas.keywords}
         name={profileDatas.name}
