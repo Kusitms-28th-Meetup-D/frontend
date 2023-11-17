@@ -1,13 +1,18 @@
 import { styled } from 'styled-components';
 import CompetitionBox from './CompetitionBox';
-import { useCompetitionList } from '../../hooks/competition/useCompetitionList';
+import { useCompetitionSearch } from '../../hooks/competition/useCompeitionSearch';
+import { useRecoilValue } from 'recoil';
+import { searchTextAtom } from '../../recoil/competition';
 
 const CompetitionListBox = () => {
-  const { competitionList } = useCompetitionList();
+  const searchText = useRecoilValue(searchTextAtom);
+  const { competitionSearch } = useCompetitionSearch({
+    searchText: searchText,
+  });
 
   return (
     <CompetitionListLayout>
-      {competitionList?.data.map((competition) => (
+      {competitionSearch?.data.map((competition) => (
         <CompetitionBox
           contestId={competition.contestId}
           title={competition.title}

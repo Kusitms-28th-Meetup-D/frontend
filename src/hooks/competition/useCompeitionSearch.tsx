@@ -7,9 +7,18 @@ interface UseCompetitionSearch {
   competitionSearch?: ResponseCompetitionList;
 }
 
-export function useCompetitionSearch(): UseCompetitionSearch {
-  const { data: competitionSearch } = useQuery(competitionKeys.all, () =>
-    getCompetitionSearch(),
+interface UseCompetitionSearchParams {
+  searchText: string;
+}
+
+export function useCompetitionSearch({
+  searchText,
+}: UseCompetitionSearchParams): UseCompetitionSearch {
+  const { data: competitionSearch } = useQuery(
+    [competitionKeys.all, searchText],
+    () => getCompetitionSearch(searchText),
+    { enabled: searchText.length > 0 },
   );
+
   return { competitionSearch };
 }

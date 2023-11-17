@@ -10,7 +10,6 @@ const CompetitionSearch = () => {
   const handleButtonClick = (text: string) => {
     setSelectedButton(text);
   };
-
   return (
     <CompetitionSearchBox>
       {/* <SearchBackgroundImg src="/assets/images//searchBox1.svg" /> */}
