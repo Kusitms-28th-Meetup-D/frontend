@@ -1,15 +1,19 @@
 import { styled } from 'styled-components';
 import { CompetitionList } from '../../interface/Competition';
+import { useNavigate } from 'react-router-dom';
 
 const CompetitionBox = ({
+  contestId,
   title,
   company,
   images,
   remainDay,
   teamNum,
 }: CompetitionList) => {
+  const navigate = useNavigate();
+
   return (
-    <CompetitionBoxLayout>
+    <CompetitionBoxLayout onClick={() => navigate(`${contestId}`)}>
       <CompetitionTop>
         <CompetitionremainDay>D-{remainDay}</CompetitionremainDay>
         <CompetitionteamNum>모집 중인 팀 : {teamNum}팀</CompetitionteamNum>
@@ -32,6 +36,7 @@ const CompetitionBoxLayout = styled.div`
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  width: 100%;
 `;
 
 const CompetitionTop = styled.div`
@@ -52,6 +57,7 @@ const CompetitionteamNum = styled.div`
 
 const CompetitionImage = styled.img`
   margin: 1.2rem 0;
+  width: inherit;
 `;
 
 const CompetitionTitle = styled.div`

@@ -5,7 +5,7 @@ export interface ResponseCompetitionList {
 }
 
 export interface CompetitionList {
-  contestId?: string;
+  contestId: string;
   title: string;
   company: string;
   types?: string[];
