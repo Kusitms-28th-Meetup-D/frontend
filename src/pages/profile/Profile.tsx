@@ -39,6 +39,7 @@ const Profile = () => {
       <ProfileKeyword
         keywordData={reviewDatas.keywords}
         name={profileDatas.name}
+        name={profileData?.data.data.username}
       />
       <ProfilePersonality
         teamCurturesData={reviewDatas.teamCultures}
