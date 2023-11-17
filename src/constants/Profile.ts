@@ -1,18 +1,3 @@
-// import { ProfileInfoProps } from '../components/profile/ProfileInfo';
-// import {
-//   ICategory,
-//   IProfileSubInfoData,
-//   IReviewDatas,
-// } from '../interface/Profile';
-
-// export const profileDatas: ProfileInfoProps = {
-//   name: '민혜린',
-//   part: '서비스 기획',
-//   imageUrl: 'https://cdn.onews.tv/news/photo/202306/169959_205933_5017.jpeg',
-//   region: '서울특별시',
-//   major: '언어학과/국어국문학과',
-//   introduce: '사슴을 좋아합니다. 밤비치고짱귀여워',
-// };
 // export const ProfileSubInfoData: IProfileSubInfoData = {
 //   activitiesData: {
 //     title: '대외활동 및 인턴',
@@ -46,100 +31,6 @@
 //       '(G)-IDLE 팬클럽 ‘네버랜드’ 4기',
 //     ],
 //   },
-// };
-// export const reviewDatas: IReviewDatas = {
-//   keywords: [
-//     {
-//       keywordType: 0,
-//       count: 2,
-//     },
-//     {
-//       keywordType: 1,
-//       count: 6,
-//     },
-//     {
-//       keywordType: 2,
-//       count: 12,
-//     },
-//     {
-//       keywordType: 3,
-//       count: 3,
-//     },
-//     {
-//       keywordType: 4,
-//       count: 0,
-//     },
-//     {
-//       keywordType: 5,
-//       count: 0,
-//     },
-//     {
-//       keywordType: 6,
-//       count: 0,
-//     },
-//     {
-//       keywordType: 7,
-//       count: 0,
-//     },
-//     {
-//       keywordType: 8,
-//       count: 0,
-//     },
-//     {
-//       keywordType: 9,
-//       count: 12,
-//     },
-//   ],
-//   teamCultures: [
-//     {
-//       questionType: 0,
-//       percent: 0,
-//     },
-//     {
-//       questionType: 1,
-//       percent: 100,
-//     },
-//     {
-//       questionType: 2,
-//       percent: 50,
-//     },
-//   ],
-//   workMethods: [
-//     {
-//       questionType: 0,
-//       percent: 30,
-//     },
-//     {
-//       questionType: 1,
-//       percent: 60,
-//     },
-//     {
-//       questionType: 2,
-//       percent: 57,
-//     },
-//   ],
-//   recommendation: [
-//     {
-//       recommendation:
-//         '어쩌구 저쩌구 칭찬의 말을 블라블라 쏼라쏼라 칭찬합니다 칭찬합니다 큐시즘의 민혜린을 칭찬합니다 글자 수 제한은 140자 넘 길어용 할 말이 없어용우아어암ㅁ아ㅓ래ㅑㅕㅐㅑ러ㅏㅣㅁ앎 칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다칭찬합니다다',
-//       category: '<과자 빨리 먹기> 공모전',
-//     },
-//     {
-//       recommendation:
-//         '에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져에픽하이너무좋아윤하최고국힙꺼져',
-//       category: '<과자 빨리 먹기> 공모전',
-//     },
-//     {
-//       recommendation:
-//         '큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다큐시즘의 민혜린을 칭찬합니다',
-
-//       category: '<과자 빨리 먹기> 공모전',
-//     },
-//     {
-//       recommendation: '이사람은 천재입니다. ',
-//       category: '<과자 빨리 먹기> 공모전',
-//     },
-//   ],
 // };
 
 // export const TEAM_CURTURE_CATEGORY: ICategory = {
@@ -183,39 +74,39 @@
 //   ],
 // };
 
-// export const profileCreateInfo = [
-//   {
-//     id: 0,
-//     title: '🔎 희망 직무와 관련있는 활동 경험을 적어주세요',
-//     examples: [
-//       '삼양식품 마케팅 서포터즈 (6개월)',
-//       '타임스퀘어 트렌드 마케터 15기 (1년)',
-//     ],
-//   },
-//   {
-//     id: 1,
-//     title: '🏆 수상경력이 있다면 적어주세요',
-//     examples: [
-//       '9회 아모레퍼시픽 마케팅 공모전 장려상',
-//       '좋은 데이 대학생 마케팅 공모전 우수상',
-//     ],
-//   },
-//   {
-//     id: 2,
-//     title: '🛠️ 어떤 협업, 작업 툴을 사용하실 수 있나요?',
-//     examples: [
-//       '포토샵: (중) 사진 보정 및 포스터 작업 가능',
-//       '프리미어프로: (상) 쇼츠 영상 광고 작업 가능',
-//       '피그마: (중) 무리 없이 협업 가능',
-//     ],
-//   },
-//   {
-//     id: 3,
-//     title: '🪪 가지고 계신 자격증이 있다면 알려주세요',
-//     examples: [
-//       '온라인마케팅 실무전문가 자격증',
-//       '검색광고 마케터 자격증',
-//       '컴퓨터 활용능력 자격증',
-//     ],
-//   },
-// ];
+export const profileCreateInfo = [
+  {
+    id: 0,
+    title: '🔎 희망 직무와 관련있는 활동 경험을 적어주세요',
+    examples: [
+      '삼양식품 마케팅 서포터즈 (6개월)',
+      '타임스퀘어 트렌드 마케터 15기 (1년)',
+    ],
+  },
+  {
+    id: 1,
+    title: '🏆 수상경력이 있다면 적어주세요',
+    examples: [
+      '9회 아모레퍼시픽 마케팅 공모전 장려상',
+      '좋은 데이 대학생 마케팅 공모전 우수상',
+    ],
+  },
+  {
+    id: 2,
+    title: '🛠️ 어떤 협업, 작업 툴을 사용하실 수 있나요?',
+    examples: [
+      '포토샵: (중) 사진 보정 및 포스터 작업 가능',
+      '프리미어프로: (상) 쇼츠 영상 광고 작업 가능',
+      '피그마: (중) 무리 없이 협업 가능',
+    ],
+  },
+  {
+    id: 3,
+    title: '🪪 가지고 계신 자격증이 있다면 알려주세요',
+    examples: [
+      '온라인마케팅 실무전문가 자격증',
+      '검색광고 마케터 자격증',
+      '컴퓨터 활용능력 자격증',
+    ],
+  },
+];
