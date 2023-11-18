@@ -60,6 +60,7 @@ export default MainPopularTeam;
 
 const MainPopularTeamLayout = styled.div`
   position: relative;
+  height: 90rem;
 `;
 
 const MainPopularTeamBox = styled.div`
