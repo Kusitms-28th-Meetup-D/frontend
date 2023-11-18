@@ -6,14 +6,14 @@ import useContestInfo from '../../hooks/contest/useContestInfo';
 const ContestInfo = () => {
   const { contestId } = useParams();
   const { contestInfoData } = useContestInfo(contestId as string);
-
+  console.log(contestInfoData);
   return (
     <ContestInfoLayout>
       <ContestInfoTitle>{contestInfoData?.data.data.title}</ContestInfoTitle>
       <ContestContainer>
         <ContestImg src={contestInfoData?.data.data.images[0]} />
         <ContestTextBox>
-          <Dday>D-{contestInfoData?.data.data.contestId}</Dday>
+          <Dday>D-{contestInfoData?.data.data.remainDay}</Dday>
           <Description>
             <span>모집 기간 : </span>
             {contestInfoData?.data.data.recruitDate}

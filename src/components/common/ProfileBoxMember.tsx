@@ -7,10 +7,17 @@ const ProfileBoxMember: React.FC<ProfileBoxProps> = ({
   isBgColorWhite,
   hasBorder,
   memberInfo,
+  width,
+  height,
 }) => {
   const navigate = useNavigate();
   return (
-    <Container $isBgColorWhite={isBgColorWhite} $hasBorder={hasBorder}>
+    <Container
+      $isBgColorWhite={isBgColorWhite}
+      $hasBorder={hasBorder}
+      $cWidth={width}
+      $cHeight={height}
+    >
       <MemberImg src={memberInfo.teamMemberImage} />
       <Name>{memberInfo.teamMemberName}</Name>
       <Hr />
@@ -27,9 +34,17 @@ const ProfileBoxMember: React.FC<ProfileBoxProps> = ({
     </Container>
   );
 };
-const Container = styled.div<{ $isBgColorWhite: boolean; $hasBorder: boolean }>`
-  width: 16.6rem;
-  height: 22.4rem;
+const Container = styled.div<{
+  $isBgColorWhite: boolean;
+  $hasBorder: boolean;
+  $cWidth?: number;
+  $cHeight?: number;
+}>`
+  width: ${(props) => (props.$cWidth ? `${props.$cWidth}rem` : '16.6rem')};
+  height: ${(props) => (props.$cHeight ? `${props.$cHeight}rem` : '22.4rem')};
+
+  /* ${(props) => (props.$cWidth ? `width : ${props.$cWidth}rem` : null)} */
+  /* ${(props) => (props.$cHeight ? `height : ${props.$cHeight}rem` : null)} */
 
   display: flex;
   flex-direction: column;
@@ -52,8 +67,9 @@ const Container = styled.div<{ $isBgColorWhite: boolean; $hasBorder: boolean }>`
   padding: 1rem 3rem 1rem 3rem;
 `;
 const MemberImg = styled.img`
-  width: 7.8rem;
-  height: 7.8rem;
+  width: 65%;
+  /* width: 7.8rem; */
+  /* height: 7.8rem; */
 
   border: 1px solid ${(props) => props.theme.colors.primary20};
   border-radius: 4rem;
@@ -64,6 +80,8 @@ const Name = styled.div`
   ${(props) => props.theme.fonts.heading5};
   color: ${(props) => props.theme.colors.gray90};
   margin: 0.8rem 0;
+
+  font-size: 130%;
 `;
 const Hr = styled.div`
   width: 100%;
@@ -77,6 +95,7 @@ const Hr = styled.div`
 const Part = styled.div`
   ${(props) => props.theme.fonts.bodyXS};
   color: ${(props) => props.theme.colors.gray70};
+  font-size: 90%;
 
   text-align: center;
 

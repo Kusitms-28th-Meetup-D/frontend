@@ -16,6 +16,8 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
     isBgColorWhite: false,
     hasBorder: false,
     memberInfo: teamData.leaderInfo,
+    width: 20,
+    height: 27.6,
   };
   const navigate = useNavigate();
   return (
@@ -52,6 +54,8 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
                   isBgColorWhite: false,
                   hasBorder: true,
                   memberInfo: member,
+                  // width: 13.2,
+                  // height: 16.3,
                 };
                 return (
                   <ProfileBoxMember {...teamMemberDataProps} key={index} />

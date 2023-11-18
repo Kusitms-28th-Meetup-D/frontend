@@ -32,7 +32,12 @@ const ProfileLocked = ({
         </Content>
         <CurrentTicket>
           현재 보유 티켓 : <TicketImg src={ticketSrc} />
-          <span>{TicketNumberData?.data.data.ticketCount}장</span>
+          <span>
+            {TicketNumberData?.data.data.ticketCount
+              ? TicketNumberData?.data.data.ticketCount
+              : '?'}
+            장
+          </span>
         </CurrentTicket>
         <TicketButton onClick={handleClick}>
           티켓 사용하고 열람하기
