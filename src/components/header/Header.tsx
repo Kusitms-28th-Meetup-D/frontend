@@ -45,7 +45,7 @@ const Header = () => {
             </HeaderItem>
           </HeaderContainer>{' '}
           {loginInfo.isLogin ? (
-            <LoginProfile />
+            <LoginProfile userId={loginInfo.data?.userId} />
           ) : (
             <HeaderItem
               $isSelected={headerSelectedIndex === Headers.login}

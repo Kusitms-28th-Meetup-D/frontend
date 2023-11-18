@@ -33,6 +33,7 @@ export interface ResponseContestInfo {
     qualification: string;
     fullSchedule: string;
     price: string;
+    remainDay: number;
   };
 }
 
