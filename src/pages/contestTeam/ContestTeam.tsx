@@ -4,18 +4,19 @@ import { ProfileBoxProps, ProfileProps } from '../../interface/Contest';
 import undoSrc from '/assets/images/common/undo.svg';
 import { LeaderBox, Role } from '../../components/contest/RecruitTeamItem';
 import ProfileBoxMember from '../../components/common/ProfileBoxMember';
-import { useSetRecoilState } from 'recoil';
-import { headerSelectedState } from '../../recoil/atom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { headerSelectedState, loginInfoState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
 import { useEffect } from 'react';
 import useContestTeamDetailInfo from '../../hooks/contest/useContestTeamDetailInfo';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const ContestTeam = () => {
-  const { teamId } = useParams();
+  const { teamId ,contestId} = useParams();
   const { contestTeamDetailData, isLoading } = useContestTeamDetailInfo(
     teamId as string,
   );
+  const userLogininfo = useRecoilValue(loginInfoState);
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   const navigate = useNavigate();
   useEffect(() => setHeaderSelected(Headers.list));
@@ -29,6 +30,10 @@ const ContestTeam = () => {
         width: 20,
         height: 27.6,
       };
+
+  if (contestTeamDetailData?.data.data.status == 1) {
+    navigate(`/myTeam/${userLogininfo.data?.userId}/${contestId}/${teamId}`);
+  }
   return isLoading ? (
     <div>로딩중</div>
   ) : (
