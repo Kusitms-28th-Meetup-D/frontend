@@ -53,7 +53,7 @@ const ContestInfoLayout = styled.div`
   margin: auto;
 `;
 const ContestInfoTitle = styled.div`
-  ${(props) => props.theme.fonts.heading2_1};
+  ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray90};
 
   margin-top: 3rem;
