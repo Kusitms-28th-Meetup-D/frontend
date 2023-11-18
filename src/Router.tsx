@@ -19,6 +19,7 @@ import MyTeam from './pages/myteam/MyTeam';
 import MyTeamOpen from './components/myteam/MyTeamOpen';
 import ContestTeam from './pages/contestTeam/ContestTeam';
 import MyTeamManagement from './pages/myTeam/MyTeamManagement';
+import MyTeamApply from './pages/myTeam/MyTeamApply';
 
 function Router() {
   return (
@@ -39,11 +40,14 @@ function Router() {
         <Route path="/profile/:userId/create" element={<ProfileCreate />} />
         <Route path="/myteam/:userId" element={<MyTeam />}>
           <Route path="open" element={<MyTeamOpen />} />
-          <Route path="apply" element={<div>지원한 팀</div>} />
+          <Route path="apply" element={<MyTeamApply />} />
           <Route path="active" element={<div>활동중인 팀</div>} />
           <Route path="end" element={<div>활동했던 팀</div>} />
         </Route>
-        <Route path="/myteam/:userId/:contestId/:teamId" element={<MyTeamManagement />}></Route>
+        <Route
+          path="/myteam/:userId/:contestId/:teamId"
+          element={<MyTeamManagement />}
+        ></Route>
         <Route path="/list/:contestId" element={<Contest />} />
         <Route path="/list/:contestId" element={<Contest />} />
         <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />
