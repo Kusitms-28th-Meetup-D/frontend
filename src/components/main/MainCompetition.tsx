@@ -67,6 +67,7 @@ export default MainCompetition;
 
 const MainCompetitionLayout = styled.div`
   position: relative;
+  height: 90rem;
 `;
 
 const MainCompetitionBox = styled.div`
@@ -105,13 +106,6 @@ const MainCompetitionContainer = styled.div`
     white-space: nowrap;
   }
   margin: 0 auto;
-  @media ${({ theme }) => theme.devices.mobile} {
-  }
-  @media ${({ theme }) => theme.devices.tablet} {
-  }
-  @media ${({ theme }) => theme.devices.desktop} {
-    // max-width: 122.4rem;
-  }
 `;
 
 const MainCompetitionTop = styled.div`

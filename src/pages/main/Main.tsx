@@ -6,6 +6,7 @@ import { useSetRecoilState } from 'recoil';
 import MainBox from '../../components/main/MainBox';
 import MainDescription from '../../components/main/MainDescription';
 import MainCompetition from '../../components/main/MainCompetition';
+import MainPopularTeam from '../../components/main/MainPopularTeam';
 
 const Main = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
@@ -18,6 +19,7 @@ const Main = () => {
         <MainDescription />
       </MainLayout>
       <MainCompetition />
+      <MainPopularTeam />
     </>
   );
 };
