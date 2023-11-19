@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { ResponseAppliedTeam } from '../../interface/MyTeam';
-import MyTeamApplyContainer from '../../components/myteam/apply/MyTeamApplyContainer';
 
 const DUMMY: ResponseAppliedTeam = {
   status: 200,
@@ -32,11 +31,12 @@ const DUMMY: ResponseAppliedTeam = {
 };
 const MyTeamApply = () => {
   // const { appliedTeamData } = useAppliedTeam();
+  DUMMY;
   return (
     <ApplyLayout>
-      {DUMMY.data.map((each) => (
+      {/* {DUMMY.data.map((each) => (
         <MyTeamApplyContainer each={each}></MyTeamApplyContainer>
-      ))}
+      ))} */}
     </ApplyLayout>
   );
 };
