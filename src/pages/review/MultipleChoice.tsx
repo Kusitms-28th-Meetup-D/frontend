@@ -1,12 +1,12 @@
 import BeforeNextButton from '../../components/common/BeforeNextButton';
-import RecommendationHero from '../../components/recommendation/RecommendationHero';
-import RecommendationReason from '../../components/recommendation/RecommendationReason';
+import ReviewHero from '../../components/review/ReviewHero';
+import ReviewReason from '../../components/review/ReviewReason';
 
 const MultipleChoice = () => {
   return (
     <>
-      <RecommendationHero />
-      <RecommendationReason />
+      <ReviewHero />
+      <ReviewReason />
       <BeforeNextButton next="제출하기" route="/" isNextDisabled={false} />
     </>
   );

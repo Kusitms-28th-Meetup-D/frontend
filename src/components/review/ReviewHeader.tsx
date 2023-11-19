@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import Title from '../common/Title';
 
-const RecommendationHeader = () => {
+const ReviewHeader = () => {
   return (
     <HeaderLayout>
       <HeaderContent>
@@ -17,17 +17,14 @@ const RecommendationHeader = () => {
           </HeaderSubTitle>
         </HeaderLeft>
         <HeaderRight>
-          <img
-            src="/assets/images/recommendation/header.svg"
-            alt="recommendation"
-          />
+          <img src="/assets/images/review/header.svg" alt="review" />
         </HeaderRight>
       </HeaderContent>
     </HeaderLayout>
   );
 };
 
-export default RecommendationHeader;
+export default ReviewHeader;
 
 const HeaderLayout = styled.div`
   display: flex;

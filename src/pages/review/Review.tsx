@@ -1,19 +1,19 @@
 import { styled } from 'styled-components';
-import RecommendationHeader from '../../components/recommendation/RecommendationHeader';
+import ReviewHeader from '../../components/review/ReviewHeader';
 import { Outlet } from 'react-router-dom';
 
-const Recommendation = () => {
+const Review = () => {
   return (
-    <RecommendationLayout>
-      <RecommendationHeader />
+    <ReviewLayout>
+      <ReviewHeader />
       <Outlet />
-    </RecommendationLayout>
+    </ReviewLayout>
   );
 };
 
-export default Recommendation;
+export default Review;
 
-const RecommendationLayout = styled.div`
+const ReviewLayout = styled.div`
   margin: 0 auto;
 
   @media ${({ theme }) => theme.devices.mobile} {

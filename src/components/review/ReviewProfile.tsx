@@ -8,7 +8,7 @@ interface ProfileProps {
   onClick: (id: number) => void;
 }
 
-const RecommendationProfile = ({
+const ReviewProfile = ({
   id,
   src,
   name,
@@ -29,7 +29,7 @@ const RecommendationProfile = ({
   );
 };
 
-export default RecommendationProfile;
+export default ReviewProfile;
 
 const ProfileLayout = styled.div`
   display: flex;

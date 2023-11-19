@@ -5,14 +5,14 @@ import quoteCloseSrc from '/assets/images/profile/quotes_close.svg';
 import { Comment } from '../../interface/Profile';
 import ProfileLocked from './ProfileLocked';
 
-const ProfileRecommendationContentsBox = ({
-  recommendationData,
+const ProfileReviewContentsBox = ({
+  reviewData,
   isLocked,
   name,
   setIsLackModalVisible,
   setIsUseModalVisible,
 }: {
-  recommendationData?: Comment[];
+  reviewData?: Comment[];
   isLocked?: boolean;
   name?: string;
   setIsLackModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,7 +27,7 @@ const ProfileRecommendationContentsBox = ({
           setIsUseModalVisible={setIsUseModalVisible}
         />
       ) : null}
-      {recommendationData?.map((data, index) => {
+      {reviewData?.map((data, index) => {
         return (
           <ContentBox key={index}>
             <QuoteBox>
@@ -86,4 +86,4 @@ const Category = styled.div`
   padding-right: 4rem;
 `;
 
-export default ProfileRecommendationContentsBox;
+export default ProfileReviewContentsBox;

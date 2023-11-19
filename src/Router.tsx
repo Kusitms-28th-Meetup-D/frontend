@@ -5,9 +5,9 @@ import Oauth from './pages/login/Oauth';
 import Join from './pages/join/Join';
 import Profile from './pages/profile/Profile';
 import ProfileCreate from './pages/profile/ProfileCreate';
-import Recommendation from './pages/recommendation/Recommendation';
-import MultipleChoice from './pages/recommendation/MultipleChoice';
-import Subjective from './pages/recommendation/Subjective';
+import Review from './pages/review/Review';
+import MultipleChoice from './pages/review/MultipleChoice';
+import Subjective from './pages/review/Subjective';
 import Contest from './pages/contest/Contest';
 import CompetitionList from './pages/competitionList/CompetitionList';
 import Login from './pages/login/Login';
@@ -18,7 +18,7 @@ import ScrollToTop from './components/common/ScrollToTop';
 import MyTeam from './pages/myteam/MyTeam';
 import MyTeamOpen from './components/myteam/MyTeamOpen';
 import ContestTeam from './pages/contestTeam/ContestTeam';
-import ExternalReview from './pages/recommendation/ExternalReview';
+import ExternalReview from './pages/review/ExternalReview';
 
 function Router() {
   return (
@@ -32,11 +32,11 @@ function Router() {
         <Route path="/join" element={<Join />} />
         <Route path="/join/request" element={<Request />} />
 
-        <Route path="/recommendation" element={<Recommendation />}>
+        <Route path="/review/external" element={<ExternalReview />} />
+        <Route path="/review" element={<Review />}>
           <Route path="subjective" element={<Subjective />} />
           <Route path="multipleChoice" element={<MultipleChoice />} />
         </Route>
-        <Route path="/review/external" element={<ExternalReview />} />
 
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/profile/:userId/create" element={<ProfileCreate />} />

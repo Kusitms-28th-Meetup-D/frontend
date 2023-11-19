@@ -8,7 +8,7 @@ interface TitleProps {
 const Title = ({ children, style }: TitleProps) => {
   return (
     <TitleContainer style={style}>
-      <Star src="/assets/images/recommendation/star.svg" alt="star" />
+      <Star src="/assets/images/review/star.svg" alt="star" />
       {children}
     </TitleContainer>
   );

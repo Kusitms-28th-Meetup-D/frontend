@@ -27,10 +27,7 @@ const BeforeNextButton = ({
   return (
     <ButtonBox>
       <BeforeButton onClick={handleBeforeButtonClick}>
-        <img
-          src="/assets/images/recommendation/beforeArrow.svg"
-          alt="arrow-before"
-        />
+        <img src="/assets/images/review/beforeArrow.svg" alt="arrow-before" />
         이전
       </BeforeButton>
       <NextButton
@@ -38,10 +35,7 @@ const BeforeNextButton = ({
         disabled={isNextDisabled}
       >
         {next}
-        <img
-          src="/assets/images/recommendation/nextArrow.svg"
-          alt="arrow-right"
-        />
+        <img src="/assets/images/review/nextArrow.svg" alt="arrow-right" />
       </NextButton>
     </ButtonBox>
   );

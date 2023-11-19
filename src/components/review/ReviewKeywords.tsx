@@ -2,10 +2,10 @@ import { styled } from 'styled-components';
 import Keyword from './Keyword';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { selectedNameAtom } from '../../recoil/recommendation';
-import { keywordList } from '../../constants/recommendation';
+import { selectedNameAtom } from '../../recoil/review';
+import { keywordList } from '../../constants/review';
 
-const RecommendationKeywords = () => {
+const ReviewKeywords = () => {
   const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
   const selectedName = useRecoilValue(selectedNameAtom);
 
@@ -64,4 +64,4 @@ const KeywordSubTitle = styled.div`
   margin-bottom: 1.8rem;
 `;
 
-export default RecommendationKeywords;
+export default ReviewKeywords;
