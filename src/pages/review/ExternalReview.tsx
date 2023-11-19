@@ -5,6 +5,7 @@ import ReviewTendency from '../../components/review/ReviewTendency';
 import BeforeNextButton from '../../components/common/BeforeNextButton';
 import { useParams } from 'react-router-dom';
 import useProfile from '../../hooks/profile/useProfile';
+import ExternalReviewOneLine from '../../components/review/ExternalReviewOneLine';
 
 const ExternalReview = () => {
   const { userId } = useParams();
@@ -16,6 +17,7 @@ const ExternalReview = () => {
       <ExternalReviewContainer>
         <ReviewKeywords userName={profileData?.data.data.username} />
         <ReviewTendency userName={profileData?.data.data.username} />
+        <ExternalReviewOneLine userName={profileData?.data.data.username} />
         <BeforeNextButton
           next="제출하기"
           route="/review/multipleChoice"

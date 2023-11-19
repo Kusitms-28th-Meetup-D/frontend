@@ -35,4 +35,5 @@ const TendencyTitle = styled.div`
 const TendencyBoxLayout = styled.div`
   display: flex;
   gap: 2rem;
+  margin-bottom: 4rem;
 `;
