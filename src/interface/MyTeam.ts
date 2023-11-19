@@ -4,6 +4,17 @@ import { ProfileProps } from './Contest';
 export interface RequestAppliedTeam {
   // contestId: string;
 }
+
+export interface RequestTeamOpen {
+  contestId?: string;
+  max: number;
+  location: number;
+  endDate: string;
+  leaderMessage: string;
+  notice: string;
+  chatLink: string;
+}
+
 export interface TeamData {
   teamId?: number;
   teamMemberSize?: number;
@@ -13,13 +24,14 @@ export interface TeamData {
   contestTitle?: string;
   contestImage: string[];
 }
+
 export interface ResponseAppliedTeam {
   status: number;
   message: string;
   data: TeamData[];
 }
 
-export interface ResponseOpendTeam {
+export interface ResponseOpenedTeam {
   status: number;
   message: string;
   data: TeamData[];

@@ -2,8 +2,14 @@ import { useState } from 'react';
 import { styled } from 'styled-components';
 import TwoButtonModal from '../common/TwoButtonModal';
 import { useNavigate, useParams } from 'react-router-dom';
+import { RequestTeamOpen } from '../../interface/MyTeam';
+import { UseTeamOpen } from '../../hooks/myTeam/useTeamOpen';
 
-const ButtonBox = () => {
+interface ButtonBoxProps {
+  teamOpen: RequestTeamOpen;
+}
+
+const ButtonBox = ({ teamOpen }: ButtonBoxProps) => {
   const [openCancelModal, setOpenCancelModal] = useState(false);
   const [openCompleteModal, setOpenCompleteModal] = useState(false);
   const [openCompleteFinalModal, setOpenCompleteFinalModal] = useState(false);
@@ -11,9 +17,12 @@ const ButtonBox = () => {
   const navigate = useNavigate();
   openCompleteFinalModal;
 
+  const teamOpenMutation = UseTeamOpen(teamOpen);
+
   const handleCompleteModalClick = () => {
     setOpenCompleteModal(false);
     setOpenCompleteFinalModal(true);
+    teamOpenMutation.mutate();
   };
 
   return (

@@ -1,22 +1,24 @@
 import { styled } from 'styled-components';
 import FormTitle from './open/FormTitle';
 import ActivityAreaSelectBox from './ActivityAreaSelectBox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { RequestTeamOpen } from '../../interface/MyTeam';
 
-const MyTeamCreateOpen = () => {
+interface MyTeamCreateOpenProps {
+  onTeamOpenChange: (newTeamOpen: RequestTeamOpen) => void;
+}
+
+const MyTeamCreateOpen = ({ onTeamOpenChange }: MyTeamCreateOpenProps) => {
   const [recruitmentNumber, setRecruitmentNumber] = useState(0);
   const [activityEndDate, setActivityEndDate] = useState('');
+  const [activityArea, setActivityArea] = useState(0);
   const isRecruitmentNumberValid = recruitmentNumber <= 10;
 
-  const handleRecruitmentInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    setRecruitmentNumber(Number(e.target.value));
-  };
-
-  const handleActivityEndDateChange = (e) => {
-    setActivityEndDate(e.target.value);
-  };
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('');
+  const [text3, setText3] = useState('');
+  const { contestId } = useParams();
 
   const isActivityEndDateValid = () => {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
@@ -27,6 +29,33 @@ const MyTeamCreateOpen = () => {
       regex.test(activityEndDate) && new Date(activityEndDate) > new Date()
     );
   };
+
+  const teamOpen = {
+    contestId: contestId,
+    max: recruitmentNumber,
+    location: activityArea,
+    endDate: activityEndDate,
+    leaderMessage: text1,
+    notice: text2,
+    chatLink: text3,
+  };
+
+  const updateTeamOpen = (newValues: RequestTeamOpen) => {
+    const updatedTeamOpen = { ...teamOpen, ...newValues };
+    onTeamOpenChange(updatedTeamOpen);
+  };
+
+  useEffect(() => {
+    updateTeamOpen(teamOpen);
+  }, [
+    recruitmentNumber,
+    activityEndDate,
+    activityArea,
+    text1,
+    text2,
+    text3,
+    contestId,
+  ]);
 
   return (
     <NyTeamCraeteOpenContainer>
@@ -42,7 +71,9 @@ const MyTeamCreateOpen = () => {
             <p>
               <RecruitmentInput
                 value={recruitmentNumber}
-                onChange={handleRecruitmentInputChange}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setRecruitmentNumber(Number(e.target.value))
+                }
                 $isValid={isRecruitmentNumberValid}
               />
               명
@@ -55,7 +86,12 @@ const MyTeamCreateOpen = () => {
 
         <QuestionBox>
           <FormTitle title={'활동 지역'} />
-          <ActivityAreaSelectBox />
+          <ActivityAreaSelectBox
+            value={activityArea}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setActivityArea(Number(e.target.value))
+            }
+          />
         </QuestionBox>
 
         <QuestionBox>
@@ -65,7 +101,9 @@ const MyTeamCreateOpen = () => {
               <ActivityEndInput
                 placeholder={'ex) 2023-12-25'}
                 value={activityEndDate}
-                onChange={handleActivityEndDateChange}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setActivityEndDate(e.target.value)
+                }
                 $isValid={isActivityEndDateValid()}
               />
               <ActivityDescription $isValid={isActivityEndDateValid()}>
@@ -89,6 +127,7 @@ const MyTeamCreateOpen = () => {
           </FormDescription>
           <FormTextarea
             placeholder={`ex)\n즐거운 팀 문화를 중요시합니다! 믿고 함께해주세요 :)`}
+            onChange={(e) => setText1(e.target.value)}
           />
         </FormQuestionBox>
 
@@ -100,6 +139,7 @@ const MyTeamCreateOpen = () => {
           </FormDescription>
           <FormTextarea1
             placeholder={`ex)\n창업 학회, 마케팅 공모전 수상 경력이 여러 번 있어서 믿고 따라오셔도 될 것 같습니다!\n제가 전력 기획 쪽을 담당할 테니, UX/UI 디자인을 잘하시는 팀원을 만나고 싶어요!\n그리고 아이디어가 많으신 분들 환영합니다!\n+) 팀 모집은 제가 하지만, 팀 구성되고 난 후에는 따로 리더를 뽑을 계획입니다!`}
+            onChange={(e) => setText2(e.target.value)}
           />
         </FormQuestionBox>
 
@@ -111,6 +151,7 @@ const MyTeamCreateOpen = () => {
           </FormDescription>
           <FormTextarea2
             placeholder={'카카오톡 오픈채팅방 URL을 입력해 주세요.'}
+            onChange={(e) => setText3(e.target.value)}
           />
         </FormQuestionBox>
       </MyTeamCreateForm>

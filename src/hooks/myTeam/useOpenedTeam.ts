@@ -1,12 +1,12 @@
 import { useQuery } from 'react-query';
-import { getOpendTeam } from '../../apis/myTeam/getOpendTeam';
-import { ResponseOpendTeam } from '../../interface/MyTeam';
+import { getOpenedTeam } from '../../apis/myTeam/getOpenedTeam';
+import { ResponseOpenedTeam } from '../../interface/MyTeam';
 
-interface UseOpendTeam {
-  openedTeam?: ResponseOpendTeam;
+interface UseOpenedTeam {
+  openedTeam?: ResponseOpenedTeam;
 }
 
-export function useOpendTeam(): UseOpendTeam {
-  const { data: openedTeam } = useQuery('openedTeam', () => getOpendTeam());
+export function useOpenedTeam(): UseOpenedTeam {
+  const { data: openedTeam } = useQuery('openedTeam', () => getOpenedTeam());
   return { openedTeam };
 }

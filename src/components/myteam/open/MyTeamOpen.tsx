@@ -1,11 +1,11 @@
 import { styled } from 'styled-components';
 import Button from '../../common/Button';
 import ProfileBoxMember from '../../common/ProfileBoxMember';
-import { useOpendTeam } from '../../../hooks/myTeam/useOpenedTeam';
+import { useOpenedTeam } from '../../../hooks/myTeam/useOpenedTeam';
 import StarTitle from '../../common/StarTtile';
 
 const MyTeamOpen = () => {
-  const { openedTeam } = useOpendTeam();
+  const { openedTeam } = useOpenedTeam();
 
   return (
     <MyTeamOpenContainer>
