@@ -16,7 +16,7 @@ const MainCompetition = () => {
             </div>
             <CompetitionListBox>
               {competitionList.map((competition) => (
-                <CompetitionBox {...competition} />
+                <CompetitionBox key={competition.contestId} {...competition} />
               ))}
             </CompetitionListBox>
           </MainCompetitionTop>
@@ -24,7 +24,7 @@ const MainCompetition = () => {
           <MainCompetitionBottom>
             <CompetitionListBox>
               {competitionList.map((competition) => (
-                <CompetitionBox {...competition} />
+                <CompetitionBox key={competition.contestId} {...competition} />
               ))}
             </CompetitionListBox>
           </MainCompetitionBottom>

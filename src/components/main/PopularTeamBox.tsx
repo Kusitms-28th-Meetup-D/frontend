@@ -11,7 +11,7 @@ const PopularTeamBox = ({ title, name, content }: PopularTeamBoxProps) => {
     <PopularTeamBoxContainer>
       <h1>{title}</h1>
       <hr />
-      <img src={'/assets/images/recommendation/profile.svg'} />
+      <img src={'/assets/images/review/profile.svg'} />
       <h2>{name}님의 팀</h2>
       <p>"{content}"</p>
     </PopularTeamBoxContainer>

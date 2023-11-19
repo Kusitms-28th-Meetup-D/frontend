@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { AppliedTeamData } from '../../../interface/MyTeam';
+import { TeamData } from '../../../interface/MyTeam';
 
-const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
+const MyTeamApplyContainer: React.FC<TeamData> = (props) => {
   props;
   return (
     <Layout>

@@ -4,17 +4,23 @@ import { ProfileProps } from './Contest';
 export interface RequestAppliedTeam {
   // contestId: string;
 }
-export interface AppliedTeamData {
+export interface TeamData {
   teamId?: number;
   teamMemberSize?: number;
   applyMemberSize?: number;
   teamMemberInfos?: ProfileProps[];
   applyMemberInfos?: ProfileProps[]; // Apply Member 정보에 대한 타입이 없어서 any로 처리했습니다.
   contestTitle?: string;
-  contestImage?: string[];
+  contestImage: string[];
 }
 export interface ResponseAppliedTeam {
   status: number;
   message: string;
-  data: AppliedTeamData[];
+  data: TeamData[];
+}
+
+export interface ResponseOpendTeam {
+  status: number;
+  message: string;
+  data: TeamData[];
 }

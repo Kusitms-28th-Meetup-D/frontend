@@ -16,7 +16,7 @@ import Request from './pages/request/Request';
 import Main from './pages/main/Main';
 import ScrollToTop from './components/common/ScrollToTop';
 import MyTeam from './pages/myteam/MyTeam';
-import MyTeamOpen from './components/myteam/MyTeamOpen';
+import MyTeamOpen from './components/myteam/open/MyTeamOpen';
 import ContestTeam from './pages/contestTeam/ContestTeam';
 import MyTeamManagement from './pages/myteam/MyTeamManagement';
 import MyTeamApply from './pages/myteam/MyTeamApply';

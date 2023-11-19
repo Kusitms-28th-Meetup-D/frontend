@@ -26,7 +26,7 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
         <Role>팀장</Role>
         <ProfileBoxMember {...teamLeaderDataProps} />
         {/* <LeaderInfoBox infoData={data.leaer} /> */}
-      </LeaderBox>
+      </LeaderBox>  
       <MemberBox>
         <Role>팀원</Role>
         <TeamInfoBox>

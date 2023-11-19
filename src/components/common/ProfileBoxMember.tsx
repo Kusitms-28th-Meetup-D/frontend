@@ -80,6 +80,7 @@ const Name = styled.div`
   ${(props) => props.theme.fonts.heading5};
   color: ${(props) => props.theme.colors.gray90};
   margin: 0.8rem 0;
+  white-space: nowrap;
 
   /* font-size: 130%; */
 `;
