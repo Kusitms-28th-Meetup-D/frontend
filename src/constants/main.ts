@@ -8,7 +8,7 @@ export const competitionList = [
     teamNum: 3,
   },
   {
-    contestId: '1',
+    contestId: '2',
     title: '2021년도 제 1회 삼성 SDS 아이디어 공모전',
     company: '삼성 SDS',
     images: ['/assets/images/competition/competition.svg'],
@@ -16,7 +16,7 @@ export const competitionList = [
     teamNum: 3,
   },
   {
-    contestId: '1',
+    contestId: '3',
     title: '2021년도 제 1회 삼성 SDS 아이디어 공모전',
     company: '삼성 SDS',
     images: ['/assets/images/competition/competition.svg'],
@@ -24,7 +24,7 @@ export const competitionList = [
     teamNum: 3,
   },
   {
-    contestId: '1',
+    contestId: '4',
     title: '2021년도 제 1회 삼성 SDS 아이디어 공모전',
     company: '삼성 SDS',
     images: ['/assets/images/competition/competition.svg'],

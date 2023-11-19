@@ -3,10 +3,10 @@ import { styled } from 'styled-components';
 const RightBox = () => {
   return (
     <RightBoxContainer>
-      <p>
+      <div>
         <h1>공모전･대회 공고 확인하고</h1>
         <h1>원하는 팀원 찾으러 가기</h1>
-      </p>
+      </div>
       <RightBoxBackground src={'/assets/images/main/main_rightbox.svg'} />
       <RightButton src={'/assets/images/main/right_button.svg'} />
     </RightBoxContainer>
