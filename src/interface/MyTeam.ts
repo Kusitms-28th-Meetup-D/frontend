@@ -4,6 +4,26 @@ import { ProfileProps } from './Contest';
 export interface RequestAppliedTeam {
   // contestId: string;
 }
+export interface AppliedTeamData {
+  contestId: string;
+  contestTitle: string;
+  contestImage: string[];
+  leaderInfo: ProfileProps;
+  teamId: number;
+  status: string;
+  leaderMessage: string;
+  max: number;
+  cur: number;
+  location: string;
+  endDate: string;
+}
+export interface ResponseAppliedTeam {
+  status: number;
+  message: string;
+  data: AppliedTeamData[];
+}
+
+//예진이가 사용한 오픈한 팀 api
 export interface TeamData {
   teamId?: number;
   teamMemberSize?: number;
@@ -13,14 +33,32 @@ export interface TeamData {
   contestTitle?: string;
   contestImage: string[];
 }
-export interface ResponseAppliedTeam {
+export interface ResponseOpendTeam {
   status: number;
   message: string;
   data: TeamData[];
 }
 
-export interface ResponseOpendTeam {
+//내가 활동중인 팀 조회하기 api
+// 내가 지원한 팀 조회하기 api
+export interface RequestActiveTeam {
+  // contestId: string;
+}
+export interface ActiveTeamData {
+  contestId: string;
+  contestTitle: string;
+  contestImage: string[];
+  leaderInfo: ProfileProps;
+  leaderMessage: string;
+  memberSize: number;
+  location: string;
+  endDate: string;
+  notice: string;
+  teamMemberInfos: ProfileProps[];
+  chatLink: string;
+}
+export interface ResponseActiveTeam {
   status: number;
   message: string;
-  data: TeamData[];
+  data: ActiveTeamData[];
 }
