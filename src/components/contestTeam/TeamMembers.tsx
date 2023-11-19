@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { ProfileBoxProps, ProfileProps } from '../../interface/Contest';
 import ProfileBoxMember from '../common/ProfileBoxMember';
 
+import EmptySrc from '/assets/images/common/members.svg';
+
 const TeamMembers = ({
   memberDatas,
   leftMember,
@@ -16,34 +18,63 @@ const TeamMembers = ({
   return (
     <>
       <Hr />
-      <TeamMembersLayout>
-        <TeamMembersTitle>
-          팀원들
-          <TeamMembersLeft>
-            <span>{leftMember}</span>자리 남았어요!
-          </TeamMembersLeft>
-        </TeamMembersTitle>
-        <TeamMembersLeftInfo>
-          지금까지 정원 <span>{max}</span>명 중 <span>{cur}</span>명의 팀원이
-          합류했어요.
-        </TeamMembersLeftInfo>
-        <TeamMembersProfileContainer>
-          {memberDatas?.map((memberData, index) => {
-            const teamMemberDataProps: ProfileBoxProps = {
-              hasProfileButton: true,
-              isBgColorWhite: false,
-              hasBorder: true,
-              memberInfo: memberData,
-              width: 20,
-              height: 27.6,
-            };
-            return <ProfileBoxMember {...teamMemberDataProps} key={index} />;
-          })}
-        </TeamMembersProfileContainer>
-      </TeamMembersLayout>
+      {cur == 1 ? (
+        <>
+          <TeamMembersTitle>팀원들</TeamMembersTitle>
+          <EmptyMember>
+            <EmptyImg src={EmptySrc} />
+            아직 합류한 팀원이 없어요.
+          </EmptyMember>
+        </>
+      ) : (
+        <TeamMembersLayout>
+          <TeamMembersTitle>
+            팀원들
+            <TeamMembersLeft>
+              <span>{leftMember}</span>자리 남았어요!
+            </TeamMembersLeft>
+          </TeamMembersTitle>
+          <TeamMembersLeftInfo>
+            지금까지 정원 <span>{max}</span>명 중 <span>{cur}</span>명의 팀원이
+            합류했어요.
+          </TeamMembersLeftInfo>
+          <TeamMembersProfileContainer>
+            {memberDatas?.map((memberData, index) => {
+              const teamMemberDataProps: ProfileBoxProps = {
+                hasProfileButton: true,
+                isBgColorWhite: false,
+                hasBorder: true,
+                memberInfo: memberData,
+                width: 20,
+                height: 27.6,
+              };
+              return <ProfileBoxMember {...teamMemberDataProps} key={index} />;
+            })}
+          </TeamMembersProfileContainer>
+        </TeamMembersLayout>
+      )}
     </>
   );
 };
+const EmptyMember = styled.div`
+  width: 100%;
+  height: 31rem;
+  background-color: ${(props) => props.theme.colors.gray5};
+  border: 1px solid ${(props) => props.theme.colors.gray20};
+  border-radius: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  ${(props) => props.theme.fonts.subtitleL};
+  color: ${(props) => props.theme.colors.gray90};
+`;
+const EmptyImg = styled.img`
+  width: 6rem;
+`;
+
 const Hr = styled.div`
   width: 100%;
   height: 1px;
@@ -91,6 +122,5 @@ const TeamMembersProfileContainer = styled.div`
   align-items: center;
   gap: 1.8rem;
 `;
-
 
 export default TeamMembers;

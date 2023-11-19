@@ -104,6 +104,27 @@ const ContestTeam = () => {
             <CustomButton>합류 신청하기 →</CustomButton>
             <CustomMessage>이미 합류 승인된 팀입니다.</CustomMessage>
           </>
+        )}{' '}
+        {contestTeamDetailData?.data.data.status ==
+          TEAM_DETAIL_STATUS._4_남이오픈한경우_내가지원완료_반려 && (
+          <>
+            <CustomButton>합류 신청하기 →</CustomButton>
+            <CustomMessage>이미 지원이 반려된 팀입니다.</CustomMessage>
+          </>
+        )}{' '}
+        {contestTeamDetailData?.data.data.status ==
+          TEAM_DETAIL_STATUS._5_남이오픈한경우_내가지원완료_승인반려아님 && (
+          <>
+            <CustomButton
+              $isActive={true}
+              onClick={() =>
+                navigate(`/myteam/${userLogininfo.data?.userId}/apply`)
+              }
+            >
+              지원 현황보기 →
+            </CustomButton>
+            <CustomMessage>이미 지원을 완료한 팀입니다.</CustomMessage>
+          </>
         )}
       </FlexBox>
     </TeamLayout>
