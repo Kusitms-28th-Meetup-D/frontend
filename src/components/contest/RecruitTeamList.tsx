@@ -4,11 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useContestTeamList from '../../hooks/contest/useContestTeamList';
 
 const RecruitTeamList = () => {
+  const { contestId } = useParams();
   const navigate = useNavigate();
   const handleBtnClicked = () => {
-    navigate('3');
+    navigate(`/myteam/create/${contestId}`);
   };
-  const { contestId } = useParams();
   const { contestTeamListData } = useContestTeamList(contestId as string);
   console.log(contestTeamListData?.data.data);
   return (
