@@ -7,12 +7,13 @@ import ProfileBoxMember from '../../components/common/ProfileBoxMember';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { headerSelectedState, loginInfoState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useContestTeamDetailInfo from '../../hooks/contest/useContestTeamDetailInfo';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TEAM_DETAIL_STATUS } from '../../constants/Contest';
 import TeamMembers from '../../components/contestTeam/TeamMembers';
 import useJoinTeam from '../../hooks/contest/useJoinTeam';
+import JoinTeamModal from '../../components/contestTeam/JoinTeamModal';
 
 const ContestTeam = () => {
   const { teamId, contestId } = useParams();
@@ -22,8 +23,7 @@ const ContestTeam = () => {
   const userLogininfo = useRecoilValue(loginInfoState);
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   const navigate = useNavigate();
-  const handleJoinTeam = useJoinTeam(teamId as string);
-  useEffect(() => setHeaderSelected(Headers.list));
+  const [isJoinTeamModalVisible, setIsJoinTeamModalVisible] = useState(false);
   const teamLeaderBoxProps: ProfileBoxProps = isLoading
     ? ({} as ProfileBoxProps)
     : {
@@ -35,17 +35,32 @@ const ContestTeam = () => {
         height: 27.6,
       };
 
+  const handleJoinTeam = () => {
+    setIsJoinTeamModalVisible(true);
+  };
+  console.log(contestTeamDetailData);
+
+  useEffect(() => setHeaderSelected(Headers.list));
+
+  //내가 오픈한 경우, 내 팀 페이지로 이동
   if (
     contestTeamDetailData?.data.data.status ==
     TEAM_DETAIL_STATUS._1_내가오픈한경우
   ) {
     navigate(`/myTeam/${userLogininfo.data?.userId}/${contestId}/${teamId}`);
   }
-  console.log(contestTeamDetailData);
+
   return isLoading ? (
     <div>로딩중</div>
   ) : (
     <TeamLayout>
+      <JoinTeamModal
+        isModalVisible={isJoinTeamModalVisible}
+        setIsModalVisible={setIsJoinTeamModalVisible}
+        teamId={teamId}
+        userId={userLogininfo.data?.userId}
+      />
+
       <TeamUndo onClick={() => navigate(-1)}>
         <UndoImg src={undoSrc} />
         {'공모전으로 돌아가기'}
@@ -97,10 +112,7 @@ const ContestTeam = () => {
         {contestTeamDetailData?.data.data.status ==
           TEAM_DETAIL_STATUS._2_남이오픈한경우_내가지원안함 && (
           <>
-            <CustomButton
-              $isActive={true}
-              onClick={() => handleJoinTeam.mutate()}
-            >
+            <CustomButton $isActive={true} onClick={handleJoinTeam}>
               합류 신청하기 →
             </CustomButton>
           </>
