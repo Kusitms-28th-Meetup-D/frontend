@@ -38,3 +38,27 @@ export interface ResponseOpendTeam {
   message: string;
   data: TeamData[];
 }
+
+//내가 활동중인 팀 조회하기 api
+// 내가 지원한 팀 조회하기 api
+export interface RequestActiveTeam {
+  // contestId: string;
+}
+export interface ActiveTeamData {
+  contestId: string;
+  contestTitle: string;
+  contestImage: string[];
+  leaderInfo: ProfileProps;
+  leaderMessage: string;
+  memberSize: number;
+  location: string;
+  endDate: string;
+  notice: string;
+  teamMemberInfos: ProfileProps[];
+  chatLink: string;
+}
+export interface ResponseActiveTeam {
+  status: number;
+  message: string;
+  data: ActiveTeamData[];
+}
