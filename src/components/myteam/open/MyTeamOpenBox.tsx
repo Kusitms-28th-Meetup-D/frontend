@@ -1,21 +1,21 @@
 import { styled } from 'styled-components';
 import Button from '../../common/Button';
 import ProfileBoxMember from '../../common/ProfileBoxMember';
-import { useOpenedTeam } from '../../../hooks/myTeam/useOpenedTeam';
 import StarTitle from '../../common/StarTtile';
+import { TeamData } from '../../../interface/MyTeam';
 
-const MyTeamOpen = () => {
-  const { openedTeam } = useOpenedTeam();
+interface MyTeamOpenBoxProps {
+  myTeamOpen: TeamData;
+}
 
+const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
   return (
     <MyTeamOpenContainer>
-      {openedTeam && (
+      {myTeamOpen && (
         <>
           <CompetitionBox>
-            <CompetitionTitle>
-              {openedTeam.data[0].contestTitle}
-            </CompetitionTitle>
-            <CompetitionImg src={openedTeam.data[0].contestImage[0]} />
+            <CompetitionTitle>{myTeamOpen.contestTitle}</CompetitionTitle>
+            <CompetitionImg src={myTeamOpen.contestImage[0]} />
             <Button>팀 관리하러 가기</Button>
           </CompetitionBox>
 
@@ -23,11 +23,11 @@ const MyTeamOpen = () => {
             <div>
               <StarTitle>
                 합류한 팀원들
-                <span> 총 {openedTeam.data[0].teamMemberSize}명</span>
+                <span> 총 {myTeamOpen.teamMemberSize}명</span>
               </StarTitle>
               <TeamMembersBox>
-                {openedTeam.data[0] && openedTeam.data[0].teamMemberInfos ? (
-                  openedTeam.data[0].teamMemberInfos.map((teamMember) => (
+                {myTeamOpen && myTeamOpen.teamMemberInfos ? (
+                  myTeamOpen.teamMemberInfos.map((teamMember) => (
                     <ProfileBoxMember
                       key={teamMember.teamMemberId}
                       hasProfileButton={false}
@@ -52,7 +52,7 @@ const MyTeamOpen = () => {
             <div>
               <StarTitle>지원자</StarTitle>
               <TeamMembersBox>
-                {openedTeam.data[0] && openedTeam.data[0].applyMemberInfos ? (
+                {myTeamOpen && myTeamOpen.applyMemberInfos ? (
                   <>
                     <ApplyContent>
                       <ApplyFireImg
@@ -60,12 +60,11 @@ const MyTeamOpen = () => {
                         alt={'apply_fire'}
                       />
                       <p>
-                        현재 <span>{openedTeam.data[0].applyMemberSize}명</span>
-                        이
+                        현재 <span>{myTeamOpen.applyMemberSize}명</span>이
                       </p>
                       <p>팀원으로 지원했어요.</p>
                     </ApplyContent>
-                    {openedTeam.data[0].applyMemberInfos.map((teamMember) => (
+                    {myTeamOpen.applyMemberInfos.map((teamMember) => (
                       <ProfileBoxMember
                         key={teamMember.teamMemberId}
                         hasProfileButton={false}
@@ -95,13 +94,15 @@ const MyTeamOpen = () => {
   );
 };
 
-export default MyTeamOpen;
+export default MyTeamOpenBox;
 
 const MyTeamOpenContainer = styled.div`
   display: flex;
   background: ${({ theme }) => theme.colors.primary10};
   padding: 6rem 10rem;
   gap: 4rem;
+  margin-bottom: 3rem;
+  border-radius: 10px;
 `;
 
 const CompetitionBox = styled.div`

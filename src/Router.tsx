@@ -16,7 +16,6 @@ import Request from './pages/request/Request';
 import Main from './pages/main/Main';
 import ScrollToTop from './components/common/ScrollToTop';
 import MyTeam from './pages/myteam/MyTeam';
-import MyTeamOpen from './components/myteam/open/MyTeamOpen';
 import ContestTeam from './pages/contestTeam/ContestTeam';
 import MyTeamManagement from './pages/myteam/MyTeamManagement';
 import MyTeamApply from './pages/myteam/MyTeamApply';
@@ -25,6 +24,7 @@ import ExternalReview from './pages/review/ExternalReview';
 import MyTeamCreate from './pages/myteam/MyTeamCreate';
 import MyTeamActive from './pages/myteam/MyTeamActive';
 import MyTeamEnd from './pages/myteam/MyTeamEnd';
+import MyTeamOpen from './pages/myteam/MyTeamOpen';
 
 function Router() {
   return (
