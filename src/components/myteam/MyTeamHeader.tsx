@@ -12,13 +12,13 @@ const MyTeamHeader = () => {
   const handleCategoryClick = (id: number) => {
     setSelectedTeam(id);
     if (id === 0) {
-      navigate(`/myteam/:${loginInfo.data?.userId}/open`);
+      navigate(`/myteam/${loginInfo.data?.userId}/open`);
     } else if (id === 1) {
-      navigate(`/myteam/:${loginInfo.data?.userId}/apply`);
+      navigate(`/myteam/${loginInfo.data?.userId}/apply`);
     } else if (id === 2) {
-      navigate(`/myteam/:${loginInfo.data?.userId}/active`);
+      navigate(`/myteam/${loginInfo.data?.userId}/active`);
     } else if (id === 3) {
-      navigate(`/myteam/:${loginInfo.data?.userId}/end`);
+      navigate(`/myteam/${loginInfo.data?.userId}/end`);
     }
   };
 
