@@ -28,6 +28,7 @@ export interface AppliedTeamData {
   location: string;
   endDate: string;
 }
+
 export interface ResponseAppliedTeam {
   status: number;
   message: string;
