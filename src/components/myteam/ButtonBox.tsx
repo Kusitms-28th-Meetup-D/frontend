@@ -5,10 +5,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const ButtonBox = () => {
   const [openCancelModal, setOpenCancelModal] = useState(false);
-  const [openCompleteModal, setCompleteModal] = useState(false);
-  openCompleteModal;
+  const [openCompleteModal, setOpenCompleteModal] = useState(false);
+  const [openCompleteFinalModal, setOpenCompleteFinalModal] = useState(false);
   const { contestId } = useParams();
   const navigate = useNavigate();
+  openCompleteFinalModal;
+
+  const handleCompleteModalClick = () => {
+    setOpenCompleteModal(false);
+    setOpenCompleteFinalModal(true);
+  };
 
   return (
     <>
@@ -16,7 +22,7 @@ const ButtonBox = () => {
         <CancelButton onClick={() => setOpenCancelModal(true)}>
           취소
         </CancelButton>
-        <CompleteButton onClick={() => setCompleteModal(true)}>
+        <CompleteButton onClick={() => setOpenCompleteModal(true)}>
           완료
         </CompleteButton>
         {openCancelModal && (
@@ -39,6 +45,29 @@ const ButtonBox = () => {
             <ModalContent>
               <h1>팀 오픈을 취소하시겠어요?</h1>
               <p>취소 시 작성한 모두 사라지며, 복구할 수 없어요.</p>
+            </ModalContent>
+          </TwoButtonModal>
+        )}
+        {openCompleteModal && (
+          <TwoButtonModal
+            leftButton={{
+              text: '한 번만 더 검토할게요',
+              onClickFunc: () => setOpenCompleteModal(false),
+            }}
+            rightButton={{
+              text: '네 오픈할게요',
+              onClickFunc: handleCompleteModalClick,
+            }}
+            onCloseClickFunc={() => setOpenCompleteModal(false)}
+            $isModalVisible={openCompleteModal}
+          >
+            <ModalCloseImg
+              src={'/assets/images/myteam/complete_button.svg'}
+              alt={'complete_button'}
+            />
+            <ModalContent>
+              <h1>팀 오픈하시겠어요?</h1>
+              <p>멋진 공고네요! 똑똑한 팀원들을 맞이할 준비 되셨나요?</p>
             </ModalContent>
           </TwoButtonModal>
         )}
