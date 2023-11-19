@@ -1,10 +1,10 @@
 import { useRecoilValue } from 'recoil';
-import { selectedNameAtom } from '../../recoil/recommendation';
+import { selectedNameAtom } from '../../recoil/review';
 import { styled } from 'styled-components';
 import TendencyBox from './TendencyBox';
-import { question1, question2 } from '../../constants/recommendation';
+import { question1, question2 } from '../../constants/review';
 
-const RecommendationTendency = () => {
+const ReviewTendency = () => {
   const selectedName = useRecoilValue(selectedNameAtom);
 
   return (
@@ -18,7 +18,7 @@ const RecommendationTendency = () => {
   );
 };
 
-export default RecommendationTendency;
+export default ReviewTendency;
 
 const TendencyTitle = styled.div`
   ${({ theme }) => theme.fonts.heading3};

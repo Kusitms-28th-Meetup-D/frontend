@@ -5,21 +5,22 @@ interface ProfileProps {
   src: string;
   name: string;
   isSelected: boolean;
-  onClick: (id: number) => void;
+  onClick?: (id: number) => void;
 }
 
-const RecommendationProfile = ({
+const ReviewProfile = ({
   id,
   src,
   name,
   isSelected,
   onClick,
 }: ProfileProps) => {
-  const handleProfileClick = () => {
-    onClick(id);
-  };
   return (
-    <ProfileLayout onClick={handleProfileClick}>
+    <ProfileLayout
+      onClick={() => {
+        onClick && onClick(id);
+      }}
+    >
       <ProfileBox>
         <Profile src={src} $isSelected={isSelected} />
         <ProfileBackground />
@@ -29,7 +30,7 @@ const RecommendationProfile = ({
   );
 };
 
-export default RecommendationProfile;
+export default ReviewProfile;
 
 const ProfileLayout = styled.div`
   display: flex;

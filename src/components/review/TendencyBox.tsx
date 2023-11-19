@@ -50,7 +50,7 @@ const TendencyBox = ({ boxName, question }: TendencyBoxProps) => {
         {question.map((item) => (
           <QuestionBox key={item.id}>
             <TendencyTitleBox>
-              <QuestionImg src="/public/assets/images/recommendation/star.svg" />
+              <QuestionImg src="/public/assets/images/review/star.svg" />
               <TendencyTitle>{item.title}</TendencyTitle>
             </TendencyTitleBox>
             <KeywordBox>

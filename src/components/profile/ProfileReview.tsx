@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import ProfileRecommendationContentsBox from './ProfileRecommendationContentsBox';
+import ProfileReviewContentsBox from './ProfileReviewContentsBox';
 import { Comment } from '../../interface/Profile';
 
-const ProfileRecommendation = ({
-  recommendationData,
+const ProfileReview = ({
+  reviewData,
   name,
   isLocked,
   setIsLackModalVisible,
   setIsUseModalVisible,
 }: {
-  recommendationData?: Comment[];
+  reviewData?: Comment[];
   name?: string;
   isLocked?: boolean;
   setIsLackModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,34 +18,30 @@ const ProfileRecommendation = ({
   const DETAIL_LOCKED_TICKET = isLocked
     ? `티켓을 사용하면 ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`
     : `티켓을 사용하셨군요. ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`;
-  const LOCKED_TICKET_AMMOUNT = isLocked ? '?' : recommendationData?.length;
+  const LOCKED_TICKET_AMMOUNT = isLocked ? '?' : reviewData?.length;
   return (
-    <ProfileRecommendationContainer>
-      <ProfileRecommendationTitle>
-        {name} 님이 받은 한 줄 추천사
-      </ProfileRecommendationTitle>
-      <ProfileRecommendationDetailBox>
-        <ProfileRecommendationDetail>
-          {DETAIL_LOCKED_TICKET}
-        </ProfileRecommendationDetail>
-        <ProfileRecommendationInfo>
+    <ProfileReviewContainer>
+      <ProfileReviewTitle>{name} 님이 받은 한 줄 추천사</ProfileReviewTitle>
+      <ProfileReviewDetailBox>
+        <ProfileReviewDetail>{DETAIL_LOCKED_TICKET}</ProfileReviewDetail>
+        <ProfileReviewInfo>
           한 줄 추천사 수<Count>{LOCKED_TICKET_AMMOUNT}개</Count>
           <Align>최신순↑</Align>
-        </ProfileRecommendationInfo>
-      </ProfileRecommendationDetailBox>
-      <ProfileRecommendationContentsBox
-        recommendationData={recommendationData}
+        </ProfileReviewInfo>
+      </ProfileReviewDetailBox>
+      <ProfileReviewContentsBox
+        reviewData={reviewData}
         isLocked={isLocked}
         name={name}
         setIsLackModalVisible={setIsLackModalVisible}
         setIsUseModalVisible={setIsUseModalVisible}
       />
-    </ProfileRecommendationContainer>
+    </ProfileReviewContainer>
   );
 };
 
-const ProfileRecommendationContainer = styled.div``;
-const ProfileRecommendationTitle = styled.div`
+const ProfileReviewContainer = styled.div``;
+const ProfileReviewTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray100};
 
@@ -53,12 +49,12 @@ const ProfileRecommendationTitle = styled.div`
 
   margin-top: 8rem;
 `;
-const ProfileRecommendationDetailBox = styled.div`
+const ProfileReviewDetailBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-const ProfileRecommendationDetail = styled.div`
+const ProfileReviewDetail = styled.div`
   ${(props) => props.theme.fonts.bodyL};
   color: ${(props) => props.theme.colors.gray70};
 
@@ -66,7 +62,7 @@ const ProfileRecommendationDetail = styled.div`
 
   white-space: break-spaces;
 `;
-const ProfileRecommendationInfo = styled.div`
+const ProfileReviewInfo = styled.div`
   ${(props) => props.theme.fonts.bodyM};
   color: ${(props) => props.theme.colors.gray70};
 
@@ -87,4 +83,4 @@ const Align = styled.div`
   display: inline-block;
 `;
 
-export default ProfileRecommendation;
+export default ProfileReview;

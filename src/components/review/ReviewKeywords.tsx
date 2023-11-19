@@ -2,10 +2,10 @@ import { styled } from 'styled-components';
 import Keyword from './Keyword';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { selectedNameAtom } from '../../recoil/recommendation';
-import { keywordList } from '../../constants/recommendation';
+import { selectedNameAtom } from '../../recoil/review';
+import { keywordList } from '../../constants/review';
 
-const RecommendationKeywords = () => {
+const ReviewKeywords = () => {
   const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
   const selectedName = useRecoilValue(selectedNameAtom);
 
@@ -42,7 +42,7 @@ const RecommendationKeywords = () => {
 const KeywordLayout = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 2rem 0 4rem 0;
+  margin: 4rem 0 5rem 0;
 `;
 
 const KeywordBox = styled.div`
@@ -64,4 +64,4 @@ const KeywordSubTitle = styled.div`
   margin-bottom: 1.8rem;
 `;
 
-export default RecommendationKeywords;
+export default ReviewKeywords;

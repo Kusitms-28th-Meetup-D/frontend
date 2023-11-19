@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
 import HeroBox from './HeroBox';
-import { heroList } from '../../constants/recommendation';
+import { heroList } from '../../constants/review';
 import { useState } from 'react';
 
-const RecommendationHero = () => {
+const ReviewHero = () => {
   const [selectedHero, setSelectedHero] = useState('');
 
   return (
@@ -24,7 +24,7 @@ const RecommendationHero = () => {
   );
 };
 
-export default RecommendationHero;
+export default ReviewHero;
 
 const HeroTitle = styled.div`
   ${({ theme }) => theme.fonts.heading3};

@@ -1,11 +1,11 @@
 import { styled } from 'styled-components';
-import RecommendationProfile from './RecommendationProfile';
+import ReviewProfile from './ReviewProfile';
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { selectedNameAtom } from '../../recoil/recommendation';
-import { profiles } from '../../constants/recommendation';
+import { selectedNameAtom } from '../../recoil/review';
+import { profiles } from '../../constants/review';
 
-const RecommendationProfiles = () => {
+const ReviewProfiles = () => {
   const [activeProfileId, setActiveProfileId] = useState(1);
   const setSelectedName = useSetRecoilState(selectedNameAtom);
 
@@ -17,7 +17,7 @@ const RecommendationProfiles = () => {
   return (
     <ProfileLayout>
       {profiles.map((profile) => (
-        <RecommendationProfile
+        <ReviewProfile
           id={profile.id}
           key={profile.id}
           src={profile.src}
@@ -30,7 +30,7 @@ const RecommendationProfiles = () => {
   );
 };
 
-export default RecommendationProfiles;
+export default ReviewProfiles;
 
 const ProfileLayout = styled.div`
   display: flex;

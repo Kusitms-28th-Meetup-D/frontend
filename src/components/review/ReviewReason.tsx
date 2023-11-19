@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-const RecommendationReason = () => {
+const ReviewReason = () => {
   return (
     <>
       <ReasonTitle>이 분을 팀원으로 추천하고 싶은 이유는요</ReasonTitle>
@@ -11,7 +11,7 @@ const RecommendationReason = () => {
   );
 };
 
-export default RecommendationReason;
+export default ReviewReason;
 
 const ReasonTitle = styled.div`
   ${({ theme }) => theme.fonts.subtitleXXL};
