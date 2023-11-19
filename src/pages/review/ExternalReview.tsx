@@ -14,8 +14,8 @@ const ExternalReview = () => {
     <>
       <ExternalReviewHeader profileData={profileData?.data.data} />
       <ExternalReviewContainer>
-        <ReviewKeywords />
-        <ReviewTendency />
+        <ReviewKeywords userName={profileData?.data.data.username} />
+        <ReviewTendency userName={profileData?.data.data.username} />
         <BeforeNextButton
           next="제출하기"
           route="/review/multipleChoice"

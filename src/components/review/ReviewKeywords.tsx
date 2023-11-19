@@ -5,7 +5,11 @@ import { useRecoilValue } from 'recoil';
 import { selectedNameAtom } from '../../recoil/review';
 import { keywordList } from '../../constants/review';
 
-const ReviewKeywords = () => {
+interface ReviewKeywordsProps {
+  userName?: string;
+}
+
+const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
   const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
   const selectedName = useRecoilValue(selectedNameAtom);
 
@@ -21,9 +25,12 @@ const ReviewKeywords = () => {
 
   return (
     <KeywordLayout>
-      <KeywordTitle>{selectedName} 님에 대한 키워드 추천사</KeywordTitle>
+      <KeywordTitle>
+        {userName ? userName : selectedName} 님에 대한 키워드 추천사
+      </KeywordTitle>
       <KeywordSubTitle>
-        {selectedName} 님의 최고 장점을 2개 골라 추천해주세요!
+        {userName ? userName : selectedName} 님의 최고 장점을 2개 골라
+        추천해주세요!
       </KeywordSubTitle>
       <KeywordBox>
         {keywordList.map((keyword: string) => (
