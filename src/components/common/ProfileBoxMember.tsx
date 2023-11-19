@@ -81,7 +81,7 @@ const Name = styled.div`
   color: ${(props) => props.theme.colors.gray90};
   margin: 0.8rem 0;
 
-  font-size: 130%;
+  /* font-size: 130%; */
 `;
 const Hr = styled.div`
   width: 100%;
@@ -95,7 +95,7 @@ const Hr = styled.div`
 const Part = styled.div`
   ${(props) => props.theme.fonts.bodyXS};
   color: ${(props) => props.theme.colors.gray70};
-  font-size: 90%;
+  /* font-size: 90%; */
 
   text-align: center;
 

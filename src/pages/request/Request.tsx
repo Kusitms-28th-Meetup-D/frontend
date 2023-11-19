@@ -33,6 +33,7 @@ const Request = () => {
       templateId: 99541,
       templateArgs: {
         name: loginUserInfo.data?.name,
+        userId : loginUserInfo.data?.userId
       },
       // serverCallbackArgs: {
       //   isSendSuccess: 'no', // 사용자 정의 파라미터 설정

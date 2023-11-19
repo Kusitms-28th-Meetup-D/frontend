@@ -10,9 +10,11 @@ import { Headers } from '../../constants/Header';
 import { useEffect } from 'react';
 import useContestTeamDetailInfo from '../../hooks/contest/useContestTeamDetailInfo';
 import { useNavigate, useParams } from 'react-router-dom';
+import { TEAM_DETAIL_STATUS } from '../../constants/Contest';
+import TeamMembers from '../../components/contestTeam/TeamMembers';
 
 const ContestTeam = () => {
-  const { teamId ,contestId} = useParams();
+  const { teamId, contestId } = useParams();
   const { contestTeamDetailData, isLoading } = useContestTeamDetailInfo(
     teamId as string,
   );
@@ -31,9 +33,13 @@ const ContestTeam = () => {
         height: 27.6,
       };
 
-  if (contestTeamDetailData?.data.data.status == 1) {
+  if (
+    contestTeamDetailData?.data.data.status ==
+    TEAM_DETAIL_STATUS._1_내가오픈한경우
+  ) {
     navigate(`/myTeam/${userLogininfo.data?.userId}/${contestId}/${teamId}`);
   }
+  console.log(contestTeamDetailData);
   return isLoading ? (
     <div>로딩중</div>
   ) : (
@@ -79,6 +85,12 @@ const ContestTeam = () => {
           {contestTeamDetailData?.data.data.notice}
         </TeamNoticeContent>
       </TeamNoticeContainer>
+      <TeamMembers
+        memberDatas={contestTeamDetailData?.data.data.teamMemeberInfos}
+        leftMember={contestTeamDetailData?.data.data.leftMember}
+        cur={contestTeamDetailData?.data.data.cur}
+        max={contestTeamDetailData?.data.data.max}
+      />
     </TeamLayout>
   );
 };

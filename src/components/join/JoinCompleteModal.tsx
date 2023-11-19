@@ -15,7 +15,7 @@ const JoinCompleteModal: React.FC<JoinCompleteModalProps> = ({
   };
   const handleRightButtonClick = () => {
     console.log('right clicked');
-    navigate('/profile/41314'); //수정 필요
+    navigate('./create'); //수정 필요
   };
   const handleCloseButtonClick = () => {
     console.log('close clicked');

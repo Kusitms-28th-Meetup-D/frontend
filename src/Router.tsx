@@ -18,6 +18,9 @@ import ScrollToTop from './components/common/ScrollToTop';
 import MyTeam from './pages/myteam/MyTeam';
 import MyTeamOpen from './components/myteam/MyTeamOpen';
 import ContestTeam from './pages/contestTeam/ContestTeam';
+import MyTeamManagement from './pages/myteam/MyTeamManagement';
+import MyTeamApply from './pages/myteam/MyTeamApply';
+import Modal from './components/common/Modal';
 import ExternalReview from './pages/review/ExternalReview';
 import MyTeamCreate from './pages/myteam/MyTeamCreate';
 
@@ -44,10 +47,14 @@ function Router() {
 
         <Route path="/myteam/:userId" element={<MyTeam />}>
           <Route path="open" element={<MyTeamOpen />} />
-          <Route path="apply" element={<div>지원한 팀</div>} />
+          <Route path="apply" element={<MyTeamApply />} />
           <Route path="active" element={<div>활동중인 팀</div>} />
           <Route path="end" element={<div>활동했던 팀</div>} />
         </Route>
+        <Route
+          path="/myteam/:userId/:contestId/:teamId"
+          element={<MyTeamManagement />}
+        ></Route>
 
         <Route path="/myteam/create/:contestId" element={<MyTeamCreate />} />
         <Route path="/list/:contestId" element={<Contest />} />
@@ -64,6 +71,7 @@ function Router() {
         <Route path="/payment/charge" element={<PaymentCharge />} />
       </Routes>
       <Footer />
+      <Modal />
     </BrowserRouter>
   );
 }

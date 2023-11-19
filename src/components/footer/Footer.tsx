@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Footer = () => {
-  return <Test>이거 프리텐다드맞아d안녕하세요!A</Test>;
+  return <Test>제발 반영돼라 제발!A</Test>;
 };
 export default Footer;
 
