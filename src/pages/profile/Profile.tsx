@@ -20,10 +20,14 @@ import ProfileTicketUseModal from '../../components/profile/profileTicketUse/Pro
 const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   const { userId } = useParams();
+ 
+  // 인증 미필요
   const { profileData, isLoading } = useProfile(userId as string);
   const { profileReviewData, isLoadingReview } = useProfileReview(
     userId as string,
-  );
+  ); 
+  
+  // 인증 필요
 
   const { IsTicketUsedData } = useIsTicketUsed(userId as string);
   const { TicketNumberData } = useTicketNumber();

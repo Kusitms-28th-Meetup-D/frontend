@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { ProfileBoxProps } from '../../interface/Contest';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { loginInfoState, loginModalState } from '../../recoil/atom';
 
 const ProfileBoxMember: React.FC<ProfileBoxProps> = ({
   hasProfileButton,
@@ -11,6 +13,16 @@ const ProfileBoxMember: React.FC<ProfileBoxProps> = ({
   height,
 }) => {
   const navigate = useNavigate();
+  const loginInfo = useRecoilValue(loginInfoState);
+  const setLoginModal = useSetRecoilState(loginModalState);
+
+  const handleClick = () => {
+    if (loginInfo.isLogin) {
+      navigate(`/profile/${memberInfo.teamMemberId}`);
+    } else {
+      setLoginModal(true);
+    }
+  };
   return (
     <Container
       $isBgColorWhite={isBgColorWhite}
@@ -23,11 +35,7 @@ const ProfileBoxMember: React.FC<ProfileBoxProps> = ({
       <Hr />
       <Part>{memberInfo.teamMemberTask[0]}</Part>
       {hasProfileButton ? (
-        <ViewProfileButton
-          onClick={() => navigate(`/profile/${memberInfo.teamMemberId}`)}
-        >
-          프로필 보기
-        </ViewProfileButton>
+        <ViewProfileButton onClick={handleClick}>프로필 보기</ViewProfileButton>
       ) : (
         <Part>{memberInfo.teamMemberMajor[0]}</Part>
       )}
