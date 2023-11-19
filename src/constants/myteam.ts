@@ -16,3 +16,55 @@ export const activityAreaOptions = [
   '경상남도',
   '제주도',
 ];
+
+export const teamMembers = [
+  {
+    teamMemberId: 1,
+    teamMemberName: '김민수',
+    teamMemberImage: '/assets/images/review/profile.svg',
+    teamMemberTask: ['기획', '디자인'],
+    teamMemberMajor: ['경영학과', '컴퓨터공학과'],
+  },
+  {
+    teamMemberId: 2,
+    teamMemberName: '김민수',
+    teamMemberImage: '/assets/images/review/profile.svg',
+    teamMemberTask: ['기획', '디자인'],
+    teamMemberMajor: ['경영학과', '컴퓨터공학과'],
+  },
+  {
+    teamMemberId: 3,
+    teamMemberName: '김민수',
+    teamMemberImage: '/assets/images/review/profile.svg',
+    teamMemberTask: ['기획', '디자인'],
+    teamMemberMajor: ['경영학과', '컴퓨터공학과'],
+  },
+  {
+    teamMemberId: 4,
+    teamMemberName: '김민수',
+    teamMemberImage: '/assets/images/review/profile.svg',
+    teamMemberTask: ['기획', '디자인'],
+    teamMemberMajor: ['경영학과', '컴퓨터공학과'],
+  },
+  {
+    teamMemberId: 5,
+    teamMemberName: '김민수',
+    teamMemberImage: '/assets/images/review/profile.svg',
+    teamMemberTask: ['기획', '디자인'],
+    teamMemberMajor: ['경영학과', '컴퓨터공학과'],
+  },
+  {
+    teamMemberId: 6,
+    teamMemberName: '김민수',
+    teamMemberImage: '/assets/images/review/profile.svg',
+    teamMemberTask: ['기획', '디자인'],
+    teamMemberMajor: ['경영학과', '컴퓨터공학과'],
+  },
+  {
+    teamMemberId: 7,
+    teamMemberName: '김민수',
+    teamMemberImage: '/assets/images/review/profile.svg',
+    teamMemberTask: ['기획', '디자인'],
+    teamMemberMajor: ['경영학과', '컴퓨터공학과'],
+  },
+];

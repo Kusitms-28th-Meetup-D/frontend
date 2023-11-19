@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import FormTitle from './FormTitle';
+import FormTitle from './open/FormTitle';
 import ActivityAreaSelectBox from './ActivityAreaSelectBox';
 
 const MyTeamCreateOpen = () => {
