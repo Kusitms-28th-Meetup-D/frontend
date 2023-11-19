@@ -8,6 +8,7 @@ export const kakao = (window as any).Kakao;
 
 export const kakaoAuthorize = () => {
   const redirectUri = 'http://localhost:5173/login/oauth';
+  // const redirectUri = 'https://wanteam.vercel.app/login/oauth';
   kakao.Auth.authorize({
     redirectUri: `${redirectUri}`,
     scope: 'profile_nickname,profile_image,account_email,account_email',
