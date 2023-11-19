@@ -15,4 +15,4 @@ export const activityAreaOptions = [
   '경상북도',
   '경상남도',
   '제주도',
-];
+].map((name, index) => ({ id: index + 1, name }));

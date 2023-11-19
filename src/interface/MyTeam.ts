@@ -4,6 +4,17 @@ import { ProfileProps } from './Contest';
 export interface RequestAppliedTeam {
   // contestId: string;
 }
+
+export interface RequestTeamOpen {
+  contestId?: string;
+  max: number;
+  location: number;
+  endDate: string;
+  leaderMessage: string;
+  notice: string;
+  chatLink: string;
+}
+
 export interface AppliedTeamData {
   contestId: string;
   contestTitle: string;
@@ -17,6 +28,7 @@ export interface AppliedTeamData {
   location: string;
   endDate: string;
 }
+
 export interface ResponseAppliedTeam {
   status: number;
   message: string;
@@ -33,14 +45,13 @@ export interface TeamData {
   contestTitle?: string;
   contestImage: string[];
 }
-export interface ResponseOpendTeam {
+
+export interface ResponseOpenedTeam {
   status: number;
   message: string;
   data: TeamData[];
 }
 
-//내가 활동중인 팀 조회하기 api
-// 내가 지원한 팀 조회하기 api
 export interface RequestActiveTeam {
   // contestId: string;
 }

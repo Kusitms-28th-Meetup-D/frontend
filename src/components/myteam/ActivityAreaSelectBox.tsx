@@ -1,12 +1,22 @@
 import { styled } from 'styled-components';
 import { activityAreaOptions } from '../../constants/myteam';
 
-const ActivityAreaSelectBox = () => {
+interface ActivityAreaSelectBoxProps {
+  value: number;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
+const ActivityAreaSelectBox = ({
+  value,
+  onChange,
+}: ActivityAreaSelectBoxProps) => {
   return (
-    <SelectBox>
+    <SelectBox value={value} onChange={onChange}>
       <Option value="">지역을 선택해주세요</Option>
       {activityAreaOptions.map((option) => (
-        <Option value={option}>{option}</Option>
+        <Option key={option.id} value={option.id}>
+          {option.name}
+        </Option>
       ))}
     </SelectBox>
   );
