@@ -3,8 +3,15 @@ import StarTtile from '../../common/StarTtile';
 import Button from '../../common/Button';
 import TeamMemberScrollBox from '../active/TeamMemberScrollBox';
 import Title from '../../common/Title';
+import { EndTeamData } from '../../../interface/MyTeam';
 
-const MyTeamEndBox = () => {
+interface MyTeamEndBoxProps {
+  endTeam: EndTeamData;
+}
+
+const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
+  endTeam;
+
   return (
     <MyTeamEndBoxContainer>
       <MyTeamEndLeft>
@@ -29,15 +36,18 @@ const MyTeamEndBox = () => {
       <MyTeamEndRight>
         <MyTeamEndRightTop>
           <p>대회명</p>
-          <h1>2024 국제 대학생</h1>
+          <h1>{endTeam.contestTitle}</h1>
         </MyTeamEndRightTop>
         <RightFlexBox>
           <StarTtile>
-            함께했던 팀원들 <span>총 8명</span>
+            함께했던 팀원들 <span>총 {endTeam.memberSize}명</span>
           </StarTtile>
-          <p>활동 종료일 : 2023-12-16</p>
+          <p>활동 종료일 : {endTeam.endDate}</p>
         </RightFlexBox>
-        {/* <TeamMemberScrollBox /> */}
+        <TeamMemberScrollBox
+          teamLeaderInfo={endTeam.leaderInfo}
+          teamMembersInfo={endTeam.teamMemberInfos}
+        />
       </MyTeamEndRight>
     </MyTeamEndBoxContainer>
   );
