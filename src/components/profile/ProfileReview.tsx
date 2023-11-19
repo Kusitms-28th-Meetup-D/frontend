@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import ProfileReviewContentsBox from './ProfileReviewContentsBox';
 import { Comment } from '../../interface/Profile';
+import ProfileNotReviewed from './ProfileNotReviewed';
 
 const ProfileReview = ({
   reviewData,
@@ -8,12 +9,14 @@ const ProfileReview = ({
   isLocked,
   setIsLackModalVisible,
   setIsUseModalVisible,
+  isUserGetExternalReview,
 }: {
   reviewData?: Comment[];
   name?: string;
   isLocked?: boolean;
   setIsLackModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   setIsUseModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  isUserGetExternalReview?: boolean;
 }) => {
   const DETAIL_LOCKED_TICKET = isLocked
     ? `티켓을 사용하면 ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`
@@ -22,20 +25,26 @@ const ProfileReview = ({
   return (
     <ProfileReviewContainer>
       <ProfileReviewTitle>{name} 님이 받은 한 줄 추천사</ProfileReviewTitle>
-      <ProfileReviewDetailBox>
-        <ProfileReviewDetail>{DETAIL_LOCKED_TICKET}</ProfileReviewDetail>
-        <ProfileReviewInfo>
-          한 줄 추천사 수<Count>{LOCKED_TICKET_AMMOUNT}개</Count>
-          <Align>최신순↑</Align>
-        </ProfileReviewInfo>
-      </ProfileReviewDetailBox>
-      <ProfileReviewContentsBox
-        reviewData={reviewData}
-        isLocked={isLocked}
-        name={name}
-        setIsLackModalVisible={setIsLackModalVisible}
-        setIsUseModalVisible={setIsUseModalVisible}
-      />
+      {isUserGetExternalReview ? (
+        <>
+          <ProfileReviewDetailBox>
+            <ProfileReviewDetail>{DETAIL_LOCKED_TICKET}</ProfileReviewDetail>
+            <ProfileReviewInfo>
+              한 줄 추천사 수<Count>{LOCKED_TICKET_AMMOUNT}개</Count>
+              <Align>최신순↑</Align>
+            </ProfileReviewInfo>
+          </ProfileReviewDetailBox>
+          <ProfileReviewContentsBox
+            reviewData={reviewData}
+            isLocked={isLocked}
+            name={name}
+            setIsLackModalVisible={setIsLackModalVisible}
+            setIsUseModalVisible={setIsUseModalVisible}
+          />{' '}
+        </>
+      ) : (
+        <ProfileNotReviewed />
+      )}
     </ProfileReviewContainer>
   );
 };

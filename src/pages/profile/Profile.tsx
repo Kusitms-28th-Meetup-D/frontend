@@ -16,17 +16,22 @@ import ProfileTicketLackModal from '../../components/profile/ProfileTicketLack/P
 import useIsTicketUsed from '../../hooks/profile/useIsTicketUsed';
 import useTicketNumber from '../../hooks/profile/useTicketNumber';
 import ProfileTicketUseModal from '../../components/profile/profileTicketUse/ProfileTicketUseModal';
+import useIsUserGetExternalReview from '../../hooks/profile/useIsUserGetExternalReview';
 
 const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   const { userId } = useParams();
- 
+
   // 인증 미필요
   const { profileData, isLoading } = useProfile(userId as string);
   const { profileReviewData, isLoadingReview } = useProfileReview(
     userId as string,
-  ); 
-  
+  );
+  const { isUserGetExternalReviewData } = useIsUserGetExternalReview(
+    userId as string,
+  );
+  // console.log(isUserGetExternalReviewData);
+
   // 인증 필요
 
   const { IsTicketUsedData } = useIsTicketUsed(userId as string);
@@ -66,11 +71,17 @@ const Profile = () => {
       <ProfileKeyword
         keywords={profileReviewData?.data.data.keywords}
         name={profileData?.data.data.username}
+        isUserGetExternalReview={
+          isUserGetExternalReviewData?.data.data.alreadyReviewed
+        }
       />
       <ProfilePersonality
         teamCurturesData={profileReviewData?.data.data.teamCultures}
         workMethodsData={profileReviewData?.data.data.workMethods}
         name={profileData?.data.data.username}
+        isUserGetExternalReview={
+          isUserGetExternalReviewData?.data.data.alreadyReviewed
+        }
       />
       <ProfileReview
         reviewData={profileReviewData?.data.data.comments}
@@ -78,6 +89,9 @@ const Profile = () => {
         isLocked={!IsTicketUsedData?.data.data.isUsed}
         setIsLackModalVisible={setIsLackModalVisible}
         setIsUseModalVisible={setIsUseModalVisible}
+        isUserGetExternalReview={
+          isUserGetExternalReviewData?.data.data.alreadyReviewed
+        }
       />
     </ProfileLayout>
   );

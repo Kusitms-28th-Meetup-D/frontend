@@ -11,6 +11,7 @@ const ProfileSubInfoContents = ({
 }) => {
   return (
     <ContentsContainer>
+      <ModifyProfile>수정</ModifyProfile>
       <ContentsSubTitle>{titles[0]}</ContentsSubTitle>
       {props1?.map((content: any, index: number) => (
         <ContentsDetail key={index}>{content}</ContentsDetail>
@@ -24,12 +25,14 @@ const ProfileSubInfoContents = ({
 };
 
 const ContentsContainer = styled.div`
+  position: relative;
+
   background-color: ${(props) => props.theme.colors.primary10};
   width: 60rem;
   /* height: 28.4rem; */
 
   border-radius: 1.2rem;
-  padding: 3rem 3rem;
+  padding: 1rem 3rem 4rem 3rem;
 `;
 
 const ContentsSubTitle = styled.div`
@@ -42,5 +45,15 @@ const ContentsDetail = styled.div`
   color: ${(props) => props.theme.colors.gray90};
   margin-left: 2.2rem;
 `;
+const ModifyProfile = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
 
+  ${(props) => props.theme.fonts.subtitleXL};
+  color: ${(props) => props.theme.colors.primary60};
+  text-decoration: underline;
+
+  cursor: pointer;
+`;
 export default ProfileSubInfoContents;
