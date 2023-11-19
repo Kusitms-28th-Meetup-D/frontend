@@ -2,9 +2,10 @@ import { styled } from 'styled-components';
 import ExternalReviewHeader from '../../components/review/ExternalReviewHeader';
 import ReviewKeywords from '../../components/review/ReviewKeywords';
 import ReviewTendency from '../../components/review/ReviewTendency';
-import BeforeNextButton from '../../components/common/BeforeNextButton';
 import { useParams } from 'react-router-dom';
 import useProfile from '../../hooks/profile/useProfile';
+import ExternalReviewOneLine from '../../components/review/ExternalReviewOneLine';
+import ExternalButtonBox from '../../components/review/ExternalButtonBox';
 
 const ExternalReview = () => {
   const { userId } = useParams();
@@ -14,13 +15,10 @@ const ExternalReview = () => {
     <>
       <ExternalReviewHeader profileData={profileData?.data.data} />
       <ExternalReviewContainer>
-        <ReviewKeywords />
-        <ReviewTendency />
-        <BeforeNextButton
-          next="제출하기"
-          route="/review/multipleChoice"
-          isNextDisabled={false}
-        />
+        <ReviewKeywords userName={profileData?.data.data.username} />
+        <ReviewTendency userName={profileData?.data.data.username} />
+        <ExternalReviewOneLine userName={profileData?.data.data.username} />
+        <ExternalButtonBox />
       </ExternalReviewContainer>
     </>
   );

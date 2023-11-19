@@ -4,12 +4,18 @@ import { styled } from 'styled-components';
 import TendencyBox from './TendencyBox';
 import { question1, question2 } from '../../constants/review';
 
-const ReviewTendency = () => {
+interface ReviewTendencyProps {
+  userName?: string;
+}
+
+const ReviewTendency = ({ userName }: ReviewTendencyProps) => {
   const selectedName = useRecoilValue(selectedNameAtom);
 
   return (
     <>
-      <TendencyTitle>{selectedName} 님은 어떤 성향일까요?</TendencyTitle>
+      <TendencyTitle>
+        {userName ? userName : selectedName} 님은 어떤 성향일까요?
+      </TendencyTitle>
       <TendencyBoxLayout>
         <TendencyBox boxName="팀 문화" question={question1} />
         <TendencyBox boxName="작업 방식" question={question2} />
@@ -29,4 +35,5 @@ const TendencyTitle = styled.div`
 const TendencyBoxLayout = styled.div`
   display: flex;
   gap: 2rem;
+  margin-bottom: 4rem;
 `;
