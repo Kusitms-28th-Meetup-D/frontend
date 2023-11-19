@@ -4,6 +4,7 @@ import TwoButtonModal from '../common/TwoButtonModal';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RequestTeamOpen } from '../../interface/MyTeam';
 import { UseTeamOpen } from '../../hooks/myTeam/useTeamOpen';
+import OneSquareButtonModal from '../common/OneSquareButtonModal';
 
 interface ButtonBoxProps {
   teamOpen: RequestTeamOpen;
@@ -57,6 +58,7 @@ const ButtonBox = ({ teamOpen }: ButtonBoxProps) => {
             </ModalContent>
           </TwoButtonModal>
         )}
+
         {openCompleteModal && (
           <TwoButtonModal
             leftButton={{
@@ -79,6 +81,26 @@ const ButtonBox = ({ teamOpen }: ButtonBoxProps) => {
               <p>멋진 공고네요! 똑똑한 팀원들을 맞이할 준비 되셨나요?</p>
             </ModalContent>
           </TwoButtonModal>
+        )}
+
+        {openCompleteFinalModal && (
+          <OneSquareButtonModal
+            button={{
+              text: '오픈한 팀 보러 가기',
+              onClickFunc: () => navigate(`/list/${contestId}`),
+            }}
+            onCloseClickFunc={() => setOpenCompleteFinalModal(false)}
+            $isModalVisible={openCompleteFinalModal}
+          >
+            <ModalCloseImg
+              src={'/assets/images/myteam/complete_final_button.svg'}
+              alt={'complete_button'}
+            />
+            <ModalContent>
+              <h1>팀 오픈이 완료되었어요!</h1>
+              <p>지원자들의 프로필을 확인하고 딱 맞는 팀원과 합류하세요.</p>
+            </ModalContent>
+          </OneSquareButtonModal>
         )}
       </ButtonBoxContainer>
     </>
