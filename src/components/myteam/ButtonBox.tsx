@@ -112,7 +112,7 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem 0 4rem 0;
+  margin: 2rem 0 4rem 0;
   gap: 0.5rem;
 
   h1 {
