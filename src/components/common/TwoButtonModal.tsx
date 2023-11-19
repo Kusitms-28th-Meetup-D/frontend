@@ -16,6 +16,7 @@ interface TwoButtonModalProps {
   onCloseClickFunc: () => void; // x버튼 onClick 콜백 함수
   $isModalVisible: boolean; // 모달창이 보여지는지 여부
 }
+
 const TwoButtonModal: React.FC<TwoButtonModalProps> = ({
   children,
   leftButton,
