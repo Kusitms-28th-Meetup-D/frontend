@@ -32,7 +32,7 @@ function Router() {
         <Route path="/join" element={<Join />} />
         <Route path="/join/request" element={<Request />} />
 
-        <Route path="/review/external" element={<ExternalReview />} />
+        <Route path="/review/external/:userId" element={<ExternalReview />} />
         <Route path="/review" element={<Review />}>
           <Route path="subjective" element={<Subjective />} />
           <Route path="multipleChoice" element={<MultipleChoice />} />

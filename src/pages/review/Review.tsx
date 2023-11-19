@@ -4,10 +4,12 @@ import { Outlet } from 'react-router-dom';
 
 const Review = () => {
   return (
-    <ReviewLayout>
+    <>
       <ReviewHeader />
-      <Outlet />
-    </ReviewLayout>
+      <ReviewLayout>
+        <Outlet />
+      </ReviewLayout>
+    </>
   );
 };
 

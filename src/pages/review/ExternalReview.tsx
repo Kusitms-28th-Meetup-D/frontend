@@ -1,7 +1,13 @@
 import { styled } from 'styled-components';
+import ExternalReviewHeader from '../../components/review/ExternalReviewHeader';
 
 const ExternalReview = () => {
-  return <ExternalReviewContainer></ExternalReviewContainer>;
+  return (
+    <>
+      <ExternalReviewHeader />
+      <ExternalReviewContainer></ExternalReviewContainer>
+    </>
+  );
 };
 
 export default ExternalReview;

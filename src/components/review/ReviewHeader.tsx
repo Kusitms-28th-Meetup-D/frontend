@@ -31,12 +31,6 @@ const HeaderLayout = styled.div`
   justify-content: center;
   background: ${({ theme }) => theme.colors.primary10};
   padding: 3rem 0 8rem 0;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
 `;
 
 const HeaderContent = styled.div`
@@ -45,7 +39,7 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  max-width: 1250px;
+  max-width: 122.4rem;
 `;
 
 const HeaderLeft = styled.div`

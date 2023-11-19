@@ -5,7 +5,7 @@ interface ProfileProps {
   src: string;
   name: string;
   isSelected: boolean;
-  onClick: (id: number) => void;
+  onClick?: (id: number) => void;
 }
 
 const ReviewProfile = ({
@@ -15,11 +15,12 @@ const ReviewProfile = ({
   isSelected,
   onClick,
 }: ProfileProps) => {
-  const handleProfileClick = () => {
-    onClick(id);
-  };
   return (
-    <ProfileLayout onClick={handleProfileClick}>
+    <ProfileLayout
+      onClick={() => {
+        onClick && onClick(id);
+      }}
+    >
       <ProfileBox>
         <Profile src={src} $isSelected={isSelected} />
         <ProfileBackground />
