@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ProfileInfo from '../../components/profile/ProfileInfo';
 import ProfileSubInfo from '../../components/profile/ProfileSubInfo';
 import ProfileKeyword from '../../components/profile/ProfileKeyword';
-import ProfileRecommendation from '../../components/profile/ProfileRecommendation';
+import ProfileReview from '../../components/profile/ProfileReview';
 import ProfilePersonality from '../../components/profile/ProfilePersonality';
 import { useSetRecoilState } from 'recoil';
 import { headerSelectedState } from '../../recoil/atom';
@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import { Headers } from '../../constants/Header';
 import useProfile from '../../hooks/profile/useProfile';
 import Loading from '../../components/common/Loading';
-import useProfileRecommendation from '../../hooks/profile/useProfileRecommendation';
+import useProfileReview from '../../hooks/profile/useProfileReview';
 import { useParams } from 'react-router-dom';
 import ProfileTicketLackModal from '../../components/profile/ProfileTicketLack/ProfileTicketLackModal';
 import useIsTicketUsed from '../../hooks/profile/useIsTicketUsed';
@@ -21,8 +21,9 @@ const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   const { userId } = useParams();
   const { profileData, isLoading } = useProfile(userId as string);
-  const { profileRecommendationData, isLoadingRecommendation } =
-    useProfileRecommendation(userId as string);
+  const { profileReviewData, isLoadingReview } = useProfileReview(
+    userId as string,
+  );
 
   const { IsTicketUsedData } = useIsTicketUsed(userId as string);
   const { TicketNumberData } = useTicketNumber();
@@ -30,7 +31,7 @@ const Profile = () => {
 
   const [isLackModalVisible, setIsLackModalVisible] = useState(false);
   const [isUseModalVisible, setIsUseModalVisible] = useState(false);
-  return isLoading || isLoadingRecommendation ? (
+  return isLoading || isLoadingReview ? (
     <Loading />
   ) : (
     <ProfileLayout>
@@ -59,16 +60,16 @@ const Profile = () => {
         certificates={profileData?.data.data.certificates}
       />
       <ProfileKeyword
-        keywords={profileRecommendationData?.data.data.keywords}
+        keywords={profileReviewData?.data.data.keywords}
         name={profileData?.data.data.username}
       />
       <ProfilePersonality
-        teamCurturesData={profileRecommendationData?.data.data.teamCultures}
-        workMethodsData={profileRecommendationData?.data.data.workMethods}
+        teamCurturesData={profileReviewData?.data.data.teamCultures}
+        workMethodsData={profileReviewData?.data.data.workMethods}
         name={profileData?.data.data.username}
       />
-      <ProfileRecommendation
-        recommendationData={profileRecommendationData?.data.data.comments}
+      <ProfileReview
+        reviewData={profileReviewData?.data.data.comments}
         name={profileData?.data.data.username}
         isLocked={!IsTicketUsedData?.data.data.isUsed}
         setIsLackModalVisible={setIsLackModalVisible}
