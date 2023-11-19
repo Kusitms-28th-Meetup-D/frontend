@@ -16,4 +16,6 @@ export default MainBox;
 const MainBoxContainer = styled.div`
   display: flex;
   gap: 2rem;
+  transform: translateY(-50%);
+  z-index: 1;
 `;

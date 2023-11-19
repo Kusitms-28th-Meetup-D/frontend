@@ -8,6 +8,7 @@ import MainDescription from '../../components/main/MainDescription';
 import MainCompetition from '../../components/main/MainCompetition';
 import MainPopularTeam from '../../components/main/MainPopularTeam';
 import MainQuestions from '../../components/main/MainQuestions';
+import MainSwiper from '../../components/main/MainSwiper';
 
 const Main = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
@@ -15,6 +16,7 @@ const Main = () => {
 
   return (
     <>
+      <MainSwiper />
       <MainLayout>
         <MainBox />
         <MainDescription />
