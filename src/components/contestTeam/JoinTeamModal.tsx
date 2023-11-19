@@ -21,8 +21,22 @@ const JoinTeamModal: React.FC<JoinTeamModalProps> = ({
   const handleLeftButtonClick = () => {
     setIsModalVisible(false);
   };
-  const handleRightButtonClick = () => {
-    handleJoinTeam.mutate();
+  //응답에 따라 모달창을 변경
+  const handleRightButtonClick = async () => {
+    try {
+      await handleJoinTeam.mutate();
+      console.log('Success: A');
+      setIsCompleteModalVisible(true);
+      setIsModalVisible(false);
+    } catch (error: any) {
+      if (error.response && error.response.status === 409) {
+        console.log('Conflict: B 409');
+      } else {
+        console.error('Error:', error);
+      }
+      setIsRefusedModalVisible(true);
+      setIsModalVisible(false);
+    }
   };
   const handleCloseButtonClick = () => {
     setIsModalVisible(false);

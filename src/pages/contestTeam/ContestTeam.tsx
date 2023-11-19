@@ -12,7 +12,6 @@ import useContestTeamDetailInfo from '../../hooks/contest/useContestTeamDetailIn
 import { useNavigate, useParams } from 'react-router-dom';
 import { TEAM_DETAIL_STATUS } from '../../constants/Contest';
 import TeamMembers from '../../components/contestTeam/TeamMembers';
-import useJoinTeam from '../../hooks/contest/useJoinTeam';
 import JoinTeamModal from '../../components/contestTeam/JoinTeamModal';
 
 const ContestTeam = () => {
