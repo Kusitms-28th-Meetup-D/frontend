@@ -1,15 +1,22 @@
 import styled from 'styled-components';
 
 import questionmarkSrc from '/assets/images/common/questionmark.svg';
+import { useSetRecoilState } from 'recoil';
+import { needKakaoReviewModalState } from '../../recoil/atom';
 
 const ProfileNotReviewed = () => {
+  const setKakaoReviewModalVisible = useSetRecoilState(
+    needKakaoReviewModalState,
+  );
   return (
     <Layout>
       <QuestionmarkImg src={questionmarkSrc} />
       <Subtitle>
         {'아직 받은 추천사가 없어요!\n추천사를 요청해 프로필을 채워보세요.'}
       </Subtitle>
-      <Button>지인에게 추천사 요청하기 →</Button>
+      <Button onClick={() => setKakaoReviewModalVisible(true)}>
+        지인에게 추천사 요청하기 →
+      </Button>
     </Layout>
   );
 };

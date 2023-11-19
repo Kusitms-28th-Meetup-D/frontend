@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import loginSrc from '/assets/images/common/login-modal.svg';
-import OneSquareButtonModal from './OneSquareButtonModal';
+import OneSquareButtonModal from '../OneSquareButtonModal';
 import { useNavigate } from 'react-router-dom';
 
 interface NeedLoginModalProps {
