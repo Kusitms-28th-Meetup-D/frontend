@@ -35,13 +35,12 @@ export interface ResponseAppliedTeam {
   data: AppliedTeamData[];
 }
 
-//예진이가 사용한 오픈한 팀 api
 export interface TeamData {
   teamId?: number;
   teamMemberSize?: number;
   applyMemberSize?: number;
   teamMemberInfos?: ProfileProps[];
-  applyMemberInfos?: ProfileProps[]; // Apply Member 정보에 대한 타입이 없어서 any로 처리했습니다.
+  applyMemberInfos?: ProfileProps[];
   contestTitle?: string;
   contestImage: string[];
 }
@@ -72,4 +71,20 @@ export interface ResponseActiveTeam {
   status: number;
   message: string;
   data: ActiveTeamData[];
+}
+
+export interface EndTeamData {
+  contestId: string;
+  contestTitle: string;
+  endDate: string;
+  memberSize: number;
+  leaderInfo: ProfileProps;
+  teamMemberInfos: ProfileProps[];
+  possibleWriteReviews: boolean;
+}
+
+export interface ResponseEndTeam {
+  status: number;
+  message: string;
+  data: EndTeamData[];
 }
