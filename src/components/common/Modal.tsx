@@ -7,12 +7,12 @@ const Modal = () => {
     useRecoilState(loginModalState);
   return (
     <>
-      isLoginModalVisible && (
-      <NeedLoginModal
-        isModalVisible={isLoginModalVisible}
-        setIsModalVisible={setIsLoginModalVisible}
-      />
-      )
+      {isLoginModalVisible && (
+        <NeedLoginModal
+          isModalVisible={isLoginModalVisible}
+          setIsModalVisible={setIsLoginModalVisible}
+        />
+      )}
     </>
   );
 };

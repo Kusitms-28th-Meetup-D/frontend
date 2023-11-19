@@ -12,7 +12,7 @@ export const useTicketNumber = () => {
       retry: 0, //이거다!!
       // 에러가 발생했을 때 실행될 콜백
       onError: (error) => {
-        setIsLoginModalVisible(true);
+        // setIsLoginModalVisible(true);
         // navigate('/login');
         console.error('로그인이 필요한 에러가 발생했습니다:', error);
         console.log(error);
