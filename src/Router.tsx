@@ -18,8 +18,8 @@ import ScrollToTop from './components/common/ScrollToTop';
 import MyTeam from './pages/myteam/MyTeam';
 import MyTeamOpen from './components/myteam/MyTeamOpen';
 import ContestTeam from './pages/contestTeam/ContestTeam';
-import MyTeamManagement from './pages/myTeam/MyTeamManagement';
-import MyTeamApply from './pages/myTeam/MyTeamApply';
+import MyTeamManagement from './pages/myteam/MyTeamManagement';
+import MyTeamApply from './pages/myteam/MyTeamApply';
 import Modal from './components/common/Modal';
 
 function Router() {

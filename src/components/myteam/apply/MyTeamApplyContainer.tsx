@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { AppliedTeamData } from '../../../interface/MyTeam';
 
 const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
+  props;
   return (
     <Layout>
       <TitleBox>
@@ -23,8 +24,8 @@ const Title = styled.div`
   width: 100%;
   height: 35.3rem;
 `;
-const ContestImg = styled.img`
-  width: 16.9rem;
-  height: 23.1rem;
-`;
+// const ContestImg = styled.img`
+//   width: 16.9rem;
+//   height: 23.1rem;
+// `;
 export default MyTeamApplyContainer;
