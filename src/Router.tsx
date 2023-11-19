@@ -45,6 +45,7 @@ function Router() {
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/profile/:userId/create" element={<ProfileCreate />} />
 
+        <Route path="/myteam/create/:contestId" element={<MyTeamCreate />} />
         <Route path="/myteam/:userId" element={<MyTeam />}>
           <Route path="open" element={<MyTeamOpen />} />
           <Route path="apply" element={<MyTeamApply />} />
@@ -54,9 +55,8 @@ function Router() {
         <Route
           path="/myteam/:userId/:contestId/:teamId"
           element={<MyTeamManagement />}
-        ></Route>
+        />
 
-        <Route path="/myteam/create/:contestId" element={<MyTeamCreate />} />
         <Route path="/list/:contestId" element={<Contest />} />
         <Route path="/list/:contestId" element={<Contest />} />
         <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />

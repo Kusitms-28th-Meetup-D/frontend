@@ -1,8 +1,33 @@
 import { styled } from 'styled-components';
 import FormTitle from './open/FormTitle';
 import ActivityAreaSelectBox from './ActivityAreaSelectBox';
+import { useState } from 'react';
 
 const MyTeamCreateOpen = () => {
+  const [recruitmentNumber, setRecruitmentNumber] = useState(0);
+  const [activityEndDate, setActivityEndDate] = useState('');
+  const isRecruitmentNumberValid = recruitmentNumber <= 10;
+
+  const handleRecruitmentInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setRecruitmentNumber(Number(e.target.value));
+  };
+
+  const handleActivityEndDateChange = (e) => {
+    setActivityEndDate(e.target.value);
+  };
+
+  const isActivityEndDateValid = () => {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!activityEndDate) {
+      return true;
+    }
+    return (
+      regex.test(activityEndDate) && new Date(activityEndDate) > new Date()
+    );
+  };
+
   return (
     <NyTeamCraeteOpenContainer>
       <MyTeamCreateOpenTitle>
@@ -15,9 +40,16 @@ const MyTeamCreateOpen = () => {
           <FormTitle title={'모집 정원'} />
           <FormInputBox>
             <p>
-              <RecruitmentInput /> 명
+              <RecruitmentInput
+                value={recruitmentNumber}
+                onChange={handleRecruitmentInputChange}
+                $isValid={isRecruitmentNumberValid}
+              />
+              명
             </p>
-            <p>10 이하의 숫자만 입력 가능합니다.</p>
+            <Description $isValid={isRecruitmentNumberValid}>
+              10 이하의 숫자만 입력 가능합니다.
+            </Description>
           </FormInputBox>
         </QuestionBox>
 
@@ -29,7 +61,17 @@ const MyTeamCreateOpen = () => {
         <QuestionBox>
           <FormTitle title={'활동 종료 예정일'} />
           <FormInputBox>
-            <ActivityEndInput placeholder={'ex) 2023-12-25'} />
+            <ActivityInputBox>
+              <ActivityEndInput
+                placeholder={'ex) 2023-12-25'}
+                value={activityEndDate}
+                onChange={handleActivityEndDateChange}
+                $isValid={isActivityEndDateValid()}
+              />
+              <ActivityDescription $isValid={isActivityEndDateValid()}>
+                YYYY-MM-DD와 동일한 형식으로 올바른 날짜를 입력해주세요.
+              </ActivityDescription>
+            </ActivityInputBox>
             <p>
               활동 종료 날짜에 팀원 모두에게 추천사 작성 링크가 발송됩니다. 팀
               활동 종료 후 추천사를 작성할 날짜로 입력해주세요.
@@ -121,13 +163,36 @@ const FormInputBox = styled.div`
   gap: 0.8rem;
 `;
 
-const RecruitmentInput = styled(Input)`
+const RecruitmentInput = styled(Input)<{ $isValid: boolean }>`
   width: 7rem;
   margin-right: 0.5rem;
+  border-color: ${({ $isValid, theme }) =>
+    $isValid ? theme.colors.gray40 : theme.colors.error60};
+  color: ${({ $isValid, theme }) =>
+    $isValid ? 'inherit' : theme.colors.error60};
 `;
 
-const ActivityEndInput = styled(Input)`
+const Description = styled.div<{ $isValid: boolean }>`
+  color: ${({ $isValid, theme }) =>
+    $isValid ? 'inherit' : theme.colors.error60};
+`;
+
+const ActivityDescription = styled(Description)<{ $isValid: boolean }>`
+  display: ${({ $isValid }) => ($isValid ? 'none' : 'block')};
+`;
+
+const ActivityInputBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const ActivityEndInput = styled(Input)<{ $isValid: boolean }>`
   width: 20rem;
+  border-color: ${({ $isValid, theme }) =>
+    $isValid ? theme.colors.gray40 : theme.colors.error60};
+  color: ${({ $isValid, theme }) =>
+    $isValid ? 'inherit' : theme.colors.error60};
 `;
 
 const Hr = styled.hr`

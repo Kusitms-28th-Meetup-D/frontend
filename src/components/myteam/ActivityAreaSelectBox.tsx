@@ -6,7 +6,9 @@ const ActivityAreaSelectBox = () => {
     <SelectBox>
       <Option value="">지역을 선택해주세요</Option>
       {activityAreaOptions.map((option) => (
-        <Option value={option}>{option}</Option>
+        <Option key={option} value={option}>
+          {option}
+        </Option>
       ))}
     </SelectBox>
   );
