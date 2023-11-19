@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 import useActiveTeam from '../../hooks/myTeam/useActiveTeam';
 import MyTeamActiveContainer from '../../components/myteam/active/MyTeamActiveContainer';
-import { ActiveTeamData } from '../../interface/MyTeam';
 
 const MyTeamActive = () => {
   const { activeTeamData } = useActiveTeam();
   console.log(activeTeamData);
-
 
   return (
     <ApplyLayout>
