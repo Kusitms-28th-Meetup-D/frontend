@@ -26,7 +26,8 @@ const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
                 <span> 총 {myTeamOpen.teamMemberSize}명</span>
               </StarTitle>
               <TeamMembersBox>
-                {myTeamOpen && myTeamOpen.teamMemberInfos ? (
+                {myTeamOpen.teamMemberSize !== 0 &&
+                myTeamOpen.teamMemberInfos ? (
                   myTeamOpen.teamMemberInfos.map((teamMember) => (
                     <ProfileBoxMember
                       key={teamMember.teamMemberId}
@@ -52,7 +53,8 @@ const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
             <div>
               <StarTitle>지원자</StarTitle>
               <TeamMembersBox>
-                {myTeamOpen && myTeamOpen.applyMemberInfos ? (
+                {myTeamOpen.applyMemberSize !== 0 &&
+                myTeamOpen.teamMemberInfos ? (
                   <>
                     <ApplyContent>
                       <ApplyFireImg
@@ -64,17 +66,18 @@ const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
                       </p>
                       <p>팀원으로 지원했어요.</p>
                     </ApplyContent>
-                    {myTeamOpen.applyMemberInfos.map((teamMember) => (
-                      <ProfileBoxMember
-                        key={teamMember.teamMemberId}
-                        hasProfileButton={false}
-                        isBgColorWhite={true}
-                        hasBorder={true}
-                        memberInfo={teamMember}
-                        width={13.2}
-                        height={16.3}
-                      />
-                    ))}
+                    {myTeamOpen.applyMemberSize !== 0 &&
+                      myTeamOpen.teamMemberInfos.map((teamMember) => (
+                        <ProfileBoxMember
+                          key={teamMember.teamMemberId}
+                          hasProfileButton={false}
+                          isBgColorWhite={true}
+                          hasBorder={true}
+                          memberInfo={teamMember}
+                          width={13.2}
+                          height={16.3}
+                        />
+                      ))}
                   </>
                 ) : (
                   <NoTeamMember>
@@ -122,6 +125,7 @@ const CompetitionImg = styled.img`
   object-fit: cover;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.gray40};
+  margin: 0.5rem 0 1rem 0;
 `;
 
 const TeamMemberBox = styled.div`
@@ -147,7 +151,6 @@ const TeamMembersBox = styled.div`
     width: 1rem;
     height: 0.8rem;
   }
-
   &::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.colors.primary60};
     border-radius: 10px;
