@@ -21,13 +21,6 @@ const MyTeam = () => {
 export default MyTeam;
 
 const MyTeamLayout = styled.div`
-  margin: 0 auto;
-
-  @media ${({ theme }) => theme.devices.mobile} {
-  }
-  @media ${({ theme }) => theme.devices.tablet} {
-  }
-  @media ${({ theme }) => theme.devices.desktop} {
-    max-width: 122.4rem;
-  }
+  max-width: 122.4rem;
+  margin: auto;
 `;
