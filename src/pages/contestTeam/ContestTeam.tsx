@@ -12,6 +12,7 @@ import useContestTeamDetailInfo from '../../hooks/contest/useContestTeamDetailIn
 import { useNavigate, useParams } from 'react-router-dom';
 import { TEAM_DETAIL_STATUS } from '../../constants/Contest';
 import TeamMembers from '../../components/contestTeam/TeamMembers';
+import useJoinTeam from '../../hooks/contest/useJoinTeam';
 
 const ContestTeam = () => {
   const { teamId, contestId } = useParams();
@@ -21,6 +22,7 @@ const ContestTeam = () => {
   const userLogininfo = useRecoilValue(loginInfoState);
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   const navigate = useNavigate();
+  const handleJoinTeam = useJoinTeam(teamId as string);
   useEffect(() => setHeaderSelected(Headers.list));
   const teamLeaderBoxProps: ProfileBoxProps = isLoading
     ? ({} as ProfileBoxProps)
@@ -95,7 +97,12 @@ const ContestTeam = () => {
         {contestTeamDetailData?.data.data.status ==
           TEAM_DETAIL_STATUS._2_남이오픈한경우_내가지원안함 && (
           <>
-            <CustomButton $isActive={true}>합류 신청하기 →</CustomButton>
+            <CustomButton
+              $isActive={true}
+              onClick={() => handleJoinTeam.mutate()}
+            >
+              합류 신청하기 →
+            </CustomButton>
           </>
         )}
         {contestTeamDetailData?.data.data.status ==
