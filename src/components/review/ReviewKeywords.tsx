@@ -42,7 +42,7 @@ const ReviewKeywords = () => {
 const KeywordLayout = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 2rem 0 4rem 0;
+  margin: 4rem 0 5rem 0;
 `;
 
 const KeywordBox = styled.div`

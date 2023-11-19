@@ -1,13 +1,13 @@
 import { styled } from 'styled-components';
 import Title from '../common/Title';
 import ReviewProfile from './ReviewProfile';
-import useProfile from '../../hooks/profile/useProfile';
-import { useParams } from 'react-router-dom';
+import { ProfileData } from '../../interface/Profile';
 
-const ExternalReviewHeader = () => {
-  const { userId } = useParams();
-  const { profileData } = useProfile(userId);
+interface ExternalReviewHeaderProps {
+  profileData?: ProfileData;
+}
 
+const ExternalReviewHeader = ({ profileData }: ExternalReviewHeaderProps) => {
   return (
     <HeaderLayout>
       <HeaderContent>
@@ -16,25 +16,25 @@ const ExternalReviewHeader = () => {
             <HeaderLeft>
               <HeaderTitle>
                 <Title>Wanteam의 회원님들에게</Title>
-                <h1>{profileData.data.data.username}님을 추천해주세요!</h1>
+                <h1>{profileData.username}님을 추천해주세요!</h1>
               </HeaderTitle>
               <HeaderSubTitle>
                 <p>
-                  남겨주신 추천사는 {profileData.data.data.username}님의
-                  프로필에 반영됩니다.
+                  남겨주신 추천사는 {profileData.username}님의 프로필에
+                  반영됩니다.
                 </p>
                 <p>
-                  {profileData.data.data.username} 님이 멋진 팀원을 구할 수
-                  있도록 도와주세요!
+                  {profileData.username} 님이 멋진 팀원을 구할 수 있도록
+                  도와주세요!
                 </p>
               </HeaderSubTitle>
             </HeaderLeft>
             <HeaderRight>
               <ReviewProfile
-                id={profileData.data.data.userId}
-                key={profileData.data.data.userId}
-                src={profileData.data.data.profile_image}
-                name={profileData.data.data.username}
+                id={profileData.userId}
+                key={profileData.userId}
+                src={profileData.profile_image}
+                name={profileData.username}
                 isSelected={true}
               />
             </HeaderRight>
