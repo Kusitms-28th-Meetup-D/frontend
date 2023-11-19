@@ -14,35 +14,47 @@ const TeamMembers = ({
   max?: number;
 }) => {
   return (
-    <TeamMembersLayout>
-      <TeamMembersTitle>
-        팀원들
-        <TeamMembersLeft>
-          <span>{leftMember}</span>자리 남았어요!
-        </TeamMembersLeft>
-      </TeamMembersTitle>
-      <TeamMembersLeftInfo>
-        지금까지 정원 <span>{max}</span>명 중 <span>{cur}</span>명의 팀원이
-        합류했어요.
-      </TeamMembersLeftInfo>
-      <TeamMembersProfileContainer>
-        {memberDatas?.map((memberData, index) => {
-          const teamMemberDataProps: ProfileBoxProps = {
-            hasProfileButton: false,
-            isBgColorWhite: false,
-            hasBorder: true,
-            memberInfo: memberData,
-            width: 20,
-            height: 27.6,
-          };
-          return <ProfileBoxMember {...teamMemberDataProps} key={index} />;
-        })}
-      </TeamMembersProfileContainer>
-    </TeamMembersLayout>
+    <>
+      <Hr />
+      <TeamMembersLayout>
+        <TeamMembersTitle>
+          팀원들
+          <TeamMembersLeft>
+            <span>{leftMember}</span>자리 남았어요!
+          </TeamMembersLeft>
+        </TeamMembersTitle>
+        <TeamMembersLeftInfo>
+          지금까지 정원 <span>{max}</span>명 중 <span>{cur}</span>명의 팀원이
+          합류했어요.
+        </TeamMembersLeftInfo>
+        <TeamMembersProfileContainer>
+          {memberDatas?.map((memberData, index) => {
+            const teamMemberDataProps: ProfileBoxProps = {
+              hasProfileButton: true,
+              isBgColorWhite: false,
+              hasBorder: true,
+              memberInfo: memberData,
+              width: 20,
+              height: 27.6,
+            };
+            return <ProfileBoxMember {...teamMemberDataProps} key={index} />;
+          })}
+        </TeamMembersProfileContainer>
+      </TeamMembersLayout>
+    </>
   );
 };
+const Hr = styled.div`
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid ${(props) => props.theme.colors.gray20};
+`;
 const TeamMembersLayout = styled.div`
   width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 `;
 const TeamMembersTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
@@ -74,5 +86,11 @@ const TeamMembersLeftInfo = styled.div`
     color: ${(props) => props.theme.colors.primary60};
   }
 `;
-const TeamMembersProfileContainer = styled.div``;
+const TeamMembersProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+`;
+
+
 export default TeamMembers;

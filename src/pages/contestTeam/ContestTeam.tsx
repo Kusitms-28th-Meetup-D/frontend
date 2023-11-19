@@ -91,6 +91,21 @@ const ContestTeam = () => {
         cur={contestTeamDetailData?.data.data.cur}
         max={contestTeamDetailData?.data.data.max}
       />
+      <FlexBox>
+        {contestTeamDetailData?.data.data.status ==
+          TEAM_DETAIL_STATUS._2_남이오픈한경우_내가지원안함 && (
+          <>
+            <CustomButton $isActive={true}>합류 신청하기 →</CustomButton>
+          </>
+        )}
+        {contestTeamDetailData?.data.data.status ==
+          TEAM_DETAIL_STATUS._3_남이오픈한경우_내가지원완료_승인 && (
+          <>
+            <CustomButton>합류 신청하기 →</CustomButton>
+            <CustomMessage>이미 합류 승인된 팀입니다.</CustomMessage>
+          </>
+        )}
+      </FlexBox>
     </TeamLayout>
   );
 };
@@ -100,6 +115,8 @@ const TeamLayout = styled.div`
 
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
   gap: 4.4rem;
 `;
 const TeamUndo = styled.div`
@@ -215,5 +232,37 @@ const TeamNoticeContent = styled.div`
   padding: 2.5rem 3rem;
 
   white-space: break-spaces;
+`;
+const FlexBox = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+`;
+const CustomButton = styled.button<{ $isActive?: boolean }>`
+  width: 25.5rem;
+  height: 6.4rem;
+
+  border-radius: 3.2rem;
+  border: 1px solid
+    ${(props) =>
+      props.$isActive
+        ? props.theme.colors.primary20
+        : props.theme.colors.gray50};
+
+  background-color: ${(props) =>
+    props.$isActive ? props.theme.colors.primary60 : props.theme.colors.gray10};
+
+  ${(props) => props.theme.fonts.buttonL};
+  color: ${(props) =>
+    props.$isActive ? props.theme.colors.white : props.theme.colors.gray40};
+
+  cursor: ${(props) => (props.$isActive ? 'pointer' : 'default')};
+`;
+const CustomMessage = styled.div`
+  ${(props) => props.theme.fonts.buttonL};
+  color: ${(props) => props.theme.colors.gray70};
 `;
 export default ContestTeam;
