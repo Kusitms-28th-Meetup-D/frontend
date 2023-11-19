@@ -11,9 +11,6 @@ const MyTeamActive = () => {
       {activeTeamData?.data.data.map((each) => (
         <MyTeamActiveContainer {...each}></MyTeamActiveContainer>
       ))}
-      {/* {DUMMY.map((each) => (
-        <MyTeamActiveContainer {...each}></MyTeamActiveContainer>
-      ))} */}
     </ApplyLayout>
   );
 };

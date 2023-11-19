@@ -159,3 +159,15 @@ export interface ResponseUseTicket {
   message: string;
   data: UseTicketData;
 }
+//유저가 외부 추천사를 받았는지 여부
+export interface RequestIsUserGetExternalReview {
+  userId?: string;
+}
+export interface IsUserGetExternalReviewData {
+  alreadyReviewed: boolean;
+}
+export interface ResponseIsUserGetExternalReview {
+  status: number;
+  message: string;
+  data: IsUserGetExternalReviewData;
+}
