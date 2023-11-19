@@ -1,10 +1,10 @@
 import { useQuery } from 'react-query';
 import getTicketNumber from '../../apis/profile/getTicketNumber';
-import { useSetRecoilState } from 'recoil';
-import { loginModalState } from '../../recoil/atom';
+// import { useSetRecoilState } from 'recoil';
+// import { loginModalState } from '../../recoil/atom';
 
 export const useTicketNumber = () => {
-  const setIsLoginModalVisible = useSetRecoilState(loginModalState);
+  // const setIsLoginModalVisible = useSetRecoilState(loginModalState);
   const { data: TicketNumberData, isLoading } = useQuery(
     'ticketNumber',
     () => getTicketNumber(),
