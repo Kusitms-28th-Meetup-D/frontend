@@ -26,8 +26,7 @@ const MyTeamOpen = () => {
                 <span> 총 {openedTeam.data[0].teamMemberSize}명</span>
               </StarTitle>
               <TeamMembersBox>
-                {openedTeam.data[0] &&
-                  openedTeam.data[0].teamMemberInfos &&
+                {openedTeam.data[0] && openedTeam.data[0].teamMemberInfos ? (
                   openedTeam.data[0].teamMemberInfos.map((teamMember) => (
                     <ProfileBoxMember
                       key={teamMember.teamMemberId}
@@ -38,35 +37,55 @@ const MyTeamOpen = () => {
                       width={13.2}
                       height={16.3}
                     />
-                  ))}
+                  ))
+                ) : (
+                  <NoTeamMember>
+                    <img
+                      src={'/assets/images/myteam/team_member.svg'}
+                      alt={'team_member'}
+                    />
+                    아직 합류한 팀원이 없어요
+                  </NoTeamMember>
+                )}
               </TeamMembersBox>
             </div>
             <div>
               <StarTitle>지원자</StarTitle>
               <TeamMembersBox>
-                <ApplyContent>
-                  <ApplyFireImg
-                    src={'/assets/images/myteam/apply_fire.svg'}
-                    alt={'apply_fire'}
-                  />
-                  <p>
-                    현재 <span>{openedTeam.data[0].applyMemberSize}명</span>이
-                  </p>
-                  <p>팀원으로 지원했어요.</p>
-                </ApplyContent>
-                {openedTeam.data[0] &&
-                  openedTeam.data[0].applyMemberInfos &&
-                  openedTeam.data[0].applyMemberInfos.map((teamMember) => (
-                    <ProfileBoxMember
-                      key={teamMember.teamMemberId}
-                      hasProfileButton={false}
-                      isBgColorWhite={true}
-                      hasBorder={true}
-                      memberInfo={teamMember}
-                      width={13.2}
-                      height={16.3}
+                {openedTeam.data[0] && openedTeam.data[0].applyMemberInfos ? (
+                  <>
+                    <ApplyContent>
+                      <ApplyFireImg
+                        src={'/assets/images/myteam/apply_fire.svg'}
+                        alt={'apply_fire'}
+                      />
+                      <p>
+                        현재 <span>{openedTeam.data[0].applyMemberSize}명</span>
+                        이
+                      </p>
+                      <p>팀원으로 지원했어요.</p>
+                    </ApplyContent>
+                    {openedTeam.data[0].applyMemberInfos.map((teamMember) => (
+                      <ProfileBoxMember
+                        key={teamMember.teamMemberId}
+                        hasProfileButton={false}
+                        isBgColorWhite={true}
+                        hasBorder={true}
+                        memberInfo={teamMember}
+                        width={13.2}
+                        height={16.3}
+                      />
+                    ))}
+                  </>
+                ) : (
+                  <NoTeamMember>
+                    <img
+                      src={'/assets/images/myteam/team_member.svg'}
+                      alt={'team_member'}
                     />
-                  ))}
+                    아직 합류한 팀원이 없어요
+                  </NoTeamMember>
+                )}
               </TeamMembersBox>
             </div>
           </TeamMemberBox>
@@ -132,6 +151,19 @@ const TeamMembersBox = styled.div`
     background: ${({ theme }) => theme.colors.primary60};
     border-radius: 10px;
   }
+`;
+
+const NoTeamMember = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+
+  ${({ theme }) => theme.fonts.subtitleL};
+  color: ${({ theme }) => theme.colors.gray90};
 `;
 
 const ApplyContent = styled.div`
