@@ -62,7 +62,7 @@ const ModalContainer = styled.div`
   //모달창을 벗어나지 않음
   overflow: hidden;
 
-  padding: 3rem;
+  /* padding: 3rem; */
 `;
 
 const CloseImg = styled.img`

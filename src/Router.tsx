@@ -20,6 +20,7 @@ import MyTeamOpen from './components/myteam/MyTeamOpen';
 import ContestTeam from './pages/contestTeam/ContestTeam';
 import MyTeamManagement from './pages/myTeam/MyTeamManagement';
 import MyTeamApply from './pages/myTeam/MyTeamApply';
+import Modal from './components/common/Modal';
 
 function Router() {
   return (
@@ -60,6 +61,7 @@ function Router() {
         <Route path="/payment/charge" element={<PaymentCharge />} />
       </Routes>
       <Footer />
+      <Modal />
     </BrowserRouter>
   );
 }
