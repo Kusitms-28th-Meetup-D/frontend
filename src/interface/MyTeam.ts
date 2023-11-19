@@ -15,6 +15,26 @@ export interface RequestTeamOpen {
   chatLink: string;
 }
 
+export interface AppliedTeamData {
+  contestId: string;
+  contestTitle: string;
+  contestImage: string[];
+  leaderInfo: ProfileProps;
+  teamId: number;
+  status: string;
+  leaderMessage: string;
+  max: number;
+  cur: number;
+  location: string;
+  endDate: string;
+}
+export interface ResponseAppliedTeam {
+  status: number;
+  message: string;
+  data: AppliedTeamData[];
+}
+
+//예진이가 사용한 오픈한 팀 api
 export interface TeamData {
   teamId?: number;
   teamMemberSize?: number;
@@ -25,14 +45,30 @@ export interface TeamData {
   contestImage: string[];
 }
 
-export interface ResponseAppliedTeam {
+export interface ResponseOpenedTeam {
   status: number;
   message: string;
   data: TeamData[];
 }
 
-export interface ResponseOpenedTeam {
+export interface RequestActiveTeam {
+  // contestId: string;
+}
+export interface ActiveTeamData {
+  contestId: string;
+  contestTitle: string;
+  contestImage: string[];
+  leaderInfo: ProfileProps;
+  leaderMessage: string;
+  memberSize: number;
+  location: string;
+  endDate: string;
+  notice: string;
+  teamMemberInfos: ProfileProps[];
+  chatLink: string;
+}
+export interface ResponseActiveTeam {
   status: number;
   message: string;
-  data: TeamData[];
+  data: ActiveTeamData[];
 }
