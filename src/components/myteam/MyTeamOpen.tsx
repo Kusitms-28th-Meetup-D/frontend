@@ -6,7 +6,7 @@ import ProfileBoxMember from '../common/ProfileBoxMember';
 const teamMember = {
   teamMemberId: 1,
   teamMemberName: '김민수',
-  teamMemberImage: '/assets/images/recommendation/profile.svg',
+  teamMemberImage: '/assets/images/review/profile.svg',
   teamMemberTask: ['기획', '디자인'],
   teamMemberMajor: ['경영학과', '컴퓨터공학과'],
 };

@@ -15,15 +15,15 @@ export interface IWorkMethod {
   percent: number;
 }
 
-export interface IRecommendation {
-  recommendation: string;
+export interface IReview {
+  review: string;
   category: string;
 }
-export interface ProfileRecommendation {
+export interface ProfileReview {
   keywords: IKeyword[];
   teamCultures: ITeamCulture[];
   workMethods: IWorkMethod[];
-  recommendation: IRecommendation[];
+  review: IReview[];
 }
 
 export interface ProfileInfoProps {
@@ -104,10 +104,10 @@ export interface Comment {
   comments: string;
   contestName: string;
 }
-export interface RequestProfileRecommendation {
+export interface RequestProfileReview {
   userId?: string;
 }
-export interface ProfileRecommendationData {
+export interface ProfileReviewData {
   userId: number;
   keywords: Keyword[];
   teamCultures: TeamCulture[];
@@ -115,10 +115,10 @@ export interface ProfileRecommendationData {
   comments: Comment[];
 }
 
-export interface ResponseProfileRecommendation {
+export interface ResponseProfileReview {
   status: number;
   message: string;
-  data: ProfileRecommendationData;
+  data: ProfileReviewData;
 }
 
 //내 티켓 개수 확인 api

@@ -6,7 +6,7 @@ import useContestInfo from '../../hooks/contest/useContestInfo';
 const ContestInfo = () => {
   const { contestId } = useParams();
   const { contestInfoData } = useContestInfo(contestId as string);
-  console.log(contestInfoData);
+
   return (
     <ContestInfoLayout>
       <ContestInfoTitle>{contestInfoData?.data.data.title}</ContestInfoTitle>

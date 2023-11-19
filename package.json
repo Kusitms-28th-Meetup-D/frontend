@@ -17,7 +17,8 @@
     "react-router-dom": "^6.16.0",
     "recoil": "^0.7.7",
     "recoil-persist": "^5.1.0",
-    "styled-components": "^6.0.8"
+    "styled-components": "^6.0.8",
+    "swiper": "11"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
