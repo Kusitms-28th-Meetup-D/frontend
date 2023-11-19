@@ -56,15 +56,21 @@ const ProfileSubInfo = ({
         <ProfileSubInfoContents
           props1={internships}
           props2={awards}
+          props3={tools}
+          props4={certificates}
           titles={titles1}
+          names={['internships', 'awards']}
         />
       </ProfileSubInfoBox>
       <ProfileSubInfoBox>
         <ProfileSubInfoTitle>스킬</ProfileSubInfoTitle>
         <ProfileSubInfoContents
-          props1={tools}
-          props2={certificates}
+          props1={internships}
+          props2={awards}
+          props3={tools}
+          props4={certificates}
           titles={titles2}
+          names={['tools', 'certificates']}
         />
       </ProfileSubInfoBox>
     </ProfileSubInfoContainer>
