@@ -24,6 +24,7 @@ import Modal from './components/common/Modal';
 import ExternalReview from './pages/review/ExternalReview';
 import MyTeamCreate from './pages/myteam/MyTeamCreate';
 import MyTeamActive from './pages/myteam/MyTeamActive';
+import MyTeamEnd from './pages/myteam/MyTeamEnd';
 
 function Router() {
   return (
@@ -51,7 +52,7 @@ function Router() {
           <Route path="open" element={<MyTeamOpen />} />
           <Route path="apply" element={<MyTeamApply />} />
           <Route path="active" element={<MyTeamActive />} />
-          <Route path="end" element={<div>활동했던 팀</div>} />
+          <Route path="end" element={<MyTeamEnd />} />
         </Route>
         <Route
           path="/myteam/:userId/:contestId/:teamId"
