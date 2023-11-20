@@ -4,10 +4,17 @@ import { styled } from 'styled-components';
 import Pagination from '../common/Pagination';
 import { useRecruitingTeam } from '../../hooks/competition/useRecruitingTeam';
 import RecruitingBox from './RecruitingBox';
+import { useEffect, useState } from 'react';
 
 const CompetitionRecruiting = () => {
-  const { recruitingTeam } = useRecruitingTeam();
-  console.log(recruitingTeam?.data.recruitingTeams);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { recruitingTeam, refetch } = useRecruitingTeam(currentPage, 5);
+  const endPage = recruitingTeam?.data.pageResponseDTO.endPage;
+
+  useEffect(() => {
+    refetch();
+  }, [currentPage, refetch]);
 
   return (
     <RecruitingLayout>
@@ -20,7 +27,11 @@ const CompetitionRecruiting = () => {
           />
         ))}
       </RecruitingBoxLayout>
-      <Pagination totalPage={3} currentPage={1} setCurrentPage={() => {}} />
+      <Pagination
+        totalPage={endPage ? endPage : 1}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </RecruitingLayout>
   );
 };
