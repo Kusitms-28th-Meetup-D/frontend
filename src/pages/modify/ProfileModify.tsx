@@ -13,8 +13,8 @@ import useProfile from '../../hooks/profile/useProfile';
 import TextInput from '../../components/modify/TextInput';
 import SelectInput from '../../components/modify/SelectInput';
 import TextAreaInput from '../../components/modify/TextAreaInput';
-import { useModifyProfile } from '../../hooks/modify/usemodifyProfile';
 import { RequestModifyProfile } from '../../interface/Modify';
+import { useModifyProfile } from '../../hooks/modify/useModifyProfile';
 
 const ProfileModify = () => {
   const loginInfo = useRecoilValue(loginInfoState);
