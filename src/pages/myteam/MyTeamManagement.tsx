@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ContestInfo from '../../components/contest/ContestInfo';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import starSrc from '/assets/images/common/star.svg';
 import { Headers } from '../../constants/Header';
@@ -10,6 +10,9 @@ import useMyOpenedTeamMemberInfo from '../../hooks/myTeam/useMyOpenedTeamMemberI
 import { MyOpenedTeamMemberInfoData } from '../../interface/MyTeam';
 import ProfileBoxScroll from '../../components/myteam/management/ProfileBoxScroll';
 import ApplyBoxScroll from '../../components/myteam/management/ApplyBoxScroll';
+import CompleteRecruitModal from '../../components/myteam/management/CompleteRecruitModal';
+import { useParams } from 'react-router-dom';
+import CancleRecruitModal from '../../components/myteam/management/CancleRecruitModal';
 const DUMMY: MyOpenedTeamMemberInfoData = {
   teamId: 1,
   teamMemberSize: 0,
@@ -141,11 +144,25 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
 };
 const MyTeamManagement = () => {
   const { myOpenedTeamMemberInfoData } = useMyOpenedTeamMemberInfo();
-  console.log(myOpenedTeamMemberInfoData);
+  const [isCompleteRecruitModalVisible, setIsCompleteRecruitModalVisible] =
+    useState(false);
+  const [isCancleRecruitModalVisible, setIsCancleRecruitModalVisible] =
+    useState(false);
+  const { teamId } = useParams();
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.myTeam));
   return (
     <Managelayout>
+      <CompleteRecruitModal
+        isModalVisible={isCompleteRecruitModalVisible}
+        setIsModalVisible={setIsCompleteRecruitModalVisible}
+        teamId={teamId}
+      />
+      <CancleRecruitModal
+        isModalVisible={isCancleRecruitModalVisible}
+        setIsModalVisible={setIsCancleRecruitModalVisible}
+        teamId={teamId}
+      />
       <CurrPath>{'내 팀 > 내가 오픈한 팀'}</CurrPath>
       <ContestInfo />
       <Hr />
@@ -155,7 +172,9 @@ const MyTeamManagement = () => {
           합류한 팀원들
           <SubCurrPeople>총 {DUMMY.teamMemberSize}명</SubCurrPeople>
         </Subtitle>
-        <CancleRecruitment>모집 취소하기</CancleRecruitment>
+        <CancleRecruitment onClick={() => setIsCancleRecruitModalVisible(true)}>
+          모집 취소하기
+        </CancleRecruitment>
       </SubtitleContainer>
       <ProfileBoxContainer>
         <ProfileBoxScroll teamMembersInfo={DUMMY.teamMemberInfos} />
@@ -172,7 +191,9 @@ const MyTeamManagement = () => {
         />
       )} */}{' '}
       <ApplyBoxScroll teamMembersInfo={DUMMY.teamMemberInfos} />
-      <RecruitButton>팀원 모집 완료</RecruitButton>
+      <RecruitButton onClick={() => setIsCompleteRecruitModalVisible(true)}>
+        팀원 모집 완료
+      </RecruitButton>
     </Managelayout>
   );
 };
