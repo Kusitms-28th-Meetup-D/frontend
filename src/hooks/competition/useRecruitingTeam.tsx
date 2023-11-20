@@ -5,11 +5,16 @@ import { getRecruitingTeam } from '../../apis/competition/getRecruitingTeam';
 
 interface UseRecruitingTeam {
   recruitingTeam?: ResponseRecruitingTeam;
+  refetch: () => void;
 }
 
-export function useRecruitingTeam(): UseRecruitingTeam {
-  const { data: recruitingTeam } = useQuery(recruitingTeamKeys.all, () =>
-    getRecruitingTeam(),
+export function useRecruitingTeam(
+  page: number,
+  size: number,
+): UseRecruitingTeam {
+  const { data: recruitingTeam, refetch } = useQuery(
+    recruitingTeamKeys.all,
+    () => getRecruitingTeam(page, size),
   );
-  return { recruitingTeam };
+  return { recruitingTeam, refetch };
 }
