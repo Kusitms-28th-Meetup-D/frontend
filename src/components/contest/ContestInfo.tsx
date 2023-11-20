@@ -56,7 +56,8 @@ const ContestInfoTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray90};
 
-  margin-top: 3rem;
+  width: 100%;
+  /* margin-top: 3rem; */
 `;
 const ContestContainer = styled.div`
   display: flex;
