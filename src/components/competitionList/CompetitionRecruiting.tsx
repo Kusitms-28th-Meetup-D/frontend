@@ -1,6 +1,4 @@
 import { styled } from 'styled-components';
-// import { recruitingList } from '../../constants/competitionList';
-// import RecruitingBox from './RecruitingBox';
 import Pagination from '../common/Pagination';
 import { useRecruitingTeam } from '../../hooks/competition/useRecruitingTeam';
 import RecruitingBox from './RecruitingBox';

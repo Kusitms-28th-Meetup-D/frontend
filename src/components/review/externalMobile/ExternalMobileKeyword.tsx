@@ -53,7 +53,9 @@ const ExternalMobileKeyword = () => {
           <img
             src={'/assets/images/common/right_button.svg'}
             alt={'right_button'}
-            onClick={() => navigate('tendency')}
+            onClick={() =>
+              navigate(`/review/external/mobile/${userId}/tendency1`)
+            }
           />
         </ButtonBox>
       </ExternalMobileKeywordContainer>

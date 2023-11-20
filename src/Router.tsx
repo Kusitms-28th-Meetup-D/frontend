@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
 import Oauth from './pages/login/Oauth';
 import Join from './pages/join/Join';
 import Profile from './pages/profile/Profile';
@@ -20,61 +18,79 @@ import ContestTeam from './pages/contestTeam/ContestTeam';
 import MyTeamManagement from './pages/myteam/MyTeamManagement';
 import MyTeamApply from './pages/myteam/MyTeamApply';
 import Modal from './components/common/Modal';
-import ExternalReview from './pages/review/ExternalReview';
 import MyTeamCreate from './pages/myteam/MyTeamCreate';
 import MyTeamActive from './pages/myteam/MyTeamActive';
 import MyTeamEnd from './pages/myteam/MyTeamEnd';
 import MyTeamOpen from './pages/myteam/MyTeamOpen';
 import ProfileModify from './pages/modify/ProfileModify';
+import ExternalMobileReview from './pages/review/ExternalMobileReview';
+import ExternalMobileKeyword from './components/review/externalMobile/ExternalMobileKeyword';
+import ExternalMobileTendency1 from './components/review/externalMobile/ExternalMobileTendency1';
+import ExternalMobileTendency2 from './components/review/externalMobile/ExternalMobileTendency2';
+import ExternalMobileMain from './components/review/externalMobile/ExternalMobileMain';
+import ExternalMobileOneLine from './components/review/externalMobile/ExternalMobileOneLine';
+import ExternalMobileComplete from './components/review/externalMobile/ExternalMobileComplete';
+import Layout from './components/layout/Layout';
 
 function Router() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Header />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/login/oauth" element={<Oauth />} />
-        <Route path="/join" element={<Join />} />
-        <Route path="/join/request" element={<Request />} />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/login/oauth" element={<Oauth />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/join/request" element={<Request />} />
 
-        <Route path="/review/external/:userId" element={<ExternalReview />} />
-        <Route path="/review" element={<Review />}>
-          <Route path="subjective" element={<Subjective />} />
-          <Route path="multipleChoice" element={<MultipleChoice />} />
-        </Route>
+          <Route path="/review" element={<Review />}>
+            <Route path="subjective" element={<Subjective />} />
+            <Route path="multipleChoice" element={<MultipleChoice />} />
+          </Route>
+          <Route
+            path="/review/external/mobile/:userId"
+            element={<ExternalMobileReview />}
+          >
+            <Route path="" element={<ExternalMobileMain />} />
+            <Route path="keyword" element={<ExternalMobileKeyword />} />
+            <Route path="tendency1" element={<ExternalMobileTendency1 />} />
+            <Route path="tendency2" element={<ExternalMobileTendency2 />} />
+            <Route path="oneLine" element={<ExternalMobileOneLine />} />
+            <Route path="complete" element={<ExternalMobileComplete />} />
+          </Route>
+          {/* <Route path="/review/external/:userId" element={<ExternalReview />} /> */}
 
-        <Route path="/profile/:userId" element={<Profile />} />
-        <Route path="/profile/:userId/create" element={<ProfileCreate />} />
-        <Route path="/profile/modify" element={<ProfileModify />} />
+          <Route path="/profile/:userId" element={<Profile />} />
+          <Route path="/profile/:userId/create" element={<ProfileCreate />} />
+          <Route path="/profile/modify" element={<ProfileModify />} />
 
-        <Route path="/myteam/create/:contestId" element={<MyTeamCreate />} />
-        <Route path="/myteam/:userId" element={<MyTeam />}>
-          <Route path="open" element={<MyTeamOpen />} />
-          <Route path="apply" element={<MyTeamApply />} />
-          <Route path="active" element={<MyTeamActive />} />
-          <Route path="end" element={<MyTeamEnd />} />
-        </Route>
-        <Route
-          path="/myteam/:userId/:contestId/:teamId"
-          element={<MyTeamManagement />}
-        />
+          <Route path="/myteam/create/:contestId" element={<MyTeamCreate />} />
+          <Route path="/myteam/:userId" element={<MyTeam />}>
+            <Route path="open" element={<MyTeamOpen />} />
+            <Route path="apply" element={<MyTeamApply />} />
+            <Route path="active" element={<MyTeamActive />} />
+            <Route path="end" element={<MyTeamEnd />} />
+          </Route>
+          <Route
+            path="/myteam/:userId/:contestId/:teamId"
+            element={<MyTeamManagement />}
+          />
 
-        <Route path="/list/:contestId" element={<Contest />} />
-        <Route path="/list/:contestId" element={<Contest />} />
-        <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />
+          <Route path="/list/:contestId" element={<Contest />} />
+          <Route path="/list/:contestId" element={<Contest />} />
+          <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />
 
-        <Route path="/profile/create" element={<ProfileCreate />} />
-        <Route
-          path="/list/:postId/:teamId"
-          element={<div>팀 생성페이지입니다</div>}
-        />
-        <Route path="/list" element={<CompetitionList />} />
+          <Route path="/profile/create" element={<ProfileCreate />} />
+          <Route
+            path="/list/:postId/:teamId"
+            element={<div>팀 생성페이지입니다</div>}
+          />
+          <Route path="/list" element={<CompetitionList />} />
 
-        <Route path="/payment/charge" element={<PaymentCharge />} />
-      </Routes>
-      <Footer />
+          <Route path="/payment/charge" element={<PaymentCharge />} />
+        </Routes>
+      </Layout>
       <Modal />
     </BrowserRouter>
   );

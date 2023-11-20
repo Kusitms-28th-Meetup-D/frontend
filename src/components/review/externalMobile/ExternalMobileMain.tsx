@@ -21,7 +21,9 @@ const ExternalMobileMain = () => {
         src={'/assets/images/review/external_mobile.svg'}
         alt={'external_mobile_main'}
       />
-      <ButtonStyle onClick={() => navigate('keyword')}>
+      <ButtonStyle
+        onClick={() => navigate(`/review/external/mobile/${userId}/keyword`)}
+      >
         리뷰 작성 시작하기
       </ButtonStyle>
     </ExternalMobileMainContainer>

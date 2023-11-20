@@ -102,3 +102,45 @@ export const question2 = [
     answer2: '워라밸 중시',
   },
 ];
+
+export const externalQuestion1 = [
+  {
+    id: 1,
+    title: '소통 스타일은 어땠나요?',
+    answer1: '주도적인 편',
+    answer2: '협조적인 편',
+  },
+  {
+    id: 2,
+    title: '팀 내에서 맡은 역할을 무엇이었나요?',
+    answer1: '리더형',
+    answer2: '팔로워형',
+  },
+  {
+    id: 3,
+    title: '에너지 방향성은 어땠나요?',
+    answer1: '외향적',
+    answer2: '내향적',
+  },
+];
+
+export const externalQuestion2 = [
+  {
+    id: 1,
+    title: '작업 스타일은 어땠나요?',
+    answer1: '한 번 할 때 제대로 몰입하는 편',
+    answer2: '미리 계획을 세우고 실행하는 편',
+  },
+  {
+    id: 2,
+    title: '어떤 관점으로 업무했나요',
+    answer1: '큰 그림을 그리고 방향성 제시',
+    answer2: '세심하게 파고드는 꼼꼼함',
+  },
+  {
+    id: 3,
+    title: '문제 해결 방식은 어땠나요?',
+    answer1: '유연한 도전을 선호',
+    answer2: '원칙과 경험을 신뢰',
+  },
+];
