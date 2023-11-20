@@ -17,7 +17,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
   teamMemberInfos: [
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우1',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -25,7 +25,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우2',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -33,7 +33,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우3',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -41,7 +41,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우4',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -49,7 +49,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우5',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -57,7 +57,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우6',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -65,7 +65,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우7',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -73,7 +73,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우8',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -81,7 +81,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우9',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -89,7 +89,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우10',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -97,7 +97,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진우11',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -105,7 +105,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진12우',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -113,7 +113,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨13진우',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -121,7 +121,7 @@ const DUMMY: MyOpenedTeamMemberInfoData = {
     },
     {
       teamMemberId: 4,
-      teamMemberName: '팅커벨진우',
+      teamMemberName: '팅커벨진14우',
       teamMemberImage:
         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
       teamMemberTask: ['밥머기'],
@@ -164,6 +164,13 @@ const MyTeamManagement = () => {
         <StarImg src={starSrc} />
         지원자<SubCurrPeople>총 {DUMMY.applyMemberSize}명</SubCurrPeople>
       </Subtitle>
+      {/* {myOpenedTeamMemberInfoData && (
+        <ApplyBoxScroll
+          teamMembersInfo={
+            myOpenedTeamMemberInfoData?.data.data.teamMemberInfos
+          }
+        />
+      )} */}{' '}
       <ApplyBoxScroll teamMembersInfo={DUMMY.teamMemberInfos} />
       <RecruitButton>팀원 모집 완료</RecruitButton>
     </Managelayout>

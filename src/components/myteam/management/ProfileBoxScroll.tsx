@@ -8,14 +8,14 @@ interface ProfileBoxScrollProps {
 const ProfileBoxScroll: React.FC<ProfileBoxScrollProps> = (props) => {
   return (
     <Layout>
-      {props.teamMembersInfo.map((memberData) => {
+      {props.teamMembersInfo.map((memberData, index) => {
         const profileProps: ProfileBoxProps = {
           hasBorder: true,
           hasProfileButton: true,
           isBgColorWhite: true,
           memberInfo: memberData,
         };
-        return <ProfileBoxMember {...profileProps} />;
+        return <ProfileBoxMember key={index} {...profileProps} />;
       })}
     </Layout>
   );

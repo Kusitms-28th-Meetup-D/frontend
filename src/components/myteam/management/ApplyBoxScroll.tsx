@@ -4,14 +4,44 @@ import ProfileBoxMember from '../../common/ProfileBoxMember';
 
 import yesSrc from '/assets/images/myteam/yes.svg';
 import noSrc from '/assets/images/myteam/no.svg';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import YesMemberJoinModal from './YesMemberJoinModal';
+import NoMemberJoinModal from './NoMemberJoinModal';
 interface ApplyBoxScrollProps {
   teamMembersInfo: ProfileProps[];
   width?: number;
 }
 const ApplyBoxScroll: React.FC<ApplyBoxScrollProps> = (props) => {
+  const { teamId } = useParams();
+  const [isYesMemberJoinModalVisible, setIsYesMemberJoinModalVisible] =
+    useState(false);
+  const [isNoMemberJoinModalVisible, setIsNoMemberJoinModalVisible] =
+    useState(false);
+  const [memberIndex, setMemberIndex] = useState(0);
+  const handleClickYes = (index: number) => {
+    setIsYesMemberJoinModalVisible(true);
+    setMemberIndex(index);
+  };
+  const handleClickNo = (index: number) => {
+    setIsNoMemberJoinModalVisible(true);
+    setMemberIndex(index);
+  };
   return (
     <Layout>
-      {props.teamMembersInfo.map((memberData) => {
+      <YesMemberJoinModal
+        isModalVisible={isYesMemberJoinModalVisible}
+        setIsModalVisible={setIsYesMemberJoinModalVisible}
+        profileProps={props.teamMembersInfo[memberIndex]}
+        teamId={teamId}
+      />
+      <NoMemberJoinModal
+        isModalVisible={isNoMemberJoinModalVisible}
+        setIsModalVisible={setIsNoMemberJoinModalVisible}
+        profileProps={props.teamMembersInfo[memberIndex]}
+        teamId={teamId}
+      />
+      {props.teamMembersInfo.map((memberData, index) => {
         const profileProps: ProfileBoxProps = {
           hasBorder: true,
           hasProfileButton: true,
@@ -19,13 +49,19 @@ const ApplyBoxScroll: React.FC<ApplyBoxScrollProps> = (props) => {
           memberInfo: memberData,
         };
         return (
-          <ApplyContainer>
+          <ApplyContainer key={index}>
             <ProfileBoxMember {...profileProps} />
             <SelectApplyContainer>
               합류 여부
               <SelectApplyBox>
-                <SelectApplyitem src={yesSrc} />
-                <SelectApplyitem src={noSrc} />
+                <SelectApplyitem
+                  onClick={() => handleClickYes(index)}
+                  src={yesSrc}
+                />
+                <SelectApplyitem
+                  onClick={() => handleClickNo(index)}
+                  src={noSrc}
+                />
               </SelectApplyBox>
             </SelectApplyContainer>
           </ApplyContainer>
