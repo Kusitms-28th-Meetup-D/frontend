@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 import useProfile from '../../../hooks/profile/useProfile';
 import Button from '../../common/Button';
@@ -7,6 +7,7 @@ const ExternalMobileMain = () => {
   const { userId } = useParams();
   const { profileData } = useProfile(userId);
   const username = profileData?.data.data.username;
+  const navigate = useNavigate();
 
   return (
     <ExternalMobileMainContainer>
@@ -20,7 +21,9 @@ const ExternalMobileMain = () => {
         src={'/assets/images/review/external_mobile.svg'}
         alt={'external_mobile_main'}
       />
-      <ButtonStyle>리뷰 작성 시작하기</ButtonStyle>
+      <ButtonStyle onClick={() => navigate('keyword')}>
+        리뷰 작성 시작하기
+      </ButtonStyle>
     </ExternalMobileMainContainer>
   );
 };
