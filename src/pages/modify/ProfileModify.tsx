@@ -13,6 +13,8 @@ import useProfile from '../../hooks/profile/useProfile';
 import TextInput from '../../components/modify/TextInput';
 import SelectInput from '../../components/modify/SelectInput';
 import TextAreaInput from '../../components/modify/TextAreaInput';
+import { useModifyProfile } from '../../hooks/modify/usemodifyProfile';
+import { RequestModifyProfile } from '../../interface/Modify';
 
 const ProfileModify = () => {
   const loginInfo = useRecoilValue(loginInfoState);
@@ -48,22 +50,14 @@ const ProfileModify = () => {
     true,
     true,
   ]);
+  const handleModiftProfile = useModifyProfile(
+    inputValue as RequestModifyProfile,
+    loginInfo.data?.userId as unknown as string,
+  );
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     console.log({ ...inputValue });
-    // try {
-    //   const responseJoin = await postJoin({
-    //     ...inputValue,
-    //     kakaoAccessToken: kakaoAccessToken as string,
-    //   });
-    //   console.log('responseJoin 결과 성공:', responseJoin);
-
-    //   // setIsModalVisible(true);
-    //   // 바로 즉시 로그인
-    //   handleLogin(kakaoAccessToken);
-    // } catch (error) {
-    //   console.log('responseJoin 실패:', error);
-    // }
+    handleModiftProfile.mutate();
   };
 
   const handleChange = (event: any) => {
