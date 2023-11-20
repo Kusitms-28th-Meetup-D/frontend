@@ -88,3 +88,30 @@ export interface ResponseEndTeam {
   message: string;
   data: EndTeamData[];
 }
+
+export interface PageResponseDTO {
+  startPage: number;
+  endPage: number;
+  currentPage: number;
+  totalCount: number;
+}
+
+export interface RecruitingTeamData {
+  contestId: string;
+  contesttitle: string;
+  teamLeaderId: number;
+  teamLeaderName: string;
+  teamLeaderImage: string;
+  teamLeaderMessage: string;
+}
+
+export interface RecruitingTeam {
+  pageResponseDTO: PageResponseDTO;
+  recruitingTeams: RecruitingTeamData[];
+}
+
+export interface ResponseRecruitingTeam {
+  status: number;
+  message: string;
+  data: RecruitingTeam;
+}

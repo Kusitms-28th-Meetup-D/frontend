@@ -1,15 +1,23 @@
 import { styled } from 'styled-components';
-import { recruitingList } from '../../constants/competitionList';
-import RecruitingBox from './RecruitingBox';
+// import { recruitingList } from '../../constants/competitionList';
+// import RecruitingBox from './RecruitingBox';
 import Pagination from '../common/Pagination';
+import { useRecruitingTeam } from '../../hooks/competition/useRecruitingTeam';
+import RecruitingBox from './RecruitingBox';
 
 const CompetitionRecruiting = () => {
+  const { recruitingTeam } = useRecruitingTeam();
+  console.log(recruitingTeam?.data.recruitingTeams);
+
   return (
     <RecruitingLayout>
       <RecruitingTitle>지금 모집 중인 팀을 만나보세요.</RecruitingTitle>
       <RecruitingBoxLayout>
-        {recruitingList.map((recruiting) => (
-          <RecruitingBox key={recruiting.id} {...recruiting} />
+        {recruitingTeam?.data.recruitingTeams.map((recruitingTeam) => (
+          <RecruitingBox
+            key={recruitingTeam.contestId}
+            recruitingTeam={recruitingTeam}
+          />
         ))}
       </RecruitingBoxLayout>
       <Pagination totalPage={3} currentPage={1} setCurrentPage={() => {}} />
@@ -35,4 +43,5 @@ const RecruitingBoxLayout = styled.div`
   display: flex;
   gap: 2.5rem;
   padding: 0 10rem;
+  width: 100%;
 `;
