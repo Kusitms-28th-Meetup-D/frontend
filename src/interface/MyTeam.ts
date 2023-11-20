@@ -133,3 +133,36 @@ export interface ResponseMyOpenedTeamMemberInfo {
   message: string;
   data: MyOpenedTeamMemberInfoData;
 }
+
+//팀 멤버 상태 변경  api
+
+export interface RequestChangeMemberState {
+  teamId: string;
+  memberId: string;
+  role: string;
+}
+export interface ResponseChangeMemberState {
+  status: number;
+  message: string;
+  data: null;
+}
+
+//팀 삭제 api
+export interface RequestDeleteTeam {
+  teamId: string;
+}
+export interface ResponseDeleteTeam {
+  status: number;
+  message: string;
+  data: null;
+}
+
+//팀 모집 완료  api
+export interface RequestRecruitComplete {
+  teamId: string;
+}
+export interface ResponseRecruitComplete {
+  status: number;
+  message: string;
+  data: null;
+}
