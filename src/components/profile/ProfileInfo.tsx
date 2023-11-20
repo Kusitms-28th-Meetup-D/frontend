@@ -21,7 +21,7 @@ const ProfileInfo = ({
     <>
       <ProfileText>{name} 님의 프로필</ProfileText>
       <ProfileContainer>
-        <ModifyProfile onClick={() => navigate('modify')}>
+        <ModifyProfile onClick={() => navigate('/profile/modify')}>
           계정 설정에서 변경하기
         </ModifyProfile>
         <ProfileImage src={profile_image} />

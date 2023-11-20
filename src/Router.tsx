@@ -25,6 +25,7 @@ import MyTeamCreate from './pages/myteam/MyTeamCreate';
 import MyTeamActive from './pages/myteam/MyTeamActive';
 import MyTeamEnd from './pages/myteam/MyTeamEnd';
 import MyTeamOpen from './pages/myteam/MyTeamOpen';
+import ProfileModify from './pages/modify/ProfileModify';
 
 function Router() {
   return (
@@ -46,6 +47,7 @@ function Router() {
 
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/profile/:userId/create" element={<ProfileCreate />} />
+        <Route path="/profile/modify" element={<ProfileModify />} />
 
         <Route path="/myteam/create/:contestId" element={<MyTeamCreate />} />
         <Route path="/myteam/:userId" element={<MyTeam />}>
