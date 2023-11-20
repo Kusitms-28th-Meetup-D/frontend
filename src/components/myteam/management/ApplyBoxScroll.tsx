@@ -41,6 +41,7 @@ const Layout = styled.div`
   overflow-x: scroll;
 
   padding-bottom: 3rem;
+  margin-bottom: 10rem;
   &::-webkit-scrollbar {
     width: 7px;
     height: 7px;

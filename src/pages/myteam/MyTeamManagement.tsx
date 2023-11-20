@@ -148,7 +148,7 @@ const MyTeamManagement = () => {
     <Managelayout>
       <CurrPath>{'내 팀 > 내가 오픈한 팀'}</CurrPath>
       <ContestInfo />
-      {/* <Hr /> */}
+      <Hr />
       <SubtitleContainer>
         <Subtitle>
           <StarImg src={starSrc} />
@@ -165,6 +165,7 @@ const MyTeamManagement = () => {
         지원자<SubCurrPeople>총 {DUMMY.applyMemberSize}명</SubCurrPeople>
       </Subtitle>
       <ApplyBoxScroll teamMembersInfo={DUMMY.teamMemberInfos} />
+      <RecruitButton>팀원 모집 완료</RecruitButton>
     </Managelayout>
   );
 };
@@ -223,5 +224,20 @@ const Hr = styled.div`
   height: 1px;
 
   border-top: 1px solid ${(props) => props.theme.colors.gray20};
+`;
+const RecruitButton = styled.button`
+  width: 23.2rem;
+  height: 6.4rem;
+
+  border-radius: 3.2rem;
+
+  ${(props) => props.theme.fonts.buttonL};
+  color: ${(props) => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.primary60};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 `;
 export default MyTeamManagement;
