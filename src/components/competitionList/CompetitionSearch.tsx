@@ -13,7 +13,6 @@ const CompetitionSearch = () => {
   };
   return (
     <CompetitionSearchBox>
-      {/* <SearchBackgroundImg src="/assets/images//searchBox1.svg" /> */}
       <SearchInput />
       <CompetitionButtonLayout>
         {searchButtonList.map((text, index) => (
@@ -25,7 +24,6 @@ const CompetitionSearch = () => {
           />
         ))}
       </CompetitionButtonLayout>
-      {/* <SearchBackgroundImg src="/assets/images/competition/searchBox2.svg" /> */}
     </CompetitionSearchBox>
   );
 };
@@ -33,7 +31,11 @@ const CompetitionSearch = () => {
 export default CompetitionSearch;
 
 const CompetitionSearchBox = styled.div`
-  background: ${({ theme }) => theme.colors.primary40};
+  background-image: url('/assets/images/competition/competition_search_background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   width: 100%;
   padding: 3.5rem 2rem;
   border-radius: 1.2rem;
@@ -52,5 +54,3 @@ const CompetitionButtonLayout = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-// const SearchBackgroundImg = styled.img``;
