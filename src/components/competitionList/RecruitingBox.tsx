@@ -1,25 +1,20 @@
 import { styled } from 'styled-components';
+import { RecruitingTeamData } from '../../interface/MyTeam';
 
-interface RecruitingProps {
-  title: string;
-  name: string;
-  description: string;
-  profile: string;
+interface RecruitingBoxProps {
+  recruitingTeam: RecruitingTeamData;
 }
 
-const RecruitingBox = ({
-  title,
-  name,
-  description,
-  profile,
-}: RecruitingProps) => {
+const RecruitingBox = ({ recruitingTeam }: RecruitingBoxProps) => {
   return (
     <RecruitingLayout>
-      <RecruitingTitle>{title}</RecruitingTitle>
+      <RecruitingTitle>{recruitingTeam.contesttitle}</RecruitingTitle>
       <RecruitingHr />
-      <RecruitingProfile src={profile} />
-      <RecruitingName>{name}</RecruitingName>
-      <RecruitingDescription>"{description}"</RecruitingDescription>
+      <RecruitingProfile src={recruitingTeam.teamLeaderImage} />
+      <RecruitingName>{recruitingTeam.teamLeaderName}</RecruitingName>
+      <RecruitingDescription>
+        "{recruitingTeam.teamLeaderMessage}"
+      </RecruitingDescription>
     </RecruitingLayout>
   );
 };
@@ -36,6 +31,7 @@ const RecruitingLayout = styled.div`
   align-items: center;
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   cursor: pointer;
+  width: 20%;
 `;
 
 const RecruitingHr = styled.hr`

@@ -1,19 +1,23 @@
-import NeedLoginModal from './NeedLoginModal';
-import { useRecoilState } from 'recoil';
-import { loginModalState } from '../../recoil/atom';
+import NeedLoginModal from './modals/NeedLoginModal';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { loginModalState, needKakaoReviewModalState } from '../../recoil/atom';
+import NeedKakaoReviewModal from './modals/NeedKakaoReviewModal';
 
 const Modal = () => {
   const [isLoginModalVisible, setIsLoginModalVisible] =
     useRecoilState(loginModalState);
+  const isKakaoReviewModalVisible = useRecoilValue(needKakaoReviewModalState);
   return (
     <>
-      isLoginModalVisible && (
-      <NeedLoginModal
-        isModalVisible={isLoginModalVisible}
-        setIsModalVisible={setIsLoginModalVisible}
-      />
-      )
+      {isLoginModalVisible && (
+        <NeedLoginModal
+          isModalVisible={isLoginModalVisible}
+          setIsModalVisible={setIsLoginModalVisible}
+        />
+      )}
+      {isKakaoReviewModalVisible && <NeedKakaoReviewModal />}
     </>
   );
 };
 export default Modal;
+NeedKakaoReviewModal;

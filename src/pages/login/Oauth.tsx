@@ -55,38 +55,6 @@ const Oauth = () => {
     }
   };
 
-  // /** 카카오 어세스 토큰를 통해 로그인 하는 함수
-  //  *
-  //  * @param kakaoAccessToken 카카오 어세스 토큰
-  //  */
-  // const loginWithKakaoToken = async (kakaoAccessToken: string) => {
-  //   try {
-  //     const responseLogin: AxiosResponse<ResponseLogin> =
-  //       await postLoginWithKakaoToken(kakaoAccessToken);
-  //     console.log('loginWithKakaoToken Complete', responseLogin);
-
-  //     setLoginInfoState({
-  //       isLogin: true,
-  //       data: {
-  //         userId: responseLogin.data.data.userId,
-  //         refreshToken: responseLogin.data.data.refreshToken,
-  //         accessToken: responseLogin.data.data.accessToken,
-  //         profileImage: responseLogin.data.data.profileImage,
-  //         name: responseLogin.data.data.name,
-  //       },
-  //     });
-  //   } catch (error: any) {
-  //     console.log('loginWithKakaoToken Error', error);
-  //     //여기에 setlogin하면 될듯
-  //     //회원가입 페이지로 연결
-  //     if (error.response.data.status == 404) {
-  //       navigate('/login/join', {
-  //         state: { kakaoAccessToken: kakaoAccessToken },
-  //       });
-  //     }
-  //   }
-  // };
-
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const kakaoAccessCode = params.get('code');
@@ -95,7 +63,7 @@ const Oauth = () => {
     );
     kakaoAccessToken;
     //우리팀 서버에 카카오 토큰 유효성 검증하기
-
+    console.log('kakaoAccessToken 잘 됐니?', kakaoAccessToken);
     navigate('/');
   }, []);
   return <div>auth</div>;

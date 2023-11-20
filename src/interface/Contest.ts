@@ -71,3 +71,12 @@ export interface ResponseContestTeamDetailInfo {
   message: string;
   data: ContestTeamDetailInfo;
 }
+
+////공모전 팀 합류하기 api
+export interface RequestJoinTeam {
+  teamId?: string;
+}
+
+export interface ResponseJoinTeam {
+  status: number;
+}

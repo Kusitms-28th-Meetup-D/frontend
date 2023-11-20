@@ -7,6 +7,8 @@ import {
 } from '../../interface/Contest';
 import ProfileBoxMember from '../common/ProfileBoxMember';
 import { useNavigate } from 'react-router-dom';
+import { loginInfoState, loginModalState } from '../../recoil/atom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 // import ProfileBoxLeader from '../common/ProfileBoxLeader';
 
 const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
@@ -20,6 +22,12 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
     height: 27.6,
   };
   const navigate = useNavigate();
+  const loginInfo = useRecoilValue(loginInfoState);
+  const setLoginModal = useSetRecoilState(loginModalState);
+  const handleTeamDetailClick = () => {
+    if (loginInfo.isLogin == true) navigate(`./${teamData.teamId}`);
+    else setLoginModal(true);
+  };
   return (
     <ItemLayout>
       <LeaderBox>
@@ -39,7 +47,7 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
             <Hr />
           </IntroduceTitle>
           <IntroduceContent>{teamData.leaderMessage}</IntroduceContent>
-          <GoTeamButton onClick={() => navigate(`./${teamData.teamId}`)}>
+          <GoTeamButton onClick={handleTeamDetailClick}>
             팀 자세히 보러가기
           </GoTeamButton>
         </TeamInfoBox>

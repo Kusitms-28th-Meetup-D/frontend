@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { headerSelectedState, loginInfoState } from '../../recoil/atom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import {
+  headerSelectedState,
+  loginInfoState,
+  loginModalState,
+} from '../../recoil/atom';
+import { useEffect } from 'react';
 
 import logoSrc from '/assets/images/header/wanteam-logo.svg';
 import starSrc from '/assets/images/common/star.svg';
@@ -11,10 +16,10 @@ import LoginProfile from './LoginProfile';
 const Header = () => {
   const loginInfo = useRecoilValue(loginInfoState);
   const headerSelectedIndex = useRecoilValue(headerSelectedState);
+  const setLoginModal = useSetRecoilState(loginModalState);
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (localStorage.getItem('kakaoAccessToken')) setIsLogin(true);
-  // }, [isLogin]);
+  useEffect(() => {}, [loginInfo]);
+
   return (
     <>
       <Spacer />
@@ -32,13 +37,21 @@ const Header = () => {
               공모전 리스트
             </HeaderItem>
             <HeaderItem
-              onClick={() => navigate(`/myteam/${loginInfo.data?.userId}/open`)}
+              onClick={() =>
+                loginInfo.isLogin
+                  ? navigate(`/myteam/${loginInfo.data?.userId}/open`)
+                  : setLoginModal(true)
+              }
               $isSelected={headerSelectedIndex === Headers.myTeam}
             >
               <HeaderStar src={starSrc} />내 팀
             </HeaderItem>
             <HeaderItem
-              onClick={() => navigate(`/profile/${loginInfo.data?.userId}`)}
+              onClick={() =>
+                loginInfo.isLogin
+                  ? navigate(`/profile/${loginInfo.data?.userId}`)
+                  : setLoginModal(true)
+              }
               $isSelected={headerSelectedIndex === Headers.myProfile}
             >
               <HeaderStar src={starSrc} />내 프로필

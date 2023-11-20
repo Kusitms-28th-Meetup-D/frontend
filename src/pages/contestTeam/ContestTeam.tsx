@@ -7,11 +7,12 @@ import ProfileBoxMember from '../../components/common/ProfileBoxMember';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { headerSelectedState, loginInfoState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useContestTeamDetailInfo from '../../hooks/contest/useContestTeamDetailInfo';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TEAM_DETAIL_STATUS } from '../../constants/Contest';
 import TeamMembers from '../../components/contestTeam/TeamMembers';
+import JoinTeamModal from '../../components/contestTeam/JoinTeamModal';
 
 const ContestTeam = () => {
   const { teamId, contestId } = useParams();
@@ -21,7 +22,7 @@ const ContestTeam = () => {
   const userLogininfo = useRecoilValue(loginInfoState);
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   const navigate = useNavigate();
-  useEffect(() => setHeaderSelected(Headers.list));
+  const [isJoinTeamModalVisible, setIsJoinTeamModalVisible] = useState(false);
   const teamLeaderBoxProps: ProfileBoxProps = isLoading
     ? ({} as ProfileBoxProps)
     : {
@@ -33,17 +34,32 @@ const ContestTeam = () => {
         height: 27.6,
       };
 
+  const handleJoinTeam = () => {
+    setIsJoinTeamModalVisible(true);
+  };
+  console.log(contestTeamDetailData);
+
+  useEffect(() => setHeaderSelected(Headers.list));
+
+  //내가 오픈한 경우, 내 팀 페이지로 이동
   if (
     contestTeamDetailData?.data.data.status ==
     TEAM_DETAIL_STATUS._1_내가오픈한경우
   ) {
     navigate(`/myTeam/${userLogininfo.data?.userId}/${contestId}/${teamId}`);
   }
-  console.log(contestTeamDetailData);
+
   return isLoading ? (
     <div>로딩중</div>
   ) : (
     <TeamLayout>
+      <JoinTeamModal
+        isModalVisible={isJoinTeamModalVisible}
+        setIsModalVisible={setIsJoinTeamModalVisible}
+        teamId={teamId}
+        userId={userLogininfo.data?.userId}
+      />
+
       <TeamUndo onClick={() => navigate(-1)}>
         <UndoImg src={undoSrc} />
         {'공모전으로 돌아가기'}
@@ -91,6 +107,44 @@ const ContestTeam = () => {
         cur={contestTeamDetailData?.data.data.cur}
         max={contestTeamDetailData?.data.data.max}
       />
+      <FlexBox>
+        {contestTeamDetailData?.data.data.status ==
+          TEAM_DETAIL_STATUS._2_남이오픈한경우_내가지원안함 && (
+          <>
+            <CustomButton $isActive={true} onClick={handleJoinTeam}>
+              합류 신청하기 →
+            </CustomButton>
+          </>
+        )}
+        {contestTeamDetailData?.data.data.status ==
+          TEAM_DETAIL_STATUS._3_남이오픈한경우_내가지원완료_승인 && (
+          <>
+            <CustomButton>합류 신청하기 →</CustomButton>
+            <CustomMessage>이미 합류 승인된 팀입니다.</CustomMessage>
+          </>
+        )}{' '}
+        {contestTeamDetailData?.data.data.status ==
+          TEAM_DETAIL_STATUS._4_남이오픈한경우_내가지원완료_반려 && (
+          <>
+            <CustomButton>합류 신청하기 →</CustomButton>
+            <CustomMessage>이미 지원이 반려된 팀입니다.</CustomMessage>
+          </>
+        )}{' '}
+        {contestTeamDetailData?.data.data.status ==
+          TEAM_DETAIL_STATUS._5_남이오픈한경우_내가지원완료_승인반려아님 && (
+          <>
+            <CustomButton
+              $isActive={true}
+              onClick={() =>
+                navigate(`/myteam/${userLogininfo.data?.userId}/apply`)
+              }
+            >
+              지원 현황보기 →
+            </CustomButton>
+            <CustomMessage>이미 지원을 완료한 팀입니다.</CustomMessage>
+          </>
+        )}
+      </FlexBox>
     </TeamLayout>
   );
 };
@@ -100,6 +154,8 @@ const TeamLayout = styled.div`
 
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
   gap: 4.4rem;
 `;
 const TeamUndo = styled.div`
@@ -215,5 +271,37 @@ const TeamNoticeContent = styled.div`
   padding: 2.5rem 3rem;
 
   white-space: break-spaces;
+`;
+const FlexBox = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+`;
+const CustomButton = styled.button<{ $isActive?: boolean }>`
+  width: 25.5rem;
+  height: 6.4rem;
+
+  border-radius: 3.2rem;
+  border: 1px solid
+    ${(props) =>
+      props.$isActive
+        ? props.theme.colors.primary20
+        : props.theme.colors.gray50};
+
+  background-color: ${(props) =>
+    props.$isActive ? props.theme.colors.primary60 : props.theme.colors.gray10};
+
+  ${(props) => props.theme.fonts.buttonL};
+  color: ${(props) =>
+    props.$isActive ? props.theme.colors.white : props.theme.colors.gray40};
+
+  cursor: ${(props) => (props.$isActive ? 'pointer' : 'default')};
+`;
+const CustomMessage = styled.div`
+  ${(props) => props.theme.fonts.buttonL};
+  color: ${(props) => props.theme.colors.gray70};
 `;
 export default ContestTeam;

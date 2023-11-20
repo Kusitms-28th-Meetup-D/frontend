@@ -20,6 +20,7 @@ const CompetitionListBox = () => {
         <>
           {competitionList?.data.map((competition) => (
             <CompetitionBox
+              key={competition.contestId}
               contestId={competition.contestId}
               title={competition.title}
               images={competition.images}

@@ -36,3 +36,7 @@ export const loginModalState = atom({
   key: 'loginModal',
   default: false,
 });
+export const needKakaoReviewModalState = atom({
+  key: 'needKakaoReviewModal',
+  default: false,
+});

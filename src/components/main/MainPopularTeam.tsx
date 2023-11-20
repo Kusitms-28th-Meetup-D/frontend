@@ -12,7 +12,7 @@ const MainPopularTeam = () => {
 
           <PopularTeamListBox>
             {popularTeam.map((team) => (
-              <PopularTeamBox {...team} />
+              <PopularTeamBox key={team.id} {...team} />
             ))}
           </PopularTeamListBox>
         </MainPopularTeamContainer>

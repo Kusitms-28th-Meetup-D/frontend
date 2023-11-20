@@ -5,15 +5,18 @@ import {
   TEAM_CURTURE_CATEGORY,
   WORK_METHOD_CATEGORY,
 } from '../../constants/Profile';
+import ProfileNotReviewed from './ProfileNotReviewed';
 
 const ProfilePersonality = ({
   teamCurturesData,
   workMethodsData,
   name,
+  isUserGetExternalReview,
 }: {
   teamCurturesData?: TeamCulture[];
   workMethodsData?: WorkMethod[];
   name?: string;
+  isUserGetExternalReview?: boolean;
 }) => {
   return (
     <ProfilePersonalityContainer>
@@ -21,16 +24,20 @@ const ProfilePersonality = ({
       <ProfilePersonalityDetail>
         스펙트럼 위의 별은 {name} 님이 받은 후기의 평균치를 의미해요.
       </ProfilePersonalityDetail>
-      <ProfilePersonalityContentBox>
-        <ProfilePersonalityContent
-          datas={teamCurturesData}
-          category={TEAM_CURTURE_CATEGORY}
-        ></ProfilePersonalityContent>
-        <ProfilePersonalityContent
-          datas={workMethodsData}
-          category={WORK_METHOD_CATEGORY}
-        ></ProfilePersonalityContent>
-      </ProfilePersonalityContentBox>
+      {isUserGetExternalReview ? (
+        <ProfilePersonalityContentBox>
+          <ProfilePersonalityContent
+            datas={teamCurturesData}
+            category={TEAM_CURTURE_CATEGORY}
+          ></ProfilePersonalityContent>
+          <ProfilePersonalityContent
+            datas={workMethodsData}
+            category={WORK_METHOD_CATEGORY}
+          ></ProfilePersonalityContent>
+        </ProfilePersonalityContentBox>
+      ) : (
+        <ProfileNotReviewed />
+      )}
     </ProfilePersonalityContainer>
   );
 };

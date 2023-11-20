@@ -16,13 +16,16 @@ import Request from './pages/request/Request';
 import Main from './pages/main/Main';
 import ScrollToTop from './components/common/ScrollToTop';
 import MyTeam from './pages/myteam/MyTeam';
-import MyTeamOpen from './components/myteam/MyTeamOpen';
 import ContestTeam from './pages/contestTeam/ContestTeam';
 import MyTeamManagement from './pages/myteam/MyTeamManagement';
 import MyTeamApply from './pages/myteam/MyTeamApply';
 import Modal from './components/common/Modal';
 import ExternalReview from './pages/review/ExternalReview';
 import MyTeamCreate from './pages/myteam/MyTeamCreate';
+import MyTeamActive from './pages/myteam/MyTeamActive';
+import MyTeamEnd from './pages/myteam/MyTeamEnd';
+import MyTeamOpen from './pages/myteam/MyTeamOpen';
+import ProfileModify from './pages/modify/ProfileModify';
 
 function Router() {
   return (
@@ -44,19 +47,20 @@ function Router() {
 
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/profile/:userId/create" element={<ProfileCreate />} />
+        <Route path="/profile/modify" element={<ProfileModify />} />
 
+        <Route path="/myteam/create/:contestId" element={<MyTeamCreate />} />
         <Route path="/myteam/:userId" element={<MyTeam />}>
           <Route path="open" element={<MyTeamOpen />} />
           <Route path="apply" element={<MyTeamApply />} />
-          <Route path="active" element={<div>활동중인 팀</div>} />
-          <Route path="end" element={<div>활동했던 팀</div>} />
+          <Route path="active" element={<MyTeamActive />} />
+          <Route path="end" element={<MyTeamEnd />} />
         </Route>
         <Route
           path="/myteam/:userId/:contestId/:teamId"
           element={<MyTeamManagement />}
-        ></Route>
+        />
 
-        <Route path="/myteam/create/:contestId" element={<MyTeamCreate />} />
         <Route path="/list/:contestId" element={<Contest />} />
         <Route path="/list/:contestId" element={<Contest />} />
         <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />

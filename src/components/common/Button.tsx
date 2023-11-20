@@ -5,8 +5,12 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const Button = ({ children, onClick }: ButtonProps) => {
-  return <ButtonBox onClick={onClick}>{children}</ButtonBox>;
+const Button = ({ children, onClick, ...rest }: ButtonProps) => {
+  return (
+    <ButtonBox onClick={onClick} {...rest}>
+      {children}
+    </ButtonBox>
+  );
 };
 
 export default Button;

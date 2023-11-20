@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ProfileInfo = ({
@@ -15,10 +16,14 @@ const ProfileInfo = ({
   major?: string;
   selfIntroduction?: string;
 }) => {
+  const navigate = useNavigate();
   return (
     <>
       <ProfileText>{name} 님의 프로필</ProfileText>
       <ProfileContainer>
+        <ModifyProfile onClick={() => navigate('/profile/modify')}>
+          계정 설정에서 변경하기
+        </ModifyProfile>
         <ProfileImage src={profile_image} />
         <ProfileTextBox>
           <ProfileName>{name} </ProfileName>
@@ -47,13 +52,15 @@ const ProfileText = styled.div`
   margin: 3rem 0;
 `;
 const ProfileContainer = styled.div`
+  position: relative;
   width: 100%;
   height: 29.6rem;
   background-color: ${(props) => props.theme.colors.primary10};
-  border-radius: 1 as {
+  border-radius: 1rem;
+  /* as {
     profiledata: ProfileData;
     isloading: boolean;
-  }
+  } */
 
   display: flex;
   align-items: center;
@@ -91,5 +98,16 @@ const ProfileValue = styled.div`
   color: ${(props) => props.theme.colors.gray100};
 
   display: inline-block;
+`;
+const ModifyProfile = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  ${(props) => props.theme.fonts.subtitleXL};
+  color: ${(props) => props.theme.colors.primary60};
+  text-decoration: underline;
+
+  cursor: pointer;
 `;
 export default ProfileInfo;
