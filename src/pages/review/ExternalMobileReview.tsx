@@ -1,13 +1,38 @@
-import { Outlet } from 'react-router-dom';
+import { createContext, useState } from 'react';
+import { Outlet, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { ReviewContextType } from '../../interface/Review';
+
+export const ReviewContext = createContext<ReviewContextType | null>(null);
 
 const ExternalMobileReview = () => {
+  const { userId } = useParams();
+  const [review, setReview] = useState({
+    userId: Number(userId),
+    selectedKeywords: [],
+    selectedTeamCultures: {
+      feedbackStyle: 0,
+      teamStyle: 0,
+      personalityStyle: 0,
+    },
+    selectedWorkMethods: {
+      workStyle: 0,
+      resultProcess: 0,
+      workLifeBalance: 0,
+    },
+    recommendationComment: '',
+  });
+
+  console.log(review);
+
   return (
     <ExternalMobileReviewLayout>
       <ExternalHeader>
         <img src={'/assets/images/review/mobile_logo.svg'} alt="logo" />
       </ExternalHeader>
-      <Outlet />
+      <ReviewContext.Provider value={{ review, setReview }}>
+        <Outlet />
+      </ReviewContext.Provider>
     </ExternalMobileReviewLayout>
   );
 };

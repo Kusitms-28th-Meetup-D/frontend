@@ -7,13 +7,13 @@ interface UseNonUserReviewCreate {
 }
 
 export function useNonUserReviewCreate(
-  reviews: RequestNonUserReview,
+  review: RequestNonUserReview,
 ): UseNonUserReviewCreate {
   const queryClient = useQueryClient();
 
   const { mutate } = useMutation(
     'nonUserReviewCreate',
-    () => postNonUserReview(reviews),
+    () => postNonUserReview(review),
     {
       onSuccess: () => {
         queryClient.invalidateQueries();
