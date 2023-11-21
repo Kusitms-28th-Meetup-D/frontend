@@ -127,9 +127,9 @@ export interface SelectedWorkMethods {
 
 export interface ReviewContextType {
   review: {
-    userId: string | undefined;
+    userId: number;
     selectedKeywords: any[];
-    selectedTeamCulture: {
+    selectedTeamCultures: {
       feedbackStyle: number;
       teamStyle: number;
       personalityStyle: number;

@@ -1,9 +1,8 @@
 import { createContext, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { ReviewContextType } from '../../interface/Review';
 
-export const ReviewContext = createContext<ReviewContextType | null>(null);
+export const ReviewContext = createContext<any>(null);
 
 const ExternalMobileReview = () => {
   const { userId } = useParams();
@@ -22,8 +21,6 @@ const ExternalMobileReview = () => {
     },
     recommendationComment: '',
   });
-
-  console.log(review);
 
   return (
     <ExternalMobileReviewLayout>

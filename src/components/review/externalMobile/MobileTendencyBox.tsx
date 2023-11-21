@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import Keyword from '../Keyword';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { ReviewContext } from '../../../pages/review/ExternalMobileReview';
 import { useRecoilState } from 'recoil';
 import { selectedTendencyAtom } from '../../../recoil/review';
