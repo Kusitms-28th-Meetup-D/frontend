@@ -1,29 +1,39 @@
 import { styled } from 'styled-components';
 import ReviewProfile from './ReviewProfile';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useReviewUsers } from '../../hooks/review/useReviewUsers';
+import { useParams } from 'react-router';
 import { useSetRecoilState } from 'recoil';
 import { selectedNameAtom } from '../../recoil/review';
-import { profiles } from '../../constants/review';
+import { userReviewResponse } from '../../interface/Review';
 
 const ReviewProfiles = () => {
-  const [activeProfileId, setActiveProfileId] = useState(1);
+  const { teamId } = useParams();
+  const { reviewUsers } = useReviewUsers(Number(teamId));
+  const [activeProfileId, setActiveProfileId] = useState(0);
   const setSelectedName = useSetRecoilState(selectedNameAtom);
 
-  const handleProfileClick = (profileId: number) => {
-    setActiveProfileId(profileId);
-    setSelectedName(profiles[profileId - 1].name);
+  useEffect(() => {
+    if (reviewUsers && reviewUsers.data.userReviewResponseDtoList.length > 0) {
+      const initialProfile = reviewUsers.data.userReviewResponseDtoList[0];
+      setActiveProfileId(initialProfile.teamMemberId);
+      setSelectedName(initialProfile.teamMemberName);
+    }
+  }, [reviewUsers]);
+
+  const handleProfileClick = (user: userReviewResponse) => {
+    setActiveProfileId(user.teamMemberId);
+    setSelectedName(user.teamMemberName);
   };
 
   return (
     <ProfileLayout>
-      {profiles.map((profile) => (
+      {reviewUsers?.data.userReviewResponseDtoList.map((user) => (
         <ReviewProfile
-          id={profile.id}
-          key={profile.id}
-          src={profile.src}
-          name={profile.name}
-          isSelected={profile.id === activeProfileId}
-          onClick={handleProfileClick}
+          key={user.teamMemberId}
+          user={user}
+          isSelected={user.teamMemberId === activeProfileId}
+          onClick={() => handleProfileClick(user)}
         />
       ))}
     </ProfileLayout>
