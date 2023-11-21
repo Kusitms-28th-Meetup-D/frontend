@@ -65,7 +65,6 @@ const MainPopularTeamContainer = styled.div`
 `;
 
 const PopularTeamListBox = styled.div`
-
   position: relative;
 
   display: flex;
