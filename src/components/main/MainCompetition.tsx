@@ -42,6 +42,7 @@ export default MainCompetition;
 const MainCompetitionLayout = styled.div`
   position: relative;
   height: 90rem;
+  overflow-x: hidden; //이거지롱
 `;
 
 const MainCompetitionBox = styled.div`
