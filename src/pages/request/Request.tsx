@@ -43,7 +43,10 @@ const Request = () => {
   };
   return (
     <RequestLayout>
-      <JoinCompleteModal $isModalVisible={isJoinModalVisible} />
+      <JoinCompleteModal
+        $isModalVisible={isJoinModalVisible}
+        userId={loginUserInfo.data?.userId as unknown as string}
+      />
 
       <OneButtonModal
         $isModalVisible={isPreviewModalVisible}
