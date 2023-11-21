@@ -56,9 +56,11 @@ const Container = styled.div<{ $isLocked?: boolean }>`
 
   padding: 3rem;
 
-  /* ${(props) => (props.$isLocked ? '100px' : null)}; */
-  height: 40rem;
-  overflow: hidden;
+  ${(props) =>
+    props.$isLocked
+      ? `height: 40rem;
+          overflow: hidden; `
+      : null}
 `;
 const ContentBox = styled.div`
   border-radius: 1.2rem;

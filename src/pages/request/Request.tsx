@@ -21,6 +21,7 @@ const CONTENT = [
 const Request = () => {
   const [isPreviewModalVisible, setIsPreviewModalVisible] = useState(false);
   const [isJoinModalVisible, setIsJoinModalVisible] = useState(false);
+  const [isKakaoSendSuccess, setIsKakaoSendSuccess] = useState(false);
   const handleClick = () => {
     setIsPreviewModalVisible(true);
   };
@@ -40,7 +41,9 @@ const Request = () => {
       //   isSendSuccess: 'no', // 사용자 정의 파라미터 설정
       // },
     });
+    setIsKakaoSendSuccess(true);
   };
+
   return (
     <RequestLayout>
       <JoinCompleteModal
@@ -78,9 +81,9 @@ const Request = () => {
         </KakaoTalkPreview>
         <KakaoTalkSendImg src={kakaotalkSrc} onClick={handleKakaoMessageSend} />
         <Button
-          $isActive={true}
+          $isActive={isKakaoSendSuccess}
           onClick={() => {
-            setIsJoinModalVisible(true);
+            if (isKakaoSendSuccess) setIsJoinModalVisible(true);
           }}
         >
           리뷰를 보냈어요 →
@@ -195,14 +198,22 @@ const Button = styled.button<{ $isActive: boolean }>`
   height: 6.4rem;
 
   border-radius: 3.2rem;
-  border: 1px solid ${(props) => props.theme.colors.primary20};
+  border-radius: 3.2rem;
+  border: 1px solid
+    ${(props) =>
+      props.$isActive
+        ? props.theme.colors.primary20
+        : props.theme.colors.gray50};
+
+  background-color: ${(props) =>
+    props.$isActive ? props.theme.colors.primary60 : props.theme.colors.gray10};
 
   ${(props) => props.theme.fonts.buttonL};
-  background-color: ${(props) => props.theme.colors.primary60};
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) =>
+    props.$isActive ? props.theme.colors.white : props.theme.colors.gray40};
+  cursor: ${(props) => (props.$isActive ? 'pointer' : 'default')};
 
   z-index: 40;
-  cursor: ${(props) => (props.$isActive ? 'pointer' : 'default')};
 `;
 
 export default Request;

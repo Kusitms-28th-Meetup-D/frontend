@@ -99,7 +99,7 @@ const SwiperStyle = styled(Swiper)`
     top: 70%;
     transform: translateY(-50%);
     width: 15.4rem;
-    height: 1rem;
+    height: 0.8rem;
 
     background-color: white;
     /* position: absolute; */

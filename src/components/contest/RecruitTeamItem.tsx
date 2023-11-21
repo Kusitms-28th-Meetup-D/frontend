@@ -25,8 +25,12 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
   const loginInfo = useRecoilValue(loginInfoState);
   const setLoginModal = useSetRecoilState(loginModalState);
   const handleTeamDetailClick = () => {
-    if (loginInfo.isLogin == true) navigate(`./${teamData.teamId}`);
-    else setLoginModal(true);
+    if (loginInfo.isLogin == false) setLoginModal(true);
+
+    //내가 오픈한 팀인 경우
+    if (teamData.leaderInfo.teamMemberId == loginInfo.data?.userId) {
+      navigate(`/myteam/${loginInfo.data?.userId}/${teamData.teamId}`);
+    } else navigate(`./${teamData.teamId}`);
   };
   return (
     <ItemLayout>

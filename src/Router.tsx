@@ -73,7 +73,7 @@ function Router() {
             <Route path="end" element={<MyTeamEnd />} />
           </Route>
           <Route
-            path="/myteam/:userId/:contestId/:teamId"
+            path="/myteam/:userId/:teamId"
             element={<MyTeamManagement />}
           />
 

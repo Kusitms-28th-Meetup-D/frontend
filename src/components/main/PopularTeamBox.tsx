@@ -4,11 +4,17 @@ interface PopularTeamBoxProps {
   title: string;
   name: string;
   content: string;
+  index: number;
 }
 
-const PopularTeamBox = ({ title, name, content }: PopularTeamBoxProps) => {
+const PopularTeamBox = ({
+  title,
+  name,
+  content,
+  index,
+}: PopularTeamBoxProps) => {
   return (
-    <PopularTeamBoxContainer>
+    <PopularTeamBoxContainer $index={index}>
       <h1>{title}</h1>
       <hr />
       <img src={'/assets/images/review/profile.svg'} />
@@ -20,7 +26,7 @@ const PopularTeamBox = ({ title, name, content }: PopularTeamBoxProps) => {
 
 export default PopularTeamBox;
 
-const PopularTeamBoxContainer = styled.div`
+const PopularTeamBoxContainer = styled.div<{ $index: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,6 +37,9 @@ const PopularTeamBoxContainer = styled.div`
   backdrop-filter: blur(11px);
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   background: rgba(255, 255, 255, 0.7);
+
+  margin: ${(props) =>
+    props.$index % 2 == 1 ? '0 0 10rem 0;' : '10rem 0 0 0;'};
 
   h1 {
     ${({ theme }) => theme.fonts.subtitleM};

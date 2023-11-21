@@ -15,7 +15,7 @@ import TeamMembers from '../../components/contestTeam/TeamMembers';
 import JoinTeamModal from '../../components/contestTeam/JoinTeamModal';
 
 const ContestTeam = () => {
-  const { teamId, contestId } = useParams();
+  const { teamId } = useParams();
   const { contestTeamDetailData, isLoading } = useContestTeamDetailInfo(
     teamId as string,
   );
@@ -42,12 +42,12 @@ const ContestTeam = () => {
   useEffect(() => setHeaderSelected(Headers.list));
 
   //내가 오픈한 경우, 내 팀 페이지로 이동
-  if (
-    contestTeamDetailData?.data.data.status ==
-    TEAM_DETAIL_STATUS._1_내가오픈한경우
-  ) {
-    navigate(`/myTeam/${userLogininfo.data?.userId}/${contestId}/${teamId}`);
-  }
+  // if (
+  //   contestTeamDetailData?.data.data.status ==
+  //   TEAM_DETAIL_STATUS._1_내가오픈한경우
+  // ) {
+  //   navigate(`/myteam/${userLogininfo.data?.userId}/${teamId}`);
+  // }
 
   return isLoading ? (
     <div>로딩중</div>
@@ -141,7 +141,11 @@ const ContestTeam = () => {
             >
               지원 현황보기 →
             </CustomButton>
-            <CustomMessage>이미 지원을 완료한 팀입니다.</CustomMessage>
+            <CustomMessage>
+              {
+                '이미 지원을 완료한 팀입니다.\n지원 현황을 보시려면 위 버튼을 눌러주세요.'
+              }
+            </CustomMessage>
           </>
         )}
       </FlexBox>
@@ -303,5 +307,8 @@ const CustomButton = styled.button<{ $isActive?: boolean }>`
 const CustomMessage = styled.div`
   ${(props) => props.theme.fonts.buttonL};
   color: ${(props) => props.theme.colors.gray70};
+
+  white-space: break-spaces;
+  text-align: center;
 `;
 export default ContestTeam;

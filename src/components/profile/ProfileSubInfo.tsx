@@ -7,16 +7,19 @@ const ProfileSubInfo = ({
   awards,
   tools,
   certificates,
+  isMyProfile,
 }: {
   internships?: string[];
   awards?: string[];
   tools?: string[];
   certificates?: string[];
+  isMyProfile?: boolean;
 }) => {
   const TITLES = ['대외활동', '인턴', '사용 가능 툴', '보유 자격증'];
   const NAMES = ['internships', 'awards', 'tools', 'certificates'];
 
   const [isModifying, setIsModyfying] = useState(false);
+  const [isModifying2, setIsModyfying2] = useState(false);
   const [texts, setTexts] = useState({
     internships: internships?.join('\n'),
     awards: awards?.join('\n'),
@@ -43,15 +46,23 @@ const ProfileSubInfo = ({
       profileCreateMutation.mutate();
     }
   };
+  const handleClickModify2 = () => {
+    setIsModyfying2((curr) => !curr);
+    if (isModifying2) {
+      profileCreateMutation.mutate();
+    }
+  };
   return (
     <ProfileSubInfoContainer>
       <ProfileSubInfoBox>
         <ProfileSubInfoTitle>이력</ProfileSubInfoTitle>
         <ProfileSubInfoContents>
-          <ModifyProfile onClick={handleClickModify}>
-            {isModifying && '저장'}
-            {!isModifying && '수정'}
-          </ModifyProfile>
+          {isMyProfile ? (
+            <ModifyProfile onClick={handleClickModify}>
+              {isModifying && '저장'}
+              {!isModifying && '수정'}
+            </ModifyProfile>
+          ) : null}
           <ContentsSubTitle>{TITLES[0]}</ContentsSubTitle>
           <ContentsDetailBox>
             {isModifying ? (
@@ -93,14 +104,16 @@ const ProfileSubInfo = ({
       <ProfileSubInfoBox>
         <ProfileSubInfoTitle>스킬</ProfileSubInfoTitle>
         <ProfileSubInfoContents>
-          {' '}
-          <ModifyProfile onClick={handleClickModify}>
-            {isModifying && '저장'}
-            {!isModifying && '수정'}
-          </ModifyProfile>
+          {isMyProfile ? (
+            <ModifyProfile onClick={handleClickModify2}>
+              {isModifying2 && '저장'}
+              {!isModifying2 && '수정'}
+            </ModifyProfile>
+          ) : null}
+
           <ContentsSubTitle>{TITLES[2]}</ContentsSubTitle>
           <ContentsDetailBox>
-            {isModifying ? (
+            {isModifying2 ? (
               <>
                 <LengthCount> {texts?.tools?.length}/150</LengthCount>
                 <ModifyingArea
@@ -118,7 +131,7 @@ const ProfileSubInfo = ({
           </ContentsDetailBox>
           <ContentsSubTitle>{TITLES[3]}</ContentsSubTitle>
           <ContentsDetailBox>
-            {isModifying ? (
+            {isModifying2 ? (
               <>
                 <LengthCount> {texts?.certificates?.length}/150</LengthCount>
                 <ModifyingArea
