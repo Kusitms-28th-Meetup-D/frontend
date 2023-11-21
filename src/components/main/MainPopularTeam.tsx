@@ -65,7 +65,7 @@ const MainPopularTeamContainer = styled.div`
 `;
 
 const PopularTeamListBox = styled.div`
-  //들쑥날쑥
+
   position: relative;
 
   display: flex;
