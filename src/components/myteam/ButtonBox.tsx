@@ -8,9 +8,15 @@ import OneSquareButtonModal from '../common/OneSquareButtonModal';
 
 interface ButtonBoxProps {
   teamOpen: RequestTeamOpen;
+  isButtonActivate: boolean;
+  setIsButtonActivate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ButtonBox = ({ teamOpen }: ButtonBoxProps) => {
+const ButtonBox = ({
+  teamOpen,
+  isButtonActivate,
+}: // setIsButtonActivate,
+ButtonBoxProps) => {
   const [openCancelModal, setOpenCancelModal] = useState(false);
   const [openCompleteModal, setOpenCompleteModal] = useState(false);
   const [openCompleteFinalModal, setOpenCompleteFinalModal] = useState(false);
@@ -25,14 +31,19 @@ const ButtonBox = ({ teamOpen }: ButtonBoxProps) => {
     setOpenCompleteFinalModal(true);
     teamOpenMutation.mutate();
   };
-
+  const handleCompleteButton = () => {
+    if (isButtonActivate) setOpenCompleteModal(true);
+  };
   return (
     <>
       <ButtonBoxContainer>
         <CancelButton onClick={() => setOpenCancelModal(true)}>
           취소
         </CancelButton>
-        <CompleteButton onClick={() => setOpenCompleteModal(true)}>
+        <CompleteButton
+          $isButtonActivate={isButtonActivate}
+          onClick={handleCompleteButton}
+        >
           완료
         </CompleteButton>
         {openCancelModal && (
@@ -129,10 +140,29 @@ const CancelButton = styled(Button)`
   background: ${({ theme }) => theme.colors.white};
 `;
 
-const CompleteButton = styled(Button)`
+const CompleteButton = styled(Button)<{ $isButtonActivate: boolean }>`
   color: ${({ theme }) => theme.colors.gray60};
   border: 1px solid ${({ theme }) => theme.colors.gray10};
   background: ${({ theme }) => theme.colors.gray10};
+
+  border: 1px solid
+    ${(props) =>
+      props.$isButtonActivate
+        ? props.theme.colors.primary20
+        : props.theme.colors.gray50};
+
+  background-color: ${(props) =>
+    props.$isButtonActivate
+      ? props.theme.colors.primary60
+      : props.theme.colors.gray10};
+
+  ${(props) => props.theme.fonts.buttonL};
+  color: ${(props) =>
+    props.$isButtonActivate
+      ? props.theme.colors.white
+      : props.theme.colors.gray40};
+
+  cursor: ${(props) => (props.$isButtonActivate ? 'pointer' : 'default')};
 `;
 
 const ModalCloseImg = styled.img`

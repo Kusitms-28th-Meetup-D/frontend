@@ -9,6 +9,7 @@ import { Headers } from '../../constants/Header';
 import { RequestTeamOpen } from '../../interface/MyTeam';
 
 const MyTeamCreate = () => {
+  const [isButtonActivate, setIsButtonActivate] = useState(false);
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.myTeam));
 
@@ -29,8 +30,15 @@ const MyTeamCreate = () => {
   return (
     <MyTeamCreateContainer>
       <ContestInfo />
-      <MyTeamCreateOpen onTeamOpenChange={handleTeamOpenChange} />
-      <ButtonBox teamOpen={teamOpen} />
+      <MyTeamCreateOpen
+        onTeamOpenChange={handleTeamOpenChange}
+        setIsButtonActivate={setIsButtonActivate}
+      />
+      <ButtonBox
+        teamOpen={teamOpen}
+        isButtonActivate={isButtonActivate}
+        setIsButtonActivate={setIsButtonActivate}
+      />
     </MyTeamCreateContainer>
   );
 };

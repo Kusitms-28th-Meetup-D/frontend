@@ -141,7 +141,11 @@ const ContestTeam = () => {
             >
               지원 현황보기 →
             </CustomButton>
-            <CustomMessage>이미 지원을 완료한 팀입니다.</CustomMessage>
+            <CustomMessage>
+              {
+                '이미 지원을 완료한 팀입니다.\n지원 현황을 보시려면 위 버튼을 눌러주세요.'
+              }
+            </CustomMessage>
           </>
         )}
       </FlexBox>
@@ -303,5 +307,8 @@ const CustomButton = styled.button<{ $isActive?: boolean }>`
 const CustomMessage = styled.div`
   ${(props) => props.theme.fonts.buttonL};
   color: ${(props) => props.theme.colors.gray70};
+
+  white-space: break-spaces;
+  text-align: center;
 `;
 export default ContestTeam;
