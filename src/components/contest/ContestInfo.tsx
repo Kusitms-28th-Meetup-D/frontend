@@ -19,35 +19,39 @@ const ContestInfo = () => {
 
       <ContestContainer>
         <ContestImg src={contestInfoData?.data.data.images[0]} />
-        <ContestTextBox>
-          <Dday>D-{contestInfoData?.data.data.remainDay}</Dday>
-          <Description>
-            <span>모집 기간 : </span>
-            {contestInfoData?.data.data.recruitDate}
-          </Description>
-          <Description>
-            <span>분야 : </span>
-            {contestInfoData?.data.data.types.map((type, index) => (
-              <span key={index}>{type}, </span>
-            ))}
-          </Description>
-          <Description>
-            <span>주제 : </span>
-            {contestInfoData?.data.data.subject}
-          </Description>
-          <Description>
-            <span>지원 자격 : </span>
-            {contestInfoData?.data.data.qualification}
-          </Description>
-          <Description>
-            <span>전체 일정 : </span>
-            {contestInfoData?.data.data.fullSchedule}
-          </Description>
-          <Description>
-            <span>시상 내역 : </span>
-            {contestInfoData?.data.data.price}
-          </Description>
-        </ContestTextBox>
+        <ContestTextContainer>
+          <ContestTextBox>
+            <Dday>D-{contestInfoData?.data.data.remainDay}</Dday>
+            <Description>
+              <span>모집 기간 : </span>
+              {contestInfoData?.data.data.recruitDate}
+            </Description>
+            <Description>
+              <span>분야 : </span>
+              {contestInfoData?.data.data.types.map((type, index) => (
+                <span key={index}>{type}, </span>
+              ))}
+            </Description>
+          </ContestTextBox>
+          <ContestTextBox>
+            <Description>
+              <span>주제 : </span>
+              {contestInfoData?.data.data.subject}
+            </Description>
+            <Description>
+              <span>지원 자격 : </span>
+              {contestInfoData?.data.data.qualification}
+            </Description>
+            <Description>
+              <span>전체 일정 : </span>
+              {contestInfoData?.data.data.fullSchedule}
+            </Description>
+            <Description>
+              <span>시상 내역 : </span>
+              {contestInfoData?.data.data.price}
+            </Description>
+          </ContestTextBox>
+        </ContestTextContainer>
       </ContestContainer>
     </ContestInfoLayout>
   );
@@ -84,6 +88,12 @@ const ContestContainer = styled.div`
   gap: 2rem;
   margin: 2rem 0;
 `;
+const ContestTextContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
 const ContestImg = styled.img`
   width: 36.8rem;
   height: 45.4rem;
@@ -97,11 +107,12 @@ const ContestTextBox = styled.div`
   border: 1px solid ${(props) => props.theme.colors.primary20};
   border-radius: 1.2rem;
 
-  height: 45.4rem;
-  width: 100%;
+  /* height: 45.4rem; */
+  /* width: 100%; */
   /* display: flex; */
+  /* flex-direction: column; */
 
-  padding: 1.9rem 3.6rem;
+  padding: 1.5rem 3.6rem;
 
   white-space: break-spaces;
 
@@ -132,6 +143,6 @@ const Description = styled.div`
     ${(props) => props.theme.fonts.subtitleM};
   }
 
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 `;
 export default ContestInfo;
