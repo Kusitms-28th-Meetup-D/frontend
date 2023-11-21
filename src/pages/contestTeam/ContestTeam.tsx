@@ -15,7 +15,7 @@ import TeamMembers from '../../components/contestTeam/TeamMembers';
 import JoinTeamModal from '../../components/contestTeam/JoinTeamModal';
 
 const ContestTeam = () => {
-  const { teamId} = useParams();
+  const { teamId } = useParams();
   const { contestTeamDetailData, isLoading } = useContestTeamDetailInfo(
     teamId as string,
   );
@@ -42,12 +42,12 @@ const ContestTeam = () => {
   useEffect(() => setHeaderSelected(Headers.list));
 
   //내가 오픈한 경우, 내 팀 페이지로 이동
-  if (
-    contestTeamDetailData?.data.data.status ==
-    TEAM_DETAIL_STATUS._1_내가오픈한경우
-  ) {
-    navigate(`/myteam/${userLogininfo.data?.userId}/${teamId}`);
-  }
+  // if (
+  //   contestTeamDetailData?.data.data.status ==
+  //   TEAM_DETAIL_STATUS._1_내가오픈한경우
+  // ) {
+  //   navigate(`/myteam/${userLogininfo.data?.userId}/${teamId}`);
+  // }
 
   return isLoading ? (
     <div>로딩중</div>
