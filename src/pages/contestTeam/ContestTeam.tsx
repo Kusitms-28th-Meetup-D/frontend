@@ -15,7 +15,7 @@ import TeamMembers from '../../components/contestTeam/TeamMembers';
 import JoinTeamModal from '../../components/contestTeam/JoinTeamModal';
 
 const ContestTeam = () => {
-  const { teamId, contestId } = useParams();
+  const { teamId} = useParams();
   const { contestTeamDetailData, isLoading } = useContestTeamDetailInfo(
     teamId as string,
   );
@@ -46,7 +46,7 @@ const ContestTeam = () => {
     contestTeamDetailData?.data.data.status ==
     TEAM_DETAIL_STATUS._1_내가오픈한경우
   ) {
-    navigate(`/myTeam/${userLogininfo.data?.userId}/${contestId}/${teamId}`);
+    navigate(`/myteam/${userLogininfo.data?.userId}/${teamId}`);
   }
 
   return isLoading ? (
