@@ -10,6 +10,8 @@ interface MyTeamEndBoxProps {
 }
 
 const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
+  console.log(endTeam.teamMemeberInfos);
+
   return (
     <MyTeamEndBoxContainer>
       {endTeam && (
@@ -38,16 +40,17 @@ const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
               <p>대회명</p>
               <h1>{endTeam.contestTitle}</h1>
             </MyTeamEndRightTop>
+
             <RightFlexBox>
               <StarTtile>
                 함께했던 팀원들 <span>총 {endTeam.memberSize}명</span>
               </StarTtile>
               <p>활동 종료일 : {endTeam.endDate}</p>
             </RightFlexBox>
-            {endTeam.leaderInfo && endTeam.teamMemberInfos && (
+            {endTeam.leaderInfo && endTeam.teamMemeberInfos && (
               <TeamMemberScrollBox
                 teamLeaderInfo={endTeam.leaderInfo}
-                teamMembersInfo={endTeam.teamMemberInfos}
+                teamMembersInfo={endTeam.teamMemeberInfos}
               />
             )}
           </MyTeamEndRight>

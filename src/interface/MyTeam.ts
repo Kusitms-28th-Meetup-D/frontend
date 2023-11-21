@@ -79,7 +79,7 @@ export interface EndTeamData {
   endDate: string;
   memberSize: number;
   leaderInfo: ProfileProps;
-  teamMemberInfos: ProfileProps[];
+  teamMemeberInfos: ProfileProps[];
   possibleWriteReviews: boolean;
 }
 
