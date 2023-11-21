@@ -1,7 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import useProfile from '../../../hooks/profile/useProfile';
 import { styled } from 'styled-components';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ReviewContext } from '../../../pages/review/ExternalMobileReview';
+import { useNonUserReviewCreate } from '../../../hooks/review/useNonUserReviewCreate';
 
 const ExternalMobileOneLine = () => {
   const { userId } = useParams();
@@ -9,6 +11,19 @@ const ExternalMobileOneLine = () => {
   const username = profileData?.data.data.username;
   const navigate = useNavigate();
   const [text, setText] = useState('');
+
+  const { review, setReview } = useContext(ReviewContext);
+
+  useEffect(() => {
+    setReview({ ...review, recommendationComment: text });
+  }, [text]);
+
+  const useNonUserReviewCreateMutation = useNonUserReviewCreate(review);
+
+  const handleCompleteClick = () => {
+    useNonUserReviewCreateMutation.mutate();
+    navigate(`/review/external/mobile/${userId}/complete`);
+  };
 
   return (
     <>
@@ -26,9 +41,8 @@ const ExternalMobileOneLine = () => {
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
               setText(e.target.value);
             }}
-          >
-            {text}
-          </Textarea>
+            value={text}
+          ></Textarea>
           <p>{text.length}/140자</p>
         </TextareaBox>
 
@@ -41,9 +55,7 @@ const ExternalMobileOneLine = () => {
           <img
             src={'/assets/images/common/right_button.svg'}
             alt={'right_button'}
-            onClick={() =>
-              navigate(`/review/external/mobile/${userId}/complete`)
-            }
+            onClick={handleCompleteClick}
           />
         </ButtonBox>
       </ExternalMobileOneLineContainer>

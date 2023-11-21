@@ -2,8 +2,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useProfile from '../../../hooks/profile/useProfile';
 import { styled } from 'styled-components';
 import Keyword from '../Keyword';
-import { useState } from 'react';
-import { keywordList } from '../../../constants/review';
+import { useContext, useEffect, useState } from 'react';
+import { keywordListWithIds } from '../../../constants/review';
+import { ReviewContext } from '../../../pages/review/ExternalMobileReview';
 
 const ExternalMobileKeyword = () => {
   const { userId } = useParams();
@@ -11,17 +12,27 @@ const ExternalMobileKeyword = () => {
   const username = profileData?.data.data.username;
   const navigate = useNavigate();
 
-  const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
+  const { review, setReview } = useContext(ReviewContext);
+  const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
 
-  const handleToggleKeyword = (keyword: string) => {
-    if (selectedKeywords.includes(keyword)) {
-      setSelectedKeywords(selectedKeywords.filter((k) => k !== keyword));
+  const handleToggleKeyword = (keywordId: number) => {
+    if (selectedKeywords.includes(keywordId)) {
+      setSelectedKeywords(selectedKeywords.filter((k) => k !== keywordId));
     } else {
       if (selectedKeywords.length < 2) {
-        setSelectedKeywords([...selectedKeywords, keyword]);
+        setSelectedKeywords([...selectedKeywords, keywordId]);
       }
     }
   };
+
+  useEffect(() => {
+    setReview({
+      ...review,
+      selectedKeywords: selectedKeywords.map((keywordId) => ({
+        selectKeyword: keywordId,
+      })),
+    });
+  }, [selectedKeywords]);
 
   return (
     <>
@@ -35,14 +46,16 @@ const ExternalMobileKeyword = () => {
         <p>{username} 님의 최고 장점 키워드를 2개 골라주세요!</p>
 
         <KeywordBox>
-          {keywordList.map((keyword: string) => (
-            <Keyword
-              key={keyword}
-              keyword={keyword}
-              selected={selectedKeywords.includes(keyword)}
-              onClick={() => handleToggleKeyword(keyword)}
-            />
-          ))}
+          {keywordListWithIds.map(
+            (keyword: { id: number; keyword: string }) => (
+              <Keyword
+                key={keyword.id}
+                keyword={keyword.keyword}
+                selected={selectedKeywords.includes(keyword.id)}
+                onClick={() => handleToggleKeyword(keyword.id)}
+              />
+            ),
+          )}
         </KeywordBox>
 
         <ButtonBox>
