@@ -6,8 +6,8 @@ import { TeamData } from '../../../interface/MyTeam';
 import { useNavigate } from 'react-router-dom';
 interface MyTeamOpenBoxProps {
   myTeamOpen: TeamData;
-  teamId?: string;
-  userId?: string;
+  teamId?: string | number;
+  userId?: string | number;
 }
 
 const MyTeamOpenBox = ({ myTeamOpen, teamId, userId }: MyTeamOpenBoxProps) => {
