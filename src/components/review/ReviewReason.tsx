@@ -32,7 +32,7 @@ const ReasonTextBox = styled.textarea`
   max-height: 300px;
   ${({ theme }) => theme.fonts.bodyXXL};
   background: ${({ theme }) => theme.colors.gray5};
-  color: ${({ theme }) => theme.colors.gray70};
+  color: ${(props) => props.theme.colors.gray90};
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   resize: none;
   padding: 2.5rem 4rem;

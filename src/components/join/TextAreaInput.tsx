@@ -73,7 +73,7 @@ const Input = styled.textarea`
   width: 100%;
   min-height: 10rem;
 
-  color: ${(props) => props.theme.colors.gray80};
+  color: ${(props) => props.theme.colors.gray90};
   ${(props) => props.theme.fonts.bodyL};
 
   border: none;

@@ -105,7 +105,7 @@ const Textarea = styled.textarea`
   height: 12rem;
   border-radius: 0.8rem;
   border: 1px solid ${({ theme }) => theme.colors.gray20};
-  color: ${({ theme }) => theme.colors.gray70};
+  color: ${({ theme }) => theme.colors.gray90};
   background: transparent;
   resize: none;
 `;
