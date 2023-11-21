@@ -75,15 +75,15 @@ const TendencyBottomBox = styled.div`
   flex-direction: column;
   margin-bottom: 1.6rem;
   width: 100%;
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 0 0 12px 12px;
 `;
 
 const TendencyTitleBox = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.8rem;
+  margin-bottom: 0.7rem;
   width: 100%;
 `;
 
@@ -106,7 +106,7 @@ const QuestionBox = styled.div`
 const KeywordBox = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.7rem;
   margin-left: 2.2rem;
 
   div {

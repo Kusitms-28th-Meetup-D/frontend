@@ -30,13 +30,9 @@ const ExternalMobileKeyword = () => {
       </Progress>
 
       <ExternalMobileKeywordContainer>
-        <h2>
-          <span>1번</span> / 4번
-        </h2>
-        <h1>{username} 님에 대한 키워드 리뷰</h1>
-        <p>
-          함께 활동했을 당시, {username} 님의 최고 장점을 2개 골라 추천해주세요!
-        </p>
+        <h1>{username} 님의 장점 2개를 고른다면?</h1>
+        <p>함께 활동했던 경험을 토대로, </p>
+        <p>{username} 님의 최고 장점 키워드를 2개 골라주세요!</p>
 
         <KeywordBox>
           {keywordList.map((keyword: string) => (
@@ -81,19 +77,12 @@ const ExternalMobileKeywordContainer = styled.div`
   background: ${({ theme }) => theme.colors.gray5};
   width: 100%;
   height: 100vh;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  h2 {
-    ${({ theme }) => theme.fonts.bodyXS};
-    margin-bottom: 1.5rem;
-    span {
-      ${({ theme }) => theme.fonts.subtitleM};
-    }
-  }
   h1 {
     ${({ theme }) => theme.fonts.subtitleM};
     color: ${({ theme }) => theme.colors.gray90};
@@ -102,7 +91,6 @@ const ExternalMobileKeywordContainer = styled.div`
   p {
     ${({ theme }) => theme.fonts.bodyXXS};
     color: ${({ theme }) => theme.colors.gray70};
-    margin-bottom: 5rem;
   }
 `;
 
@@ -111,6 +99,7 @@ const KeywordBox = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.6rem;
+  margin-top: 5rem;
 `;
 
 const ButtonBox = styled.div`
