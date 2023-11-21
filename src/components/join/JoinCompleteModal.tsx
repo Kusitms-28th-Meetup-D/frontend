@@ -4,9 +4,11 @@ import ModalInner from './ModalInner';
 
 interface JoinCompleteModalProps {
   $isModalVisible: boolean;
+  userId?: string;
 }
 const JoinCompleteModal: React.FC<JoinCompleteModalProps> = ({
   $isModalVisible,
+  userId,
 }) => {
   const navigate = useNavigate();
   const handleLeftButtonClick = () => {
@@ -15,13 +17,13 @@ const JoinCompleteModal: React.FC<JoinCompleteModalProps> = ({
   };
   const handleRightButtonClick = () => {
     console.log('right clicked');
-    navigate('./create'); //수정 필요
+    navigate(`/profile/${userId}/create`);
   };
   const handleCloseButtonClick = () => {
     console.log('close clicked');
     navigate('/');
   };
-  
+
   return (
     <TwoButtonModal
       leftButton={{
