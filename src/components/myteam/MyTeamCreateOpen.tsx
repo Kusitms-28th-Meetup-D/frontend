@@ -256,7 +256,7 @@ const FormTextarea = styled.textarea`
   padding: 1.5rem 2rem;
   resize: none;
   ${({ theme }) => theme.fonts.bodyXL};
-  color: ${({ theme }) => theme.colors.gray50};
+  color: ${(props) => props.theme.colors.gray90};
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray50};

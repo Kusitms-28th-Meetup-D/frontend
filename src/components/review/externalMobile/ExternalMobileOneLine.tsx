@@ -17,15 +17,12 @@ const ExternalMobileOneLine = () => {
       </Progress>
 
       <ExternalMobileOneLineContainer>
-        <h2>
-          <span>4번</span> / 4번
-        </h2>
-        <h1>{username} 님은 한 줄로 추천한다면?</h1>
-        <p>{username} 님을 한 줄로 설명해주세요.</p>
+        <h1>{username} 님을 한 줄로 추천한다면? </h1>
+        <p>Wanteam의 회원님들에게 {username} 님을 소개하고 추천해주세요!</p>
 
         <TextareaBox>
           <Textarea
-            placeholder={'140자 이하로 리뷰를 작성해주세요.'}
+            placeholder={'140자 이내로 작성해 주세요.'}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
               setText(e.target.value);
             }}
@@ -72,19 +69,12 @@ const ExternalMobileOneLineContainer = styled.div`
   background: ${({ theme }) => theme.colors.gray5};
   width: 100%;
   height: 100vh;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  h2 {
-    ${({ theme }) => theme.fonts.bodyXS};
-    margin-bottom: 1.5rem;
-    span {
-      ${({ theme }) => theme.fonts.subtitleM};
-    }
-  }
   h1 {
     ${({ theme }) => theme.fonts.subtitleM};
     color: ${({ theme }) => theme.colors.gray90};
@@ -115,7 +105,7 @@ const Textarea = styled.textarea`
   height: 12rem;
   border-radius: 0.8rem;
   border: 1px solid ${({ theme }) => theme.colors.gray20};
-  color: ${({ theme }) => theme.colors.gray70};
+  color: ${({ theme }) => theme.colors.gray90};
   background: transparent;
   resize: none;
 `;

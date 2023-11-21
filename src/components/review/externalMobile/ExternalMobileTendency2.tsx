@@ -17,11 +17,9 @@ const ExternalMobileTendency2 = () => {
       </Progress>
 
       <ExternalMobileTendency2Container>
-        <h2>
-          <span>3번</span> / 4번
-        </h2>
         <h1>{username} 님은 어떤 성향이었나요?</h1>
-        <p>함께 활동했을 당시, {username} 님의 업무 방식 성향을 골라 주세요.</p>
+        <p>{username} 님이 팀 활동에서 보여주었던 모습을 떠올리며,</p>
+        <p>업무 성향 키워드를 문항별로 1개씩 골라주세요!</p>
 
         <TendencyBoxLayout>
           <MobileTendencyBox question={externalQuestion2} />
@@ -64,19 +62,12 @@ const ExternalMobileTendency2Container = styled.div`
   background: ${({ theme }) => theme.colors.gray5};
   width: 100%;
   height: 100vh;
-  padding: 3rem 2rem;
+  padding: 4rem 5rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  h2 {
-    ${({ theme }) => theme.fonts.bodyXS};
-    margin-bottom: 1.5rem;
-    span {
-      ${({ theme }) => theme.fonts.subtitleM};
-    }
-  }
   h1 {
     ${({ theme }) => theme.fonts.subtitleM};
     color: ${({ theme }) => theme.colors.gray90};
@@ -104,6 +95,7 @@ const ButtonBox = styled.div`
 
 const TendencyBoxLayout = styled.div`
   display: flex;
+  justify-content: center;
   gap: 2rem;
   margin-bottom: 4rem;
 `;

@@ -1,28 +1,23 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 import useProfile from '../../../hooks/profile/useProfile';
-import Button from '../../common/Button';
 
 const ExternalMobileComplete = () => {
   const { userId } = useParams();
   const { profileData } = useProfile(userId);
   const username = profileData?.data.data.username;
-  const navigate = useNavigate();
 
   return (
     <ExternalMobileCompleteContainer>
-      <h2>{username}님의 리뷰가 작성되었어요!</h2>
+      <h2>리뷰 작성을 완료했어요!</h2>
 
-      <p>{username}님의 프로필에 리뷰가 등록되었어요.</p>
-      <p>Wanteam에 접속해 나의 프로필도 만들어 볼까요?</p>
+      <p>소중한 리뷰를 작성해주셔서 감사합니다.</p>
+      <p>{username} 님이 멋진 팀을 구하는 데 큰 도움이 될 거예요!</p>
 
       <img
         src={'/assets/images/review/external_mobile_complete.svg'}
         alt={'external_mobile_complete'}
       />
-      <ButtonStyle onClick={() => navigate(`/`)}>
-        나의 프로필 만들러 가기
-      </ButtonStyle>
     </ExternalMobileCompleteContainer>
   );
 };
@@ -57,10 +52,4 @@ const ExternalMobileCompleteContainer = styled.div`
     height: 19.1rem;
     margin: 5rem 0;
   }
-`;
-
-const ButtonStyle = styled(Button)`
-  padding: 1.5rem 3rem;
-
-  ${({ theme }) => theme.fonts.subtitleL};
 `;

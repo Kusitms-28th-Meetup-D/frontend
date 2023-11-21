@@ -43,7 +43,7 @@ const ExternalReviewContainer = styled.div`
     background: ${({ theme }) => theme.colors.gray5};
     border: 1px solid ${({ theme }) => theme.colors.gray20};
     ${({ theme }) => theme.fonts.bodyXL};
-    color: ${({ theme }) => theme.colors.gray70};
+    color: ${(props) => props.theme.colors.gray90};
     border-radius: 1rem;
     resize: none;
     width: 100%;
