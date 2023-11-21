@@ -45,7 +45,7 @@ const Request = () => {
     <RequestLayout>
       <JoinCompleteModal
         $isModalVisible={isJoinModalVisible}
-        userId={loginUserInfo.data?.userId}
+        userId={loginUserInfo.data?.userId as unknown as string}
       />
 
       <OneButtonModal
