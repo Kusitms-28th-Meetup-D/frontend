@@ -17,8 +17,7 @@
     "react-router-dom": "^6.16.0",
     "recoil": "^0.7.7",
     "recoil-persist": "^5.1.0",
-    "styled-components": "^6.0.8",
-    "swiper": "10.2.0"
+    "styled-components": "^6.0.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -30,6 +29,7 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "swiper": "10.2.0",
     "typescript": "^5.0.2",
     "vite": "^4.5.0"
   }
