@@ -26,7 +26,7 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
   return (
     <KeywordLayout>
       <KeywordTitle>
-        {userName ? userName : selectedName} 님에 대한 키워드 추천사
+        {userName ? userName : selectedName} 님에 대한 키워드 리뷰
       </KeywordTitle>
       <KeywordSubTitle>
         {userName ? userName : selectedName} 님의 최고 장점을 2개 골라

@@ -12,10 +12,10 @@ const ProfileNotReviewed = () => {
     <Layout>
       <QuestionmarkImg src={questionmarkSrc} />
       <Subtitle>
-        {'아직 받은 추천사가 없어요!\n추천사를 요청해 프로필을 채워보세요.'}
+        {'아직 받은 리뷰가 없어요!\n리뷰를 요청해 프로필을 채워보세요.'}
       </Subtitle>
       <Button onClick={() => setKakaoReviewModalVisible(true)}>
-        지인에게 추천사 요청하기 →
+        지인에게 리뷰 요청하기 →
       </Button>
     </Layout>
   );

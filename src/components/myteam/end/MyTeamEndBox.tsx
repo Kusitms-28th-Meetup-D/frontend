@@ -10,22 +10,24 @@ interface MyTeamEndBoxProps {
 }
 
 const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
+  console.log(endTeam.teamMemeberInfos);
+
   return (
     <MyTeamEndBoxContainer>
       {endTeam && (
         <>
           <MyTeamEndLeft>
             <EndTitle>다음 팀 활동을 위해</EndTitle>
-            <h1>팀원들에게 추천사를 남겨주세요!</h1>
-            <p>팀원들에게 추천사를 남겨야</p>
-            <p>내가 받은 추천사를 볼 수 있어요!</p>
+            <h1>팀원들에게 리뷰를 남겨주세요!</h1>
+            <p>팀원들에게 리뷰를 남겨야</p>
+            <p>내가 받은 리뷰를 볼 수 있어요!</p>
             <MyTeamDiv>
               <img
                 src={'/assets/images/myteam/myteam_end.svg'}
                 alt={'myteam_end'}
               />
               <ButtonStyle>
-                추천사 작성하러 가기
+                리뷰 작성하러 가기
                 <img
                   src={'/assets/images/common/right_arrow.svg'}
                   alt={'right_arrow'}
@@ -38,16 +40,17 @@ const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
               <p>대회명</p>
               <h1>{endTeam.contestTitle}</h1>
             </MyTeamEndRightTop>
+
             <RightFlexBox>
               <StarTtile>
                 함께했던 팀원들 <span>총 {endTeam.memberSize}명</span>
               </StarTtile>
               <p>활동 종료일 : {endTeam.endDate}</p>
             </RightFlexBox>
-            {endTeam.leaderInfo && endTeam.teamMemberInfos && (
+            {endTeam.leaderInfo && endTeam.teamMemeberInfos && (
               <TeamMemberScrollBox
                 teamLeaderInfo={endTeam.leaderInfo}
-                teamMembersInfo={endTeam.teamMemberInfos}
+                teamMembersInfo={endTeam.teamMemeberInfos}
               />
             )}
           </MyTeamEndRight>

@@ -32,15 +32,13 @@ const NeedKakaoReviewModal = () => {
       <ModalContainer>
         <CloseImg src={closeSrc} onClick={() => setIsModalVisible(false)} />
         <SendImg src={reviewSrc} />
-        <Title>지금 추천사 요청을 보내보세요!</Title>
+        <Title>지금 리뷰 요청을 보내보세요!</Title>
         <Subtitle>
-          {
-            '함께 활동했던 지인이 추천사를 작성해주면,\n프로필이 업데이트 됩니다.'
-          }
+          {'함께 활동했던 지인이 리뷰를 작성해주면,\n프로필이 업데이트 됩니다.'}
         </Subtitle>
         <Button onClick={handleKakaoMessageSend}>
           <KakaoImg src={kakaoSrc} />
-          카카오톡으로 추천사 요청하기
+          카카오톡으로 리뷰 요청하기
         </Button>
       </ModalContainer>
     </BlurLayout>

@@ -20,7 +20,7 @@ const ExternalReviewHeader = ({ profileData }: ExternalReviewHeaderProps) => {
               </HeaderTitle>
               <HeaderSubTitle>
                 <p>
-                  남겨주신 추천사는 {profileData.username}님의 프로필에
+                  남겨주신 리뷰는 {profileData.username}님의 프로필에
                   반영됩니다.
                 </p>
                 <p>

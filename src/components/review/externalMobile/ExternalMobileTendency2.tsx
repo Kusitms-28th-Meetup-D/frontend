@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useProfile from '../../../hooks/profile/useProfile';
 import { styled } from 'styled-components';
 import MobileTendencyBox from './MobileTendencyBox';
-import { externalQuestion2 } from '../../../constants/review';
+import { question2 } from '../../../constants/review';
 
 const ExternalMobileTendency2 = () => {
   const { userId } = useParams();
@@ -22,7 +22,7 @@ const ExternalMobileTendency2 = () => {
         <p>업무 성향 키워드를 문항별로 1개씩 골라주세요!</p>
 
         <TendencyBoxLayout>
-          <MobileTendencyBox question={externalQuestion2} />
+          <MobileTendencyBox question={question2} />
         </TendencyBoxLayout>
 
         <ButtonBox>

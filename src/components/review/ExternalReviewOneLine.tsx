@@ -17,7 +17,7 @@ const ExternalReviewOneLine = ({ userName }: ExternalReviewOneLineProps) => {
       <h1>{userName}님을 한 줄로 추천한다면?</h1>
       <div>
         <textarea
-          placeholder={'140자 이하로 추천사를 작성해주세요.'}
+          placeholder={'140자 이하로 리뷰를 작성해주세요.'}
           onChange={handleTextareaChange}
         >
           {review}

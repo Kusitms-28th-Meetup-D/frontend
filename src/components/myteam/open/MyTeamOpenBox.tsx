@@ -54,7 +54,7 @@ const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
               <StarTitle>지원자</StarTitle>
               <TeamMembersBox>
                 {myTeamOpen.applyMemberSize !== 0 &&
-                myTeamOpen.teamMemberInfos ? (
+                myTeamOpen?.applyMemberInfos ? (
                   <>
                     <ApplyContent>
                       <ApplyFireImg
@@ -67,7 +67,7 @@ const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
                       <p>팀원으로 지원했어요.</p>
                     </ApplyContent>
                     {myTeamOpen.applyMemberSize !== 0 &&
-                      myTeamOpen.teamMemberInfos.map((teamMember) => (
+                      myTeamOpen?.applyMemberInfos.map((teamMember) => (
                         <ProfileBoxMember
                           key={teamMember.teamMemberId}
                           hasProfileButton={false}

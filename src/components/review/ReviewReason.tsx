@@ -5,7 +5,7 @@ const ReviewReason = () => {
     <>
       <ReasonTitle>이 분을 팀원으로 추천하고 싶은 이유는요</ReasonTitle>
       <TextAreaBox>
-        <ReasonTextBox placeholder="140자로 추천사를 작성해주세요." />
+        <ReasonTextBox placeholder="140자로 리뷰를 작성해주세요." />
       </TextAreaBox>
     </>
   );

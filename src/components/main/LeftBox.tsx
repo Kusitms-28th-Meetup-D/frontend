@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 const LeftBoxContent = [
   { id: 0, title: '모집 중인 팀', content: '136개' },
-  { id: 1, title: '등록된 추천사', content: '5,640개' },
+  { id: 1, title: '등록된 리뷰', content: '5,640개' },
   { id: 2, title: '모집된 팀원 만족도', content: '92%' },
 ];
 
