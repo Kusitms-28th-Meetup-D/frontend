@@ -12,78 +12,80 @@ import leftSrc from '/assets/images/common/left-arrow.svg';
 import rightSrc from '/assets/images/common/right-arrow.svg';
 const MainSwiper = () => {
   return (
-    <SwiperStyle
-      loop={true}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-      }}
-      scrollbar={{
-        hide: false, // 스크롤바를 숨기지 않음
-        draggable: true, // 사용자가 스크롤바를 직접 조작 가능
-      }}
-      navigation={{
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      }}
-      modules={[Autoplay, Navigation, Scrollbar]}
-      className="mySwiper"
-    >
-      <div className="swiper-button-prev"></div>
-      <div className="swiper-button-next"></div>
-      <SwiperSlideStyle>
-        <SwiperContainer>
-          <SwiperLeft>
-            <p>원팀이 처음이세요?</p>
-            <h1>원팀에서 원하는 팀원을</h1>
-            <h1>한번에 찾아보세요!</h1>
-          </SwiperLeft>
-          <SwiperImg
-            src={'/assets/images/main/swiper1.svg'}
-            alt={'swiper_img'}
-          />
-        </SwiperContainer>
-      </SwiperSlideStyle>
-      <SwiperSlideStyle>
-        <SwiperContainer>
-          <SwiperLeft>
-            <p>원팀이 처음이세요?</p>
-            <h1>원팀에서 원하는 팀원을</h1>
-            <h1>한번에 찾아보세요!</h1>
-          </SwiperLeft>
-          <SwiperImg
-            src={'/assets/images/main/swiper2.svg'}
-            alt={'swiper_img'}
-          />
-        </SwiperContainer>
-      </SwiperSlideStyle>
-      <SwiperSlideStyle>
-        <SwiperContainer>
-          <SwiperLeft>
-            <p>나는 어떤 팀원일까?</p>
-            <h1>나와 함께 했던 팀원들이</h1>
-            <h1>남겨준 리뷰를 확인하세요</h1>
-          </SwiperLeft>
-          <SwiperImg
-            src={'/assets/images/main/swiper3.svg'}
-            alt={'swiper_img'}
-          />
-        </SwiperContainer>
-      </SwiperSlideStyle>
-      <SwiperSlideStyle>
-        <SwiperContainer>
-          <SwiperLeft>
-            <p>내가 추천하고 싶은 팀원은요</p>
-            <h1>최고의 팀원에게 남겨주는</h1>
-            <h1>리뷰를 확인하세요</h1>
-          </SwiperLeft>
-          <SwiperImg
-            src={'/assets/images/main/swiper4.svg'}
-            alt={'swiper_img'}
-          />
-        </SwiperContainer>
-      </SwiperSlideStyle>
-    </SwiperStyle>
+    <>
+      <SwiperStyle
+        loop={true}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        scrollbar={{
+          hide: false, // 스크롤바를 숨기지 않음
+          draggable: true, // 사용자가 스크롤바를 직접 조작 가능
+        }}
+        navigation={{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }}
+        modules={[Autoplay, Navigation, Scrollbar]}
+        className="mySwiper"
+      >
+        <div className="swiper-button-prev"></div>
+        <div className="swiper-button-next"></div>
+        <SwiperSlideStyle>
+          <SwiperContainer>
+            <SwiperLeft>
+              <p>원팀이 처음이세요?</p>
+              <h1>원팀에서 원하는 팀원을</h1>
+              <h1>한번에 찾아보세요!</h1>
+            </SwiperLeft>
+            <SwiperImg
+              src={'/assets/images/main/swiper1.svg'}
+              alt={'swiper_img'}
+            />
+          </SwiperContainer>
+        </SwiperSlideStyle>
+        <SwiperSlideStyle>
+          <SwiperContainer>
+            <SwiperLeft>
+              <p>원팀이 처음이세요?</p>
+              <h1>원팀에서 원하는 팀원을</h1>
+              <h1>한번에 찾아보세요!</h1>
+            </SwiperLeft>
+            <SwiperImg
+              src={'/assets/images/main/swiper2.svg'}
+              alt={'swiper_img'}
+            />
+          </SwiperContainer>
+        </SwiperSlideStyle>
+        <SwiperSlideStyle>
+          <SwiperContainer>
+            <SwiperLeft>
+              <p>나는 어떤 팀원일까?</p>
+              <h1>나와 함께 했던 팀원들이</h1>
+              <h1>남겨준 리뷰를 확인하세요</h1>
+            </SwiperLeft>
+            <SwiperImg
+              src={'/assets/images/main/swiper3.svg'}
+              alt={'swiper_img'}
+            />
+          </SwiperContainer>
+        </SwiperSlideStyle>
+        <SwiperSlideStyle>
+          <SwiperContainer>
+            <SwiperLeft>
+              <p>내가 추천하고 싶은 팀원은요</p>
+              <h1>최고의 팀원에게 남겨주는</h1>
+              <h1>리뷰를 확인하세요</h1>
+            </SwiperLeft>
+            <SwiperImg
+              src={'/assets/images/main/swiper4.svg'}
+              alt={'swiper_img'}
+            />
+          </SwiperContainer>
+        </SwiperSlideStyle>
+      </SwiperStyle>
+    </>
   );
 };
 
