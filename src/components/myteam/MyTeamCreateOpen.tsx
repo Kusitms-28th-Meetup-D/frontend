@@ -7,13 +7,20 @@ import { RequestTeamOpen } from '../../interface/MyTeam';
 
 interface MyTeamCreateOpenProps {
   onTeamOpenChange: (newTeamOpen: RequestTeamOpen) => void;
+  setIsButtonActivate: React.Dispatch<React.SetStateAction<boolean>>;
 }
+const FIRST_MAXLENGTH = 30;
+const SECOND_MAXLENGTH = 200;
 
-const MyTeamCreateOpen = ({ onTeamOpenChange }: MyTeamCreateOpenProps) => {
+const MyTeamCreateOpen = ({
+  onTeamOpenChange,
+  setIsButtonActivate,
+}: MyTeamCreateOpenProps) => {
   const [recruitmentNumber, setRecruitmentNumber] = useState(0);
   const [activityEndDate, setActivityEndDate] = useState('');
   const [activityArea, setActivityArea] = useState(0);
-  const isRecruitmentNumberValid = recruitmentNumber <= 10;
+  const isRecruitmentNumberValid =
+    recruitmentNumber > 0 && recruitmentNumber <= 10;
 
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
@@ -47,6 +54,16 @@ const MyTeamCreateOpen = ({ onTeamOpenChange }: MyTeamCreateOpenProps) => {
 
   useEffect(() => {
     updateTeamOpen(teamOpen);
+    if (
+      isRecruitmentNumberValid &&
+      isActivityEndDateValid() &&
+      activityArea &&
+      text1 &&
+      text2 &&
+      text3
+    )
+      setIsButtonActivate(true);
+    else setIsButtonActivate(false);
   }, [
     recruitmentNumber,
     activityEndDate,
@@ -111,8 +128,8 @@ const MyTeamCreateOpen = ({ onTeamOpenChange }: MyTeamCreateOpenProps) => {
               </ActivityDescription>
             </ActivityInputBox>
             <p>
-              활동 종료 날짜에 팀원 모두에게 추천사 작성 링크가 발송됩니다. 팀
-              활동 종료 후 추천사를 작성할 날짜로 입력해주세요.
+              활동 종료 날짜에 팀원 모두에게 리뷰 작성 링크가 발송됩니다. 팀
+              활동 종료 후 리뷰를 작성할 날짜로 입력해주세요.
             </p>
           </FormInputBox>
         </QuestionBox>
@@ -128,7 +145,11 @@ const MyTeamCreateOpen = ({ onTeamOpenChange }: MyTeamCreateOpenProps) => {
           <FormTextarea
             placeholder={`ex)\n즐거운 팀 문화를 중요시합니다! 믿고 함께해주세요 :)`}
             onChange={(e) => setText1(e.target.value)}
+            maxLength={FIRST_MAXLENGTH}
           />
+          <LengthCount>
+            {text1.length}/{FIRST_MAXLENGTH}
+          </LengthCount>
         </FormQuestionBox>
 
         <FormQuestionBox>
@@ -140,7 +161,11 @@ const MyTeamCreateOpen = ({ onTeamOpenChange }: MyTeamCreateOpenProps) => {
           <FormTextarea1
             placeholder={`ex)\n창업 학회, 마케팅 공모전 수상 경력이 여러 번 있어서 믿고 따라오셔도 될 것 같습니다!\n제가 전력 기획 쪽을 담당할 테니, UX/UI 디자인을 잘하시는 팀원을 만나고 싶어요!\n그리고 아이디어가 많으신 분들 환영합니다!\n+) 팀 모집은 제가 하지만, 팀 구성되고 난 후에는 따로 리더를 뽑을 계획입니다!`}
             onChange={(e) => setText2(e.target.value)}
-          />
+            maxLength={SECOND_MAXLENGTH}
+          />{' '}
+          <LengthCount>
+            {text2.length}/{SECOND_MAXLENGTH}
+          </LengthCount>
         </FormQuestionBox>
 
         <FormQuestionBox>
@@ -152,6 +177,7 @@ const MyTeamCreateOpen = ({ onTeamOpenChange }: MyTeamCreateOpenProps) => {
           <FormTextarea2
             placeholder={'카카오톡 오픈채팅방 URL을 입력해 주세요.'}
             onChange={(e) => setText3(e.target.value)}
+            maxLength={100}
           />
         </FormQuestionBox>
       </MyTeamCreateForm>
@@ -256,7 +282,7 @@ const FormTextarea = styled.textarea`
   padding: 1.5rem 2rem;
   resize: none;
   ${({ theme }) => theme.fonts.bodyXL};
-  color: ${({ theme }) => theme.colors.gray50};
+  color: ${(props) => props.theme.colors.gray90};
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray50};
@@ -272,5 +298,15 @@ const FormTextarea2 = styled(FormTextarea)`
 `;
 
 const FormQuestionBox = styled.div`
+  position: relative;
   padding: 2rem 0;
+`;
+
+const LengthCount = styled.div`
+  position: absolute;
+  right: 2.5rem;
+  bottom: 4rem;
+
+  color: ${(props) => props.theme.colors.gray70};
+  ${(props) => props.theme.fonts.bodyM};
 `;

@@ -5,7 +5,7 @@ const ReviewReason = () => {
     <>
       <ReasonTitle>이 분을 팀원으로 추천하고 싶은 이유는요</ReasonTitle>
       <TextAreaBox>
-        <ReasonTextBox placeholder="140자로 추천사를 작성해주세요." />
+        <ReasonTextBox placeholder="140자로 리뷰를 작성해주세요." />
       </TextAreaBox>
     </>
   );
@@ -32,7 +32,7 @@ const ReasonTextBox = styled.textarea`
   max-height: 300px;
   ${({ theme }) => theme.fonts.bodyXXL};
   background: ${({ theme }) => theme.colors.gray5};
-  color: ${({ theme }) => theme.colors.gray70};
+  color: ${(props) => props.theme.colors.gray90};
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   resize: none;
   padding: 2.5rem 4rem;

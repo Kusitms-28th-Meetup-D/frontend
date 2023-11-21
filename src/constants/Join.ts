@@ -7,7 +7,7 @@ export enum ERROR_MESSAGES {
 }
 
 export const REGIONS = [
-  '선택해주세요',
+  '지역을 선택해주세요',
   '서울특별시',
   '인천광역시',
   '대전광역시',
@@ -34,19 +34,19 @@ export const INPUT_PROPS: InputProps[] = [
   },
   {
     label: '전공',
-    placeholder: '학과를 입력해주세요',
+    placeholder: 'ex) 경영학과 / 컴퓨터공학과',
     errorText: ERROR_MESSAGES.전공,
     elemName: 'major',
   },
   {
     label: '희망 직무',
-    placeholder: '희망 직무를 입력해주세요',
+    placeholder: 'ex) 서비스 기획자',
     errorText: ERROR_MESSAGES.희망직무,
     elemName: 'task',
   },
   {
     label: '한줄 소개',
-    placeholder: '한줄 소개를 입력해주세요',
+    placeholder: 'ex) 아이디어가 넘치고 전략적인 서비스 기획자를 찾는다면!',
     errorText: ERROR_MESSAGES.한줄소개,
     elemName: 'selfIntroduce',
   },

@@ -1,31 +1,24 @@
 import { styled } from 'styled-components';
+import { userReviewResponse } from '../../interface/Review';
 
-interface ProfileProps {
-  id: number;
-  src: string;
-  name: string;
+interface ReviewProfileProps {
+  user: userReviewResponse;
   isSelected: boolean;
-  onClick?: (id: number) => void;
+  onClick?: (profileId: number) => void;
 }
 
-const ReviewProfile = ({
-  id,
-  src,
-  name,
-  isSelected,
-  onClick,
-}: ProfileProps) => {
+const ReviewProfile = ({ user, isSelected, onClick }: ReviewProfileProps) => {
   return (
     <ProfileLayout
       onClick={() => {
-        onClick && onClick(id);
+        onClick && onClick(user.teamMemberId);
       }}
     >
       <ProfileBox>
-        <Profile src={src} $isSelected={isSelected} />
+        <Profile src={user.teamMemberImage} $isSelected={isSelected} />
         <ProfileBackground />
       </ProfileBox>
-      <ProfileName $isSelected={isSelected}>{name}</ProfileName>
+      <ProfileName $isSelected={isSelected}>{user.teamMemberName}</ProfileName>
     </ProfileLayout>
   );
 };

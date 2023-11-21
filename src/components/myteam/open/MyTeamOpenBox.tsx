@@ -3,12 +3,15 @@ import Button from '../../common/Button';
 import ProfileBoxMember from '../../common/ProfileBoxMember';
 import StarTitle from '../../common/StarTtile';
 import { TeamData } from '../../../interface/MyTeam';
-
+import { useNavigate } from 'react-router-dom';
 interface MyTeamOpenBoxProps {
   myTeamOpen: TeamData;
+  teamId?: string | number;
+  userId?: string | number;
 }
 
-const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
+const MyTeamOpenBox = ({ myTeamOpen, teamId, userId }: MyTeamOpenBoxProps) => {
+  const navigate = useNavigate();
   return (
     <MyTeamOpenContainer>
       {myTeamOpen && (
@@ -16,7 +19,9 @@ const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
           <CompetitionBox>
             <CompetitionTitle>{myTeamOpen.contestTitle}</CompetitionTitle>
             <CompetitionImg src={myTeamOpen.contestImage[0]} />
-            <Button>팀 관리하러 가기</Button>
+            <Button onClick={() => navigate(`/myteam/${teamId}/${userId}`)}>
+              팀 관리하러 가기
+            </Button>
           </CompetitionBox>
 
           <TeamMemberBox>
@@ -54,7 +59,7 @@ const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
               <StarTitle>지원자</StarTitle>
               <TeamMembersBox>
                 {myTeamOpen.applyMemberSize !== 0 &&
-                myTeamOpen.teamMemberInfos ? (
+                myTeamOpen?.applyMemberInfos ? (
                   <>
                     <ApplyContent>
                       <ApplyFireImg
@@ -67,7 +72,7 @@ const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
                       <p>팀원으로 지원했어요.</p>
                     </ApplyContent>
                     {myTeamOpen.applyMemberSize !== 0 &&
-                      myTeamOpen.teamMemberInfos.map((teamMember) => (
+                      myTeamOpen?.applyMemberInfos.map((teamMember) => (
                         <ProfileBoxMember
                           key={teamMember.teamMemberId}
                           hasProfileButton={false}

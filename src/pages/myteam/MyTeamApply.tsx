@@ -4,7 +4,6 @@ import MyTeamApplyContainer from '../../components/myteam/apply/MyTeamApplyConta
 
 const MyTeamApply = () => {
   const { appliedTeamData } = useAppliedTeam();
-  console.log(appliedTeamData);
 
   return (
     <ApplyLayout>

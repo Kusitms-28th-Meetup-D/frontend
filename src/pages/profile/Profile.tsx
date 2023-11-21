@@ -4,8 +4,8 @@ import ProfileSubInfo from '../../components/profile/ProfileSubInfo';
 import ProfileKeyword from '../../components/profile/ProfileKeyword';
 import ProfileReview from '../../components/profile/ProfileReview';
 import ProfilePersonality from '../../components/profile/ProfilePersonality';
-import { useSetRecoilState } from 'recoil';
-import { headerSelectedState } from '../../recoil/atom';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { headerSelectedState, loginInfoState } from '../../recoil/atom';
 import { useEffect, useState } from 'react';
 import { Headers } from '../../constants/Header';
 import useProfile from '../../hooks/profile/useProfile';
@@ -21,6 +21,7 @@ import useIsUserGetExternalReview from '../../hooks/profile/useIsUserGetExternal
 const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   const { userId } = useParams();
+  const loginInfo = useRecoilValue(loginInfoState);
 
   // 인증 미필요
   const { profileData, isLoading } = useProfile(userId as string);
@@ -61,12 +62,20 @@ const Profile = () => {
         location={profileData?.data.data.location}
         major={profileData?.data.data.major[0]}
         selfIntroduction={profileData?.data.data.selfIntroduction}
+        isMyProfile={
+          (loginInfo?.data?.userId as unknown as string) ==
+          (userId as unknown as string)
+        }
       />
       <ProfileSubInfo
         internships={profileData?.data.data.internships}
         awards={profileData?.data.data.awards}
         tools={profileData?.data.data.tools}
         certificates={profileData?.data.data.certificates}
+        isMyProfile={
+          (loginInfo?.data?.userId as unknown as string) ==
+          (userId as unknown as string)
+        }
       />
       <ProfileKeyword
         keywords={profileReviewData?.data.data.keywords}

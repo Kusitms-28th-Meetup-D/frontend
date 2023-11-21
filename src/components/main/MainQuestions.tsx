@@ -4,9 +4,7 @@ const MainQuestions = () => {
   return (
     <MainQuestionsContainer>
       <h1>Wanteam이 궁금하다면?</h1>
-      <h2>
-        내가 원하는 팀원을 만나 공모전•대회에서 우수한 성적을 거두고 싶다면?
-      </h2>
+      <h2>내가 원하는 팀원을 만나 공모전•대회에서 좋은 경험을 쌓으세요!</h2>
       <QuestionScreen src={'/assets/images/main/question_screen.svg'} />
       <SpeechBubble1 src={'/assets/images/main/speech_bubble1.svg'} />
       <SpeechBubble2 src={'/assets/images/main/speech_bubble2.svg'} />

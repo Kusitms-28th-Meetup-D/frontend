@@ -11,8 +11,8 @@ const MainPopularTeam = () => {
           <h1>실시간으로 인기가 많은 팀에 지원해보세요.</h1>
 
           <PopularTeamListBox>
-            {popularTeam.map((team) => (
-              <PopularTeamBox key={team.id} {...team} />
+            {popularTeam.map((team, index) => (
+              <PopularTeamBox key={team.id} index={index} {...team} />
             ))}
           </PopularTeamListBox>
         </MainPopularTeamContainer>
@@ -65,6 +65,8 @@ const MainPopularTeamContainer = styled.div`
 `;
 
 const PopularTeamListBox = styled.div`
+  position: relative;
+
   display: flex;
   gap: 4rem;
 `;

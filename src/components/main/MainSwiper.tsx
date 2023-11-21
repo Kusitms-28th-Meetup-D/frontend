@@ -1,11 +1,36 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
+
+import { Autoplay, Scrollbar, Navigation } from 'swiper/modules';
+
 import styled from 'styled-components';
 
+import leftSrc from '/assets/images/common/left-arrow.svg';
+import rightSrc from '/assets/images/common/right-arrow.svg';
 const MainSwiper = () => {
   return (
-    <SwiperStyle pagination={true} className="mySwiper">
+    <SwiperStyle
+      loop={true}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      scrollbar={{
+        hide: false, // 스크롤바를 숨기지 않음
+        draggable: true, // 사용자가 스크롤바를 직접 조작 가능
+      }}
+      navigation={{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }}
+      modules={[Autoplay, Navigation, Scrollbar]}
+      className="mySwiper"
+    >
+      <div className="swiper-button-prev"></div>
+      <div className="swiper-button-next"></div>
       <SwiperSlideStyle>
         <SwiperContainer>
           <SwiperLeft>
@@ -19,7 +44,6 @@ const MainSwiper = () => {
           />
         </SwiperContainer>
       </SwiperSlideStyle>
-
       <SwiperSlideStyle>
         <SwiperContainer>
           <SwiperLeft>
@@ -33,7 +57,6 @@ const MainSwiper = () => {
           />
         </SwiperContainer>
       </SwiperSlideStyle>
-
       <SwiperSlideStyle>
         <SwiperContainer>
           <SwiperLeft>
@@ -47,13 +70,12 @@ const MainSwiper = () => {
           />
         </SwiperContainer>
       </SwiperSlideStyle>
-
       <SwiperSlideStyle>
         <SwiperContainer>
           <SwiperLeft>
             <p>내가 추천하고 싶은 팀원은요</p>
             <h1>최고의 팀원에게 남겨주는</h1>
-            <h1>추천사를 확인하세요</h1>
+            <h1>리뷰를 확인하세요</h1>
           </SwiperLeft>
           <SwiperImg
             src={'/assets/images/main/swiper4.svg'}
@@ -68,12 +90,63 @@ const MainSwiper = () => {
 export default MainSwiper;
 
 const SwiperStyle = styled(Swiper)`
+  position: relative;
   z-index: 0;
+
+  .swiper-scrollbar {
+    position: absolute;
+    left: calc(50% - 61.2rem);
+    top: 70%;
+    transform: translateY(-50%);
+    width: 15.4rem;
+    height: 0.8rem;
+
+    background-color: white;
+    /* position: absolute; */
+    z-index: 1;
+  }
+  .swiper-scrollbar-drag {
+    background-color: #5c5ffa; /* 드래그 상태일 때 색상 조절 */
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    position: absolute;
+    top: calc(70% + 2rem);
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 2rem;
+    /* background-color: red; */
+    /* border: 1px solid red; */
+  }
+
+  // 이전 버튼
+  .swiper-button-prev {
+    left: calc(50% - 61.2rem + 15.4rem + 2rem);
+
+    background: url(${leftSrc}) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  //다음 버튼
+  .swiper-button-next {
+    left: calc(50% - 61.2rem + 15.4rem + 2rem + 3rem);
+
+    background: url(${rightSrc}) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    display: none;
+  }
 `;
 
 const SwiperSlideStyle = styled(SwiperSlide)`
   height: 48rem;
   background-image: url('/assets/images/main/swiper_background.svg');
+  background-size: cover;
 `;
 
 const SwiperContainer = styled.div`
