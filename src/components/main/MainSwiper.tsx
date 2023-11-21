@@ -12,26 +12,26 @@ import leftSrc from '/assets/images/common/left-arrow.svg';
 import rightSrc from '/assets/images/common/right-arrow.svg';
 const MainSwiper = () => {
   return (
-    <>
-      <SwiperStyle
-        loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        scrollbar={{
-          hide: false, // 스크롤바를 숨기지 않음
-          draggable: true, // 사용자가 스크롤바를 직접 조작 가능
-        }}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        modules={[Autoplay, Navigation, Scrollbar]}
-        className="mySwiper"
-      >
-        <div className="swiper-button-prev"></div>
-        <div className="swiper-button-next"></div>
+    <SwiperStyle
+      loop={true}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      scrollbar={{
+        hide: false, // 스크롤바를 숨기지 않음
+        draggable: true, // 사용자가 스크롤바를 직접 조작 가능
+      }}
+      navigation={{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }}
+      modules={[Autoplay, Navigation, Scrollbar]}
+      className="mySwiper"
+    >
+      <div className="swiper-button-prev"></div>
+      <div className="swiper-button-next"></div>
+      <SwiperSlide>
         <SwiperSlideStyle>
           <SwiperContainer>
             <SwiperLeft>
@@ -45,6 +45,9 @@ const MainSwiper = () => {
             />
           </SwiperContainer>
         </SwiperSlideStyle>
+      </SwiperSlide>
+      <SwiperSlide>
+        {' '}
         <SwiperSlideStyle>
           <SwiperContainer>
             <SwiperLeft>
@@ -58,6 +61,9 @@ const MainSwiper = () => {
             />
           </SwiperContainer>
         </SwiperSlideStyle>
+      </SwiperSlide>
+      <SwiperSlide>
+        {' '}
         <SwiperSlideStyle>
           <SwiperContainer>
             <SwiperLeft>
@@ -71,6 +77,9 @@ const MainSwiper = () => {
             />
           </SwiperContainer>
         </SwiperSlideStyle>
+      </SwiperSlide>
+      <SwiperSlide>
+        {' '}
         <SwiperSlideStyle>
           <SwiperContainer>
             <SwiperLeft>
@@ -84,8 +93,8 @@ const MainSwiper = () => {
             />
           </SwiperContainer>
         </SwiperSlideStyle>
-      </SwiperStyle>
-    </>
+      </SwiperSlide>
+    </SwiperStyle>
   );
 };
 
@@ -145,7 +154,7 @@ const SwiperStyle = styled(Swiper)`
   }
 `;
 
-const SwiperSlideStyle = styled(SwiperSlide)`
+const SwiperSlideStyle = styled.div`
   height: 48rem;
   background-image: url('/assets/images/main/swiper_background.svg');
   background-size: cover;
