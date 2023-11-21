@@ -11,12 +11,12 @@ import { kakao } from '../../components/login/KakaoLogin';
 import { loginInfoState } from '../../recoil/atom';
 import JoinCompleteModal from '../../components/join/JoinCompleteModal';
 import ModalInner from '../../components/request/ModalInner';
-const TITLE = '매력적인 프로필 완성을 위해 추천사를 요청해보세요.';
+const TITLE = '매력적인 프로필 완성을 위해 리뷰를 요청해보세요.';
 const CONTENT = [
-  '나와 딱 맞는 탁월한 팀원을 한번에 찾고 싶다면,\n나보다 나를 더 잘 아는 동료에게 추천사를 요청해 멋진 프로필을 완성하세요.',
+  '나와 딱 맞는 탁월한 팀원을 한번에 찾고 싶다면,\n나보다 나를 더 잘 아는 동료에게 리뷰를 요청해 멋진 프로필을 완성하세요.',
   '함께했던 동료가 남겨주는 나의',
   '가\n나를 꼭 함께하고 싶은 팀원으로 만들어줍니다.',
-  '같이 동아리, 학회, 공모전 등 팀 프로젝트에 참여했던 지인에게\n아래 링크를 공유해 추천사를 받아주세요!',
+  '같이 동아리, 학회, 공모전 등 팀 프로젝트에 참여했던 지인에게\n아래 링크를 공유해 리뷰를 받아주세요!',
 ];
 const Request = () => {
   const [isPreviewModalVisible, setIsPreviewModalVisible] = useState(false);
@@ -65,7 +65,7 @@ const Request = () => {
           <TextContent>{CONTENT[0]}</TextContent>
           <TextContent>
             {CONTENT[1]}
-            <span> 역량</span>과<span> 성향</span>,<span> 한 줄 추천사</span>
+            <span> 장점</span>과<span> 성향</span>,<span> 한 줄 리뷰</span>
             {CONTENT[2]}
           </TextContent>
           <TextContent>{CONTENT[3]}</TextContent>
@@ -80,7 +80,7 @@ const Request = () => {
             setIsJoinModalVisible(true);
           }}
         >
-          추천사를 보냈어요 →
+          리뷰를 보냈어요 →
         </Button>
       </TextContainer>
     </RequestLayout>
