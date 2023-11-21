@@ -4,14 +4,14 @@ export const TEAM_CURTURE_CATEGORY: ICategory = {
   title: '팀 문화',
   category: [
     {
-      subtitle: '피드백 스타일',
-      leftValue: '솔직한 편',
-      rightValue: '돌려 말하는 편',
+      subtitle: '소통 스타일',
+      leftValue: '주도적',
+      rightValue: '협조적',
     },
     {
-      subtitle: '업무 스타일',
-      leftValue: '업무에 집중',
-      rightValue: '친목과 업무를 함께',
+      subtitle: '팀 내 역할',
+      leftValue: '리더형',
+      rightValue: '팔로워형',
     },
     {
       subtitle: '에너지 방향',
@@ -21,22 +21,22 @@ export const TEAM_CURTURE_CATEGORY: ICategory = {
   ],
 };
 export const WORK_METHOD_CATEGORY: ICategory = {
-  title: '작업 방식',
+  title: '업무 방식',
   category: [
     {
       subtitle: '작업 스타일',
-      leftValue: '신중하게 작업',
-      rightValue: '속도감 있게 작업',
+      leftValue: '한 번에 몰입',
+      rightValue: '미리미리',
     },
     {
-      subtitle: '결과와 과정',
-      leftValue: '결과주의',
-      rightValue: '과정주의',
+      subtitle: '업무 시 관점',
+      leftValue: '큰 그림',
+      rightValue: '꼼꼼함',
     },
     {
-      subtitle: '일과 삶의 균형',
-      leftValue: '워커홀릭',
-      rightValue: '워라밸 중시',
+      subtitle: '문제 해결 방식',
+      leftValue: '유연한 도전',
+      rightValue: '원칙과 경험',
     },
   ],
 };
