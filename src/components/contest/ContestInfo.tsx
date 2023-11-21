@@ -6,10 +6,17 @@ import useContestInfo from '../../hooks/contest/useContestInfo';
 const ContestInfo = () => {
   const { contestId } = useParams();
   const { contestInfoData } = useContestInfo(contestId as string);
-
+  console.log(contestInfoData);
   return (
     <ContestInfoLayout>
-      <ContestInfoTitle>{contestInfoData?.data.data.title}</ContestInfoTitle>
+      <ContestInfoTitleBox>
+        <ContestInfoTitle>{contestInfoData?.data.data.title}</ContestInfoTitle>{' '}
+        <ContestAvrCommnets>
+          지원자들의 평균 추천사 보유 개수 🔥&nbsp;&nbsp;
+          {contestInfoData?.data.data.averageComments} 개
+        </ContestAvrCommnets>
+      </ContestInfoTitleBox>
+
       <ContestContainer>
         <ContestImg src={contestInfoData?.data.data.images[0]} />
         <ContestTextBox>
@@ -52,12 +59,25 @@ const ContestInfoLayout = styled.div`
   max-width: 122.4rem;
   margin: auto;
 `;
+const ContestInfoTitleBox = styled.div`
+  display: flex;
+  /* justify-content: center; */
+  gap: 2rem;
+  align-items: center;
+`;
 const ContestInfoTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray90};
 
-  width: 100%;
   /* margin-top: 3rem; */
+`;
+const ContestAvrCommnets = styled.div`
+  ${(props) => props.theme.fonts.bodyS};
+  border-radius: 0.8rem;
+  background-color: ${(props) => props.theme.colors.error60};
+  color: ${(props) => props.theme.colors.white};
+
+  padding: 0.5rem 1rem;
 `;
 const ContestContainer = styled.div`
   display: flex;
