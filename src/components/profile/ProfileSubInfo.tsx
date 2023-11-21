@@ -7,11 +7,13 @@ const ProfileSubInfo = ({
   awards,
   tools,
   certificates,
+  isMyProfile,
 }: {
   internships?: string[];
   awards?: string[];
   tools?: string[];
   certificates?: string[];
+  isMyProfile?: boolean;
 }) => {
   const TITLES = ['대외활동', '인턴', '사용 가능 툴', '보유 자격증'];
   const NAMES = ['internships', 'awards', 'tools', 'certificates'];
@@ -48,10 +50,12 @@ const ProfileSubInfo = ({
       <ProfileSubInfoBox>
         <ProfileSubInfoTitle>이력</ProfileSubInfoTitle>
         <ProfileSubInfoContents>
-          <ModifyProfile onClick={handleClickModify}>
-            {isModifying && '저장'}
-            {!isModifying && '수정'}
-          </ModifyProfile>
+          {isMyProfile ? (
+            <ModifyProfile onClick={handleClickModify}>
+              {isModifying && '저장'}
+              {!isModifying && '수정'}
+            </ModifyProfile>
+          ) : null}
           <ContentsSubTitle>{TITLES[0]}</ContentsSubTitle>
           <ContentsDetailBox>
             {isModifying ? (
@@ -93,11 +97,13 @@ const ProfileSubInfo = ({
       <ProfileSubInfoBox>
         <ProfileSubInfoTitle>스킬</ProfileSubInfoTitle>
         <ProfileSubInfoContents>
-          {' '}
-          <ModifyProfile onClick={handleClickModify}>
-            {isModifying && '저장'}
-            {!isModifying && '수정'}
-          </ModifyProfile>
+          {isMyProfile ? (
+            <ModifyProfile onClick={handleClickModify}>
+              {isModifying && '저장'}
+              {!isModifying && '수정'}
+            </ModifyProfile>
+          ) : null}
+
           <ContentsSubTitle>{TITLES[2]}</ContentsSubTitle>
           <ContentsDetailBox>
             {isModifying ? (

@@ -8,6 +8,7 @@ const ProfileInfo = ({
   location,
   major,
   selfIntroduction,
+  isMyProfile,
 }: {
   name?: string;
   profile_image?: string;
@@ -15,15 +16,19 @@ const ProfileInfo = ({
   location?: string;
   major?: string;
   selfIntroduction?: string;
+  isMyProfile?: boolean;
 }) => {
   const navigate = useNavigate();
   return (
     <>
       <ProfileText>{name} 님의 프로필</ProfileText>
       <ProfileContainer>
-        <ModifyProfile onClick={() => navigate('/profile/modify')}>
-          계정 설정에서 변경하기
-        </ModifyProfile>
+        {isMyProfile ? (
+          <ModifyProfile onClick={() => navigate('/profile/modify')}>
+            계정 설정에서 변경하기
+          </ModifyProfile>
+        ) : null}
+
         <ProfileImage src={profile_image} />
         <ProfileTextBox>
           <ProfileName>{name} </ProfileName>
