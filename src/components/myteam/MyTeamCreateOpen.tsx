@@ -111,8 +111,8 @@ const MyTeamCreateOpen = ({ onTeamOpenChange }: MyTeamCreateOpenProps) => {
               </ActivityDescription>
             </ActivityInputBox>
             <p>
-              활동 종료 날짜에 팀원 모두에게 추천사 작성 링크가 발송됩니다. 팀
-              활동 종료 후 추천사를 작성할 날짜로 입력해주세요.
+              활동 종료 날짜에 팀원 모두에게 리뷰 작성 링크가 발송됩니다. 팀
+              활동 종료 후 리뷰를 작성할 날짜로 입력해주세요.
             </p>
           </FormInputBox>
         </QuestionBox>

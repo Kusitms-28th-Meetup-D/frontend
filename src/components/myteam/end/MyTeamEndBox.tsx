@@ -16,16 +16,16 @@ const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
         <>
           <MyTeamEndLeft>
             <EndTitle>다음 팀 활동을 위해</EndTitle>
-            <h1>팀원들에게 추천사를 남겨주세요!</h1>
-            <p>팀원들에게 추천사를 남겨야</p>
-            <p>내가 받은 추천사를 볼 수 있어요!</p>
+            <h1>팀원들에게 리뷰를 남겨주세요!</h1>
+            <p>팀원들에게 리뷰를 남겨야</p>
+            <p>내가 받은 리뷰를 볼 수 있어요!</p>
             <MyTeamDiv>
               <img
                 src={'/assets/images/myteam/myteam_end.svg'}
                 alt={'myteam_end'}
               />
               <ButtonStyle>
-                추천사 작성하러 가기
+                리뷰 작성하러 가기
                 <img
                   src={'/assets/images/common/right_arrow.svg'}
                   alt={'right_arrow'}

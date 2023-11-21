@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import modalSrc from '/assets/images/request/request-kakaotalk-modal.png';
 
 const ModalInner = () => {
-  const TITLE = '‘추천사 요청’ 카카오톡 예시';
+  const TITLE = '‘리뷰 요청’ 카카오톡 예시';
   const SUBTITLE =
-    '카카오톡으로 추천사를 요청하면, 아래와 같은 메시지가 전송됩니다.';
+    '카카오톡으로 리뷰를 요청하면, 아래와 같은 메시지가 전송됩니다.';
   return (
     <Container>
       <Title>{TITLE}</Title>

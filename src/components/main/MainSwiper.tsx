@@ -53,7 +53,7 @@ const MainSwiper = () => {
           <SwiperLeft>
             <p>내가 추천하고 싶은 팀원은요</p>
             <h1>최고의 팀원에게 남겨주는</h1>
-            <h1>추천사를 확인하세요</h1>
+            <h1>리뷰를 확인하세요</h1>
           </SwiperLeft>
           <SwiperImg
             src={'/assets/images/main/swiper4.svg'}

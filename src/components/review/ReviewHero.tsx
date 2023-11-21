@@ -8,7 +8,7 @@ const ReviewHero = () => {
 
   return (
     <>
-      <HeroTitle>추천사를 남길 주인공은?</HeroTitle>
+      <HeroTitle>리뷰를 남길 주인공은?</HeroTitle>
       <HeroLayout>
         {heroList.map((hero) => (
           <HeroBox

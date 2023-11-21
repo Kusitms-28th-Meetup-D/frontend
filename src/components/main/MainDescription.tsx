@@ -5,7 +5,7 @@ const MainDescription = () => {
     <>
       <MainDescriptionContainer>
         <ScrollDown src={'/assets/images/main/scroll_down.svg'} />
-        <h1>추천사 확인하고 원하는 팀원을 찾아보세요!</h1>
+        <h1>리뷰 확인하고 원하는 팀원을 찾아보세요!</h1>
         <h2>모두가 원하는 팀원을 만날 수 있도록 원팀이 함께할게요.</h2>
         <Star src={'/assets/images/common/star.svg'} />
       </MainDescriptionContainer>

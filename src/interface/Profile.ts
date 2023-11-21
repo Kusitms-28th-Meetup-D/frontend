@@ -84,7 +84,7 @@ export interface ResponseProfile {
   data: ProfileData;
 }
 
-//프로필 정보 조회 - 추천사 api
+//프로필 정보 조회 - 리뷰 api
 export interface Keyword {
   keywordType: number;
   count: number;
@@ -159,7 +159,7 @@ export interface ResponseUseTicket {
   message: string;
   data: UseTicketData;
 }
-//유저가 외부 추천사를 받았는지 여부
+//유저가 외부 리뷰를 받았는지 여부
 export interface RequestIsUserGetExternalReview {
   userId?: string;
 }
