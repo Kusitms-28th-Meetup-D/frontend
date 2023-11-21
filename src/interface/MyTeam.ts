@@ -118,13 +118,13 @@ export interface ResponseRecruitingTeam {
 
 //내가 오픈한 팀 상세 조회 api
 
-// export interface RequestMyOpenedTeamMemberInfo {
-//   teamId: string;
-// }
+export interface RequestMyOpenedTeamMemberInfo {
+  teamId: string;
+}
 export interface MyOpenedTeamMemberInfoData {
   teamId: number;
   teamMemberSize: number;
-  applyMemberSize: number;
+  teamApplySize: number;
   teamMemberInfos: ProfileProps[];
   applyMemberInfos: ProfileProps[];
 }
