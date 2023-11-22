@@ -1,9 +1,11 @@
-import { useState } from 'react';
 import TwoButtonModal from '../common/TwoButtonModal';
 import JoinTeamModalInner from './JoinTeamModalInner';
 import useJoinTeam from '../../hooks/contest/useJoinTeam';
-import JoinTeamCompleteModal from './JoinTeamCompleteModal';
-import JoinTeamRefusedModal from './JoinTeamRefusedModal';
+import { useSetRecoilState } from 'recoil';
+import {
+  joinTeamCompleteModalState,
+  joinTeamRefusedModalState,
+} from '../../recoil/atom';
 
 interface JoinTeamModalProps {
   isModalVisible: boolean;
@@ -16,10 +18,9 @@ const JoinTeamModal: React.FC<JoinTeamModalProps> = ({
   isModalVisible,
   setIsModalVisible,
   teamId,
-  userId,
   contestId,
 }) => {
-  const handleJoinTeam = useJoinTeam(teamId as string,contestId as string);
+  const handleJoinTeam = useJoinTeam(teamId as string, contestId as string);
   const handleLeftButtonClick = () => {
     setIsModalVisible(false);
   };
@@ -44,8 +45,10 @@ const JoinTeamModal: React.FC<JoinTeamModalProps> = ({
     setIsModalVisible(false);
   };
 
-  const [isCompleteModalVisible, setIsCompleteModalVisible] = useState(false);
-  const [isRefusedModalVisible, setIsRefusedModalVisible] = useState(false);
+  const setIsCompleteModalVisible = useSetRecoilState(
+    joinTeamCompleteModalState,
+  );
+  const setIsRefusedModalVisible = useSetRecoilState(joinTeamRefusedModalState);
   return (
     <TwoButtonModal
       leftButton={{
@@ -60,16 +63,6 @@ const JoinTeamModal: React.FC<JoinTeamModalProps> = ({
       onCloseClickFunc={handleCloseButtonClick}
     >
       <JoinTeamModalInner />
-      <JoinTeamCompleteModal
-        isModalVisible={isCompleteModalVisible}
-        setIsModalVisible={setIsCompleteModalVisible}
-        userId={userId as string}
-      />
-      <JoinTeamRefusedModal
-        isModalVisible={isRefusedModalVisible}
-        setIsModalVisible={setIsRefusedModalVisible}
-        userId={userId as string}
-      />
     </TwoButtonModal>
   );
 };
