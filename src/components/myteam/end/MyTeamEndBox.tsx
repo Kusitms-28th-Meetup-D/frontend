@@ -85,6 +85,7 @@ const MyTeamEndLeft = styled(Box)`
     ${({ theme }) => theme.fonts.subtitleXL};
     color: ${({ theme }) => theme.colors.primary60};
     margin-bottom: 1.5rem;
+    white-space: nowrap;
   }
   p {
     ${({ theme }) => theme.fonts.bodyM};
