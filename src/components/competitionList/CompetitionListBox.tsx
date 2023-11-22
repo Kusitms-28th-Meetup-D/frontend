@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil';
 import { contestTypeAtom, searchTextAtom } from '../../recoil/competition';
 import { useCompetitionList } from '../../hooks/competition/useCompetitionList';
 import { useCompetitionSearch } from '../../hooks/competition/useCompeitionSearch';
+import { ContainerAnimation } from '../../styles/animation';
 
 const CompetitionListBox = () => {
   const contestType = useRecoilValue(contestTypeAtom);

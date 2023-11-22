@@ -4,6 +4,8 @@ import questionmarkSrc from '/assets/images/common/questionmark.svg';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { loginInfoState, needKakaoReviewModalState } from '../../recoil/atom';
 import { useParams } from 'react-router-dom';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const ProfileNotReviewed = () => {
   const { userId } = useParams();
@@ -17,7 +19,7 @@ const ProfileNotReviewed = () => {
   return (
     <>
       {active ? (
-        <Layout>
+        <Layout initial="hidden" animate="visible" variants={TextAnimation}>
           <QuestionmarkImg src={questionmarkSrc} />
           <Subtitle>
             {'아직 받은 리뷰가 없어요!\n리뷰를 요청해 프로필을 채워보세요.'}
@@ -35,7 +37,7 @@ const ProfileNotReviewed = () => {
     </>
   );
 };
-const Layout = styled.div`
+const Layout = styled(motion.div)`
   width: 100%;
   height: 31rem;
 

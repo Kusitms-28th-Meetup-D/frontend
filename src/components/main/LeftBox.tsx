@@ -30,6 +30,11 @@ const LeftBoxContainer = styled.div`
   display: flex;
   text-align: center;
   justify-content: space-between;
+
+  &:hover {
+    transition: 0.5s;
+    transform: translateY(-0.5rem);
+  }
 `;
 
 const LeftBoxValue = styled.div`
