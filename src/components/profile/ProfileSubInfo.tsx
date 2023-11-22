@@ -44,12 +44,14 @@ const ProfileSubInfo = ({
     setIsModyfying((curr) => !curr);
     if (isModifying) {
       profileCreateMutation.mutate();
+      window.location.reload(); // 임시로 새로고침
     }
   };
   const handleClickModify2 = () => {
     setIsModyfying2((curr) => !curr);
     if (isModifying2) {
       profileCreateMutation.mutate();
+      window.location.reload(); // 임시로 새로고침
     }
   };
   return (
@@ -175,8 +177,6 @@ const ProfileSubInfoContents = styled.div`
   padding: 1rem 3rem 4rem 3rem;
 `;
 
-//
-
 const ContentsSubTitle = styled.div`
   ${(props) => props.theme.fonts.heading4};
   color: ${(props) => props.theme.colors.gray100};
@@ -204,6 +204,7 @@ const ModifyProfile = styled.div`
 const ModifyingArea = styled.textarea`
   width: 100%;
   min-height: 15rem;
+  padding: 1.5rem 2rem;
 
   border-radius: 0.8rem;
   border: 1px solid ${(props) => props.theme.colors.gray20};

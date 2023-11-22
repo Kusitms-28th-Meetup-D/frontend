@@ -31,10 +31,8 @@ const Profile = () => {
   const { isUserGetExternalReviewData } = useIsUserGetExternalReview(
     userId as string,
   );
-  // console.log(isUserGetExternalReviewData);
 
   // 인증 필요
-
   const { IsTicketUsedData } = useIsTicketUsed(userId as string);
   const { TicketNumberData } = useTicketNumber();
   useEffect(() => setHeaderSelected(Headers.myProfile));
