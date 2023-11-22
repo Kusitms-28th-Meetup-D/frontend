@@ -112,7 +112,7 @@ const Profile = () => {
 };
 const ProfileLayout = styled.div`
   max-width: 122.4rem;
-  margin: auto;
+  margin: 0 auto 5rem auto;
 `;
 
 export default Profile;
