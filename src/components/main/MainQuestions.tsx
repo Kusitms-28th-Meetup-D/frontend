@@ -16,7 +16,10 @@ const MainQuestions = () => {
 export default MainQuestions;
 
 const MainQuestionsContainer = styled.div`
-  background: ${({ theme }) => theme.colors.primary40};
+  background-image: url('/assets/images/main/question_background.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
   padding: 4.5rem 8rem 0 8rem;
   display: flex;
   flex-direction: column;
