@@ -70,7 +70,7 @@ const LockedLayout = styled.div`
 const Lock = styled.img`
   width: 20rem;
   height: 20rem;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 const TextContainer = styled.div`
   display: flex;
