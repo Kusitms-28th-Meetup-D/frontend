@@ -43,6 +43,7 @@ export interface TeamData {
   applyMemberInfos?: ProfileProps[];
   contestTitle?: string;
   contestImage: string[];
+  contestId?: string;
 }
 
 export interface ResponseOpenedTeam {

@@ -14,12 +14,9 @@ const RecruitingBox = ({ recruitingTeam }: RecruitingBoxProps) => {
   const handleClick = () => {
     if (loginInfo.data?.userId == recruitingTeam.teamLeaderId)
       navigate(
-        `/myteam${loginInfo.data?.userId}/${recruitingTeam.teamId}/${recruitingTeam.contestId}`,
+        `/myteam/${loginInfo.data?.userId}/${recruitingTeam.teamId}/${recruitingTeam.contestId}`,
       );
-    else
-      navigate(
-        `/list/${recruitingTeam.contestId}/${recruitingTeam.teamLeaderId}`,
-      );
+    else navigate(`/list/${recruitingTeam.contestId}/${recruitingTeam.teamId}`);
   };
   return (
     <RecruitingLayout onClick={handleClick}>

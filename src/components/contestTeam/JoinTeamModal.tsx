@@ -10,14 +10,16 @@ interface JoinTeamModalProps {
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   teamId?: string;
   userId?: string | number;
+  contestId?: string;
 }
 const JoinTeamModal: React.FC<JoinTeamModalProps> = ({
   isModalVisible,
   setIsModalVisible,
   teamId,
   userId,
+  contestId,
 }) => {
-  const handleJoinTeam = useJoinTeam(teamId as string);
+  const handleJoinTeam = useJoinTeam(teamId as string,contestId as string);
   const handleLeftButtonClick = () => {
     setIsModalVisible(false);
   };
@@ -26,8 +28,8 @@ const JoinTeamModal: React.FC<JoinTeamModalProps> = ({
     try {
       await handleJoinTeam.mutate();
       console.log('Success: A');
-      setIsCompleteModalVisible(true);
       setIsModalVisible(false);
+      setIsCompleteModalVisible(true);
     } catch (error: any) {
       if (error.response && error.response.status === 409) {
         console.log('Conflict: B 409');
