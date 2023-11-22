@@ -16,11 +16,14 @@ const MyTeamCreateOpen = ({
   onTeamOpenChange,
   setIsButtonActivate,
 }: MyTeamCreateOpenProps) => {
-  const [recruitmentNumber, setRecruitmentNumber] = useState(0);
+  const [recruitmentNumber, setRecruitmentNumber] = useState<
+    number | undefined
+  >(undefined);
   const [activityEndDate, setActivityEndDate] = useState('');
   const [activityArea, setActivityArea] = useState(0);
   const isRecruitmentNumberValid =
-    recruitmentNumber > 0 && recruitmentNumber <= 10;
+    recruitmentNumber === undefined ||
+    (recruitmentNumber > 0 && recruitmentNumber <= 10);
 
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
@@ -87,16 +90,19 @@ const MyTeamCreateOpen = ({
           <FormInputBox>
             <p>
               <RecruitmentInput
-                value={recruitmentNumber}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setRecruitmentNumber(Number(e.target.value))
-                }
+                value={recruitmentNumber !== undefined ? recruitmentNumber : ''}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  const value = e.target.value;
+                  if (/^\d*$/.test(value)) {
+                    setRecruitmentNumber(value ? Number(value) : undefined);
+                  }
+                }}
                 $isValid={isRecruitmentNumberValid}
               />
               명
             </p>
             <Description $isValid={isRecruitmentNumberValid}>
-              10 이하의 숫자만 입력 가능합니다.
+              1부터 10까지의 숫자만 입력 가능합니다.
             </Description>
           </FormInputBox>
         </QuestionBox>

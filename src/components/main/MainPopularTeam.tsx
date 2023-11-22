@@ -42,7 +42,7 @@ const MainPopularTeamContainer = styled.div`
   top: 0;
   right: 0;
   width: 100vw;
-  padding: 7rem 0 7rem 50rem;
+  padding: 7rem 0 7rem 40rem;
 
   background: rgba(205, 206, 250, 0.2);
   margin-left: 20rem;

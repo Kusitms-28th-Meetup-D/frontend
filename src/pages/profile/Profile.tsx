@@ -95,7 +95,10 @@ const Profile = () => {
       <ProfileReview
         reviewData={profileReviewData?.data.data.comments}
         name={profileData?.data.data.username}
-        isLocked={!IsTicketUsedData?.data.data.isUsed}
+        isLocked={
+          !IsTicketUsedData?.data.data.isUsed ||
+          profileData?.data.data.userId == loginInfo.data?.userId
+        }
         setIsLackModalVisible={setIsLackModalVisible}
         setIsUseModalVisible={setIsUseModalVisible}
         isUserGetExternalReview={
