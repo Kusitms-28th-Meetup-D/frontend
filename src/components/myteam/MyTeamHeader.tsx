@@ -1,6 +1,5 @@
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { styled } from 'styled-components';
-import { selectedTeamAtom } from '../../recoil/myteam';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { loginInfoState } from '../../recoil/atom';
 
