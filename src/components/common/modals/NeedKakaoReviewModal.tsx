@@ -10,6 +10,8 @@ import closeSrc from '/assets/images/common/closeButton.svg';
 import kakaoSrc from '/assets/images/common/kakaotalk.svg';
 import reviewSrc from '/assets/images/common/kakaoReviewSend.svg';
 import { kakao } from '../../login/KakaoLogin';
+import { TextAnimation } from '../../../styles/animation';
+import { motion } from 'framer-motion';
 const NeedKakaoReviewModal = () => {
   const [isModalVisible, setIsModalVisible] = useRecoilState(
     needKakaoReviewModalState,
@@ -29,7 +31,11 @@ const NeedKakaoReviewModal = () => {
   };
   return (
     <BlurLayout $isModalVisible={isModalVisible}>
-      <ModalContainer>
+      <ModalContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <CloseImg src={closeSrc} onClick={() => setIsModalVisible(false)} />
         <SendImg src={reviewSrc} />
         <Title>지금 리뷰 요청을 보내보세요!</Title>
@@ -61,7 +67,7 @@ const BlurLayout = styled.div<{ $isModalVisible: boolean }>`
   justify-content: center;
   align-items: center;
 `;
-const ModalContainer = styled.div`
+const ModalContainer = styled(motion.div)`
   position: relative;
   min-width: 60rem;
   /* height: 36rem; */
