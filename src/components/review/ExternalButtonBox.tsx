@@ -1,9 +1,15 @@
 import { styled } from 'styled-components';
 import Button from '../common/Button';
+import { useContext } from 'react';
+import { ExternalReviewContext } from '../../pages/review/ExternalReview';
+import { useNonUserReviewCreate } from '../../hooks/review/useNonUserReviewCreate';
 
 const ExternalButtonBox = () => {
+  const { review } = useContext(ExternalReviewContext);
+  const nonUserReviewCreateMutation = useNonUserReviewCreate(review);
+
   const handleButtonClick = () => {
-    alert('제출하기 버튼이 눌렸습니다.');
+    nonUserReviewCreateMutation.mutate();
   };
 
   return (
