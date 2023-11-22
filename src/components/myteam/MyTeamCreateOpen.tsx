@@ -147,7 +147,7 @@ const MyTeamCreateOpen = ({
           <FormTitle title={'팀장의 한 마디'} />
           <FormDescription>
             <p>예비 팀원들에게 하고 싶은 한 마디를 적어주세요!</p>
-            <p>적어주신 내용은 '모집 중인 팀'메인에 가장 먼저 노출됩니다.</p>
+            <p>적어주신 내용은 '모집 중인 팀' 메인에 가장 먼저 노출됩니다.</p>
           </FormDescription>
           <FormTextarea
             placeholder={`ex)\n즐거운 팀 문화를 중요시합니다! 믿고 함께해주세요 :)`}
