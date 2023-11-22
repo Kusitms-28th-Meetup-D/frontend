@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 const Footer = () => {
-  return <Test>제발 반영돼라 제발!A</Test>;
+  return <Test></Test>;
 };
 export default Footer;
 
 const Test = styled.div`
-  ${(props) => props.theme.fonts.heading5}
+  margin-top: 10rem;
+  background-color: ${(props) => props.theme.colors.primary60};
+  height: 35rem;
 `;
