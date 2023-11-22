@@ -38,51 +38,82 @@ export const reviewState = atom<RecoilReview[]>({
     {
       selectedKeywords: [],
       arr: [
-        [-1, -1, -1],
-        [-1, -1, -1],
+        [0, 0, 0],
+        [0, 0, 0],
       ],
     },
     {
       selectedKeywords: [],
       arr: [
-        [-1, -1, -1],
-        [-1, -1, -1],
+        [0, 0, 0],
+        [0, 0, 0],
       ],
     },
     {
       selectedKeywords: [],
       arr: [
-        [-1, -1, -1],
-        [-1, -1, -1],
+        [0, 0, 0],
+        [0, 0, 0],
       ],
     },
     {
       selectedKeywords: [],
       arr: [
-        [-1, -1, -1],
-        [-1, -1, -1],
+        [0, 0, 0],
+        [0, 0, 0],
       ],
     },
     {
       selectedKeywords: [],
       arr: [
-        [-1, -1, -1],
-        [-1, -1, -1],
+        [0, 0, 0],
+        [0, 0, 0],
       ],
     },
     {
       selectedKeywords: [],
       arr: [
-        [-1, -1, -1],
-        [-1, -1, -1],
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
       ],
     },
   ],
-  // effects_UNSTABLE: [persistAtom],
 });
 export const reviewMemberIndexState = atom<number>({
   key: 'reviewIndex',
   default: 0,
+});
+export const reviewCommentState = atom<string>({
+  key: 'reviewComment',
+  default: '',
 });
 
 //GlobalModal

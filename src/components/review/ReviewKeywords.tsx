@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
 import Keyword from './Keyword';
-import { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { selectedNameAtom } from '../../recoil/review';
 import { keywordListWithIds } from '../../constants/review';
@@ -24,7 +23,6 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
 
       newObj.selectedKeywords = [...newObj.selectedKeywords];
       if (newObj.selectedKeywords.includes(keyword)) {
-        console.log('있네');
         newObj.selectedKeywords = newObj.selectedKeywords.filter(
           (keywordNum) => keywordNum !== keyword,
         );
@@ -33,26 +31,9 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
       }
 
       newArr[reviewMemberIndex] = newObj;
-      console.log('키워드 선택', newArr);
       return newArr;
     });
-    // if (selectedKeywords.includes(keyword)) {
-    //   setSelectedKeywords(selectedKeywords.filter((k) => k !== keyword));
-    // } else {
-    //   if (selectedKeywords.length < 2) {
-    //     setSelectedKeywords([...selectedKeywords, keyword]);
-    //   }
-    // }
   };
-
-  // useEffect(() => {
-  //   setReview({
-  //     ...review,
-  //     selectedKeywords: selectedKeywords.map((keywordId) => ({
-  //       selectKeyword: keywordId,
-  //     })),
-  //   });
-  // }, [selectedKeywords]);
 
   return (
     <KeywordLayout>

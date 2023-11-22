@@ -33,10 +33,6 @@ export interface RequestNonUserReview {
   recommendationComment: string;
 }
 
-export interface SelectedKeywords {
-  selecteKeyword: number;
-}
-
 export interface SelectedTeamCultures {
   feedbackStyle: number;
   teamStyle: number;
@@ -125,8 +121,8 @@ export interface RequestReviews {
 }
 
 export interface UploadReview {
-  userId: number;
-  teamId: number;
+  userId: string;
+  teamId: string;
   selectedKeywords: SelectedKeywords[];
   selectedTeamCultures: SelectedTeamCultures;
   selectedWorkMethods: SelectedWorkMethods;

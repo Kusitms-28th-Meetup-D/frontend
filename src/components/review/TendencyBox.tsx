@@ -32,14 +32,11 @@ const TendencyBox = ({ boxName, question, arrIndex }: TendencyBoxProps) => {
       ];
 
       //이미선택됨
-      if (newObj.arr[arrIndex][subIndex] == value) {
-        newObj.arr[arrIndex][subIndex] = -1;
-      } else {
+      if (newObj.arr[arrIndex][subIndex] != value) {
         newObj.arr[arrIndex][subIndex] = value;
       }
 
       newArr[reviewMemberIndex] = newObj;
-      console.log('키워드 선택', newArr);
       return newArr;
     });
   };
