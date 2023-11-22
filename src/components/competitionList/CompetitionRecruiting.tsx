@@ -3,6 +3,8 @@ import Pagination from '../common/Pagination';
 import { useRecruitingTeam } from '../../hooks/competition/useRecruitingTeam';
 import RecruitingBox from './RecruitingBox';
 import { useState } from 'react';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const CompetitionRecruiting = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,7 +14,11 @@ const CompetitionRecruiting = () => {
   return (
     <RecruitingLayout>
       <RecruitingTitle>지금 모집 중인 팀을 만나보세요.</RecruitingTitle>
-      <RecruitingBoxLayout>
+      <RecruitingBoxLayout
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         {recruitingTeam?.data.recruitingTeams.map((recruitingTeam) => (
           <RecruitingBox
             key={recruitingTeam.contestId}
@@ -43,7 +49,7 @@ const RecruitingTitle = styled.div`
   margin-bottom: 3rem;
 `;
 
-const RecruitingBoxLayout = styled.div`
+const RecruitingBoxLayout = styled(motion.div)`
   display: flex;
   gap: 2.5rem;
   padding: 0 10rem;

@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const ProfileInfo = ({
   name,
@@ -22,7 +24,11 @@ const ProfileInfo = ({
   return (
     <>
       <ProfileText>{name} 님의 프로필</ProfileText>
-      <ProfileContainer>
+      <ProfileContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         {isMyProfile ? (
           <ModifyProfile onClick={() => navigate('/profile/modify')}>
             계정 설정에서 변경하기
@@ -56,7 +62,7 @@ const ProfileText = styled.div`
   color: ${(props) => props.theme.colors.primary90};
   margin: 3rem 0;
 `;
-const ProfileContainer = styled.div`
+const ProfileContainer = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 29.6rem;

@@ -13,6 +13,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { TEAM_DETAIL_STATUS } from '../../constants/Contest';
 import TeamMembers from '../../components/contestTeam/TeamMembers';
 import JoinTeamModal from '../../components/contestTeam/JoinTeamModal';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const ContestTeam = () => {
   const { teamId, contestId } = useParams();
@@ -37,17 +39,8 @@ const ContestTeam = () => {
   const handleJoinTeam = () => {
     setIsJoinTeamModalVisible(true);
   };
-  console.log(contestTeamDetailData);
 
   useEffect(() => setHeaderSelected(Headers.list));
-
-  //내가 오픈한 경우, 내 팀 페이지로 이동
-  // if (
-  //   contestTeamDetailData?.data.data.status ==
-  //   TEAM_DETAIL_STATUS._1_내가오픈한경우
-  // ) {
-  //   navigate(`/myteam/${userLogininfo.data?.userId}/${teamId}`);
-  // }
 
   return isLoading ? (
     <div>로딩중</div>
@@ -68,7 +61,11 @@ const ContestTeam = () => {
       <TeamTitle>
         {contestTeamDetailData?.data.data.leaderInfo.teamMemberName} 님의 팀
       </TeamTitle>
-      <TeamLeaderContainer>
+      <TeamLeaderContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <LeaderBox>
           <Role>팀장</Role>
           <ProfileBoxMember {...teamLeaderBoxProps} />
@@ -87,7 +84,6 @@ const ContestTeam = () => {
               / {contestTeamDetailData?.data.data.max}명{' '}
             </TeamStatusItem>
             <TeamStatusItem>
-              {' '}
               활동 지역 : {contestTeamDetailData?.data.data.location}
             </TeamStatusItem>
             <TeamStatusItem>
@@ -96,12 +92,18 @@ const ContestTeam = () => {
           </TeamStatusBox>
         </TeamLeaderInfoBox>
       </TeamLeaderContainer>
-      <TeamNoticeContainer>
+
+      <TeamNoticeContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <TeamNoticeTitle>모집 공고</TeamNoticeTitle>
         <TeamNoticeContent>
           {contestTeamDetailData?.data.data.notice}
         </TeamNoticeContent>
       </TeamNoticeContainer>
+
       <TeamMembers
         memberDatas={contestTeamDetailData?.data.data.teamMemeberInfos}
         leftMember={contestTeamDetailData?.data.data.leftMember}
@@ -155,7 +157,7 @@ const ContestTeam = () => {
 };
 const TeamLayout = styled.div`
   max-width: 122.4rem;
-  margin: auto;
+  margin: 0 auto 5rem auto;
 
   display: flex;
   flex-direction: column;
@@ -164,7 +166,7 @@ const TeamLayout = styled.div`
   gap: 4.4rem;
 `;
 const TeamUndo = styled.div`
-  ${(props) => props.theme.fonts.bodyXXL};
+  ${(props) => props.theme.fonts.bodyXL};
   color: ${(props) => props.theme.colors.gray70};
 
   display: flex;
@@ -182,7 +184,7 @@ const TeamTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray100};
 `;
-const TeamLeaderContainer = styled.div`
+const TeamLeaderContainer = styled(motion.div)`
   display: flex;
   gap: 2rem;
 `;
@@ -220,7 +222,7 @@ const TeamLeaderTitle = styled.div`
 `;
 const TeamLeaderIntroduce = styled.div`
   width: 100%;
-  height: 100px;
+  padding: 2rem 2.5rem;
 
   border: 1px solid ${(props) => props.theme.colors.gray40};
   border-radius: 1.2rem;
@@ -249,7 +251,7 @@ const TeamStatusItem = styled.div`
     color: ${(props) => props.theme.colors.primary60};
   }
 `;
-const TeamNoticeContainer = styled.div`
+const TeamNoticeContainer = styled(motion.div)`
   width: 100%;
 
   border: 1px solid ${(props) => props.theme.colors.gray20};

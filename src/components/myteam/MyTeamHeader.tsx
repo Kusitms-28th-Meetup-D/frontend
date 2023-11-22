@@ -1,16 +1,16 @@
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { styled } from 'styled-components';
-import { selectedTeamAtom } from '../../recoil/myteam';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { loginInfoState } from '../../recoil/atom';
 
 const MyTeamHeader = () => {
   const navigate = useNavigate();
   const loginInfo = useRecoilValue(loginInfoState);
-  const [selectedTeam, setSelectedTeam] = useRecoilState(selectedTeamAtom);
+  const location = useLocation();
+  const pathSegments = location.pathname.split('/');
+  const action = pathSegments[3];
 
   const handleCategoryClick = (id: number) => {
-    setSelectedTeam(id);
     if (id === 0) {
       navigate(`/myteam/${loginInfo.data?.userId}/open`);
     } else if (id === 1) {
@@ -26,15 +26,30 @@ const MyTeamHeader = () => {
     <>
       <MyTeamTitle>내 팀</MyTeamTitle>
       <MyTeamCategories>
-        {[0, 1, 2, 3].map((id) => (
-          <MyTeamCategory
-            key={id}
-            $active={selectedTeam === id}
-            onClick={() => handleCategoryClick(id)}
-          >
-            {['내가 오픈한 팀', '지원한 팀', '활동중인 팀', '활동했던 팀'][id]}
-          </MyTeamCategory>
-        ))}
+        <MyTeamCategory
+          $active={action === 'open'}
+          onClick={() => handleCategoryClick(0)}
+        >
+          내가 오픈한 팀
+        </MyTeamCategory>
+        <MyTeamCategory
+          $active={action === 'apply'}
+          onClick={() => handleCategoryClick(1)}
+        >
+          지원한 팀
+        </MyTeamCategory>
+        <MyTeamCategory
+          $active={action === 'active'}
+          onClick={() => handleCategoryClick(2)}
+        >
+          활동중인 팀
+        </MyTeamCategory>
+        <MyTeamCategory
+          $active={action === 'end'}
+          onClick={() => handleCategoryClick(3)}
+        >
+          활동했던 팀
+        </MyTeamCategory>
       </MyTeamCategories>
     </>
   );

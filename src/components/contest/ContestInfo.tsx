@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 import { useParams } from 'react-router-dom';
 import useContestInfo from '../../hooks/contest/useContestInfo';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const ContestInfo = () => {
   const { contestId } = useParams();
   const { contestInfoData } = useContestInfo(contestId as string);
-  console.log(contestInfoData);
+
   return (
     <ContestInfoLayout>
       <ContestInfoTitleBox>
@@ -21,7 +23,11 @@ const ContestInfo = () => {
         )}
       </ContestInfoTitleBox>
 
-      <ContestContainer>
+      <ContestContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <ContestImg src={contestInfoData?.data.data.images[0]} />
         <ContestTextContainer>
           <ContestTextBox>
@@ -87,7 +93,7 @@ const ContestAvrCommnets = styled.div`
 
   padding: 0.5rem 1rem;
 `;
-const ContestContainer = styled.div`
+const ContestContainer = styled(motion.div)`
   display: flex;
   gap: 2rem;
   margin: 2rem 0;

@@ -31,10 +31,8 @@ const Profile = () => {
   const { isUserGetExternalReviewData } = useIsUserGetExternalReview(
     userId as string,
   );
-  // console.log(isUserGetExternalReviewData);
 
   // 인증 필요
-
   const { IsTicketUsedData } = useIsTicketUsed(userId as string);
   const { TicketNumberData } = useTicketNumber();
   useEffect(() => setHeaderSelected(Headers.myProfile));
@@ -114,7 +112,7 @@ const Profile = () => {
 };
 const ProfileLayout = styled.div`
   max-width: 122.4rem;
-  margin: auto;
+  margin: 0 auto 5rem auto;
 `;
 
 export default Profile;

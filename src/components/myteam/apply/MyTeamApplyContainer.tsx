@@ -4,6 +4,9 @@ import ProfileBoxMember from '../../common/ProfileBoxMember';
 import { ProfileBoxProps } from '../../../interface/Contest';
 import { Role } from '../../contest/RecruitTeamItem';
 import { useNavigate } from 'react-router-dom';
+import { useCancelApplyTeam } from '../../../hooks/myTeam/useCancelApplyTeam';
+import { useState } from 'react';
+import TwoButtonModal from '../../common/TwoButtonModal';
 
 const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
   const teamLeaderBoxProps: ProfileBoxProps = {
@@ -11,61 +14,105 @@ const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
     hasProfileButton: false,
     isBgColorWhite: false,
     memberInfo: props.leaderInfo,
-    // width: 20,
-    // height: 22.7,
   };
   const navigate = useNavigate();
+  const cancelApplyTeamMutation = useCancelApplyTeam(props.teamId);
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleCancelApplyClick = () => {
+    cancelApplyTeamMutation.mutate();
+    setOpenModal(false);
+  };
+
   return (
     <Layout>
       <TitleBox>
         <Title>{props.contestTitle}</Title>
         <ContestImg src={props?.contestImage[0]} />
       </TitleBox>
-      <TeamLeaderBox>
-        <TeamLeaderEmptyBox>
-          <Role>팀장</Role>
-          <ProfileBoxMember {...teamLeaderBoxProps} />
-        </TeamLeaderEmptyBox>
-        <TeamInfoButton
-          onClick={() => navigate(`/list/${props.contestId}/${props.teamId}`)}
+
+      <TeamBoxRight>
+        <TeamBoxTop>
+          <span onClick={() => setOpenModal(true)}>지원 취소하기</span>
+        </TeamBoxTop>
+        <TeamBoxBottom>
+          <TeamLeaderBox>
+            <TeamLeaderEmptyBox>
+              <Role>팀장</Role>
+              <ProfileBoxMember {...teamLeaderBoxProps} />
+            </TeamLeaderEmptyBox>
+            <TeamInfoButton
+              onClick={() =>
+                navigate(`/list/${props.contestId}/${props.teamId}`)
+              }
+            >
+              자세히 보러가기
+            </TeamInfoButton>
+          </TeamLeaderBox>
+          <TeamInfoBox>
+            <TeamJoinStatus>
+              팀 합류 여부 :
+              <TeamJoinStatusBox $status={props.status}>
+                {props.status}
+              </TeamJoinStatusBox>
+            </TeamJoinStatus>
+            <TeamLeaderIntroduceTitle>
+              팀장의 한 마디
+              <div />
+            </TeamLeaderIntroduceTitle>
+            <TeamLeaderIntroduce>{props.leaderMessage}</TeamLeaderIntroduce>
+            <TeamStatusBox>
+              <TeamStatusItem>
+                모집 현황 : <span>{props.cur}명</span> / {props.max}명
+              </TeamStatusItem>
+              <TeamStatusItem>활동 지역 : {props.location}</TeamStatusItem>
+              <TeamStatusItem>
+                활동 종료 예정일 : {props.endDate}
+              </TeamStatusItem>
+            </TeamStatusBox>
+          </TeamInfoBox>
+        </TeamBoxBottom>
+      </TeamBoxRight>
+
+      {openModal && (
+        <TwoButtonModal
+          leftButton={{
+            text: '조금 더 생각해 볼게요',
+            onClickFunc: () => {
+              setOpenModal(false);
+            },
+          }}
+          rightButton={{
+            text: '네, 지원 취소할게요',
+            onClickFunc: handleCancelApplyClick,
+          }}
+          onCloseClickFunc={() => {
+            setOpenModal(false);
+          }}
+          $isModalVisible={openModal}
         >
-          자세히 보러가기
-        </TeamInfoButton>
-      </TeamLeaderBox>
-      <TeamInfoBox>
-        <TeamJoinStatus>
-          팀 합류 여부 :
-          <TeamJoinStatusBox $status={props.status}>
-            {props.status}
-          </TeamJoinStatusBox>
-        </TeamJoinStatus>
-        <TeamLeaderIntroduceTitle>
-          팀장의 한 마디
-          <div />
-        </TeamLeaderIntroduceTitle>
-        <TeamLeaderIntroduce>{props.leaderMessage}</TeamLeaderIntroduce>
-        <TeamStatusBox>
-          <TeamStatusItem>
-            모집 현황 : <span>{props.cur}명</span> / {props.max}명{' '}
-          </TeamStatusItem>
-          <TeamStatusItem>활동 지역 : {props.location}</TeamStatusItem>
-          <TeamStatusItem> 활동 종료 예정일 : {props.endDate}</TeamStatusItem>
-        </TeamStatusBox>
-      </TeamInfoBox>
+          <ModalContent>
+            <img
+              src={'/assets/images/myteam/cancel_apply_team.svg'}
+              alt={'지원 취소 이미지'}
+            />
+            <h1>지원을 취소하시겠어요?</h1>
+            <h2>지원 취소 후에는 지금까지의 지원 정보가 모두 삭제돼요.</h2>
+          </ModalContent>
+        </TwoButtonModal>
+      )}
     </Layout>
   );
 };
 const Layout = styled.div`
   width: 100%;
-  height: 35.3rem;
   background-color: ${(props) => props.theme.colors.primary10};
 
   border: 1px solid ${(props) => props.theme.colors.primary10};
   border-radius: 1.4rem;
 
   display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  justify-content: space-between;
   gap: 2rem;
 
   padding: 3rem 4rem;
@@ -137,6 +184,30 @@ const TeamInfoBox = styled.div`
   padding: 2.7rem 3.6rem;
   margin-top: 2rem;
 `;
+
+const TeamBoxRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const TeamBoxTop = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  ${(props) => props.theme.fonts.bodyL}
+  color: ${(props) => props.theme.colors.primary90};
+
+  span {
+    cursor: pointer;
+  }
+`;
+
+const TeamBoxBottom = styled.div`
+  display: flex;
+  gap: 2rem;
+`;
+
 const TeamJoinStatus = styled.div`
   display: flex;
   align-items: center;
@@ -190,7 +261,7 @@ const TeamLeaderIntroduceTitle = styled.div`
 
 const TeamLeaderIntroduce = styled.div`
   width: 100%;
-  height: 100px;
+  padding: 2rem 2.5rem;
 
   border: 1px solid ${(props) => props.theme.colors.gray40};
   border-radius: 1.2rem;
@@ -219,4 +290,27 @@ const TeamStatusItem = styled.div`
     color: ${(props) => props.theme.colors.primary60};
   }
 `;
+
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 0;
+
+  gap: 1rem;
+
+  img {
+    width: 12.7rem;
+    height: 9.7rem;
+  }
+  h1 {
+    ${(props) => props.theme.fonts.heading4}
+    color: ${(props) => props.theme.colors.primary60};
+  }
+  h2 {
+    ${(props) => props.theme.fonts.bodyL}
+    color: ${(props) => props.theme.colors.gray90};
+  }
+`;
+
 export default MyTeamApplyContainer;
