@@ -26,10 +26,9 @@ const ExternalReviewOneLine = ({ userName }: ExternalReviewOneLineProps) => {
           placeholder={'140자 이하로 리뷰를 작성해주세요.'}
           onChange={handleTextareaChange}
           maxLength={140}
-        >
-          {text}
-        </textarea>
-        <p>{review.length}/140자</p>
+          defaultValue={text}
+        />
+        <p>{text.length}/140자</p>
       </div>
     </ExternalReviewContainer>
   );

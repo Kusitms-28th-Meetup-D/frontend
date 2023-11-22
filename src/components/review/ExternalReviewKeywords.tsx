@@ -4,13 +4,13 @@ import { useContext, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { selectedNameAtom } from '../../recoil/review';
 import { keywordListWithIds } from '../../constants/review';
-import { ReviewContext } from '../../pages/review/Review';
+import { ExternalReviewContext } from '../../pages/review/ExternalReview';
 
 interface ReviewKeywordsProps {
   userName?: string;
 }
 
-const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
+const ExternalReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
   const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
   const selectedName = useRecoilValue(selectedNameAtom);
 
@@ -24,7 +24,7 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
     }
   };
 
-  const { review, setReview } = useContext(ReviewContext);
+  const { review, setReview } = useContext(ExternalReviewContext);
   useEffect(() => {
     setReview({
       ...review,
@@ -57,8 +57,6 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
   );
 };
 
-export default ReviewKeywords;
-
 const KeywordLayout = styled.div`
   display: flex;
   flex-direction: column;
@@ -83,3 +81,5 @@ const KeywordSubTitle = styled.div`
   color: ${({ theme }) => theme.colors.gray80};
   margin-bottom: 1.8rem;
 `;
+
+export default ExternalReviewKeywords;
