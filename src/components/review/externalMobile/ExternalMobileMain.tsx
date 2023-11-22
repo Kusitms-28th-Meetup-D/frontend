@@ -12,9 +12,9 @@ const ExternalMobileMain = () => {
   return (
     <ExternalMobileMainContainer>
       <h1>Wanteam의 회원님들에게</h1>
-      <h2>{username}님을 추천해주세요!</h2>
+      <h2>{username} 님을 추천해주세요!</h2>
 
-      <p>남겨주신 리뷰는 {username}님의 프로필에 반영됩니다.</p>
+      <p>남겨주신 리뷰는 {username} 님의 프로필에 반영됩니다.</p>
       <p>{username} 님이 멋진 팀원을 구할 수 있도록 도와주세요!</p>
 
       <img
