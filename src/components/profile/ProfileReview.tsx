@@ -10,6 +10,7 @@ const ProfileReview = ({
   setIsLackModalVisible,
   setIsUseModalVisible,
   isUserGetExternalReview,
+  isMyProfile,
 }: {
   reviewData?: Comment[];
   name?: string;
@@ -17,10 +18,13 @@ const ProfileReview = ({
   setIsLackModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   setIsUseModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   isUserGetExternalReview?: boolean;
+  isMyProfile?: boolean;
 }) => {
   const DETAIL_LOCKED_TICKET = isLocked
     ? `티켓을 사용하면 ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`
-    : ``;
+    : isMyProfile
+    ? '내가 받은 한 줄 추천사입니다.'
+    : `티켓을 사용하면 ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`;
   const LOCKED_TICKET_AMMOUNT = isLocked ? '?' : reviewData?.length;
   return (
     <ProfileReviewContainer>

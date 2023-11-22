@@ -104,6 +104,10 @@ const Profile = () => {
         isUserGetExternalReview={
           isUserGetExternalReviewData?.data.data.alreadyReviewed
         }
+        isMyProfile={
+          (loginInfo?.data?.userId as unknown as string) ==
+          (userId as unknown as string)
+        }
       />
     </ProfileLayout>
   );
