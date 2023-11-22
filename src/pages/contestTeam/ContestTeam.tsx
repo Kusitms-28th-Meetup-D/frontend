@@ -15,7 +15,7 @@ import TeamMembers from '../../components/contestTeam/TeamMembers';
 import JoinTeamModal from '../../components/contestTeam/JoinTeamModal';
 
 const ContestTeam = () => {
-  const { teamId } = useParams();
+  const { teamId, contestId } = useParams();
   const { contestTeamDetailData, isLoading } = useContestTeamDetailInfo(
     teamId as string,
   );
@@ -58,6 +58,7 @@ const ContestTeam = () => {
         setIsModalVisible={setIsJoinTeamModalVisible}
         teamId={teamId}
         userId={userLogininfo.data?.userId}
+        contestId={contestId}
       />
 
       <TeamUndo onClick={() => navigate(-1)}>
@@ -65,7 +66,7 @@ const ContestTeam = () => {
         {'공모전으로 돌아가기'}
       </TeamUndo>
       <TeamTitle>
-        {contestTeamDetailData?.data.data.leaderInfo.teamMemberName}님의 팀
+        {contestTeamDetailData?.data.data.leaderInfo.teamMemberName} 님의 팀
       </TeamTitle>
       <TeamLeaderContainer>
         <LeaderBox>

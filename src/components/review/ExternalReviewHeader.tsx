@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import Title from '../common/Title';
-// import ReviewProfile from './ReviewProfile';
+import ExternalReviewProfile from './ExternalReviewProfile';
 import { ProfileData } from '../../interface/Profile';
 
 interface ExternalReviewHeaderProps {
@@ -16,11 +16,11 @@ const ExternalReviewHeader = ({ profileData }: ExternalReviewHeaderProps) => {
             <HeaderLeft>
               <HeaderTitle>
                 <Title>Wanteam의 회원님들에게</Title>
-                <h1>{profileData.username}님을 추천해주세요!</h1>
+                <h1>{profileData.username} 님을 추천해주세요!</h1>
               </HeaderTitle>
               <HeaderSubTitle>
                 <p>
-                  남겨주신 리뷰는 {profileData.username}님의 프로필에
+                  남겨주신 리뷰는 {profileData.username} 님의 프로필에
                   반영됩니다.
                 </p>
                 <p>
@@ -30,11 +30,10 @@ const ExternalReviewHeader = ({ profileData }: ExternalReviewHeaderProps) => {
               </HeaderSubTitle>
             </HeaderLeft>
             <HeaderRight>
-              {/* <ReviewProfile
-                user={profileData}
-                name={profileData.username}
-                isSelected={true}
-              /> */}
+              <ExternalReviewProfile
+                username={profileData.username}
+                profile={profileData.profile_image}
+              />
             </HeaderRight>
           </>
         )}

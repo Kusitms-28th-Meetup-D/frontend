@@ -35,7 +35,7 @@ const LoginProfile = ({ userId }: { userId?: number }) => {
         <DroppableItem onClick={() => navigate(`/profile/${userId}`)}>
           내 프로필
         </DroppableItem>
-        <DroppableItem onClick={() => navigate('/payment/charge')}>
+        <DroppableItem onClick={() => navigate('/profile/modify')}>
           계정 설정
         </DroppableItem>
         <Hr />

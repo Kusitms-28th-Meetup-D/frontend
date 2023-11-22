@@ -8,6 +8,7 @@ export const postJoinTeam = (
 ): AxiosPromise<ResponseJoinTeam> =>
   Axios.post(`/api/teams/apply`, {
     teamId: requestData.teamId,
+    contestId: requestData.contestId,
   });
 
 export default postJoinTeam;

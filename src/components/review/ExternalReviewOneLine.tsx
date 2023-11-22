@@ -1,26 +1,33 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { styled } from 'styled-components';
+import { ExternalReviewContext } from '../../pages/review/ExternalReview';
 
 interface ExternalReviewOneLineProps {
   userName?: string;
 }
 
 const ExternalReviewOneLine = ({ userName }: ExternalReviewOneLineProps) => {
-  const [review, setReview] = useState('');
+  const [text, setText] = useState('');
+  const { review, setReview } = useContext(ExternalReviewContext);
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setReview(e.target.value);
+    setText(e.target.value);
+    setReview({
+      ...review,
+      recommendationComment: e.target.value,
+    });
   };
 
   return (
     <ExternalReviewContainer>
-      <h1>{userName}님을 한 줄로 추천한다면?</h1>
+      <h1>{userName} 님을 한 줄로 추천한다면?</h1>
       <div>
         <textarea
           placeholder={'140자 이하로 리뷰를 작성해주세요.'}
           onChange={handleTextareaChange}
+          maxLength={140}
         >
-          {review}
+          {text}
         </textarea>
         <p>{review.length}/140자</p>
       </div>

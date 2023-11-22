@@ -44,7 +44,7 @@ const ExternalMobileCompleteContainer = styled.div`
     margin-bottom: 1.5rem;
   }
   p {
-    ${({ theme }) => theme.fonts.bodyXXS};
+    ${({ theme }) => theme.fonts.bodyXS};
     color: ${({ theme }) => theme.colors.gray70};
   }
   img {

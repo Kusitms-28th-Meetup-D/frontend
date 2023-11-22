@@ -6,7 +6,7 @@ import {
   ProfileProps,
 } from '../../interface/Contest';
 import ProfileBoxMember from '../common/ProfileBoxMember';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { loginInfoState, loginModalState } from '../../recoil/atom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 // import ProfileBoxLeader from '../common/ProfileBoxLeader';
@@ -22,6 +22,7 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
     height: 27.6,
   };
   const navigate = useNavigate();
+  const { contestId } = useParams();
   const loginInfo = useRecoilValue(loginInfoState);
   const setLoginModal = useSetRecoilState(loginModalState);
   const handleTeamDetailClick = () => {
@@ -29,7 +30,7 @@ const RecruitTeamItem = ({ teamData }: { teamData: ContestTeamList }) => {
 
     //내가 오픈한 팀인 경우
     if (teamData.leaderInfo.teamMemberId == loginInfo.data?.userId) {
-      navigate(`/myteam/${loginInfo.data?.userId}/${teamData.teamId}`);
+      navigate(`/myteam/${loginInfo.data?.userId}/${teamData.teamId}/${contestId}`);
     } else navigate(`./${teamData.teamId}`);
   };
   return (

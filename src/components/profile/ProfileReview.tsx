@@ -31,7 +31,7 @@ const ProfileReview = ({
             <ProfileReviewDetail>{DETAIL_LOCKED_TICKET}</ProfileReviewDetail>
             <ProfileReviewInfo>
               한 줄 추천사 수<Count>{LOCKED_TICKET_AMMOUNT}개</Count>
-              <Align>최신순↑</Align>
+              <Align>ㆍ최신순</Align>
             </ProfileReviewInfo>
           </ProfileReviewDetailBox>
           <ProfileReviewContentsBox

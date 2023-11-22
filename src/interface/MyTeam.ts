@@ -7,7 +7,7 @@ export interface RequestAppliedTeam {
 
 export interface RequestTeamOpen {
   contestId?: string;
-  max: number;
+  max?: number;
   location: number;
   endDate: string;
   leaderMessage: string;
@@ -43,6 +43,7 @@ export interface TeamData {
   applyMemberInfos?: ProfileProps[];
   contestTitle?: string;
   contestImage: string[];
+  contestId?: string;
 }
 
 export interface ResponseOpenedTeam {
@@ -103,6 +104,7 @@ export interface RecruitingTeamData {
   teamLeaderName: string;
   teamLeaderImage: string;
   teamLeaderMessage: string;
+  teamId: string;
 }
 
 export interface RecruitingTeam {

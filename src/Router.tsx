@@ -31,6 +31,8 @@ import ExternalMobileMain from './components/review/externalMobile/ExternalMobil
 import ExternalMobileOneLine from './components/review/externalMobile/ExternalMobileOneLine';
 import ExternalMobileComplete from './components/review/externalMobile/ExternalMobileComplete';
 import Layout from './components/layout/Layout';
+import ExternalReview from './pages/review/ExternalReview';
+import ExternalReviewComplete from './pages/review/ExternalReviewComplete';
 
 function Router() {
   return (
@@ -59,7 +61,11 @@ function Router() {
             <Route path="oneLine" element={<ExternalMobileOneLine />} />
             <Route path="complete" element={<ExternalMobileComplete />} />
           </Route>
-          {/* <Route path="/review/external/:userId" element={<ExternalReview />} /> */}
+          <Route path="/review/external/:userId" element={<ExternalReview />} />
+          <Route
+            path="/review/external/:userId/complete"
+            element={<ExternalReviewComplete />}
+          />
 
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/profile/:userId/create" element={<ProfileCreate />} />
@@ -73,11 +79,11 @@ function Router() {
             <Route path="end" element={<MyTeamEnd />} />
           </Route>
           <Route
-            path="/myteam/:userId/:teamId"
+            path="/myteam/:userId/:teamId/:contestId"
             element={<MyTeamManagement />}
           />
 
-          <Route path="/list/:contestId" element={<Contest />} />
+          <Route path="/list" element={<CompetitionList />} />
           <Route path="/list/:contestId" element={<Contest />} />
           <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />
 
@@ -86,7 +92,6 @@ function Router() {
             path="/list/:postId/:teamId"
             element={<div>팀 생성페이지입니다</div>}
           />
-          <Route path="/list" element={<CompetitionList />} />
 
           <Route path="/payment/charge" element={<PaymentCharge />} />
         </Routes>
