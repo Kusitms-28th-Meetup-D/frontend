@@ -11,10 +11,10 @@ interface ReviewKeywordsProps {
 }
 
 const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
-  const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
+  const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
   const selectedName = useRecoilValue(selectedNameAtom);
 
-  const handleToggleKeyword = (keyword: string) => {
+  const handleToggleKeyword = (keyword: number) => {
     if (selectedKeywords.includes(keyword)) {
       setSelectedKeywords(selectedKeywords.filter((k) => k !== keyword));
     } else {
@@ -48,8 +48,8 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
           <Keyword
             key={keyword.id}
             keyword={keyword.keyword}
-            selected={selectedKeywords.includes(keyword.keyword)}
-            onClick={() => handleToggleKeyword(keyword.keyword)}
+            selected={selectedKeywords.includes(keyword.id)}
+            onClick={() => handleToggleKeyword(keyword.id)}
           />
         ))}
       </KeywordBox>
