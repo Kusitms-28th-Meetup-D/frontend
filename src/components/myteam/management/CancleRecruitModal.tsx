@@ -71,6 +71,7 @@ const Content = styled.div`
   ${(props) => props.theme.fonts.bodyM};
   color: ${(props) => props.theme.colors.gray90};
   margin-bottom: 2rem;
+  text-align: center;
   white-space: break-spaces;
 `;
 export default CancleRecruitModal;
