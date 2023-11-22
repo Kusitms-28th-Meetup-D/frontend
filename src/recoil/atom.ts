@@ -2,6 +2,7 @@ import { atom } from 'recoil';
 import { Headers } from '../constants/Header';
 import { recoilPersist } from 'recoil-persist';
 import { LoginInfo } from '../interface/Login';
+import { RecoilReview } from '../interface/Review';
 const { persistAtom } = recoilPersist({
   key: 'recoilPersistTest',
   storage: sessionStorage,
@@ -29,6 +30,90 @@ export const loginInfoState = atom<LoginInfo>({
     isLogin: false,
   },
   effects_UNSTABLE: [persistAtom],
+});
+//리뷰 state
+export const reviewState = atom<RecoilReview[]>({
+  key: 'review',
+  default: [
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      selectedKeywords: [],
+      arr: [
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+  ],
+});
+export const reviewMemberIndexState = atom<number>({
+  key: 'reviewIndex',
+  default: 0,
+});
+export const reviewCommentState = atom<string>({
+  key: 'reviewComment',
+  default: '',
 });
 
 //GlobalModal

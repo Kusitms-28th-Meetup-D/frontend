@@ -10,15 +10,14 @@ interface ReviewTendencyProps {
 
 const ReviewTendency = ({ userName }: ReviewTendencyProps) => {
   const selectedName = useRecoilValue(selectedNameAtom);
-
   return (
     <>
       <TendencyTitle>
         {userName ? userName : selectedName} 님은 어떤 성향일까요?
       </TendencyTitle>
       <TendencyBoxLayout>
-        <TendencyBox boxName="팀 문화" question={question1} />
-        <TendencyBox boxName="작업 방식" question={question2} />
+        <TendencyBox boxName="팀 문화" question={question1} arrIndex={0} />
+        <TendencyBox boxName="작업 방식" question={question2} arrIndex={1} />
       </TendencyBoxLayout>
     </>
   );

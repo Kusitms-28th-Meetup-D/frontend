@@ -8,6 +8,7 @@ interface UseReviewsCreate {
 
 export function useReviewsCreate(reviews: RequestReviews): UseReviewsCreate {
   const queryClient = useQueryClient();
+  console.log('api oaram', reviews);
 
   const { mutate } = useMutation('reviewCreate', () => postReviews(reviews), {
     onSuccess: () => {
