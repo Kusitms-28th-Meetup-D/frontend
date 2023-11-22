@@ -10,6 +10,7 @@ import { Headers } from '../../constants/Header';
 const CompetitionList = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.list));
+
   return (
     <CompetitionLayout>
       <Recruiting />

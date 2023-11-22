@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 const RightBox = () => {
+  const navigate = useNavigate();
+
   return (
     <RightBoxContainer>
       <div>
@@ -8,7 +11,12 @@ const RightBox = () => {
         <h1>원하는 팀원 찾으러 가기</h1>
       </div>
       <RightBoxBackground src={'/assets/images/main/main_rightbox.svg'} />
-      <RightButton src={'/assets/images/main/right_button.svg'} />
+      <RightButton
+        src={'/assets/images/main/right_button.svg'}
+        onClick={() => {
+          navigate('/list');
+        }}
+      />
     </RightBoxContainer>
   );
 };

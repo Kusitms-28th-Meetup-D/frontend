@@ -83,7 +83,7 @@ function Router() {
             element={<MyTeamManagement />}
           />
 
-          <Route path="/list/:contestId" element={<Contest />} />
+          <Route path="/list" element={<CompetitionList />} />
           <Route path="/list/:contestId" element={<Contest />} />
           <Route path="/list/:contestId/:teamId" element={<ContestTeam />} />
 
@@ -92,7 +92,6 @@ function Router() {
             path="/list/:postId/:teamId"
             element={<div>팀 생성페이지입니다</div>}
           />
-          <Route path="/list" element={<CompetitionList />} />
 
           <Route path="/payment/charge" element={<PaymentCharge />} />
         </Routes>
