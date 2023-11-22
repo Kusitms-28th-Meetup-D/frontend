@@ -25,19 +25,6 @@ export interface ReviewCheck {
   isReviewdBefore: boolean;
 }
 
-export interface RequestReviews {
-  uploadReviews: UploadReview[];
-}
-
-export interface UploadReview {
-  userId: number;
-  teamId: number;
-  selectedKeywords: SelectedKeywords[];
-  selectedTeamCultures: SelectedTeamCultures;
-  selectedWorkMethods: SelectedWorkMethods;
-  recommendationComment: string;
-}
-
 export interface RequestNonUserReview {
   userId: number;
   selectedKeywords: SelectedKeywords[];
@@ -88,18 +75,7 @@ export interface ReviewCheck {
   isReviewdBefore: boolean;
 }
 
-export interface RequestReviews {
-  uploadReviews: UploadReview[];
-}
 
-export interface UploadReview {
-  userId: number;
-  teamId: number;
-  selectedKeywords: SelectedKeywords[];
-  selectedTeamCultures: SelectedTeamCultures;
-  selectedWorkMethods: SelectedWorkMethods;
-  recommendationComment: string;
-}
 
 export interface RequestNonUserReview {
   userId: number;
@@ -142,4 +118,19 @@ export interface ReviewContextType {
     recommendationComment: string;
   };
   setReview: React.Dispatch<React.SetStateAction<any>>;
+}
+
+//Review 진우
+
+export interface RequestReviews {
+  uploadReviews: UploadReview[];
+}
+
+export interface UploadReview {
+  userId: number;
+  teamId: number;
+  selectedKeywords: SelectedKeywords[];
+  selectedTeamCultures: SelectedTeamCultures;
+  selectedWorkMethods: SelectedWorkMethods;
+  recommendationComment?: string;
 }

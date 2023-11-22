@@ -1,10 +1,11 @@
 import { styled } from 'styled-components';
 import Keyword from './Keyword';
 import { useContext, useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { selectedNameAtom } from '../../recoil/review';
 import { keywordListWithIds } from '../../constants/review';
 import { ReviewContext } from '../../pages/review/Review';
+import { reviewMemberIndexState, reviewState } from '../../recoil/atom';
 
 interface ReviewKeywordsProps {
   userName?: string;
@@ -14,7 +15,16 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
   const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
   const selectedName = useRecoilValue(selectedNameAtom);
 
+  const [reviewRecoilData, setReviewRecoilData] = useRecoilState(reviewState);
+  const reviewMemberIndex = useRecoilValue(reviewMemberIndexState);
+
   const handleToggleKeyword = (keyword: number) => {
+    // setReviewRecoilData((curr) => {
+    //   const ret = { ...curr };
+    //   ret.uploadReviews[reviewMemberIndex].teamId = 123;
+    //   return ret;
+    // });
+    console.log('키워드 선택', reviewRecoilData);
     if (selectedKeywords.includes(keyword)) {
       setSelectedKeywords(selectedKeywords.filter((k) => k !== keyword));
     } else {
