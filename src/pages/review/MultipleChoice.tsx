@@ -47,7 +47,7 @@ const MultipleChoice = () => {
       uploadReviews: newArr.map((recoilReview, index) => {
         const selectedKeywords: SelectedKeywords[] =
           recoilReview.selectedKeywords.map((keyword) => ({
-            selecteKeyword: keyword,
+            selectKeyword: keyword,
           }));
 
         const selectedTeamCultures: SelectedTeamCultures = {
@@ -75,7 +75,9 @@ const MultipleChoice = () => {
 
     setRequestDTO(myRequestDTO);
 
-    handleUseCreateReview.mutate();
+    setTimeout(() => {
+      handleUseCreateReview.mutate();
+    }, 500);
   };
 
   return (

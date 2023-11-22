@@ -80,7 +80,7 @@ export interface RequestNonUserReview {
 }
 
 export interface SelectedKeywords {
-  selecteKeyword: number;
+  selectKeyword: number;
 }
 
 export interface SelectedTeamCultures {
