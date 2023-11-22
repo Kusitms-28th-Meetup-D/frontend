@@ -37,133 +37,45 @@ export const reviewState = atom<RecoilReview[]>({
   default: [
     {
       selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
+      arr: [
+        [-1, -1, -1],
+        [-1, -1, -1],
+      ],
     },
     {
       selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
+      arr: [
+        [-1, -1, -1],
+        [-1, -1, -1],
+      ],
     },
     {
       selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
+      arr: [
+        [-1, -1, -1],
+        [-1, -1, -1],
+      ],
     },
     {
       selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
+      arr: [
+        [-1, -1, -1],
+        [-1, -1, -1],
+      ],
     },
     {
       selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
+      arr: [
+        [-1, -1, -1],
+        [-1, -1, -1],
+      ],
     },
     {
       selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
-    },
-    {
-      selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
-    },
-    {
-      selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
-    },
-    {
-      selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
-    },
-    {
-      selectedKeywords: [],
-      selectedTeamCultures: {
-        feedbackStyle: -1,
-        teamStyle: -1,
-        personalityStyle: -1,
-      },
-      selectedWorkMethods: {
-        workStyle: -1,
-        resultProcess: -1,
-        workLifeBalance: -1,
-      },
+      arr: [
+        [-1, -1, -1],
+        [-1, -1, -1],
+      ],
     },
   ],
   // effects_UNSTABLE: [persistAtom],

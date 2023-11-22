@@ -135,7 +135,6 @@ export interface UploadReview {
 
 export interface RecoilReview {
   selectedKeywords: number[];
-  selectedTeamCultures: SelectedTeamCultures;
-  selectedWorkMethods: SelectedWorkMethods;
+  arr: number[][];
   recommendationComment?: string;
 }

@@ -17,8 +17,6 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
   const [reviewRecoilData, setReviewRecoilData] = useRecoilState(reviewState);
   const reviewMemberIndex = useRecoilValue(reviewMemberIndexState);
 
-  // console.log('키워드 선택', reviewRecoilData);
-
   const handleToggleKeyword = (keyword: number) => {
     setReviewRecoilData((curr) => {
       const newArr = [...curr];
