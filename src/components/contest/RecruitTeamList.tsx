@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useContestTeamList from '../../hooks/contest/useContestTeamList';
 import { useSetRecoilState } from 'recoil';
 import { loginModalState } from '../../recoil/atom';
+import MyTeamEmpty from '../myteam/MyTeamEmpty';
 
 const RecruitTeamList = ({ isLogin }: { isLogin: boolean }) => {
   const { contestId } = useParams();
@@ -26,7 +27,10 @@ const RecruitTeamList = ({ isLogin }: { isLogin: boolean }) => {
         <RecruitTeamButton onClick={handleBtnClicked}>
           +팀 오픈하러 가기
         </RecruitTeamButton>
-      </RecruitTeamListTopContainer>{' '}
+      </RecruitTeamListTopContainer>
+      {contestTeamListData && contestTeamListData?.data.data.length == 0 ? (
+        <MyTeamEmpty text="아직 모집중인 팀이 없어요" />
+      ) : null}
       <RecruitTeamContainer>
         {contestTeamListData?.data.data.map((data, index) => {
           return <RecruitTeamItem teamData={data} key={index} />;
