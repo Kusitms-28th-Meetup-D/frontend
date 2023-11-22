@@ -4,6 +4,7 @@ import ProfileBoxMember from '../../common/ProfileBoxMember';
 import { ProfileBoxProps } from '../../../interface/Contest';
 import { Role } from '../../contest/RecruitTeamItem';
 import { useNavigate } from 'react-router-dom';
+import { useCancelApplyTeam } from '../../../hooks/myTeam/useCancelApplyTeam';
 
 const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
   const teamLeaderBoxProps: ProfileBoxProps = {
@@ -11,61 +12,73 @@ const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
     hasProfileButton: false,
     isBgColorWhite: false,
     memberInfo: props.leaderInfo,
-    // width: 20,
-    // height: 22.7,
   };
   const navigate = useNavigate();
+  const cancelApplyTeamMutation = useCancelApplyTeam(props.teamId);
+
+  const handleCancelApplyClick = () => {
+    cancelApplyTeamMutation.mutate();
+  };
+
   return (
     <Layout>
       <TitleBox>
         <Title>{props.contestTitle}</Title>
         <ContestImg src={props?.contestImage[0]} />
       </TitleBox>
-      <TeamLeaderBox>
-        <TeamLeaderEmptyBox>
-          <Role>팀장</Role>
-          <ProfileBoxMember {...teamLeaderBoxProps} />
-        </TeamLeaderEmptyBox>
-        <TeamInfoButton
-          onClick={() => navigate(`/list/${props.contestId}/${props.teamId}`)}
-        >
-          자세히 보러가기
-        </TeamInfoButton>
-      </TeamLeaderBox>
-      <TeamInfoBox>
-        <TeamJoinStatus>
-          팀 합류 여부 :
-          <TeamJoinStatusBox $status={props.status}>
-            {props.status}
-          </TeamJoinStatusBox>
-        </TeamJoinStatus>
-        <TeamLeaderIntroduceTitle>
-          팀장의 한 마디
-          <div />
-        </TeamLeaderIntroduceTitle>
-        <TeamLeaderIntroduce>{props.leaderMessage}</TeamLeaderIntroduce>
-        <TeamStatusBox>
-          <TeamStatusItem>
-            모집 현황 : <span>{props.cur}명</span> / {props.max}명{' '}
-          </TeamStatusItem>
-          <TeamStatusItem>활동 지역 : {props.location}</TeamStatusItem>
-          <TeamStatusItem> 활동 종료 예정일 : {props.endDate}</TeamStatusItem>
-        </TeamStatusBox>
-      </TeamInfoBox>
+
+      <TeamBoxRight>
+        <TeamBoxTop onClick={handleCancelApplyClick}>지원 취소하기</TeamBoxTop>
+        <TeamBoxBottom>
+          <TeamLeaderBox>
+            <TeamLeaderEmptyBox>
+              <Role>팀장</Role>
+              <ProfileBoxMember {...teamLeaderBoxProps} />
+            </TeamLeaderEmptyBox>
+            <TeamInfoButton
+              onClick={() =>
+                navigate(`/list/${props.contestId}/${props.teamId}`)
+              }
+            >
+              자세히 보러가기
+            </TeamInfoButton>
+          </TeamLeaderBox>
+          <TeamInfoBox>
+            <TeamJoinStatus>
+              팀 합류 여부 :
+              <TeamJoinStatusBox $status={props.status}>
+                {props.status}
+              </TeamJoinStatusBox>
+            </TeamJoinStatus>
+            <TeamLeaderIntroduceTitle>
+              팀장의 한 마디
+              <div />
+            </TeamLeaderIntroduceTitle>
+            <TeamLeaderIntroduce>{props.leaderMessage}</TeamLeaderIntroduce>
+            <TeamStatusBox>
+              <TeamStatusItem>
+                모집 현황 : <span>{props.cur}명</span> / {props.max}명
+              </TeamStatusItem>
+              <TeamStatusItem>활동 지역 : {props.location}</TeamStatusItem>
+              <TeamStatusItem>
+                활동 종료 예정일 : {props.endDate}
+              </TeamStatusItem>
+            </TeamStatusBox>
+          </TeamInfoBox>
+        </TeamBoxBottom>
+      </TeamBoxRight>
     </Layout>
   );
 };
 const Layout = styled.div`
   width: 100%;
-  height: 35.3rem;
   background-color: ${(props) => props.theme.colors.primary10};
 
   border: 1px solid ${(props) => props.theme.colors.primary10};
   border-radius: 1.4rem;
 
   display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  justify-content: space-between;
   gap: 2rem;
 
   padding: 3rem 4rem;
@@ -137,6 +150,27 @@ const TeamInfoBox = styled.div`
   padding: 2.7rem 3.6rem;
   margin-top: 2rem;
 `;
+
+const TeamBoxRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const TeamBoxTop = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+
+  ${(props) => props.theme.fonts.bodyL}
+  color: ${(props) => props.theme.colors.primary90};
+`;
+
+const TeamBoxBottom = styled.div`
+  display: flex;
+  gap: 2rem;
+`;
+
 const TeamJoinStatus = styled.div`
   display: flex;
   align-items: center;
