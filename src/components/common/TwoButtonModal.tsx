@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { ReactNode } from 'react';
 
 import closeSrc from '/assets/images/common/closeButton.svg';
+import { motion } from 'framer-motion';
+import { TextAnimation } from '../../styles/animation';
 
 interface TwoButtonModalProps {
   children: ReactNode; // 자식 컴포넌트
@@ -26,7 +28,11 @@ const TwoButtonModal: React.FC<TwoButtonModalProps> = ({
 }) => {
   return (
     <BlurLayout $isModalVisible={$isModalVisible}>
-      <ModalContainer>
+      <ModalContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <CloseImg src={closeSrc} onClick={onCloseClickFunc} />
         {children}
         <TwoButtonBox>
@@ -56,7 +62,7 @@ const BlurLayout = styled.div<{ $isModalVisible: boolean }>`
   justify-content: center;
   align-items: center;
 `;
-const ModalContainer = styled.div`
+const ModalContainer = styled(motion.div)`
   position: relative;
   width: 60rem;
   /* height: 36rem; */

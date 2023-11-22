@@ -4,14 +4,18 @@ import Button from '../../common/Button';
 import TeamMemberScrollBox from '../active/TeamMemberScrollBox';
 import Title from '../../common/Title';
 import { EndTeamData } from '../../../interface/MyTeam';
+import { useNavigate } from 'react-router-dom';
 
 interface MyTeamEndBoxProps {
   endTeam: EndTeamData;
 }
 
 const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
-  console.log(endTeam.teamMemeberInfos);
-
+  console.log(endTeam);
+  const naviate = useNavigate();
+  const handlClick = () => {
+    naviate(`/review/${endTeam.teamId}/subjective`);
+  };
   return (
     <MyTeamEndBoxContainer>
       {endTeam && (
@@ -26,7 +30,7 @@ const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
                 src={'/assets/images/myteam/myteam_end.svg'}
                 alt={'myteam_end'}
               />
-              <ButtonStyle>
+              <ButtonStyle onClick={handlClick}>
                 리뷰 작성하러 가기
                 <img
                   src={'/assets/images/common/right_arrow.svg'}
@@ -85,6 +89,7 @@ const MyTeamEndLeft = styled(Box)`
     ${({ theme }) => theme.fonts.subtitleXL};
     color: ${({ theme }) => theme.colors.primary60};
     margin-bottom: 1.5rem;
+    white-space: nowrap;
   }
   p {
     ${({ theme }) => theme.fonts.bodyM};

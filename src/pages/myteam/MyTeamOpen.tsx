@@ -4,12 +4,19 @@ import { useOpenedTeam } from '../../hooks/myTeam/useOpenedTeam';
 import { useRecoilValue } from 'recoil';
 import { loginInfoState } from '../../recoil/atom';
 import MyTeamEmpty from '../../components/myteam/MyTeamEmpty';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
+
 const MyTeamOpen = () => {
   const { openedTeam } = useOpenedTeam();
   const loginInfo = useRecoilValue(loginInfoState);
-  console.log(openedTeam);
+
   return (
-    <MyTeamOpenContainer>
+    <MyTeamOpenContainer
+      initial="hidden"
+      animate="visible"
+      variants={TextAnimation}
+    >
       {openedTeam &&
         openedTeam.data.length > 0 &&
         openedTeam.data.map((myTeamOpen) => (
@@ -20,7 +27,7 @@ const MyTeamOpen = () => {
             userId={loginInfo.data?.userId}
             contestId={myTeamOpen.contestId}
           />
-        ))}{' '}
+        ))}
       {openedTeam && openedTeam.data.length == 0 && (
         <MyTeamEmpty text="아직 오픈한 팀이 없어요" />
       )}
@@ -30,7 +37,7 @@ const MyTeamOpen = () => {
 
 export default MyTeamOpen;
 
-const MyTeamOpenContainer = styled.div`
+const MyTeamOpenContainer = styled(motion.div)`
   width: 122.4rem;
   margin: 0 auto;
 `;

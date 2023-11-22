@@ -77,7 +77,7 @@ ButtonBoxProps) => {
               onClickFunc: () => setOpenCompleteModal(false),
             }}
             rightButton={{
-              text: '네 오픈할게요',
+              text: '네, 오픈할게요!',
               onClickFunc: handleCompleteModalClick,
             }}
             onCloseClickFunc={() => setOpenCompleteModal(false)}

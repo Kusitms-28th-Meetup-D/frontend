@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useProfileCreate } from '../../hooks/profile/useProfileCreate';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const ProfileSubInfo = ({
   internships,
@@ -44,17 +46,23 @@ const ProfileSubInfo = ({
     setIsModyfying((curr) => !curr);
     if (isModifying) {
       profileCreateMutation.mutate();
+      window.location.reload(); // 임시로 새로고침
     }
   };
   const handleClickModify2 = () => {
     setIsModyfying2((curr) => !curr);
     if (isModifying2) {
       profileCreateMutation.mutate();
+      window.location.reload(); // 임시로 새로고침
     }
   };
   return (
     <ProfileSubInfoContainer>
-      <ProfileSubInfoBox>
+      <ProfileSubInfoBox
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <ProfileSubInfoTitle>이력</ProfileSubInfoTitle>
         <ProfileSubInfoContents>
           {isMyProfile ? (
@@ -76,9 +84,21 @@ const ProfileSubInfo = ({
                 ></ModifyingArea>
               </>
             ) : (
-              internships?.map((content: any, index: number) => (
-                <ContentsDetail key={index}>{content}</ContentsDetail>
-              ))
+              <>
+                {internships && internships.length !== 0 ? (
+                  internships?.map((content: any, index: number) => (
+                    <ContentsDetail key={index}>
+                      {content ? (
+                        content
+                      ) : (
+                        <NoneContent>프로필 내용이 없어요</NoneContent>
+                      )}
+                    </ContentsDetail>
+                  ))
+                ) : (
+                  <NoneContent>프로필 내용이 없어요</NoneContent>
+                )}
+              </>
             )}
           </ContentsDetailBox>
           <ContentsSubTitle>{TITLES[1]}</ContentsSubTitle>
@@ -94,14 +114,31 @@ const ProfileSubInfo = ({
                 ></ModifyingArea>
               </>
             ) : (
-              awards?.map((content: any, index: number) => (
-                <ContentsDetail key={index}>{content}</ContentsDetail>
-              ))
+              <>
+                {awards && awards.length !== 0 ? (
+                  awards?.map((content: any, index: number) => (
+                    <ContentsDetail key={index}>
+                      {content ? (
+                        content
+                      ) : (
+                        <NoneContent>프로필 내용이 없어요</NoneContent>
+                      )}
+                    </ContentsDetail>
+                  ))
+                ) : (
+                  <NoneContent>프로필 내용이 없어요</NoneContent>
+                )}
+              </>
             )}
           </ContentsDetailBox>
         </ProfileSubInfoContents>
       </ProfileSubInfoBox>
-      <ProfileSubInfoBox>
+
+      <ProfileSubInfoBox
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <ProfileSubInfoTitle>스킬</ProfileSubInfoTitle>
         <ProfileSubInfoContents>
           {isMyProfile ? (
@@ -124,9 +161,21 @@ const ProfileSubInfo = ({
                 ></ModifyingArea>
               </>
             ) : (
-              tools?.map((content: any, index: number) => (
-                <ContentsDetail key={index}>{content}</ContentsDetail>
-              ))
+              <>
+                {tools && tools.length !== 0 ? (
+                  tools?.map((content: any, index: number) => (
+                    <ContentsDetail key={index}>
+                      {content ? (
+                        content
+                      ) : (
+                        <NoneContent>프로필 내용이 없어요</NoneContent>
+                      )}
+                    </ContentsDetail>
+                  ))
+                ) : (
+                  <NoneContent>프로필 내용이 없어요</NoneContent>
+                )}
+              </>
             )}
           </ContentsDetailBox>
           <ContentsSubTitle>{TITLES[3]}</ContentsSubTitle>
@@ -142,9 +191,21 @@ const ProfileSubInfo = ({
                 ></ModifyingArea>
               </>
             ) : (
-              certificates?.map((content: any, index: number) => (
-                <ContentsDetail key={index}>{content}</ContentsDetail>
-              ))
+              <>
+                {certificates && certificates.length !== 0 ? (
+                  certificates?.map((content: any, index: number) => (
+                    <ContentsDetail key={index}>
+                      {content ? (
+                        content
+                      ) : (
+                        <NoneContent>프로필 내용이 없어요</NoneContent>
+                      )}
+                    </ContentsDetail>
+                  ))
+                ) : (
+                  <NoneContent>프로필 내용이 없어요</NoneContent>
+                )}
+              </>
             )}
           </ContentsDetailBox>
         </ProfileSubInfoContents>
@@ -157,7 +218,7 @@ const ProfileSubInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const ProfileSubInfoBox = styled.div``;
+const ProfileSubInfoBox = styled(motion.div)``;
 
 const ProfileSubInfoTitle = styled.div`
   ${(props) => props.theme.fonts.heading4};
@@ -175,16 +236,27 @@ const ProfileSubInfoContents = styled.div`
   padding: 1rem 3rem 4rem 3rem;
 `;
 
-//
-
 const ContentsSubTitle = styled.div`
   ${(props) => props.theme.fonts.heading4};
   color: ${(props) => props.theme.colors.gray100};
   padding: 1rem 0;
 `;
+
 const ContentsDetailBox = styled.div`
   position: relative;
+  min-height: 10rem;
 `;
+
+const NoneContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 10rem;
+
+  ${(props) => props.theme.fonts.bodyM};
+  color: ${(props) => props.theme.colors.gray70};
+`;
+
 const ContentsDetail = styled.div`
   ${(props) => props.theme.fonts.bodyM};
   color: ${(props) => props.theme.colors.gray90};
@@ -203,7 +275,8 @@ const ModifyProfile = styled.div`
 `;
 const ModifyingArea = styled.textarea`
   width: 100%;
-  min-height: 15rem;
+  min-height: 10rem;
+  padding: 1.5rem 2rem;
 
   border-radius: 0.8rem;
   border: 1px solid ${(props) => props.theme.colors.gray20};

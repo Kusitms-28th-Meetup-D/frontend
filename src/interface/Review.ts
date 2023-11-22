@@ -25,29 +25,12 @@ export interface ReviewCheck {
   isReviewdBefore: boolean;
 }
 
-export interface RequestReviews {
-  uploadReviews: UploadReview[];
-}
-
-export interface UploadReview {
-  userId: number;
-  teamId: number;
-  selectedKeywords: SelectedKeywords[];
-  selectedTeamCultures: SelectedTeamCultures;
-  selectedWorkMethods: SelectedWorkMethods;
-  recommendationComment: string;
-}
-
 export interface RequestNonUserReview {
   userId: number;
   selectedKeywords: SelectedKeywords[];
   selectedTeamCultures: SelectedTeamCultures;
   selectedWorkMethods: SelectedWorkMethods;
   recommendationComment: string;
-}
-
-export interface SelectedKeywords {
-  selecteKeyword: number;
 }
 
 export interface SelectedTeamCultures {
@@ -88,19 +71,6 @@ export interface ReviewCheck {
   isReviewdBefore: boolean;
 }
 
-export interface RequestReviews {
-  uploadReviews: UploadReview[];
-}
-
-export interface UploadReview {
-  userId: number;
-  teamId: number;
-  selectedKeywords: SelectedKeywords[];
-  selectedTeamCultures: SelectedTeamCultures;
-  selectedWorkMethods: SelectedWorkMethods;
-  recommendationComment: string;
-}
-
 export interface RequestNonUserReview {
   userId: number;
   selectedKeywords: SelectedKeywords[];
@@ -110,7 +80,7 @@ export interface RequestNonUserReview {
 }
 
 export interface SelectedKeywords {
-  selecteKeyword: number;
+  selectKeyword: number;
 }
 
 export interface SelectedTeamCultures {
@@ -142,4 +112,25 @@ export interface ReviewContextType {
     recommendationComment: string;
   };
   setReview: React.Dispatch<React.SetStateAction<any>>;
+}
+
+//Review 진우
+
+export interface RequestReviews {
+  uploadReviews: UploadReview[];
+}
+
+export interface UploadReview {
+  userId: string;
+  teamId: string;
+  selectedKeywords: SelectedKeywords[];
+  selectedTeamCultures: SelectedTeamCultures;
+  selectedWorkMethods: SelectedWorkMethods;
+  recommendationComment?: string;
+}
+
+export interface RecoilReview {
+  selectedKeywords: number[];
+  arr: number[][];
+  recommendationComment?: string;
 }

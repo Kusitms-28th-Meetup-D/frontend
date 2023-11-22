@@ -1,38 +1,39 @@
 import { styled } from 'styled-components';
 import Keyword from './Keyword';
-import { useContext, useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { selectedNameAtom } from '../../recoil/review';
 import { keywordListWithIds } from '../../constants/review';
-import { ReviewContext } from '../../pages/review/Review';
+import { reviewMemberIndexState, reviewState } from '../../recoil/atom';
 
 interface ReviewKeywordsProps {
   userName?: string;
 }
 
 const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
-  const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
+  // const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
   const selectedName = useRecoilValue(selectedNameAtom);
 
-  const handleToggleKeyword = (keyword: number) => {
-    if (selectedKeywords.includes(keyword)) {
-      setSelectedKeywords(selectedKeywords.filter((k) => k !== keyword));
-    } else {
-      if (selectedKeywords.length < 2) {
-        setSelectedKeywords([...selectedKeywords, keyword]);
-      }
-    }
-  };
+  const [reviewRecoilData, setReviewRecoilData] = useRecoilState(reviewState);
+  const reviewMemberIndex = useRecoilValue(reviewMemberIndexState);
 
-  const { review, setReview } = useContext(ReviewContext);
-  useEffect(() => {
-    setReview({
-      ...review,
-      selectedKeywords: selectedKeywords.map((keywordId) => ({
-        selectKeyword: keywordId,
-      })),
+  const handleToggleKeyword = (keyword: number) => {
+    setReviewRecoilData((curr) => {
+      const newArr = [...curr];
+      const newObj = { ...curr[reviewMemberIndex] };
+
+      newObj.selectedKeywords = [...newObj.selectedKeywords];
+      if (newObj.selectedKeywords.includes(keyword)) {
+        newObj.selectedKeywords = newObj.selectedKeywords.filter(
+          (keywordNum) => keywordNum !== keyword,
+        );
+      } else if (newObj.selectedKeywords.length < 2) {
+        newObj.selectedKeywords.push(keyword);
+      }
+
+      newArr[reviewMemberIndex] = newObj;
+      return newArr;
     });
-  }, [selectedKeywords]);
+  };
 
   return (
     <KeywordLayout>
@@ -44,11 +45,13 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
         장점을 2개 골라 추천해주세요!
       </KeywordSubTitle>
       <KeywordBox>
-        {keywordListWithIds.map((keyword) => (
+        {keywordListWithIds.map((keyword, idx) => (
           <Keyword
             key={keyword.id}
             keyword={keyword.keyword}
-            selected={selectedKeywords.includes(keyword.id)}
+            selected={reviewRecoilData[
+              reviewMemberIndex
+            ].selectedKeywords.includes(idx)}
             onClick={() => handleToggleKeyword(keyword.id)}
           />
         ))}
