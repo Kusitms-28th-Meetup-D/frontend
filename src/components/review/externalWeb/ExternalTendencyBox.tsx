@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
-import Keyword from './Keyword';
+import Keyword from '../Keyword';
 import { useContext, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { selectedWebTendencyAtom } from '../../recoil/review';
-import { ExternalReviewContext } from '../../pages/review/ExternalReview';
+import { selectedWebTendencyAtom } from '../../../recoil/review';
+import { ExternalReviewContext } from '../../../pages/review/ExternalReview';
 
 interface Question {
   id: number;

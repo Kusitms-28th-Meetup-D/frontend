@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { styled } from 'styled-components';
-import { ExternalReviewContext } from '../../pages/review/ExternalReview';
+import { ExternalReviewContext } from '../../../pages/review/ExternalReview';
 
 interface ExternalReviewOneLineProps {
   userName?: string;

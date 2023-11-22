@@ -1,10 +1,10 @@
 import { styled } from 'styled-components';
-import Keyword from './Keyword';
+import Keyword from '../Keyword';
 import { useContext, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { selectedNameAtom } from '../../recoil/review';
-import { keywordListWithIds } from '../../constants/review';
-import { ExternalReviewContext } from '../../pages/review/ExternalReview';
+import { selectedNameAtom } from '../../../recoil/review';
+import { keywordListWithIds } from '../../../constants/review';
+import { ExternalReviewContext } from '../../../pages/review/ExternalReview';
 
 interface ReviewKeywordsProps {
   userName?: string;

@@ -1,12 +1,12 @@
 import { styled } from 'styled-components';
-import ExternalReviewHeader from '../../components/review/ExternalReviewHeader';
+import ExternalReviewHeader from '../../components/review/externalWeb/ExternalReviewHeader';
 import { useParams } from 'react-router-dom';
 import useProfile from '../../hooks/profile/useProfile';
-import ExternalReviewOneLine from '../../components/review/ExternalReviewOneLine';
-import ExternalButtonBox from '../../components/review/ExternalButtonBox';
+import ExternalReviewOneLine from '../../components/review/externalWeb/ExternalReviewOneLine';
+import ExternalButtonBox from '../../components/review/externalWeb/ExternalButtonBox';
 import { createContext, useState } from 'react';
-import ExternalReviewKeywords from '../../components/review/ExternalReviewKeywords';
-import ExternalReviewTendency from '../../components/review/ExternalReviewTendency';
+import ExternalReviewKeywords from '../../components/review/externalWeb/ExternalReviewKeywords';
+import ExternalReviewTendency from '../../components/review/externalWeb/ExternalReviewTendency';
 
 export const ExternalReviewContext = createContext<any>(null);
 

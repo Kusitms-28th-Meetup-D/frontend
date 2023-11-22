@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil';
-import { selectedNameAtom } from '../../recoil/review';
+import { selectedNameAtom } from '../../../recoil/review';
 import { styled } from 'styled-components';
-import { question1, question2 } from '../../constants/review';
+import { question1, question2 } from '../../../constants/review';
 import ExternalTendencyBox from './ExternalTendencyBox';
 
 interface ReviewTendencyProps {
