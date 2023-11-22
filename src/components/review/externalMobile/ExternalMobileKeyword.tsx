@@ -102,7 +102,7 @@ const ExternalMobileKeywordContainer = styled.div`
     margin-bottom: 0.5rem;
   }
   p {
-    ${({ theme }) => theme.fonts.bodyXXS};
+    ${({ theme }) => theme.fonts.bodyXS};
     color: ${({ theme }) => theme.colors.gray70};
   }
 `;
