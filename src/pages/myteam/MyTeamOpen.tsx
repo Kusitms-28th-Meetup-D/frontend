@@ -16,6 +16,7 @@ const MyTeamOpen = () => {
             myTeamOpen={myTeamOpen}
             teamId={myTeamOpen.teamId}
             userId={loginInfo.data?.userId}
+            // contestId={myTeamOpen.contestId}
           />
         ))}
     </MyTeamOpenContainer>

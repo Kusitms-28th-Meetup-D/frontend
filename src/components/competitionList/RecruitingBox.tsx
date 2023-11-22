@@ -13,10 +13,12 @@ const RecruitingBox = ({ recruitingTeam }: RecruitingBoxProps) => {
   const navigate = useNavigate();
   const handleClick = () => {
     if (loginInfo.data?.userId == recruitingTeam.teamLeaderId)
-      navigate(`myteam${loginInfo.data?.userId}/${recruitingTeam.teamId}`);
+      navigate(
+        `/myteam${loginInfo.data?.userId}/${recruitingTeam.teamId}/${recruitingTeam.contestId}`,
+      );
     else
       navigate(
-        `list/${recruitingTeam.contestId}/${recruitingTeam.teamLeaderId}`,
+        `/list/${recruitingTeam.contestId}/${recruitingTeam.teamLeaderId}`,
       );
   };
   return (
