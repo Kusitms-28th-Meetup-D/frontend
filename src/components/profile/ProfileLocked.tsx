@@ -60,8 +60,8 @@ const LockedLayout = styled.div`
   gap: 6.4rem;
 
   background: linear-gradient(
-    0deg,
-    #f9f9fa 77.48%,
+    -19deg,
+    #f9f9fa 82.48%,
     rgba(249, 249, 250, 0) 100%
   );
 
@@ -70,7 +70,7 @@ const LockedLayout = styled.div`
 const Lock = styled.img`
   width: 20rem;
   height: 20rem;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 const TextContainer = styled.div`
   display: flex;
