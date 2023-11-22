@@ -4,13 +4,16 @@ import { useRecoilValue } from 'recoil';
 
 import bgSrc from '/assets/images/request/request-bg.png';
 import starSrc from '/assets/images/common/star.svg';
-import kakaotalkSrc from '/assets/images/request/request-kakaotalk.svg';
+import kakaoSrc from '/assets/images/common/kakaotalk.svg';
 import OneButtonModal from '../../components/common/OneButtonModal';
 
 import { kakao } from '../../components/login/KakaoLogin';
 import { loginInfoState } from '../../recoil/atom';
 import JoinCompleteModal from '../../components/join/JoinCompleteModal';
 import ModalInner from '../../components/request/ModalInner';
+import { RequestKakaoReviewButton } from '../../components/common/modals/NeedKakaoReviewModal';
+import useIsUserGetExternalReview from '../../hooks/profile/useIsUserGetExternalReview';
+import { useNavigate } from 'react-router-dom';
 const TITLE = '매력적인 프로필 완성을 위해 리뷰를 요청해보세요.';
 const CONTENT = [
   '나와 딱 맞는 탁월한 팀원을 한번에 찾고 싶다면,\n나보다 나를 더 잘 아는 동료에게 리뷰를 요청해 멋진 프로필을 완성하세요.',
@@ -19,6 +22,7 @@ const CONTENT = [
   '같이 동아리, 학회, 공모전 등 팀 프로젝트에 참여했던 지인에게\n아래 링크를 공유해 리뷰를 받아주세요!',
 ];
 const Request = () => {
+  const navigate = useNavigate();
   const [isPreviewModalVisible, setIsPreviewModalVisible] = useState(false);
   const [isJoinModalVisible, setIsJoinModalVisible] = useState(false);
   const [isKakaoSendSuccess, setIsKakaoSendSuccess] = useState(false);
@@ -43,6 +47,11 @@ const Request = () => {
     });
     setIsKakaoSendSuccess(true);
   };
+
+  const { isUserGetExternalReviewData } = useIsUserGetExternalReview(
+    loginUserInfo?.data?.userId as unknown as string,
+  );
+  if (isUserGetExternalReviewData?.data.data.alreadyReviewed) navigate('/');
 
   return (
     <RequestLayout>
@@ -79,7 +88,12 @@ const Request = () => {
         <KakaoTalkPreview onClick={handleClick}>
           {'    발송 메세지 예시 미리보기    '}
         </KakaoTalkPreview>
-        <KakaoTalkSendImg src={kakaotalkSrc} onClick={handleKakaoMessageSend} />
+        <RequestKakaoReviewButton onClick={handleKakaoMessageSend}>
+          <KakaoImg src={kakaoSrc} />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+          {'카카오톡으로 나의 리뷰 요청하기'}
+        </RequestKakaoReviewButton>
+        {/* <KakaoTalkSendImg src={kakaotalkSrc} onClick={handleKakaoMessageSend} /> */}
         <Button
           $isActive={isKakaoSendSuccess}
           onClick={() => {
@@ -181,17 +195,7 @@ const KakaoTalkPreview = styled.div`
   cursor: pointer;
   z-index: 30;
 `;
-const KakaoTalkSendImg = styled.img`
-  position: relative;
-  ${({ theme }) => theme.fonts.bodyXL};
-  color: ${({ theme }) => theme.colors.primary90};
 
-  width: 39.1rem;
-  height: 5.8rem;
-
-  z-index: 20;
-  cursor: pointer;
-`;
 const Button = styled.button<{ $isActive: boolean }>`
   position: relative;
   width: 25.5rem;
@@ -215,5 +219,10 @@ const Button = styled.button<{ $isActive: boolean }>`
 
   z-index: 40;
 `;
+const KakaoImg = styled.img`
+  position: absolute;
+  width: 2.3rem;
 
+  left: 3rem;
+`;
 export default Request;

@@ -96,13 +96,17 @@ const Profile = () => {
         reviewData={profileReviewData?.data.data.comments}
         name={profileData?.data.data.username}
         isLocked={
-          !IsTicketUsedData?.data.data.isUsed ||
-          profileData?.data.data.userId == loginInfo.data?.userId
+          !IsTicketUsedData?.data.data.isUsed &&
+          profileData?.data.data.userId != loginInfo.data?.userId
         }
         setIsLackModalVisible={setIsLackModalVisible}
         setIsUseModalVisible={setIsUseModalVisible}
         isUserGetExternalReview={
           isUserGetExternalReviewData?.data.data.alreadyReviewed
+        }
+        isMyProfile={
+          (loginInfo?.data?.userId as unknown as string) ==
+          (userId as unknown as string)
         }
       />
     </ProfileLayout>

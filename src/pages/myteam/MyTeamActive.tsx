@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import useActiveTeam from '../../hooks/myTeam/useActiveTeam';
 import MyTeamActiveContainer from '../../components/myteam/active/MyTeamActiveContainer';
+import MyTeamEmpty from '../../components/myteam/MyTeamEmpty';
 
 const MyTeamActive = () => {
   const { activeTeamData } = useActiveTeam();
@@ -11,6 +12,9 @@ const MyTeamActive = () => {
       {activeTeamData?.data.data.map((each) => (
         <MyTeamActiveContainer {...each}></MyTeamActiveContainer>
       ))}
+      {activeTeamData && activeTeamData.data.data.length == 0 && (
+        <MyTeamEmpty text="아직 활동중인 팀이 없어요" />
+      )}
     </ApplyLayout>
   );
 };

@@ -3,6 +3,7 @@ import MyTeamOpenBox from '../../components/myteam/open/MyTeamOpenBox';
 import { useOpenedTeam } from '../../hooks/myTeam/useOpenedTeam';
 import { useRecoilValue } from 'recoil';
 import { loginInfoState } from '../../recoil/atom';
+import MyTeamEmpty from '../../components/myteam/MyTeamEmpty';
 const MyTeamOpen = () => {
   const { openedTeam } = useOpenedTeam();
   const loginInfo = useRecoilValue(loginInfoState);
@@ -19,7 +20,10 @@ const MyTeamOpen = () => {
             userId={loginInfo.data?.userId}
             contestId={myTeamOpen.contestId}
           />
-        ))}
+        ))}{' '}
+      {openedTeam && openedTeam.data.length == 0 && (
+        <MyTeamEmpty text="아직 오픈한 팀이 없어요" />
+      )}
     </MyTeamOpenContainer>
   );
 };

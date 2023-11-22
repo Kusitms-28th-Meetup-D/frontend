@@ -74,5 +74,6 @@ const Content = styled.div`
   color: ${(props) => props.theme.colors.gray90};
   margin-bottom: 2rem;
   white-space: break-spaces;
+  text-align: center;
 `;
 export default CompleteRecruitModal;

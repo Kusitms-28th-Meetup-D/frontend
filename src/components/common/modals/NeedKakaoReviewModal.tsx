@@ -36,10 +36,11 @@ const NeedKakaoReviewModal = () => {
         <Subtitle>
           {'함께 활동했던 지인이 리뷰를 작성해주면,\n프로필이 업데이트 됩니다.'}
         </Subtitle>
-        <Button onClick={handleKakaoMessageSend}>
+        <RequestKakaoReviewButton onClick={handleKakaoMessageSend}>
           <KakaoImg src={kakaoSrc} />
-          카카오톡으로 리뷰 요청하기
-        </Button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+          {'카카오톡으로 나의 리뷰 요청하기'}
+        </RequestKakaoReviewButton>
       </ModalContainer>
     </BlurLayout>
   );
@@ -104,7 +105,7 @@ const Subtitle = styled.div`
   text-align: center;
   margin-bottom: 2rem;
 `;
-const Button = styled.div`
+export const RequestKakaoReviewButton = styled.div`
   position: relative;
   width: 39rem;
   height: 6rem;
@@ -120,6 +121,8 @@ const Button = styled.div`
   align-items: center;
 
   cursor: pointer;
+
+  z-index: 20;
 `;
 const KakaoImg = styled.img`
   position: absolute;
