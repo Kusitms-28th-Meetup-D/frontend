@@ -47,13 +47,12 @@ const MainSwiper = () => {
         </SwiperSlideStyle>
       </SwiperSlide>
       <SwiperSlide>
-        {' '}
         <SwiperSlideStyle>
           <SwiperContainer>
             <SwiperLeft>
-              <p>원팀이 처음이세요?</p>
-              <h1>원팀에서 원하는 팀원을</h1>
-              <h1>한번에 찾아보세요!</h1>
+              <p>누구보다 빠르게</p>
+              <h1>Wanteam 공고에서 종류별로 원하는</h1>
+              <h1>공모전･대회 다 찾을 수 있어요</h1>
             </SwiperLeft>
             <SwiperImg
               src={'/assets/images/main/swiper2.svg'}
@@ -63,7 +62,6 @@ const MainSwiper = () => {
         </SwiperSlideStyle>
       </SwiperSlide>
       <SwiperSlide>
-        {' '}
         <SwiperSlideStyle>
           <SwiperContainer>
             <SwiperLeft>
@@ -79,7 +77,6 @@ const MainSwiper = () => {
         </SwiperSlideStyle>
       </SwiperSlide>
       <SwiperSlide>
-        {' '}
         <SwiperSlideStyle>
           <SwiperContainer>
             <SwiperLeft>
