@@ -12,135 +12,7 @@ import ApplyBoxScroll from '../../components/myteam/management/ApplyBoxScroll';
 import CompleteRecruitModal from '../../components/myteam/management/CompleteRecruitModal';
 import { useParams } from 'react-router-dom';
 import CancleRecruitModal from '../../components/myteam/management/CancleRecruitModal';
-// const DUMMY: MyOpenedTeamMemberInfoData = {
-//   teamId: 1,
-//   teamMemberSize: 0,
-//   applyMemberSize: 1,
-//   teamMemberInfos: [
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우1',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우2',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우3',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우4',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우5',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우6',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우7',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우8',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우9',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우10',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진우11',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진12우',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨13진우',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//     {
-//       teamMemberId: 4,
-//       teamMemberName: '팅커벨진14우',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: ['밥머기'],
-//       teamMemberMajor: ['니알바냐?'],
-//     },
-//   ],
-//   applyMemberInfos: [
-//     {
-//       teamMemberId: 7,
-//       teamMemberName: '다다다',
-//       teamMemberImage:
-//         'http://k.kakaocdn.net/dn/1G9kp/btsAot8liOn/8CWudi3uy07rvFNUkk3ER0/img_640x640.jpg',
-//       teamMemberTask: [],
-//       teamMemberMajor: [],
-//     },
-//   ],
-// };
+
 const MyTeamManagement = () => {
   const { teamId } = useParams();
   const { myOpenedTeamMemberInfoData } = useMyOpenedTeamMemberInfo({
@@ -209,7 +81,6 @@ const MyTeamManagement = () => {
         (myOpenedTeamMemberInfoData.data.data.teamApplySize == 0 ? (
           <ProfileBoxContainer>
             <NoTeamMember>
-              {' '}
               <img
                 src={'/assets/images/myteam/team_member.svg'}
                 alt={'team_member'}
@@ -218,8 +89,6 @@ const MyTeamManagement = () => {
             </NoTeamMember>
           </ProfileBoxContainer>
         ) : (
-          // <NoTeamMember>ss</NoTeamMember>
-
           <ApplyBoxScroll
             teamMembersInfo={
               myOpenedTeamMemberInfoData?.data.data.applyMemberInfos
