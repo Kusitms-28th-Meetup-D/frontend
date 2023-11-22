@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import glassSrc from '/assets/images/common/glasses.svg';
 import { useNavigate } from 'react-router-dom';
 import OneSquareButtonModal from '../common/OneSquareButtonModal';
+import { useRecoilValue } from 'recoil';
+import { loginInfoState } from '../../recoil/atom';
 
 interface JoinTeamCompleteModalProps {
   isModalVisible: boolean;
@@ -15,12 +17,11 @@ const JoinTeamCompleteModal: React.FC<JoinTeamCompleteModalProps> = ({
   userId,
 }) => {
   const navigate = useNavigate();
+  const loginInfo = useRecoilValue(loginInfoState);
+
   const handleButtonClick = () => {
-    // handleUseTicket.mutate();
-    // setIsModalVisible(false);
-    // window.location.reload();
     setIsModalVisible(false);
-    navigate(`/myteam/${userId}/apply`);
+    navigate(`/myteam/${loginInfo.data?.userId}/apply`);
   };
   const handleCloseButtonClick = () => {
     setIsModalVisible(false);

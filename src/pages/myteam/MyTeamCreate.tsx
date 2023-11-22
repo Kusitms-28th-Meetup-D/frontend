@@ -48,4 +48,5 @@ export default MyTeamCreate;
 const MyTeamCreateContainer = styled.div`
   max-width: 122.4rem;
   margin: auto;
+  margin-top: 3rem;
 `;

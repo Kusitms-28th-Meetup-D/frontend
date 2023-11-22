@@ -37,15 +37,12 @@ const ProfileKeywordContainer = styled.div``;
 const ProfileKeywordTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray100};
-
   margin-top: 8rem;
 `;
 const ProfileKeywordDetail = styled.div`
   ${(props) => props.theme.fonts.bodyL};
   color: ${(props) => props.theme.colors.gray70};
-
-  margin: 3rem 0;
-
+  margin: 2rem 0 2rem 0;
   white-space: break-spaces;
 `;
 const ProfileKeywordContent = styled.div`

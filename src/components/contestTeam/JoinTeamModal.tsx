@@ -28,7 +28,6 @@ const JoinTeamModal: React.FC<JoinTeamModalProps> = ({
   const handleRightButtonClick = async () => {
     try {
       await handleJoinTeam.mutate();
-      console.log('Success: A');
       setIsModalVisible(false);
       setIsCompleteModalVisible(true);
     } catch (error: any) {

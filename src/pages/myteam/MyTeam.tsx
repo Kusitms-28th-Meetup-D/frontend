@@ -22,5 +22,5 @@ export default MyTeam;
 
 const MyTeamLayout = styled.div`
   max-width: 122.4rem;
-  margin: auto;
+  margin: 0 auto 5rem auto;
 `;

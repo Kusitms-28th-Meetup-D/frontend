@@ -6,6 +6,7 @@ import { useRecruitComplete } from '../../../hooks/myTeam/useRecruitComplete';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { loginInfoState } from '../../../recoil/atom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface CompleteRecruitModalProps {
   isModalVisible: boolean;

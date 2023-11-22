@@ -37,17 +37,8 @@ const ContestTeam = () => {
   const handleJoinTeam = () => {
     setIsJoinTeamModalVisible(true);
   };
-  console.log(contestTeamDetailData);
 
   useEffect(() => setHeaderSelected(Headers.list));
-
-  //내가 오픈한 경우, 내 팀 페이지로 이동
-  // if (
-  //   contestTeamDetailData?.data.data.status ==
-  //   TEAM_DETAIL_STATUS._1_내가오픈한경우
-  // ) {
-  //   navigate(`/myteam/${userLogininfo.data?.userId}/${teamId}`);
-  // }
 
   return isLoading ? (
     <div>로딩중</div>
@@ -87,7 +78,6 @@ const ContestTeam = () => {
               / {contestTeamDetailData?.data.data.max}명{' '}
             </TeamStatusItem>
             <TeamStatusItem>
-              {' '}
               활동 지역 : {contestTeamDetailData?.data.data.location}
             </TeamStatusItem>
             <TeamStatusItem>
@@ -155,7 +145,7 @@ const ContestTeam = () => {
 };
 const TeamLayout = styled.div`
   max-width: 122.4rem;
-  margin: auto;
+  margin: 0 auto 5rem auto;
 
   display: flex;
   flex-direction: column;
@@ -220,7 +210,7 @@ const TeamLeaderTitle = styled.div`
 `;
 const TeamLeaderIntroduce = styled.div`
   width: 100%;
-  height: 100px;
+  padding: 2rem 2.5rem;
 
   border: 1px solid ${(props) => props.theme.colors.gray40};
   border-radius: 1.2rem;

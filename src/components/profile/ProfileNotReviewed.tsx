@@ -1,23 +1,38 @@
 import styled from 'styled-components';
 
 import questionmarkSrc from '/assets/images/common/questionmark.svg';
-import { useSetRecoilState } from 'recoil';
-import { needKakaoReviewModalState } from '../../recoil/atom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { loginInfoState, needKakaoReviewModalState } from '../../recoil/atom';
+import { useParams } from 'react-router-dom';
 
 const ProfileNotReviewed = () => {
+  const { userId } = useParams();
+  const loginInfo = useRecoilValue(loginInfoState);
+
+  const active = userId == (loginInfo && loginInfo.data?.userId);
+
   const setKakaoReviewModalVisible = useSetRecoilState(
     needKakaoReviewModalState,
   );
   return (
-    <Layout>
-      <QuestionmarkImg src={questionmarkSrc} />
-      <Subtitle>
-        {'아직 받은 리뷰가 없어요!\n리뷰를 요청해 프로필을 채워보세요.'}
-      </Subtitle>
-      <Button onClick={() => setKakaoReviewModalVisible(true)}>
-        지인에게 리뷰 요청하기 →
-      </Button>
-    </Layout>
+    <>
+      {active ? (
+        <Layout>
+          <QuestionmarkImg src={questionmarkSrc} />
+          <Subtitle>
+            {'아직 받은 리뷰가 없어요!\n리뷰를 요청해 프로필을 채워보세요.'}
+          </Subtitle>
+          <Button onClick={() => setKakaoReviewModalVisible(true)}>
+            지인에게 리뷰 요청하기 →
+          </Button>
+        </Layout>
+      ) : (
+        <Layout>
+          <QuestionmarkImg src={questionmarkSrc} />
+          <Subtitle>{'아직 받은 리뷰가 없어요!'}</Subtitle>
+        </Layout>
+      )}
+    </>
   );
 };
 const Layout = styled.div`
