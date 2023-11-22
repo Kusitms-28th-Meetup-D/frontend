@@ -5,6 +5,8 @@ import { ProfileBoxProps } from '../../../interface/Contest';
 import { Role } from '../../contest/RecruitTeamItem';
 import { useNavigate } from 'react-router-dom';
 import { useCancelApplyTeam } from '../../../hooks/myTeam/useCancelApplyTeam';
+import { useState } from 'react';
+import TwoButtonModal from '../../common/TwoButtonModal';
 
 const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
   const teamLeaderBoxProps: ProfileBoxProps = {
@@ -15,9 +17,11 @@ const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
   };
   const navigate = useNavigate();
   const cancelApplyTeamMutation = useCancelApplyTeam(props.teamId);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleCancelApplyClick = () => {
     cancelApplyTeamMutation.mutate();
+    setOpenModal(false);
   };
 
   return (
@@ -28,7 +32,9 @@ const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
       </TitleBox>
 
       <TeamBoxRight>
-        <TeamBoxTop onClick={handleCancelApplyClick}>지원 취소하기</TeamBoxTop>
+        <TeamBoxTop onClick={() => setOpenModal(true)}>
+          지원 취소하기
+        </TeamBoxTop>
         <TeamBoxBottom>
           <TeamLeaderBox>
             <TeamLeaderEmptyBox>
@@ -67,6 +73,34 @@ const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
           </TeamInfoBox>
         </TeamBoxBottom>
       </TeamBoxRight>
+
+      {openModal && (
+        <TwoButtonModal
+          leftButton={{
+            text: '조금 더 생각해 볼게요',
+            onClickFunc: () => {
+              setOpenModal(false);
+            },
+          }}
+          rightButton={{
+            text: '네, 지원 취소할게요',
+            onClickFunc: handleCancelApplyClick,
+          }}
+          onCloseClickFunc={() => {
+            setOpenModal(false);
+          }}
+          $isModalVisible={openModal}
+        >
+          <ModalContent>
+            <img
+              src={'/assets/images/myteam/cancel_apply_team.svg'}
+              alt={'지원 취소 이미지'}
+            />
+            <h1>지원을 취소하시겠어요?</h1>
+            <h2>지원 취소 후에는 지금까지의 지원 정보가 모두 삭제돼요.</h2>
+          </ModalContent>
+        </TwoButtonModal>
+      )}
     </Layout>
   );
 };
@@ -253,4 +287,27 @@ const TeamStatusItem = styled.div`
     color: ${(props) => props.theme.colors.primary60};
   }
 `;
+
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 0;
+
+  gap: 1rem;
+
+  img {
+    width: 12.7rem;
+    height: 9.7rem;
+  }
+  h1 {
+    ${(props) => props.theme.fonts.heading4}
+    color: ${(props) => props.theme.colors.primary60};
+  }
+  h2 {
+    ${(props) => props.theme.fonts.bodyL}
+    color: ${(props) => props.theme.colors.gray90};
+  }
+`;
+
 export default MyTeamApplyContainer;
