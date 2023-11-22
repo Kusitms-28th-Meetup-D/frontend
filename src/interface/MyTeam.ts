@@ -7,7 +7,7 @@ export interface RequestAppliedTeam {
 
 export interface RequestTeamOpen {
   contestId?: string;
-  max: number;
+  max?: number;
   location: number;
   endDate: string;
   leaderMessage: string;
