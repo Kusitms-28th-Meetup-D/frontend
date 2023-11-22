@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 import ContestInfo from '../../components/contest/ContestInfo';
 import RecruitTeamList from '../../components/contest/RecruitTeamList';
-import { useSetRecoilState } from 'recoil';
-import { headerSelectedState } from '../../recoil/atom';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { headerSelectedState, loginInfoState } from '../../recoil/atom';
 import { useEffect } from 'react';
 import { Headers } from '../../constants/Header';
 
 const Contest = () => {
+  const loginInfo = useRecoilValue(loginInfoState);
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.list));
   return (
     <ContestLayout>
       <ContestInfo />
       <hr />
-      <RecruitTeamList />
+      <RecruitTeamList isLogin={loginInfo.isLogin} />
     </ContestLayout>
   );
 };

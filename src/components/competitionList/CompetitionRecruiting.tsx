@@ -48,4 +48,7 @@ const RecruitingBoxLayout = styled.div`
   gap: 2.5rem;
   padding: 0 10rem;
   width: 100%;
+
+  // 이거
+  min-height: 25rem;
 `;

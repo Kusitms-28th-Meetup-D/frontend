@@ -32,6 +32,8 @@ const RecruitingLayout = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   cursor: pointer;
   width: 20%;
+
+  /* max-height: 20rem; */
 `;
 
 const RecruitingHr = styled.hr`
@@ -63,4 +65,9 @@ const RecruitingName = styled.div`
 const RecruitingDescription = styled.div`
   ${({ theme }) => theme.fonts.bodyXXS};
   color: ${({ theme }) => theme.colors.gray80};
+
+  max-height: 6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
 `;

@@ -2,13 +2,21 @@ import styled from 'styled-components';
 import RecruitTeamItem from './RecruitTeamItem';
 import { useNavigate, useParams } from 'react-router-dom';
 import useContestTeamList from '../../hooks/contest/useContestTeamList';
+import { useSetRecoilState } from 'recoil';
+import { loginModalState } from '../../recoil/atom';
 
-const RecruitTeamList = () => {
+const RecruitTeamList = ({ isLogin }: { isLogin: boolean }) => {
   const { contestId } = useParams();
+  const setLoginModal = useSetRecoilState(loginModalState);
   const navigate = useNavigate();
   const handleBtnClicked = () => {
-    navigate(`/myteam/create/${contestId}`);
+    if (isLogin) {
+      navigate(`/myteam/create/${contestId}`);
+    } else {
+      setLoginModal(true);
+    }
   };
+
   const { contestTeamListData } = useContestTeamList(contestId as string);
   console.log(contestTeamListData?.data.data);
   return (

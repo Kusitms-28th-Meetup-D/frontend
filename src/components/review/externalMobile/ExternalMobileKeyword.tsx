@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import useProfile from '../../../hooks/profile/useProfile';
 import { styled } from 'styled-components';
-import Keyword from '../Keyword';
 import { useContext, useEffect, useState } from 'react';
 import { keywordListWithIds } from '../../../constants/review';
 import { ReviewContext } from '../../../pages/review/ExternalMobileReview';
+import ExternalKeyword from './ExternalKeyword';
 
 const ExternalMobileKeyword = () => {
   const { userId } = useParams();
@@ -48,7 +48,7 @@ const ExternalMobileKeyword = () => {
         <KeywordBox>
           {keywordListWithIds.map(
             (keyword: { id: number; keyword: string }) => (
-              <Keyword
+              <ExternalKeyword
                 key={keyword.id}
                 keyword={keyword.keyword}
                 selected={selectedKeywords.includes(keyword.id)}
@@ -102,7 +102,7 @@ const ExternalMobileKeywordContainer = styled.div`
     margin-bottom: 0.5rem;
   }
   p {
-    ${({ theme }) => theme.fonts.bodyXXS};
+    ${({ theme }) => theme.fonts.bodyXS};
     color: ${({ theme }) => theme.colors.gray70};
   }
 `;

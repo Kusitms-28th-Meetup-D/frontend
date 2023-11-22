@@ -18,12 +18,14 @@ const TeamMembers = ({
   return (
     <>
       <Hr />
-      {cur == 1 ? (
+      {cur == 0 ? (
         <>
           <TeamMembersTitle>팀원들</TeamMembersTitle>
           <EmptyMember>
             <EmptyImg src={EmptySrc} />
-            아직 합류한 팀원이 없어요.
+            {
+              '아직 합류한 팀원이 없어요.\n이 팀에 함께하는 첫 번째 팀원이 되시겠어요?'
+            }
           </EmptyMember>
         </>
       ) : (
@@ -58,7 +60,7 @@ const TeamMembers = ({
 };
 const EmptyMember = styled.div`
   width: 100%;
-  height: 31rem;
+  height: 25rem;
   background-color: ${(props) => props.theme.colors.gray5};
   border: 1px solid ${(props) => props.theme.colors.gray20};
   border-radius: 1rem;
@@ -70,6 +72,9 @@ const EmptyMember = styled.div`
   gap: 1rem;
   ${(props) => props.theme.fonts.subtitleL};
   color: ${(props) => props.theme.colors.gray90};
+
+  white-space: break-spaces;
+  text-align: center;
 `;
 const EmptyImg = styled.img`
   width: 6rem;

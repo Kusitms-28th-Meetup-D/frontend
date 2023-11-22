@@ -31,58 +31,69 @@ const MainSwiper = () => {
     >
       <div className="swiper-button-prev"></div>
       <div className="swiper-button-next"></div>
-      <SwiperSlideStyle>
-        <SwiperContainer>
-          <SwiperLeft>
-            <p>원팀이 처음이세요?</p>
-            <h1>원팀에서 원하는 팀원을</h1>
-            <h1>한번에 찾아보세요!</h1>
-          </SwiperLeft>
-          <SwiperImg
-            src={'/assets/images/main/swiper1.svg'}
-            alt={'swiper_img'}
-          />
-        </SwiperContainer>
-      </SwiperSlideStyle>
-      <SwiperSlideStyle>
-        <SwiperContainer>
-          <SwiperLeft>
-            <p>원팀이 처음이세요?</p>
-            <h1>원팀에서 원하는 팀원을</h1>
-            <h1>한번에 찾아보세요!</h1>
-          </SwiperLeft>
-          <SwiperImg
-            src={'/assets/images/main/swiper2.svg'}
-            alt={'swiper_img'}
-          />
-        </SwiperContainer>
-      </SwiperSlideStyle>
-      <SwiperSlideStyle>
-        <SwiperContainer>
-          <SwiperLeft>
-            <p>나는 어떤 팀원일까?</p>
-            <h1>나와 함께 했던 팀원들이</h1>
-            <h1>남겨준 리뷰를 확인하세요</h1>
-          </SwiperLeft>
-          <SwiperImg
-            src={'/assets/images/main/swiper3.svg'}
-            alt={'swiper_img'}
-          />
-        </SwiperContainer>
-      </SwiperSlideStyle>
-      <SwiperSlideStyle>
-        <SwiperContainer>
-          <SwiperLeft>
-            <p>내가 추천하고 싶은 팀원은요</p>
-            <h1>최고의 팀원에게 남겨주는</h1>
-            <h1>리뷰를 확인하세요</h1>
-          </SwiperLeft>
-          <SwiperImg
-            src={'/assets/images/main/swiper4.svg'}
-            alt={'swiper_img'}
-          />
-        </SwiperContainer>
-      </SwiperSlideStyle>
+      <SwiperSlide>
+        <SwiperSlideStyle>
+          <SwiperContainer>
+            <SwiperLeft>
+              <p>원팀이 처음이세요?</p>
+              <h1>원팀에서 원하는 팀원을</h1>
+              <h1>한번에 찾아보세요!</h1>
+            </SwiperLeft>
+            <SwiperImg
+              src={'/assets/images/main/swiper1.svg'}
+              alt={'swiper_img'}
+            />
+          </SwiperContainer>
+        </SwiperSlideStyle>
+      </SwiperSlide>
+      <SwiperSlide>
+        {' '}
+        <SwiperSlideStyle>
+          <SwiperContainer>
+            <SwiperLeft>
+              <p>원팀이 처음이세요?</p>
+              <h1>원팀에서 원하는 팀원을</h1>
+              <h1>한번에 찾아보세요!</h1>
+            </SwiperLeft>
+            <SwiperImg
+              src={'/assets/images/main/swiper2.svg'}
+              alt={'swiper_img'}
+            />
+          </SwiperContainer>
+        </SwiperSlideStyle>
+      </SwiperSlide>
+      <SwiperSlide>
+        {' '}
+        <SwiperSlideStyle>
+          <SwiperContainer>
+            <SwiperLeft>
+              <p>나는 어떤 팀원일까?</p>
+              <h1>나와 함께 했던 팀원들이</h1>
+              <h1>남겨준 리뷰를 확인하세요</h1>
+            </SwiperLeft>
+            <SwiperImg
+              src={'/assets/images/main/swiper3.svg'}
+              alt={'swiper_img'}
+            />
+          </SwiperContainer>
+        </SwiperSlideStyle>
+      </SwiperSlide>
+      <SwiperSlide>
+        {' '}
+        <SwiperSlideStyle>
+          <SwiperContainer>
+            <SwiperLeft>
+              <p>내가 추천하고 싶은 팀원은요</p>
+              <h1>최고의 팀원에게 남겨주는</h1>
+              <h1>리뷰를 확인하세요</h1>
+            </SwiperLeft>
+            <SwiperImg
+              src={'/assets/images/main/swiper4.svg'}
+              alt={'swiper_img'}
+            />
+          </SwiperContainer>
+        </SwiperSlideStyle>
+      </SwiperSlide>
     </SwiperStyle>
   );
 };
@@ -99,7 +110,7 @@ const SwiperStyle = styled(Swiper)`
     top: 70%;
     transform: translateY(-50%);
     width: 15.4rem;
-    height: 1rem;
+    height: 0.8rem;
 
     background-color: white;
     /* position: absolute; */
@@ -143,7 +154,7 @@ const SwiperStyle = styled(Swiper)`
   }
 `;
 
-const SwiperSlideStyle = styled(SwiperSlide)`
+const SwiperSlideStyle = styled.div`
   height: 48rem;
   background-image: url('/assets/images/main/swiper_background.svg');
   background-size: cover;

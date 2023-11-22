@@ -3,12 +3,15 @@ import Button from '../../common/Button';
 import ProfileBoxMember from '../../common/ProfileBoxMember';
 import StarTitle from '../../common/StarTtile';
 import { TeamData } from '../../../interface/MyTeam';
-
+import { useNavigate } from 'react-router-dom';
 interface MyTeamOpenBoxProps {
   myTeamOpen: TeamData;
+  teamId?: string | number;
+  userId?: string | number;
 }
 
-const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
+const MyTeamOpenBox = ({ myTeamOpen, teamId, userId }: MyTeamOpenBoxProps) => {
+  const navigate = useNavigate();
   return (
     <MyTeamOpenContainer>
       {myTeamOpen && (
@@ -16,7 +19,9 @@ const MyTeamOpenBox = ({ myTeamOpen }: MyTeamOpenBoxProps) => {
           <CompetitionBox>
             <CompetitionTitle>{myTeamOpen.contestTitle}</CompetitionTitle>
             <CompetitionImg src={myTeamOpen.contestImage[0]} />
-            <Button>팀 관리하러 가기</Button>
+            <Button onClick={() => navigate(`/myteam/${teamId}/${userId}`)}>
+              팀 관리하러 가기
+            </Button>
           </CompetitionBox>
 
           <TeamMemberBox>

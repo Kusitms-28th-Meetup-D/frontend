@@ -16,11 +16,11 @@ const ExternalReviewHeader = ({ profileData }: ExternalReviewHeaderProps) => {
             <HeaderLeft>
               <HeaderTitle>
                 <Title>Wanteam의 회원님들에게</Title>
-                <h1>{profileData.username}님을 추천해주세요!</h1>
+                <h1>{profileData.username} 님을 추천해주세요!</h1>
               </HeaderTitle>
               <HeaderSubTitle>
                 <p>
-                  남겨주신 리뷰는 {profileData.username}님의 프로필에
+                  남겨주신 리뷰는 {profileData.username} 님의 프로필에
                   반영됩니다.
                 </p>
                 <p>
