@@ -60,8 +60,8 @@ const LockedLayout = styled.div`
   gap: 6.4rem;
 
   background: linear-gradient(
-    0deg,
-    #f9f9fa 77.48%,
+    -19deg,
+    #f9f9fa 82.48%,
     rgba(249, 249, 250, 0) 100%
   );
 
