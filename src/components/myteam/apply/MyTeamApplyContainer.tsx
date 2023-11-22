@@ -32,8 +32,8 @@ const MyTeamApplyContainer: React.FC<AppliedTeamData> = (props) => {
       </TitleBox>
 
       <TeamBoxRight>
-        <TeamBoxTop onClick={() => setOpenModal(true)}>
-          지원 취소하기
+        <TeamBoxTop>
+          <span onClick={() => setOpenModal(true)}>지원 취소하기</span>
         </TeamBoxTop>
         <TeamBoxBottom>
           <TeamLeaderBox>
@@ -194,10 +194,13 @@ const TeamBoxRight = styled.div`
 const TeamBoxTop = styled.div`
   display: flex;
   justify-content: flex-end;
-  cursor: pointer;
 
   ${(props) => props.theme.fonts.bodyL}
   color: ${(props) => props.theme.colors.primary90};
+
+  span {
+    cursor: pointer;
+  }
 `;
 
 const TeamBoxBottom = styled.div`
@@ -258,7 +261,7 @@ const TeamLeaderIntroduceTitle = styled.div`
 
 const TeamLeaderIntroduce = styled.div`
   width: 100%;
-  height: 100px;
+  padding: 2rem 2.5rem;
 
   border: 1px solid ${(props) => props.theme.colors.gray40};
   border-radius: 1.2rem;
