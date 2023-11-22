@@ -21,5 +21,6 @@ const Contest = () => {
 const ContestLayout = styled.div`
   max-width: 122.4rem;
   margin: auto;
+  margin: 3rem auto 5rem auto;
 `;
 export default Contest;
