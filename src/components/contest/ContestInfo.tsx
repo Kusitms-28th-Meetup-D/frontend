@@ -10,11 +10,15 @@ const ContestInfo = () => {
   return (
     <ContestInfoLayout>
       <ContestInfoTitleBox>
-        <ContestInfoTitle>{contestInfoData?.data.data.title}</ContestInfoTitle>{' '}
-        <ContestAvrCommnets>
-          지원자들의 평균 추천사 보유 개수 🔥&nbsp;&nbsp;
-          {contestInfoData?.data.data.averageComments} 개
-        </ContestAvrCommnets>
+        <ContestInfoTitle>{contestInfoData?.data.data.title}</ContestInfoTitle>
+        {contestInfoData?.data.data.averageComments == 'NaN' ? (
+          ''
+        ) : (
+          <ContestAvrCommnets>
+            지원자들의 평균 추천사 보유 개수 🔥&nbsp;&nbsp;
+            {contestInfoData?.data.data.averageComments} 개
+          </ContestAvrCommnets>
+        )}
       </ContestInfoTitleBox>
 
       <ContestContainer>
