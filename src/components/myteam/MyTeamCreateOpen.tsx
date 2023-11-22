@@ -102,7 +102,8 @@ const MyTeamCreateOpen = ({
               명
             </p>
             <Description $isValid={isRecruitmentNumberValid}>
-              1부터 10까지의 숫자만 입력 가능합니다.
+              정원은 팀장 본인 포함입니다. 2부터 10까지의 숫자만 입력
+              가능합니다.
             </Description>
           </FormInputBox>
         </QuestionBox>
