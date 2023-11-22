@@ -10,6 +10,7 @@ const Contest = () => {
   const loginInfo = useRecoilValue(loginInfoState);
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.list));
+
   return (
     <ContestLayout>
       <ContestInfo />

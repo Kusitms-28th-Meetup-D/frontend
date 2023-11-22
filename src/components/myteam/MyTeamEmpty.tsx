@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import memberSrc from '/assets/images/common/members.svg';
+import { motion } from 'framer-motion';
+import { TextAnimation } from '../../styles/animation';
 
 const MyTeamEmpty = ({ text }: { text: string }) => {
   return (
     <Layout>
-      <Inner>
+      <Inner initial="hidden" animate="visible" variants={TextAnimation}>
         <Img src={memberSrc} />
         {text}
       </Inner>
@@ -17,7 +19,7 @@ const Layout = styled.div`
   padding: 6rem 7rem;
   border-radius: 10px;
 `;
-const Inner = styled.div`
+const Inner = styled(motion.div)`
   width: 107.8rem;
   height: 38.8rem;
   background-color: ${(props) => props.theme.colors.white};
