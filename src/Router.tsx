@@ -31,6 +31,7 @@ import ExternalMobileMain from './components/review/externalMobile/ExternalMobil
 import ExternalMobileOneLine from './components/review/externalMobile/ExternalMobileOneLine';
 import ExternalMobileComplete from './components/review/externalMobile/ExternalMobileComplete';
 import Layout from './components/layout/Layout';
+import ExternalReview from './pages/review/ExternalReview';
 
 function Router() {
   return (
@@ -59,7 +60,7 @@ function Router() {
             <Route path="oneLine" element={<ExternalMobileOneLine />} />
             <Route path="complete" element={<ExternalMobileComplete />} />
           </Route>
-          {/* <Route path="/review/external/:userId" element={<ExternalReview />} /> */}
+          <Route path="/review/external/:userId" element={<ExternalReview />} />
 
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/profile/:userId/create" element={<ProfileCreate />} />
