@@ -1,9 +1,19 @@
 import { styled } from 'styled-components';
 import Button from '../common/Button';
+import { useContext } from 'react';
+import { ExternalReviewContext } from '../../pages/review/ExternalReview';
+import { useNonUserReviewCreate } from '../../hooks/review/useNonUserReviewCreate';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ExternalButtonBox = () => {
+  const { review } = useContext(ExternalReviewContext);
+  const nonUserReviewCreateMutation = useNonUserReviewCreate(review);
+  const navigate = useNavigate();
+  const { userId } = useParams();
+
   const handleButtonClick = () => {
-    alert('제출하기 버튼이 눌렸습니다.');
+    nonUserReviewCreateMutation.mutate();
+    navigate(`/review/external/${userId}/complete`);
   };
 
   return (

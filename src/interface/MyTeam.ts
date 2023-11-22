@@ -103,6 +103,7 @@ export interface RecruitingTeamData {
   teamLeaderName: string;
   teamLeaderImage: string;
   teamLeaderMessage: string;
+  teamId: string;
 }
 
 export interface RecruitingTeam {

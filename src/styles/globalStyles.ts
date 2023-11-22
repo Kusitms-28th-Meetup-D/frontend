@@ -130,6 +130,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     //font-family: 'Pretendard';
     /* margin-top: 8.2rem; */
+    overflow-y: scroll;
   }
 
   ol,

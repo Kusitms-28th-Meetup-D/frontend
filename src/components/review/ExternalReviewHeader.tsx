@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import Title from '../common/Title';
-// import ReviewProfile from './ReviewProfile';
+import ExternalReviewProfile from './ExternalReviewProfile';
 import { ProfileData } from '../../interface/Profile';
 
 interface ExternalReviewHeaderProps {
@@ -30,11 +30,10 @@ const ExternalReviewHeader = ({ profileData }: ExternalReviewHeaderProps) => {
               </HeaderSubTitle>
             </HeaderLeft>
             <HeaderRight>
-              {/* <ReviewProfile
-                user={profileData}
-                name={profileData.username}
-                isSelected={true}
-              /> */}
+              <ExternalReviewProfile
+                username={profileData.username}
+                profile={profileData.profile_image}
+              />
             </HeaderRight>
           </>
         )}

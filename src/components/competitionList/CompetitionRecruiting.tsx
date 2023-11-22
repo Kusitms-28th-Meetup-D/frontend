@@ -50,5 +50,5 @@ const RecruitingBoxLayout = styled.div`
   width: 100%;
 
   // 이거
-  min-height: 25rem;
+  min-height: 28rem;
 `;

@@ -19,7 +19,7 @@ const MyTeamOpenBox = ({ myTeamOpen, teamId, userId }: MyTeamOpenBoxProps) => {
           <CompetitionBox>
             <CompetitionTitle>{myTeamOpen.contestTitle}</CompetitionTitle>
             <CompetitionImg src={myTeamOpen.contestImage[0]} />
-            <Button onClick={() => navigate(`/myteam/${teamId}/${userId}`)}>
+            <Button onClick={() => navigate(`/myteam/${userId}/${teamId}`)}>
               팀 관리하러 가기
             </Button>
           </CompetitionBox>
