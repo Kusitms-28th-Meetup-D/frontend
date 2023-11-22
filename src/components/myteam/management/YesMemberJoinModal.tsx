@@ -46,7 +46,7 @@ const YesMemberJoinModal: React.FC<YesMemberJoinModalProps> = ({
     >
       <ModalInner>
         <Title>
-          {profileProps.teamMemberName}님과 팀원으로 함께하시겠어요?
+          {profileProps.teamMemberName} 님과 팀원으로 함께하시겠어요?
         </Title>
         <Content>팀원으로 합류한 이후에는 취소가 불가능해요.</Content>
         <ProfileBoxMember

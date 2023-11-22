@@ -3,12 +3,12 @@ export const keywordList = [
   '불타는 열정왕',
   '전공스킬 넘사벽',
   '소통의 귀재',
-  '논리의 왕',
+  '디테일 천재',
   '분위기 메이커',
   '꽉찬 리더십',
-  '경험가득 고인물',
-  '올라운더',
-  '빛의 작업속도',
+  '아이디어 뱅크',
+  '팀워크 최고',
+  '성실의 아이콘',
 ];
 
 export const keywordListWithIds = keywordList.map((keyword, index) => ({
