@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-
 import memberSrc from '/assets/images/common/members.svg';
+
 const MyTeamEmpty = ({ text }: { text: string }) => {
   return (
     <Layout>
@@ -14,8 +14,8 @@ const MyTeamEmpty = ({ text }: { text: string }) => {
 const Layout = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.colors.primary20};
-
   padding: 6rem 7rem;
+  border-radius: 10px;
 `;
 const Inner = styled.div`
   width: 107.8rem;
