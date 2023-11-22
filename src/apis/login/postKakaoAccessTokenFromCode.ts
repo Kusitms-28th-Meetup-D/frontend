@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const GRANT_TYPE = 'authorization_code';
 const client_id = import.meta.env.VITE_KAKAO_CLIENT_ID;
-// const redirect_uri = 'http://localhost:5173/login/oauth'; // 개발
-const redirect_uri = 'https://wanteam.vercel.app/login/oauth'; //배포
+const redirect_uri = 'http://localhost:5173/login/oauth'; // 개발
+// const redirect_uri = 'https://wanteam.vercel.app/login/oauth'; //배포
 
 const postUrl = 'https://kauth.kakao.com/oauth/token';
 
