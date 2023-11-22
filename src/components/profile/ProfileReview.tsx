@@ -20,7 +20,7 @@ const ProfileReview = ({
 }) => {
   const DETAIL_LOCKED_TICKET = isLocked
     ? `티켓을 사용하면 ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`
-    : `티켓을 사용하셨군요. ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`;
+    : ``;
   const LOCKED_TICKET_AMMOUNT = isLocked ? '?' : reviewData?.length;
   return (
     <ProfileReviewContainer>
