@@ -65,7 +65,7 @@ const ContestTeam = () => {
         {'공모전으로 돌아가기'}
       </TeamUndo>
       <TeamTitle>
-        {contestTeamDetailData?.data.data.leaderInfo.teamMemberName}님의 팀
+        {contestTeamDetailData?.data.data.leaderInfo.teamMemberName} 님의 팀
       </TeamTitle>
       <TeamLeaderContainer>
         <LeaderBox>

@@ -18,7 +18,7 @@ const PopularTeamBox = ({
       <h1>{title}</h1>
       <hr />
       <img src={'/assets/images/review/profile.svg'} />
-      <h2>{name}님의 팀</h2>
+      <h2>{name} 님의 팀</h2>
       <p>"{content}"</p>
     </PopularTeamBoxContainer>
   );

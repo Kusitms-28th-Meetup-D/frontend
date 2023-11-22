@@ -45,7 +45,7 @@ const NoMemberJoinModal: React.FC<NoMemberJoinModalProps> = ({
       onCloseClickFunc={handleCloseButtonClick}
     >
       <ModalInner>
-        <Title>{profileProps.teamMemberName}님의 합류를 거절하시겠어요?</Title>
+        <Title>{profileProps.teamMemberName} 님의 합류를 거절하시겠어요?</Title>
         <Content>합류를 거절한 이후에는 취소가 불가능해요.</Content>
         <ProfileBoxMember
           hasBorder={true}

@@ -42,6 +42,7 @@ const ExternalMobileOneLine = () => {
               setText(e.target.value);
             }}
             value={text}
+            maxLength={140}
           ></Textarea>
           <p>{text.length}/140자</p>
         </TextareaBox>
@@ -93,7 +94,7 @@ const ExternalMobileOneLineContainer = styled.div`
     margin-bottom: 0.5rem;
   }
   > p {
-    ${({ theme }) => theme.fonts.bodyXXS};
+    ${({ theme }) => theme.fonts.bodyXS};
     color: ${({ theme }) => theme.colors.gray70};
     margin-bottom: 5rem;
   }
