@@ -42,6 +42,7 @@ const ExternalMobileOneLine = () => {
               setText(e.target.value);
             }}
             value={text}
+            maxLength={140}
           ></Textarea>
           <p>{text.length}/140자</p>
         </TextareaBox>
