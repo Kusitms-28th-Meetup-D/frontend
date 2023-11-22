@@ -29,22 +29,21 @@ const TendencyBox = ({ boxName, question }: TendencyBoxProps) => {
     }));
   };
 
-  const { review, setReview } = useContext(ReviewContext);
-  useEffect(() => {
-    setReview({
-      ...review,
-      selectedTeamCultures: {
-        feedbackStyle: selectedAnswers[1],
-        teamStyle: selectedAnswers[2],
-        personalityStyle: selectedAnswers[3],
-      },
-      selectedWorkMethods: {
-        workStyle: selectedAnswers[4],
-        resultProcess: selectedAnswers[5],
-        workLifeBalance: selectedAnswers[6],
-      },
-    });
-  }, [selectedAnswers]);
+  // useEffect(() => {
+  //   setReview({
+  //     ...review,
+  //     selectedTeamCultures: {
+  //       feedbackStyle: selectedAnswers[1],
+  //       teamStyle: selectedAnswers[2],
+  //       personalityStyle: selectedAnswers[3],
+  //     },
+  //     selectedWorkMethods: {
+  //       workStyle: selectedAnswers[4],
+  //       resultProcess: selectedAnswers[5],
+  //       workLifeBalance: selectedAnswers[6],
+  //     },
+  //   });
+  // }, [selectedAnswers]);
 
   return (
     <TendencyLayout>

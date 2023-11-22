@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 import { Headers } from '../constants/Header';
 import { recoilPersist } from 'recoil-persist';
 import { LoginInfo } from '../interface/Login';
-import { RequestReviews } from '../interface/Review';
+import { RecoilReview } from '../interface/Review';
 const { persistAtom } = recoilPersist({
   key: 'recoilPersistTest',
   storage: sessionStorage,
@@ -32,182 +32,144 @@ export const loginInfoState = atom<LoginInfo>({
   effects_UNSTABLE: [persistAtom],
 });
 //리뷰 state
-export const reviewState = atom({
+export const reviewState = atom<RecoilReview[]>({
   key: 'review',
-  default: '132',
-  // default: {
-  //   uploadReviews: [
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //     {
-  //       userId: -1,
-  //       teamId: -1,
-  //       selectedKeywords: [],
-  //       selectedTeamCultures: {
-  //         feedbackStyle: -1,
-  //         teamStyle: -1,
-  //         personalityStyle: -1,
-  //       },
-  //       selectedWorkMethods: {
-  //         workStyle: -1,
-  //         resultProcess: -1,
-  //         workLifeBalance: -1,
-  //       },
-  //     },
-  //   ],
-  // },
+  default: [
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+    {
+      selectedKeywords: [],
+      selectedTeamCultures: {
+        feedbackStyle: -1,
+        teamStyle: -1,
+        personalityStyle: -1,
+      },
+      selectedWorkMethods: {
+        workStyle: -1,
+        resultProcess: -1,
+        workLifeBalance: -1,
+      },
+    },
+  ],
   // effects_UNSTABLE: [persistAtom],
 });
 export const reviewMemberIndexState = atom<number>({
-  key: 'review',
+  key: 'reviewIndex',
   default: 0,
 });
 

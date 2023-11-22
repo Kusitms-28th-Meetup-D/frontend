@@ -75,8 +75,6 @@ export interface ReviewCheck {
   isReviewdBefore: boolean;
 }
 
-
-
 export interface RequestNonUserReview {
   userId: number;
   selectedKeywords: SelectedKeywords[];
@@ -130,6 +128,13 @@ export interface UploadReview {
   userId: number;
   teamId: number;
   selectedKeywords: SelectedKeywords[];
+  selectedTeamCultures: SelectedTeamCultures;
+  selectedWorkMethods: SelectedWorkMethods;
+  recommendationComment?: string;
+}
+
+export interface RecoilReview {
+  selectedKeywords: number[];
   selectedTeamCultures: SelectedTeamCultures;
   selectedWorkMethods: SelectedWorkMethods;
   recommendationComment?: string;
