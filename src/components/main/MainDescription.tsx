@@ -1,10 +1,20 @@
 import { styled } from 'styled-components';
 
 const MainDescription = () => {
+  const handleScrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <>
       <MainDescriptionContainer>
-        <ScrollDown src={'/assets/images/main/scroll_down.svg'} />
+        <ScrollDown
+          src={'/assets/images/main/scroll_down.svg'}
+          onClick={handleScrollToBottom}
+        />
         <h1>리뷰 확인하고 원하는 팀원을 찾아보세요!</h1>
         <h2>모두가 원하는 팀원을 만날 수 있도록 원팀이 함께할게요.</h2>
         <Star src={'/assets/images/common/star.svg'} />
@@ -34,6 +44,7 @@ const ScrollDown = styled.img`
   width: 7.5rem;
   height: 4rem;
   margin: 5.5rem 0 6.5rem 0;
+  cursor: pointer;
 `;
 
 const Star = styled.img`

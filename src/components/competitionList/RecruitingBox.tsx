@@ -1,13 +1,25 @@
 import { styled } from 'styled-components';
 import { RecruitingTeamData } from '../../interface/MyTeam';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { loginInfoState } from '../../recoil/atom';
 
 interface RecruitingBoxProps {
   recruitingTeam: RecruitingTeamData;
 }
 
 const RecruitingBox = ({ recruitingTeam }: RecruitingBoxProps) => {
+  const loginInfo = useRecoilValue(loginInfoState);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    if (loginInfo.data?.userId == recruitingTeam.teamLeaderId)
+      navigate(
+        `/myteam/${loginInfo.data?.userId}/${recruitingTeam.teamId}/${recruitingTeam.contestId}`,
+      );
+    else navigate(`/list/${recruitingTeam.contestId}/${recruitingTeam.teamId}`);
+  };
   return (
-    <RecruitingLayout>
+    <RecruitingLayout onClick={handleClick}>
       <RecruitingTitle>{recruitingTeam.contesttitle}</RecruitingTitle>
       <RecruitingHr />
       <RecruitingProfile src={recruitingTeam.teamLeaderImage} />

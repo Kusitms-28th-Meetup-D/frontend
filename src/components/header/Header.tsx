@@ -56,7 +56,7 @@ const Header = () => {
             >
               <HeaderStar src={starSrc} />내 프로필
             </HeaderItem>
-          </HeaderContainer>{' '}
+          </HeaderContainer>
           {loginInfo.isLogin ? (
             <LoginProfile userId={loginInfo.data?.userId} />
           ) : (

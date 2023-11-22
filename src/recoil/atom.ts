@@ -40,3 +40,11 @@ export const needKakaoReviewModalState = atom({
   key: 'needKakaoReviewModal',
   default: false,
 });
+export const joinTeamCompleteModalState = atom({
+  key: 'joinTeamCompleteModal',
+  default: false,
+});
+export const joinTeamRefusedModalState = atom({
+  key: 'joinTeamRefusedModal',
+  default: false,
+});

@@ -1,24 +1,27 @@
 import { styled } from 'styled-components';
 import HeroBox from './HeroBox';
-import { heroList } from '../../constants/review';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useReviewUsers } from '../../hooks/review/useReviewUsers';
 
 const ReviewHero = () => {
   const [selectedHero, setSelectedHero] = useState('');
+  const { teamId } = useParams();
+  const { reviewUsers } = useReviewUsers(Number(teamId));
+  console.log(reviewUsers?.data.userReviewResponseDtoList);
 
   return (
     <>
       <HeroTitle>리뷰를 남길 주인공은?</HeroTitle>
       <HeroLayout>
-        {heroList.map((hero) => (
-          <HeroBox
-            key={hero.name}
-            name={hero.name}
-            src={hero.src}
-            selected={selectedHero === hero.name}
-            onSelect={() => setSelectedHero(hero.name)}
-          />
-        ))}
+        {reviewUsers &&
+          reviewUsers?.data.userReviewResponseDtoList.map((hero) => (
+            <HeroBox
+              hero={hero}
+              selected={selectedHero === hero.teamMemberName}
+              onSelect={() => setSelectedHero(hero.teamMemberName)}
+            />
+          ))}
       </HeroLayout>
     </>
   );

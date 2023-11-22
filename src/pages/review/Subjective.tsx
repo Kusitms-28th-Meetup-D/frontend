@@ -1,9 +1,12 @@
 import ReviewProfiles from '../../components/review/ReviewProfiles';
-import ReviewKeywords from '../../components/review/ReviewKeywords';
 import ReviewTendency from '../../components/review/ReviewTendency';
 import BeforeNextButton from '../../components/common/BeforeNextButton';
+import ReviewKeywords from '../../components/review/ReviewKeywords';
+import { useParams } from 'react-router-dom';
 
 const Subjective = () => {
+  const { teamId } = useParams();
+
   return (
     <>
       <ReviewProfiles />
@@ -11,7 +14,7 @@ const Subjective = () => {
       <ReviewTendency />
       <BeforeNextButton
         next="다음"
-        route="/review/multipleChoice"
+        route={`/review/${teamId}/multipleChoice`}
         isNextDisabled={false}
       />
     </>
