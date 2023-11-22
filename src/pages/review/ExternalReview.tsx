@@ -29,6 +29,8 @@ const ExternalReview = () => {
     recommendationComment: '',
   });
 
+  console.log(review);
+
   return (
     <>
       <ExternalReviewHeader profileData={profileData?.data.data} />

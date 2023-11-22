@@ -1,9 +1,10 @@
 import { styled } from 'styled-components';
 import Keyword from './Keyword';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { selectedNameAtom } from '../../recoil/review';
 import { keywordListWithIds } from '../../constants/review';
+import { ExternalReviewContext } from '../../pages/review/ExternalReview';
 
 interface ReviewKeywordsProps {
   userName?: string;
@@ -22,6 +23,16 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
       }
     }
   };
+
+  const { review, setReview } = useContext(ExternalReviewContext);
+  useEffect(() => {
+    setReview({
+      ...review,
+      selectedKeywords: selectedKeywords.map((keywordId) => ({
+        selectKeyword: keywordId,
+      })),
+    });
+  }, [selectedKeywords]);
 
   return (
     <KeywordLayout>

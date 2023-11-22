@@ -1,6 +1,9 @@
 import { styled } from 'styled-components';
 import Keyword from './Keyword';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import { ExternalReviewContext } from '../../pages/review/ExternalReview';
+import { useRecoilState } from 'recoil';
+import { selectedWebTendencyAtom } from '../../recoil/review';
 
 interface Question {
   id: number;
@@ -15,33 +18,33 @@ interface TendencyBoxProps {
 }
 
 const TendencyBox = ({ boxName, question }: TendencyBoxProps) => {
-  const [selectedAnswers, setSelectedAnswers] = useState<{
-    [key: number]: string;
-  }>({});
+  const [selectedAnswers, setSelectedAnswers] = useRecoilState<{
+    [key: number]: number;
+  }>(selectedWebTendencyAtom);
 
-  useState<{ [key: number]: string }>(
-    question.reduce((acc: { [key: number]: string }, currentQuestion) => {
-      acc[currentQuestion.id] = currentQuestion.answer1;
-      return acc;
-    }, {} as { [key: number]: string }),
-  );
-
-  useEffect(() => {
-    setSelectedAnswers(
-      question.reduce((acc: { [key: number]: string }, currentQuestion) => {
-        acc[currentQuestion.id] = currentQuestion.answer1;
-        return acc;
-      }, {} as { [key: number]: string }),
-    );
-  }, [question]);
-
-  const handleToggleKeyword = (questionId: number, selectedKeyword: string) => {
+  const handleToggleKeyword = (questionId: number, selected: number) => {
     setSelectedAnswers((prevSelected) => ({
       ...prevSelected,
-      [questionId]:
-        prevSelected[questionId] === selectedKeyword ? '' : selectedKeyword,
+      [questionId]: selected,
     }));
   };
+
+  const { review, setReview } = useContext(ExternalReviewContext);
+  useEffect(() => {
+    setReview({
+      ...review,
+      selectedTeamCultures: {
+        feedbackStyle: selectedAnswers[1],
+        teamStyle: selectedAnswers[2],
+        personalityStyle: selectedAnswers[3],
+      },
+      selectedWorkMethods: {
+        workStyle: selectedAnswers[4],
+        resultProcess: selectedAnswers[5],
+        workLifeBalance: selectedAnswers[6],
+      },
+    });
+  }, [selectedAnswers]);
 
   return (
     <TendencyLayout>
@@ -56,13 +59,13 @@ const TendencyBox = ({ boxName, question }: TendencyBoxProps) => {
             <KeywordBox>
               <Keyword
                 keyword={item.answer1}
-                selected={selectedAnswers[item.id] === item.answer1}
-                onClick={() => handleToggleKeyword(item.id, item.answer1)}
+                selected={selectedAnswers[item.id] === 0}
+                onClick={() => handleToggleKeyword(item.id, 0)}
               />
               <Keyword
                 keyword={item.answer2}
-                selected={selectedAnswers[item.id] === item.answer2}
-                onClick={() => handleToggleKeyword(item.id, item.answer2)}
+                selected={selectedAnswers[item.id] === 1}
+                onClick={() => handleToggleKeyword(item.id, 1)}
               />
             </KeywordBox>
           </QuestionBox>
