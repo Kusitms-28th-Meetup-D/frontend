@@ -1,7 +1,9 @@
 import { styled } from 'styled-components';
-import Keyword from './Keyword';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { reviewMemberIndexState, reviewState } from '../../recoil/atom';
+import Keyword from '../Keyword';
+import { useContext, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { selectedWebTendencyAtom } from '../../../recoil/review';
+import { ExternalReviewContext } from '../../../pages/review/ExternalReview';
 
 interface Question {
   id: number;
@@ -13,39 +15,42 @@ interface Question {
 interface TendencyBoxProps {
   boxName: string;
   question: Question[];
-  arrIndex: number;
 }
 
-const TendencyBox = ({ boxName, question, arrIndex }: TendencyBoxProps) => {
-  const [reviewRecoilData, setReviewRecoilData] = useRecoilState(reviewState);
-  const reviewMemberIndex = useRecoilValue(reviewMemberIndexState);
+const ExternalTendencyBox = ({ boxName, question }: TendencyBoxProps) => {
+  const [selectedAnswers, setSelectedAnswers] = useRecoilState<{
+    [key: number]: number;
+  }>(selectedWebTendencyAtom);
 
-  const handleToggleKeyword = (value: number, subIndex: number) => {
-    setReviewRecoilData((curr) => {
-      const newArr = [...curr];
-      const newObj = { ...curr[reviewMemberIndex] };
-
-      //깊은복사
-      newObj.arr = [
-        [newObj.arr[0][0], newObj.arr[0][1], newObj.arr[0][2]],
-        [newObj.arr[1][0], newObj.arr[1][1], newObj.arr[1][2]],
-      ];
-
-      //이미선택됨
-      if (newObj.arr[arrIndex][subIndex] != value) {
-        newObj.arr[arrIndex][subIndex] = value;
-      }
-
-      newArr[reviewMemberIndex] = newObj;
-      return newArr;
-    });
+  const handleToggleKeyword = (questionId: number, selected: number) => {
+    setSelectedAnswers((prevSelected) => ({
+      ...prevSelected,
+      [questionId]: selected,
+    }));
   };
+
+  const { review, setReview } = useContext(ExternalReviewContext);
+  useEffect(() => {
+    setReview({
+      ...review,
+      selectedTeamCultures: {
+        feedbackStyle: selectedAnswers[1],
+        teamStyle: selectedAnswers[2],
+        personalityStyle: selectedAnswers[3],
+      },
+      selectedWorkMethods: {
+        workStyle: selectedAnswers[4],
+        resultProcess: selectedAnswers[5],
+        workLifeBalance: selectedAnswers[6],
+      },
+    });
+  }, [selectedAnswers]);
 
   return (
     <TendencyLayout>
       <TendencyTopBox>{boxName}</TendencyTopBox>
       <TendencyBottomBox>
-        {question.map((item, subIndex) => (
+        {question.map((item) => (
           <QuestionBox key={item.id}>
             <TendencyTitleBox>
               <QuestionImg src="/public/assets/images/review/star.svg" />
@@ -54,21 +59,13 @@ const TendencyBox = ({ boxName, question, arrIndex }: TendencyBoxProps) => {
             <KeywordBox>
               <Keyword
                 keyword={item.answer1}
-                selected={
-                  reviewRecoilData[reviewMemberIndex].arr[arrIndex][
-                    subIndex
-                  ] === 0
-                }
-                onClick={() => handleToggleKeyword(0, subIndex)}
+                selected={selectedAnswers[item.id] === 0}
+                onClick={() => handleToggleKeyword(item.id, 0)}
               />
               <Keyword
                 keyword={item.answer2}
-                selected={
-                  reviewRecoilData[reviewMemberIndex].arr[arrIndex][
-                    subIndex
-                  ] === 1
-                }
-                onClick={() => handleToggleKeyword(1, subIndex)}
+                selected={selectedAnswers[item.id] === 1}
+                onClick={() => handleToggleKeyword(item.id, 1)}
               />
             </KeywordBox>
           </QuestionBox>
@@ -78,7 +75,7 @@ const TendencyBox = ({ boxName, question, arrIndex }: TendencyBoxProps) => {
   );
 };
 
-export default TendencyBox;
+export default ExternalTendencyBox;
 
 const TendencyLayout = styled.div`
   display: flex;

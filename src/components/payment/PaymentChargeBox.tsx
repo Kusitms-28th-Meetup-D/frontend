@@ -9,6 +9,8 @@ import { useTicketBuy } from '../../hooks/payment/useTicketBuy';
 import OneButtonModal from '../common/OneButtonModal';
 import { useNavigate } from 'react-router-dom';
 import PossessionTicket from './PossessionTicket';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const PaymentChargeBox = () => {
   const { ticketCount } = useTicketCount();
@@ -52,7 +54,11 @@ const PaymentChargeBox = () => {
         <Title>충전 수량 선택</Title>
       </TitleBox>
       <PaymentChargeBoxContainer>
-        <ChargeBoxContainer>
+        <ChargeBoxContainer
+          initial="hidden"
+          animate="visible"
+          variants={TextAnimation}
+        >
           {chargeList.map((charge) => (
             <ChargeBox
               key={charge.id}
@@ -63,7 +69,11 @@ const PaymentChargeBox = () => {
             />
           ))}
         </ChargeBoxContainer>
-        <ChargeCalcBoxContainer>
+        <ChargeCalcBoxContainer
+          initial="hidden"
+          animate="visible"
+          variants={TextAnimation}
+        >
           <CalcContent>
             현재 보유 티켓
             <Ticket src={'/assets/images/common/ticket.svg'} />
@@ -137,14 +147,14 @@ const PaymentChargeBoxContainer = styled.div`
   gap: 3rem;
 `;
 
-const ChargeBoxContainer = styled.div`
+const ChargeBoxContainer = styled(motion.div)`
   width: 65%;
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
 `;
 
-const ChargeCalcBoxContainer = styled.div`
+const ChargeCalcBoxContainer = styled(motion.div)`
   width: 35%;
   display: flex;
   flex-direction: column;

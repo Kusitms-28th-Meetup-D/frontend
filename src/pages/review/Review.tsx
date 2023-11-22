@@ -1,6 +1,9 @@
 import { styled } from 'styled-components';
 import ReviewHeader from '../../components/review/ReviewHeader';
 import { Outlet } from 'react-router-dom';
+import { createContext } from 'react';
+
+export const ReviewContext = createContext<any>(null);
 
 const Review = () => {
   return (

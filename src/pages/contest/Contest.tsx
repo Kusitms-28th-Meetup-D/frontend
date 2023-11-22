@@ -10,6 +10,7 @@ const Contest = () => {
   const loginInfo = useRecoilValue(loginInfoState);
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.list));
+
   return (
     <ContestLayout>
       <ContestInfo />
@@ -21,5 +22,6 @@ const Contest = () => {
 const ContestLayout = styled.div`
   max-width: 122.4rem;
   margin: auto;
+  margin: 3rem auto 5rem auto;
 `;
 export default Contest;

@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
-import Title from '../common/Title';
+import Title from '../../common/Title';
 import ExternalReviewProfile from './ExternalReviewProfile';
-import { ProfileData } from '../../interface/Profile';
+import { ProfileData } from '../../../interface/Profile';
 
 interface ExternalReviewHeaderProps {
   profileData?: ProfileData;

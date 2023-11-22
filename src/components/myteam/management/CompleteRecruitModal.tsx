@@ -3,6 +3,9 @@ import TwoButtonModal from '../../common/TwoButtonModal';
 
 import glassSrc from '/assets/images/common/glasses.svg';
 import { useRecruitComplete } from '../../../hooks/myTeam/useRecruitComplete';
+import { useRecoilValue } from 'recoil';
+import { loginInfoState } from '../../../recoil/atom';
+import { useNavigate } from 'react-router-dom';
 
 interface CompleteRecruitModalProps {
   isModalVisible: boolean;
@@ -14,6 +17,8 @@ const CompleteRecruitModal: React.FC<CompleteRecruitModalProps> = ({
   setIsModalVisible,
   teamId,
 }) => {
+  const navigate = useNavigate();
+  const loginInfo = useRecoilValue(loginInfoState);
   const handleCompleteRecruit = useRecruitComplete({
     teamId: teamId as string,
   });
@@ -23,6 +28,7 @@ const CompleteRecruitModal: React.FC<CompleteRecruitModalProps> = ({
   const handleRightButtonClick = () => {
     handleCompleteRecruit.mutate();
     setIsModalVisible(false);
+    navigate(`myteam/${loginInfo.data?.userId}/active`);
   };
   const handleCloseButtonClick = () => {
     setIsModalVisible(false);
@@ -74,5 +80,6 @@ const Content = styled.div`
   color: ${(props) => props.theme.colors.gray90};
   margin-bottom: 2rem;
   white-space: break-spaces;
+  text-align: center;
 `;
 export default CompleteRecruitModal;

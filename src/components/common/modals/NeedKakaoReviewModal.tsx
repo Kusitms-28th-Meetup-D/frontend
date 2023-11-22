@@ -10,6 +10,8 @@ import closeSrc from '/assets/images/common/closeButton.svg';
 import kakaoSrc from '/assets/images/common/kakaotalk.svg';
 import reviewSrc from '/assets/images/common/kakaoReviewSend.svg';
 import { kakao } from '../../login/KakaoLogin';
+import { TextAnimation } from '../../../styles/animation';
+import { motion } from 'framer-motion';
 const NeedKakaoReviewModal = () => {
   const [isModalVisible, setIsModalVisible] = useRecoilState(
     needKakaoReviewModalState,
@@ -29,17 +31,22 @@ const NeedKakaoReviewModal = () => {
   };
   return (
     <BlurLayout $isModalVisible={isModalVisible}>
-      <ModalContainer>
+      <ModalContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <CloseImg src={closeSrc} onClick={() => setIsModalVisible(false)} />
         <SendImg src={reviewSrc} />
         <Title>지금 리뷰 요청을 보내보세요!</Title>
         <Subtitle>
           {'함께 활동했던 지인이 리뷰를 작성해주면,\n프로필이 업데이트 됩니다.'}
         </Subtitle>
-        <Button onClick={handleKakaoMessageSend}>
+        <RequestKakaoReviewButton onClick={handleKakaoMessageSend}>
           <KakaoImg src={kakaoSrc} />
-          카카오톡으로 리뷰 요청하기
-        </Button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+          {'카카오톡으로 나의 리뷰 요청하기'}
+        </RequestKakaoReviewButton>
       </ModalContainer>
     </BlurLayout>
   );
@@ -60,7 +67,7 @@ const BlurLayout = styled.div<{ $isModalVisible: boolean }>`
   justify-content: center;
   align-items: center;
 `;
-const ModalContainer = styled.div`
+const ModalContainer = styled(motion.div)`
   position: relative;
   min-width: 60rem;
   /* height: 36rem; */
@@ -104,7 +111,7 @@ const Subtitle = styled.div`
   text-align: center;
   margin-bottom: 2rem;
 `;
-const Button = styled.div`
+export const RequestKakaoReviewButton = styled.div`
   position: relative;
   width: 39rem;
   height: 6rem;
@@ -120,6 +127,8 @@ const Button = styled.div`
   align-items: center;
 
   cursor: pointer;
+
+  z-index: 20;
 `;
 const KakaoImg = styled.img`
   position: absolute;

@@ -3,6 +3,7 @@ import TwoButtonModal from '../../common/TwoButtonModal';
 
 import glassSrc from '/assets/images/common/warning.svg';
 import { useRecruitComplete } from '../../../hooks/myTeam/useRecruitComplete';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface CancleRecruitModalProps {
   isModalVisible: boolean;
@@ -14,6 +15,9 @@ const CancleRecruitModal: React.FC<CancleRecruitModalProps> = ({
   setIsModalVisible,
   teamId,
 }) => {
+  const navigate = useNavigate();
+  const { userId } = useParams();
+
   const handleCompleteRecruit = useRecruitComplete({
     teamId: teamId as string,
   });
@@ -23,6 +27,7 @@ const CancleRecruitModal: React.FC<CancleRecruitModalProps> = ({
   const handleRightButtonClick = () => {
     handleCompleteRecruit.mutate();
     setIsModalVisible(false);
+    navigate(`/myteam/${userId}/open`);
   };
   const handleCloseButtonClick = () => {
     setIsModalVisible(false);
@@ -71,6 +76,7 @@ const Content = styled.div`
   ${(props) => props.theme.fonts.bodyM};
   color: ${(props) => props.theme.colors.gray90};
   margin-bottom: 2rem;
+  text-align: center;
   white-space: break-spaces;
 `;
 export default CancleRecruitModal;

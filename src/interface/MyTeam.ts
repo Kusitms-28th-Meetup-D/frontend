@@ -82,6 +82,7 @@ export interface EndTeamData {
   leaderInfo: ProfileProps;
   teamMemeberInfos: ProfileProps[];
   possibleWriteReviews: boolean;
+  teamId: string;
 }
 
 export interface ResponseEndTeam {

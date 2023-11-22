@@ -4,6 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useContestTeamList from '../../hooks/contest/useContestTeamList';
 import { useSetRecoilState } from 'recoil';
 import { loginModalState } from '../../recoil/atom';
+import MyTeamEmpty from '../myteam/MyTeamEmpty';
+import { motion } from 'framer-motion';
+import { TextAnimation } from '../../styles/animation';
 
 const RecruitTeamList = ({ isLogin }: { isLogin: boolean }) => {
   const { contestId } = useParams();
@@ -16,9 +19,8 @@ const RecruitTeamList = ({ isLogin }: { isLogin: boolean }) => {
       setLoginModal(true);
     }
   };
-
   const { contestTeamListData } = useContestTeamList(contestId as string);
-  console.log(contestTeamListData?.data.data);
+
   return (
     <RecruitTeamListLayout>
       <RecruitTeamListTopContainer>
@@ -26,8 +28,15 @@ const RecruitTeamList = ({ isLogin }: { isLogin: boolean }) => {
         <RecruitTeamButton onClick={handleBtnClicked}>
           +팀 오픈하러 가기
         </RecruitTeamButton>
-      </RecruitTeamListTopContainer>{' '}
-      <RecruitTeamContainer>
+      </RecruitTeamListTopContainer>
+      {contestTeamListData && contestTeamListData?.data.data.length == 0 ? (
+        <MyTeamEmpty text="아직 모집중인 팀이 없어요" />
+      ) : null}
+      <RecruitTeamContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         {contestTeamListData?.data.data.map((data, index) => {
           return <RecruitTeamItem teamData={data} key={index} />;
         })}
@@ -61,7 +70,7 @@ const RecruitTeamButton = styled.button`
   height: 6.4rem;
   border-radius: 3.2rem;
 `;
-const RecruitTeamContainer = styled.div`
+const RecruitTeamContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 4rem;

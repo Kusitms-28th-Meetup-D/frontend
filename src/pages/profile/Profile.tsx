@@ -31,10 +31,8 @@ const Profile = () => {
   const { isUserGetExternalReviewData } = useIsUserGetExternalReview(
     userId as string,
   );
-  // console.log(isUserGetExternalReviewData);
 
   // 인증 필요
-
   const { IsTicketUsedData } = useIsTicketUsed(userId as string);
   const { TicketNumberData } = useTicketNumber();
   useEffect(() => setHeaderSelected(Headers.myProfile));
@@ -96,13 +94,17 @@ const Profile = () => {
         reviewData={profileReviewData?.data.data.comments}
         name={profileData?.data.data.username}
         isLocked={
-          !IsTicketUsedData?.data.data.isUsed ||
-          profileData?.data.data.userId == loginInfo.data?.userId
+          !IsTicketUsedData?.data.data.isUsed &&
+          profileData?.data.data.userId != loginInfo.data?.userId
         }
         setIsLackModalVisible={setIsLackModalVisible}
         setIsUseModalVisible={setIsUseModalVisible}
         isUserGetExternalReview={
           isUserGetExternalReviewData?.data.data.alreadyReviewed
+        }
+        isMyProfile={
+          (loginInfo?.data?.userId as unknown as string) ==
+          (userId as unknown as string)
         }
       />
     </ProfileLayout>
@@ -110,7 +112,7 @@ const Profile = () => {
 };
 const ProfileLayout = styled.div`
   max-width: 122.4rem;
-  margin: auto;
+  margin: 0 auto 5rem auto;
 `;
 
 export default Profile;

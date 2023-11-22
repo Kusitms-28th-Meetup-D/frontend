@@ -23,7 +23,7 @@ export interface ResponseContestInfo {
   status: number;
   message: string;
   data: {
-    averageComments: number;
+    averageComments: number | string;
     contestId: string;
     title: string;
     images: string[];

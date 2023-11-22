@@ -35,8 +35,8 @@ const MainSwiper = () => {
         <SwiperSlideStyle>
           <SwiperContainer>
             <SwiperLeft>
-              <p>원팀이 처음이세요?</p>
-              <h1>원팀에서 원하는 팀원을</h1>
+              <p>Wanteam이 처음이세요?</p>
+              <h1>Wanteam에서 원하는 팀원을</h1>
               <h1>한번에 찾아보세요!</h1>
             </SwiperLeft>
             <SwiperImg

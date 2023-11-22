@@ -1,20 +1,20 @@
 import { styled } from 'styled-components';
+import { userReviewResponse } from '../../interface/Review';
 
 interface HeroBoxProps {
-  name: string;
-  src: string;
+  hero: userReviewResponse;
   selected: boolean;
   onSelect: () => void;
 }
 
-const HeroBox = ({ name, src, selected, onSelect }: HeroBoxProps) => {
+const HeroBox = ({ hero, selected, onSelect }: HeroBoxProps) => {
   return (
     <HeroBoxLayout $isSelected={selected}>
-      <HeroImage src={src} alt={name} />
-      <HeroName>{name}</HeroName>
+      <HeroImage src={hero.teamMemberImage} alt={hero.teamMemberImage} />
+      <HeroName>{hero.teamMemberName}</HeroName>
       <Radio
         type="radio"
-        id={name}
+        id={hero.teamMemberName}
         name="heroSelection"
         checked={selected}
         onChange={onSelect}
@@ -32,9 +32,8 @@ const HeroBoxLayout = styled.label<{ $isSelected: boolean }>`
   background: ${({ theme }) => theme.colors.primary20};
   border-radius: 24px;
   width: 100%;
-  padding: 1.2rem 3rem;
+  padding: 2rem 3rem;
   cursor: pointer;
-
   border: 2px solid
     ${(props) =>
       props.$isSelected ? props.theme.colors.primary40 : 'transparent'};
@@ -43,9 +42,9 @@ const HeroBoxLayout = styled.label<{ $isSelected: boolean }>`
 const HeroImage = styled.img`
   width: 9rem;
   height: 9rem;
+  flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
   margin-right: 3rem;
   border: 1px solid ${({ theme }) => theme.colors.primary40};
 `;
