@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import ExternalReviewHeader from '../../components/review/ExternalReviewHeader';
-import ReviewKeywords from '../../components/review/ReviewKeywords';
+import ReviewKeywords from '../../components/review/ExternalReviewKeywords';
 import ReviewTendency from '../../components/review/ReviewTendency';
 import { useParams } from 'react-router-dom';
 import useProfile from '../../hooks/profile/useProfile';

@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
 import Keyword from './Keyword';
 import { useContext, useEffect } from 'react';
-import { ExternalReviewContext } from '../../pages/review/ExternalReview';
 import { useRecoilState } from 'recoil';
 import { selectedWebTendencyAtom } from '../../recoil/review';
+import { ReviewContext } from '../../pages/review/Review';
 
 interface Question {
   id: number;
@@ -29,7 +29,7 @@ const TendencyBox = ({ boxName, question }: TendencyBoxProps) => {
     }));
   };
 
-  const { review, setReview } = useContext(ExternalReviewContext);
+  const { review, setReview } = useContext(ReviewContext);
   useEffect(() => {
     setReview({
       ...review,
