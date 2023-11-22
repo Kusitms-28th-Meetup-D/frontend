@@ -7,8 +7,11 @@ export const ReviewContext = createContext<any>(null);
 
 const Review = () => {
   const { userId } = useParams();
+  const { teamId } = useParams();
+
   const [review, setReview] = useState({
     userId: Number(userId),
+    teamId: Number(teamId),
     selectedKeywords: [],
     selectedTeamCultures: {
       feedbackStyle: 0,
