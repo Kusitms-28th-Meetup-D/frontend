@@ -38,6 +38,11 @@ const RightBoxContainer = styled.div`
     ${({ theme }) => theme.fonts.heading4};
     color: ${({ theme }) => theme.colors.white};
   }
+
+  &:hover {
+    transition: 0.5s;
+    transform: translateY(-0.5rem);
+  }
 `;
 
 const RightBoxBackground = styled.img`

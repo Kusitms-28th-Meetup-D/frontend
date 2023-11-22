@@ -13,6 +13,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { TEAM_DETAIL_STATUS } from '../../constants/Contest';
 import TeamMembers from '../../components/contestTeam/TeamMembers';
 import JoinTeamModal from '../../components/contestTeam/JoinTeamModal';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const ContestTeam = () => {
   const { teamId, contestId } = useParams();
@@ -59,7 +61,11 @@ const ContestTeam = () => {
       <TeamTitle>
         {contestTeamDetailData?.data.data.leaderInfo.teamMemberName} 님의 팀
       </TeamTitle>
-      <TeamLeaderContainer>
+      <TeamLeaderContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <LeaderBox>
           <Role>팀장</Role>
           <ProfileBoxMember {...teamLeaderBoxProps} />
@@ -86,12 +92,18 @@ const ContestTeam = () => {
           </TeamStatusBox>
         </TeamLeaderInfoBox>
       </TeamLeaderContainer>
-      <TeamNoticeContainer>
+
+      <TeamNoticeContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <TeamNoticeTitle>모집 공고</TeamNoticeTitle>
         <TeamNoticeContent>
           {contestTeamDetailData?.data.data.notice}
         </TeamNoticeContent>
       </TeamNoticeContainer>
+
       <TeamMembers
         memberDatas={contestTeamDetailData?.data.data.teamMemeberInfos}
         leftMember={contestTeamDetailData?.data.data.leftMember}
@@ -154,7 +166,7 @@ const TeamLayout = styled.div`
   gap: 4.4rem;
 `;
 const TeamUndo = styled.div`
-  ${(props) => props.theme.fonts.bodyXXL};
+  ${(props) => props.theme.fonts.bodyXL};
   color: ${(props) => props.theme.colors.gray70};
 
   display: flex;
@@ -172,7 +184,7 @@ const TeamTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray100};
 `;
-const TeamLeaderContainer = styled.div`
+const TeamLeaderContainer = styled(motion.div)`
   display: flex;
   gap: 2rem;
 `;
@@ -239,7 +251,7 @@ const TeamStatusItem = styled.div`
     color: ${(props) => props.theme.colors.primary60};
   }
 `;
-const TeamNoticeContainer = styled.div`
+const TeamNoticeContainer = styled(motion.div)`
   width: 100%;
 
   border: 1px solid ${(props) => props.theme.colors.gray20};

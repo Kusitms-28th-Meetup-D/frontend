@@ -15,6 +15,8 @@ import SelectInput from '../../components/modify/SelectInput';
 import TextAreaInput from '../../components/modify/TextAreaInput';
 import { RequestModifyProfile } from '../../interface/Modify';
 import { useModifyProfile } from '../../hooks/modify/useModifyProfile';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const ProfileModify = () => {
   const loginInfo = useRecoilValue(loginInfoState);
@@ -76,7 +78,13 @@ const ProfileModify = () => {
 
   return (
     <JoinLayout>
-      <JoinFormContainer action="#" onSubmit={handleSubmit}>
+      <JoinFormContainer
+        action="#"
+        onSubmit={handleSubmit}
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <TitleBox>
           <TitleStarImg src={starSrc} />
           <TitleText>계정 정보를 수정해주세요</TitleText>
@@ -139,7 +147,7 @@ const JoinLayout = styled.div`
 
   margin: auto;
 `;
-const JoinFormContainer = styled.form`
+const JoinFormContainer = styled(motion.form)`
   width: 78rem;
   /* height: 70rem; */
 
