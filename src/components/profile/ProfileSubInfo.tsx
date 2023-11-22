@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useProfileCreate } from '../../hooks/profile/useProfileCreate';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const ProfileSubInfo = ({
   internships,
@@ -56,7 +58,11 @@ const ProfileSubInfo = ({
   };
   return (
     <ProfileSubInfoContainer>
-      <ProfileSubInfoBox>
+      <ProfileSubInfoBox
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <ProfileSubInfoTitle>이력</ProfileSubInfoTitle>
         <ProfileSubInfoContents>
           {isMyProfile ? (
@@ -128,7 +134,11 @@ const ProfileSubInfo = ({
         </ProfileSubInfoContents>
       </ProfileSubInfoBox>
 
-      <ProfileSubInfoBox>
+      <ProfileSubInfoBox
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <ProfileSubInfoTitle>스킬</ProfileSubInfoTitle>
         <ProfileSubInfoContents>
           {isMyProfile ? (
@@ -208,7 +218,7 @@ const ProfileSubInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const ProfileSubInfoBox = styled.div``;
+const ProfileSubInfoBox = styled(motion.div)``;
 
 const ProfileSubInfoTitle = styled.div`
   ${(props) => props.theme.fonts.heading4};

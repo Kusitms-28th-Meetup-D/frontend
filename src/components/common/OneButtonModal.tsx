@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { ReactNode } from 'react';
 
 import closeSrc from '/assets/images/common/closeButton.svg';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 interface OneButtonModalProps {
   children: ReactNode; // 자식 컴포넌트
@@ -20,7 +22,11 @@ const OneButtonModal: React.FC<OneButtonModalProps> = ({
 }) => {
   return (
     <BlurLayout $isModalVisible={$isModalVisible}>
-      <ModalContainer>
+      <ModalContainer
+        initial="hidden"
+        animate="visible"
+        variants={TextAnimation}
+      >
         <CloseImg src={closeSrc} onClick={onCloseClickFunc} />
         {children}
 
@@ -44,7 +50,7 @@ const BlurLayout = styled.div<{ $isModalVisible: boolean }>`
   justify-content: center;
   align-items: center;
 `;
-const ModalContainer = styled.div`
+const ModalContainer = styled(motion.div)`
   position: relative;
   min-width: 60rem;
   /* height: 36rem; */

@@ -45,6 +45,11 @@ const ScrollDown = styled.img`
   height: 4rem;
   margin: 5.5rem 0 6.5rem 0;
   cursor: pointer;
+
+  &:hover {
+    transition: 0.5s;
+    transform: translateY(-0.5rem);
+  }
 `;
 
 const Star = styled.img`
