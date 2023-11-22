@@ -16,12 +16,13 @@ import postJoinTeam from '../../apis/contest/postJoinTeam';
 interface UseJoinTeam {
   mutate: () => void;
 }
-export function useJoinTeam(teamId: string): UseJoinTeam {
+export function useJoinTeam(teamId: string, contestId: string): UseJoinTeam {
   const { mutate } = useMutation(
     'joinTeam',
     () =>
       postJoinTeam({
         teamId: teamId as string,
+        contestId: contestId,
       }),
     {},
   );

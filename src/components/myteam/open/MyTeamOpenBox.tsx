@@ -8,9 +8,15 @@ interface MyTeamOpenBoxProps {
   myTeamOpen: TeamData;
   teamId?: string | number;
   userId?: string | number;
+  contestId?: string;
 }
 
-const MyTeamOpenBox = ({ myTeamOpen, teamId, userId }: MyTeamOpenBoxProps) => {
+const MyTeamOpenBox = ({
+  myTeamOpen,
+  teamId,
+  userId,
+  contestId,
+}: MyTeamOpenBoxProps) => {
   const navigate = useNavigate();
   return (
     <MyTeamOpenContainer>
@@ -19,7 +25,11 @@ const MyTeamOpenBox = ({ myTeamOpen, teamId, userId }: MyTeamOpenBoxProps) => {
           <CompetitionBox>
             <CompetitionTitle>{myTeamOpen.contestTitle}</CompetitionTitle>
             <CompetitionImg src={myTeamOpen.contestImage[0]} />
-            <Button onClick={() => navigate(`/myteam/${userId}/${teamId}`)}>
+            <Button
+              onClick={() =>
+                navigate(`/myteam/${userId}/${teamId}/${contestId}`)
+              }
+            >
               팀 관리하러 가기
             </Button>
           </CompetitionBox>

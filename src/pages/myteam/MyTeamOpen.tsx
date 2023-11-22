@@ -6,6 +6,7 @@ import { loginInfoState } from '../../recoil/atom';
 const MyTeamOpen = () => {
   const { openedTeam } = useOpenedTeam();
   const loginInfo = useRecoilValue(loginInfoState);
+  console.log(openedTeam);
   return (
     <MyTeamOpenContainer>
       {openedTeam &&
@@ -16,6 +17,7 @@ const MyTeamOpen = () => {
             myTeamOpen={myTeamOpen}
             teamId={myTeamOpen.teamId}
             userId={loginInfo.data?.userId}
+            contestId={myTeamOpen.contestId}
           />
         ))}
     </MyTeamOpenContainer>
