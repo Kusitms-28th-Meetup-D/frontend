@@ -3,7 +3,7 @@ import Keyword from './Keyword';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { selectedNameAtom } from '../../recoil/review';
-import { keywordList } from '../../constants/review';
+import { keywordListWithIds } from '../../constants/review';
 
 interface ReviewKeywordsProps {
   userName?: string;
@@ -29,16 +29,16 @@ const ReviewKeywords = ({ userName }: ReviewKeywordsProps) => {
         {userName ? userName : selectedName} 님에 대한 키워드 리뷰
       </KeywordTitle>
       <KeywordSubTitle>
-        {userName ? userName : selectedName} 님의 최고 장점을 2개 골라
-        추천해주세요!
+        함께 활동했을 당시, {userName ? userName : selectedName} 님의 최고
+        장점을 2개 골라 추천해주세요!
       </KeywordSubTitle>
       <KeywordBox>
-        {keywordList.map((keyword: string) => (
+        {keywordListWithIds.map((keyword) => (
           <Keyword
-            key={keyword}
-            keyword={keyword}
-            selected={selectedKeywords.includes(keyword)}
-            onClick={() => handleToggleKeyword(keyword)}
+            key={keyword.id}
+            keyword={keyword.keyword}
+            selected={selectedKeywords.includes(keyword.keyword)}
+            onClick={() => handleToggleKeyword(keyword.keyword)}
           />
         ))}
       </KeywordBox>
