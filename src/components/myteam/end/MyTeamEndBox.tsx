@@ -5,17 +5,24 @@ import TeamMemberScrollBox from '../active/TeamMemberScrollBox';
 import Title from '../../common/Title';
 import { EndTeamData } from '../../../interface/MyTeam';
 import { useNavigate } from 'react-router-dom';
+import useIsReviewedOnTeam from '../../../hooks/review/useIsReviewedOnTeam';
 
 interface MyTeamEndBoxProps {
   endTeam: EndTeamData;
 }
 
 const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
-  console.log(endTeam);
+  // console.log(endTeam);
   const naviate = useNavigate();
-  const handlClick = () => {
-    naviate(`/review/${endTeam.teamId}/subjective`);
+  const handleClick = (isActive: boolean) => {
+    if (isActive) {
+      naviate(`/review/${endTeam.teamId}/subjective`);
+    }
   };
+  const { isReviewedOnTeamData } = useIsReviewedOnTeam({
+    teamId: endTeam.teamId,
+  });
+  console.log(isReviewedOnTeamData);
   return (
     <MyTeamEndBoxContainer>
       {endTeam && (
@@ -30,7 +37,13 @@ const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
                 src={'/assets/images/myteam/myteam_end.svg'}
                 alt={'myteam_end'}
               />
-              <ButtonStyle onClick={handlClick}>
+              <ButtonStyle
+                onClick={() =>
+                  handleClick(!isReviewedOnTeamData?.data.data.isReviewedBefore)
+                }
+                $isActive={!isReviewedOnTeamData?.data.data.isReviewedBefore}
+              >
+                {' '}
                 리뷰 작성하러 가기
                 <img
                   src={'/assets/images/common/right_arrow.svg'}
@@ -125,13 +138,29 @@ const MyTeamEndRightTop = styled(Box)`
   }
 `;
 
-const ButtonStyle = styled(Button)`
+const ButtonStyle = styled(Button)<{ $isActive?: boolean }>`
   height: 6rem;
   position: absolute;
   bottom: -5rem;
   left: 50%;
   transform: translateX(-50%);
   padding: 0 4rem;
+
+  border-radius: 3.2rem;
+  border: 1px solid
+    ${(props) =>
+      props.$isActive
+        ? props.theme.colors.primary20
+        : props.theme.colors.gray50};
+
+  background-color: ${(props) =>
+    props.$isActive ? props.theme.colors.primary60 : props.theme.colors.gray10};
+
+  ${(props) => props.theme.fonts.buttonL};
+  color: ${(props) =>
+    props.$isActive ? props.theme.colors.white : props.theme.colors.gray40};
+
+  cursor: ${(props) => (props.$isActive ? 'pointer' : 'default')};
 `;
 
 const RightFlexBox = styled.div`

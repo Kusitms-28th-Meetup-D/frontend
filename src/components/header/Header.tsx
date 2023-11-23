@@ -47,11 +47,16 @@ const Header = () => {
               <HeaderStar src={starSrc} />내 팀
             </HeaderItem>
             <HeaderItem
-              onClick={() =>
-                loginInfo.isLogin
-                  ? navigate(`/profile/${loginInfo.data?.userId}`)
-                  : setLoginModal(true)
-              }
+              onClick={() => {
+                // window.location.reload();
+
+                if (loginInfo.isLogin) {
+                  navigate(`/profile/${loginInfo.data?.userId}`);
+                  window.location.reload();
+                } else {
+                  setLoginModal(true);
+                }
+              }}
               $isSelected={headerSelectedIndex === Headers.myProfile}
             >
               <HeaderStar src={starSrc} />내 프로필
@@ -89,15 +94,12 @@ const HeaderLayout = styled.header`
 
   width: 100%;
   height: 8.2rem;
-
   display: flex;
-
   z-index: 999;
 `;
 const HeaderContentContainer = styled.div`
   width: 122.4rem;
   height: 100%;
-  /* height: 8.2rem; */
   margin: auto;
 
   display: flex;
@@ -108,9 +110,7 @@ const HeaderContentContainer = styled.div`
 const Logo = styled.img`
   width: 20.3rem;
   height: 4.2rem;
-  /* background-color: red; */
   cursor: pointer;
-
   margin-right: 3rem;
 `;
 const HeaderContainer = styled.div`
@@ -121,7 +121,6 @@ const HeaderContainer = styled.div`
 `;
 const HeaderItem = styled.button<{ $isSelected: boolean }>`
   color: ${(props) => props.theme.colors.gray80};
-
   ${(props) =>
     props.$isSelected ? props.theme.fonts.subtitleM : props.theme.fonts.bodyM};
 
@@ -130,20 +129,28 @@ const HeaderItem = styled.button<{ $isSelected: boolean }>`
       ? props.theme.colors.primary60
       : props.theme.colors.gray80};
 
+  white-space: nowrap;
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: relative;
-
-  /* min-width: 13.1rem; */
-
   text-align: center;
 
+  &:hover {
+    transition: 0.2s;
+    ${(props) => props.theme.fonts.subtitleM};
+    color: ${(props) => props.theme.colors.primary60};
+
+    img {
+      display: block;
+    }
+  }
+
   padding: 1.2rem 0.8rem;
-  /* border: 1px solid red; */
   > img {
-    display: ${(props) => (props.$isSelected ? 'default' : 'none')};
+    display: ${(props) => props.$isSelected && 'block'};
+    opacity: 1;
+    transition: opacity 0.2s ease;
   }
 `;
 
@@ -153,4 +160,5 @@ const HeaderStar = styled.img`
 
   position: absolute;
   left: -1.8rem;
+  display: none;
 `;

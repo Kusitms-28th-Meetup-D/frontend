@@ -9,11 +9,14 @@ import MainCompetition from '../../components/main/MainCompetition';
 import MainPopularTeam from '../../components/main/MainPopularTeam';
 import MainQuestions from '../../components/main/MainQuestions';
 import MainSwiper from '../../components/main/MainSwiper';
+import useMainPageInfo from '../../hooks/main/useMainPageInfo';
 
 const Main = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
   useEffect(() => setHeaderSelected(Headers.none));
 
+  const { mainPageInfoData } = useMainPageInfo();
+  console.log(mainPageInfoData);
   return (
     <>
       <MainSwiper />
@@ -21,8 +24,12 @@ const Main = () => {
         <MainBox />
         <MainDescription />
       </MainLayout>
-      <MainCompetition />
-      <MainPopularTeam />
+      <MainCompetition
+        contestData={mainPageInfoData?.data.data.recommendationContests}
+      />
+      <MainPopularTeam
+        teamData={mainPageInfoData?.data.data.recommendationTeams}
+      />
       <MainQuestions />
     </>
   );

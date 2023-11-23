@@ -73,7 +73,7 @@ export const question2 = [
   },
   {
     id: 5,
-    title: '어떤 관점으로 업무했나요',
+    title: '어떤 관점으로 업무했나요?',
     answer1: '큰 그림을 그리고 방향성 제시',
     answer2: '세심하게 파고드는 꼼꼼함',
   },

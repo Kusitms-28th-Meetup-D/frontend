@@ -1,22 +1,29 @@
 import { styled } from 'styled-components';
 import { RecruitingTeamData } from '../../interface/MyTeam';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { loginInfoState } from '../../recoil/atom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { loginInfoState, loginModalState } from '../../recoil/atom';
 
 interface RecruitingBoxProps {
   recruitingTeam: RecruitingTeamData;
 }
 
 const RecruitingBox = ({ recruitingTeam }: RecruitingBoxProps) => {
+  const setLoginModal = useSetRecoilState(loginModalState);
   const loginInfo = useRecoilValue(loginInfoState);
   const navigate = useNavigate();
   const handleClick = () => {
-    if (loginInfo.data?.userId == recruitingTeam.teamLeaderId)
-      navigate(
-        `/myteam/${loginInfo.data?.userId}/${recruitingTeam.teamId}/${recruitingTeam.contestId}`,
-      );
-    else navigate(`/list/${recruitingTeam.contestId}/${recruitingTeam.teamId}`);
+    //로구인안된경우
+    if (!loginInfo.isLogin) {
+      setLoginModal(true);
+    } else {
+      if (loginInfo.data?.userId == recruitingTeam.teamLeaderId)
+        navigate(
+          `/myteam/${loginInfo.data?.userId}/${recruitingTeam.teamId}/${recruitingTeam.contestId}`,
+        );
+      else
+        navigate(`/list/${recruitingTeam.contestId}/${recruitingTeam.teamId}`);
+    }
   };
   return (
     <RecruitingLayout onClick={handleClick}>
@@ -60,6 +67,8 @@ const RecruitingProfile = styled.img`
   border-radius: 50%;
   border: 1px solid ${({ theme }) => theme.colors.primary40};
   margin-bottom: 1rem;
+
+  object-fit: cover;
 `;
 
 const RecruitingTitle = styled.div`

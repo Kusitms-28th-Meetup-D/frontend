@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
-import { CompetitionList } from '../../interface/Competition';
+
 import { useNavigate } from 'react-router-dom';
+import { MainPageContest } from '../../interface/Main';
 
 const CompetitionBox = ({
   contestId,
@@ -9,11 +10,11 @@ const CompetitionBox = ({
   images,
   remainDay,
   teamNum,
-}: CompetitionList) => {
+}: MainPageContest) => {
   const navigate = useNavigate();
-
+  console.log(contestId);
   return (
-    <CompetitionBoxLayout onClick={() => navigate(`${contestId}`)}>
+    <CompetitionBoxLayout onClick={() => navigate(`/list/${contestId}`)}>
       <CompetitionTop>
         <CompetitionremainDay>D-{remainDay}</CompetitionremainDay>
         <CompetitionteamNum>모집 중인 팀 : {teamNum}팀</CompetitionteamNum>
@@ -37,6 +38,8 @@ const CompetitionBoxLayout = styled.div`
   justify-content: space-between;
   cursor: pointer;
   width: 100%;
+
+  overflow: hidden;
 `;
 
 const CompetitionTop = styled.div`
@@ -46,18 +49,19 @@ const CompetitionTop = styled.div`
 `;
 
 const CompetitionremainDay = styled.div`
-  ${({ theme }) => theme.fonts.subtitleXS};
+  ${({ theme }) => theme.fonts.subtitleS};
   color: ${({ theme }) => theme.colors.error90};
 `;
 
 const CompetitionteamNum = styled.div`
-  ${({ theme }) => theme.fonts.subtitleXS};
+  ${({ theme }) => theme.fonts.subtitleS};
   color: ${({ theme }) => theme.colors.primary40};
 `;
 
 const CompetitionImage = styled.img`
   margin: 1.2rem 0;
-  width: inherit;
+  width: 16rem;
+  margin: 1rem auto;
 `;
 
 const CompetitionTitle = styled.div`

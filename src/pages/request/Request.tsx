@@ -51,7 +51,10 @@ const Request = () => {
   const { isUserGetExternalReviewData } = useIsUserGetExternalReview(
     loginUserInfo?.data?.userId as unknown as string,
   );
-  if (isUserGetExternalReviewData?.data.data.alreadyReviewed) navigate('/');
+  if (isUserGetExternalReviewData?.data.data.alreadyReviewed) {
+    navigate('/');
+    // window.location.reload(); // 임시로 새로고침
+  }
 
   return (
     <RequestLayout>
