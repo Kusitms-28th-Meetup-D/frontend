@@ -7,13 +7,13 @@ const ReviewHeader = () => {
       <HeaderContent>
         <HeaderLeft>
           <HeaderTitle>
-            <Title>다음 팀 활동을 위해</Title>
-            <h1>팀원들에게 리뷰를 남겨주세요!</h1>
+            <Title>가장 추천하고 싶은 팀원이 있나요?</Title>
+            <h1>팀원 중 한 명을 골라 한 줄 추천사를 남겨주세요.</h1>
           </HeaderTitle>
           <HeaderSubTitle>
-            <p>남겨주신 리뷰는 팀원들의 프로필에 반영됩니다.</p>
-            <p>차후 팀을 구할 때 활용되는 만큼, 신중하게 작성해 주세요.</p>
-            <p>모든 리뷰는 익명으로 반영됩니다.</p>
+            <p>걱정하지 마세요. 누가 누구에게 추천사를 남겼는지</p>
+            <p>아무도 알 수 없어요. 마음 편히 남겨보세요.</p>
+            {/* <p>모든 리뷰는 익명으로 반영됩니다.</p> */}
           </HeaderSubTitle>
         </HeaderLeft>
         <HeaderRight>

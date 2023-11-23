@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bgSrc from '/assets/images/login/login-bg.svg';
+// import bgSrc from '/assets/images/login/login-bg.svg';
 import btnSrc from '/assets/images/login/login-button.svg';
 import {
   kakaoAuthorize,
@@ -35,7 +35,9 @@ const Login = () => {
         </div>
         <LoginButton src={btnSrc} onClick={handleClick} />
       </LoginTextContainer>
-      <LoginBgImg src={bgSrc} />
+      <LoginBgImg
+        src={'https://wanteam-bucket.s3.ap-northeast-2.amazonaws.com/img3.svg'}
+      />
     </LoginLayout>
   );
 };
