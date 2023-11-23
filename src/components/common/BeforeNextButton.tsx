@@ -32,6 +32,7 @@ const BeforeNextButton = ({
       </BeforeButton>
       <NextButton
         onClick={onClick ? onClick : handleNextButtonClick}
+        $isNextDisabled={isNextDisabled}
         disabled={isNextDisabled}
       >
         {next}
@@ -64,20 +65,33 @@ const BeforeButton = styled.button`
   border-radius: 3.6rem;
 `;
 
-const NextButton = styled.button`
+const NextButton = styled.button<{ $isNextDisabled?: boolean }>`
   width: 17rem;
   height: 5.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  background: ${({ theme }) => theme.colors.primary60};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${(props) =>
+    props.$isNextDisabled
+      ? props.theme.colors.gray10
+      : props.theme.colors.primary60};
+
+  color: ${(props) =>
+    props.$isNextDisabled
+      ? props.theme.colors.gray40
+      : props.theme.colors.white};
+
   ${({ theme }) => theme.fonts.buttonL};
-  border: 1px solid ${({ theme }) => theme.colors.gray20};
+  border: 1px solid
+    ${(props) =>
+      props.$isNextDisabled
+        ? props.theme.colors.gray50
+        : props.theme.colors.primary20};
   border-radius: 3.6rem;
 
-  &:disabled {
+  cursor: ${(props) => (props.$isNextDisabled ? 'default' : 'pointer')};
+  /* &:disabled {
     cursor: default;
-  }
+  } */
 `;
