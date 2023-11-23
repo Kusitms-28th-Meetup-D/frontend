@@ -1,74 +1,217 @@
-# 🌟 서비스명
+# 🌟 서비스명(서비스 링크 : https://wanteam.vercel.app/ )
+
+
+
+<img width="1000" alt="스크린샷 2023-11-23 오후 11 21 04" src="https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/40d2e6b7-aa51-431e-ad4e-3f674e31c058">
 
 <br><br>
 
-## 서비스 소개를 적어주세요.
+## 🌟 서비스 한 줄 소개
 
-> OOO은 … 서비스입니다.
-> <br>
-
-## 🕊️ 팀명
-
-### 팀명 :
+### ‘공모전/대회’에 참여해 좋은 성과를 내고자 하는 대학생 및 취준생들이, 신뢰할 수 있는 정보를 통해 적합한 팀원을 모집할 수 있도록 돕는 팀원 모집 플랫폼
 
 <br>
 
-## R&R
+## 🕊️ 팀명
 
-| 분야   | 이름   | 포지션                                                                    |
-| ------ | ------ | ------------------------------------------------------------------------- |
-| 기획   | 민혜린 | 📈서비스 기획 - 문제 정의 및 솔루션 제시, 유저리서치                      |
-| 기획   | 박형준 | 📊서비스 기획 - 프로젝트 매니징, 유저리서치, 비즈니스 모겔                |
-| 기획   | 채영대 | 📋 서비스 기획 - 유저리서치, 경쟁사 분석 및 타겟 분석, 서비스 타겟층 정의 |
-| 디자인 | 이재영 | 📢 서비스 디자인                                                          |
-| 개발   | 박진우 | 🔦 프론트엔드 리드, iOS 화면 UI 구현, 서버 연동                           |
-| 개발   | 박예진 | 📱 iOS 화면 UI 구현, 서버 연동                                            |
-| 개발   | 이민정 | 💻 백엔드 리드, DB 및 API 구축, 서버 배포                                 |
-| 개발   | 오진영 | 🖥️ DB 및 API 구축, 서버 배포                                              |
+### 도도독동료
+팀, 친구, 연애 등 사람들은 평생 많은 사람들을 만나며 살아갑니다. 다만 자신의 기대와 다른 사람을 만나고 헤어지고를 반복하죠. 도도독동료는 그 굴레를 끊고자 합니다. 자신이 원하는, 자신과 맞는 사람들을 처음부터 만나갈 수 있다면, 많은 사람과 갈등을 겪는 과정을 줄여갈 수 있을까요? 원하는 동료를 한 번에 찾는 미래를, 도도독동료는 꿈꾸고 있습니다.
 
+### 팀원 소개
+
+![팀원소개](https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/5f8d00c0-455f-472f-829c-c7b8c9673e29)
+
+
+<br>
+
+## 👩‍👩‍👧‍👦 R&R
+
+| 분야 | 이름 | 포지션 |
+| --- | --- | --- |
+| 기획 | 민혜린 | 📈기획 : 리서치・서비스 핵심 기능 및 세부 기능 설계 담당 |
+| 기획 | 박형준 | 📊 PM & 기획 : 팀 총 관리 및 스토리보드 담당 |
+| 기획 | 채영대 | 📋 기획 : 기획 총괄 및 가설 검증・비즈니스 모델 설계 담당 |
+| 디자인 | 이재영 | 📢 디자인 : 디자인 총괄 및 UI/UX 툴을 이용한 프로토타입 디자인 |
+| 개발 | 박진우 | 🖥️ Front-End, 개발 리드, 소셜 로그인 구현, 서버 연동 |
+| 개발 | 박예진 | 🖥️ Front-End, 웹 화면 UI 구현, 서버 연동,  |
+| 개발 | 이민정 | 💻 Back-End, 서버 배포 및 MongoDB 구축 |
+| 개발 | 오진영 | 💻 Back-End, ERD 설계 및 MySQL 구축|
 <br>
 
 ## 🔎 목적 및 필요성
 
-### 목적
+### 서비스 개발 동기
 
-이 서비스를 통해 어떤 문제를 해결하고 싶은지, 서비스를 기획하는 목적을 작성해주세요.
+1. 문제 인식 및 내적 개발 동기
+- ‘도도독동료’ 팀 구성 후, 학회/친목 활동 중 대화를 나누며 대부분의 팀원이 ‘팀 형성과 활동 과정에서 발생하는 문제’를 겪어본 경험이 있음을 공유함.
+- 이와 같은 문제는 대부분의 대학생이 대학 생활 중 경험하는 강의 과제 조 모임, 소모임부터, 동아리/학회 등의 대규모 단체 활동, 공모전/대회, 사이드 프로젝트 등 크고작은 팀 활동에서 발생함을 인지함.
+- 또한, 대부분의 대학생이 이러한 팀 활동을 수 차례 경험하게 되는 주요한 이유 및 목적은 대체로 ‘취업을 위한 스펙 쌓기’라는 점을 인지함.
+
+2. FGI를 통한 문제 접근
+- 이에 “취준을 위한 팀 형성 및 활동 과정에서 발생하는 문제”를 구체적으로 발굴하고자 자체 FGI를 진행함.
+
+  (1) 타겟: 사이드 프로젝트, 창업, 공모전/대회, 강의 과제 조 모임 등 다양한 팀 활동을 경험해본 대학생/취준생 집단 20명
+<br></br>
+  (2) 질문: ‘팀 모집 및 활동 과정에서 겪었던 문제들은 무엇인가요?”
+<br></br>
+  (3) 결과
+   - 1위. 기대했던 바와 실제 팀원의 역량이 다름 (55%)
+   - 2위. 팀원들이 잘 구해지지 않음 (27%)
+   - 공동 3위. 업무방식에 대한 정보 부족 (9%)
+    - 공동 3위. 정보 탐색 비용 (9%)
+
+   ⇒ 과반수 이상의 인터뷰이들이 가장 큰 고통을 경험한 문제: ‘힘들게 구한 팀원이 자신이 기대했던 것과 다른 역량/태도를 보이는 문제’
+       ex) “열심히 발품을 팔며 팀원을 구했지만, 알고 있던 자기소개와 전혀 다른 역량을 보여주는 팀원을 만났다”, “자기소개와 달리 태만한 태도를 보이는 팀원을 만난 경우도 대다수였다” 등
+   - 해당 문제를 가장 심각하게 경험하는 집단: 공모전/대회 팀 활동을 경험한 집단
+   - 공모전/대회는 좋은 성과를 거두는 것이 가장 궁극적이고 본질적인 목표이므로, 수상에 유리한 장점과 성향을 가진 적합한 팀원의 존재가 매우 절실함.
+
+   (+) 창업 / 사이드 프로젝트 팀의 경우, ‘개발자’, ‘디자이너’ 등 구체적으로 팀이 필요로 하는 구체적인 파트가 존재하며, 이 직무의 팀원을 구하는 문제를 더 중요하게 인식함.
+   → ‘팀원이 발휘할 퍼포먼스의 질’을 기대하기보다는, ‘얼라인하여 출시까지 안정적으로 함께할 수 있는 팀원인지’ 여부를 더욱 고려함.
+
+3. 추가 양적 리서치를 통한 문제 정의 및 타겟 구체화
+   - 해당 문제에 공감하는 고객이 실재하는지 확인하기 위해 추가적인 설문 조사 진행
+       - 타겟: 공모전/대회 팀 활동을 경험해본 대학생/취준생 집단 (n = 98)
+   - 질문: 공모전/대회 등을 위해 팀을 모은 후, 팀원의 열정, 역량, 성향이 기대했던 것과 달라 어려움을 겪은 경험이 있으십니까?
+   - 결과
+     응답자의 68.4%(98명 중 67명)가 ‘기대했던 바와 팀원이 달라 고통받은 경험이 있다’고 응답.
+   → 70%에 가까운 고객이 문제에 공감하고 있음.
+
+<br> </br>
+
+### 서비스의 목적(필요성)
+
+1. 시장 호응 가설 수립 (이 솔루션에 시장이 얼마나 호응할 것인가?)
+
+   [검증하고자 한 시장 호응 가설]
+
+   ‘대회/ 공모전에서 좋은 성적을 거두기 위해 팀원을 찾는 대학생/취준생’(타겟 집단) 중 최소 20%가 ‘팀 지원자와 같이 활동해본 사람들이 그 지원자에 대해 남겨주는 리뷰를 볼 수 있는 플랫폼’을 이용할 것이다.
+   → 최소 20%가 선뜻 이용할 의사를 보인다면, 이 서비스는 존재 가치가 충분한 서비스일 것이다.
+
+   [가설을 검증할 수 있는 형태로 축소]
+
+   ‘에브리타임에서 공모전/대회 수상을 위해 좋은 팀을 구할 수 있는 플랫폼이 출시되었다는 홍보 글을 보고 유입된 사람’ 중 최소 20%가 출시되지도 않은 이 서비스의 마케팅 페이지를 보고 사전 예약을 위해 전화번호를 남길 것이다. (단, 홍보 글에는 기능 설명을 일절 포함하지 않는다)
+
+     - 검증을 위한 가정
+    
+       (1) 타겟 집단을 표본 집단으로 축소: 서비스 기능 설명이 일절 없이 니즈를 자극하는 문구만을 보고 유입된 집단은, 타겟 집단과 동일한 니즈를 가진 표본 집단일 것이라고 판단.
+    
+       (2) 측정할 수 있는 소비자 행동으로 설정: 서비스 출시 전에는 서비스를 정말로 타겟이 사용할지에 대해 알기 어려우므로, 서비스가 나오기 전 ‘충분한 사용 의지의 표명’으로 판단할 수 있는 행동을 유도. 서비스가 나오기도 전에 마케팅 페이지만을 보고 사전 예약을 한다면, 나아가 민감한 정보인 전화번호를 입력한면,           그 고객은 차후 서비스가 출시되면 충분히 서비스를 사용할 만한 고객일 것이라 가정
+      
+2. 가설 검증
+      링크를 클릭하고 서비스 설명을 읽어 본, 즉 타겟의 니즈에 공감하는 100명 중 21명이 출시도 되지 않은 서비스에 관심을 가지고 개인정보를 남김 → 21명의 고객을 이미 확보
+
+   <img width="1000" alt="스크린샷 2023-11-23 오후 11 05 12" src="https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/cb4600ac-ea16-49df-9452-c797cf831f1a">
+
+4. 기존 대안의 문제점
+
+      3-1. 팀 구인 커뮤니티의 문제 - 에브리타임, 캠픽, 링커리어
+        - 게시글을 통해 유저들이 댓글과 대화로 ‘알아서’ 팀원을 구해야 함
+        - 자기소개가 거짓말이나 과장을 포함하는지 검증할 수 없음
+        - 지극히 주관적인 관점에서 자신의 정보를 제공해 정보의 신뢰성이 낮음
+     
+      3-2. 지인 추천의 문제
+        - 지인의 풀이 한정적이므로, 참여를 원하는 특정 공모전에 함께 나갈 팀원을 구하기 어려움
+        - 함께 일해본 경험 없이 단순히 알기만 하는 지인일 경우, 여전히 정보의 신뢰성이 낮음
+
+ 
+
 <br>
 
-### 필요성
+## 🧐문제정의와 솔루션
 
-데스크리서치, 유저리서치 등을 바탕으로 파악한 이 서비스의 필요성을 작성해주시면 됩니다.
-<br><br><br>
+1. 문제 정의 및 분석
+- 발굴한 문제: 공모전/대회에 참여하여 좋은 성과를 내고자 하는 대학생/취준생이 기대하는 팀원을 구하기 어렵다.
+- 문제의 원인: 정보의 부족.
+   - 타겟 집단에게는 ‘팀 지원자가 자신과 함께 좋은 성과를 낼 수 있는 사람이 맞는지’를 판단할 수 있는, 신뢰성 있는 정보가 충분히 주어지지 않음.
+     - 모르는 사람이 지원자일 경우: 자기 소개에 내재된 거짓말/허풍의 가능성 → 지원자의 자기 PR을 전적으로 신뢰할 수 없음
+     - 지인 추천: 실제로 같이 활동한 경험 없이 단순히 ‘알기만 하는’ 지인을 추천할 경우 → 해당 지원자에 대한 정확한 정보를 알 수 없음
+     ⇒ 즉, ‘같이 일해보기 전까지는 그 사람에 대해 잘 알 수 없다’.
 
-## 📊 리서치 및 시장조사
+2. 솔루션 제시
 
-### 1️⃣ 경쟁사 분석
+   2-1. 솔루션: 같이 일해본 사람에게 지원자에 대한 정보를 들어보자
+   ‘같이 일해보기 전까지는 모른다’? → 과거 함께 활동한 경험이 있는 사람을 통해서라면 지원자에 대하여 보다 다면적인, 신뢰 가능한 정보를 얻을 수 있을 것이다.
+
+   2-2. 해당 솔루션을 제공할 수 있는 서비스의 형태: 팀 지원자와 같이 활동해본 사람들의 리뷰를 들어볼 수 있는 플랫폼 → “원하는 팀원”을 구할 수 있는 플랫폼, [Wanteam]
+
+   2-3. 서비스 솔루션 가설: A와 과거 함께 일해본 팀원들로부터 그 사람에 대한 리뷰와 추천사까지 받아볼 수 있다면, 기존의 자기PR에 의존하는 커뮤니티나, 함께 일해보지 않고 그저 알기만 하는 사람을 추천하는 지인 추천보다도 신뢰할 수 있는 정보를 제공할 수 있을 것이다.
+
+
+<br><br>
+## 📊 경쟁사 및 타겟 분석
+### 1️⃣ 서비스 차별성 : 왜 경쟁사보다 우리가 이 문제를 더 잘 푸는 건가요?
+
+기존 대안의 문제점
+
+- 팀 구인 커뮤니티의 문제 - 에브리타임, 캠픽, 링커리어
+  - 게시글을 통해 유저들이 댓글과 대화로 ‘알아서’ 팀원을 구해야 함
+  - 자기소개가 거짓말이나 과장을 포함하는지 검증할 수 없음
+  - 지극히 주관적인 관점에서 자신의 정보를 제공해 정보의 신뢰성이 낮음
+- 지인 추천의 문제
+  - 지인의 풀이 한정적이므로, 참여를 원하는 특정 공모전에 함께 나갈 팀원을 구하기 어려움
+  - 함께 일해본 경험 없이 단순히 알기만 하는 지인일 경우, 여전히 정보의 신뢰성이 낮음
+
+
+Wanteam이 제공하는, 경쟁사보다 더 우월한 가치
+ 
+   과거 함께 활동해본 팀원들이 지원자에 대해 남긴 리뷰를 볼 수 있다는 Wanteam의 솔루션은, 팀 지원자에 대해 신뢰성 있는 정보를 제공한다는 근본적 해결책을 제시함으로써 3가지 측면에서 기존의 대안과 차별점을 가짐
+
+   - 타인의 평가라는 객관성 확보 : 지원자에 대해 자기 PR뿐만 아니라, 과거 실제로 함께 일해본 팀원이 남긴 리뷰를 제공함으로써, 주관적인 자기 평가보다 훨씬 믿을 수 있는 정보를 제공
+   
+   - 다수의 리뷰 누적으로 신뢰성 제고 : Wanteam을 통해 팀을 구한 이들은, 활동 종료 시 함께한 팀원에 대한 리뷰를 또 한 번 남김 → 한 유저에 대한 리뷰가 쌓여갈수록 리뷰를 남겨주는 집단의 크기와 리뷰의 개수 모두 증가하는 것이므로, 단순히 한 사람의 지인을 통한 소개보다 신뢰성을 제고 가능
+   
+   - 좋은 팀원에 대한 상대적 기준점 제시 : 단순히 리뷰를 남기는 것을 넘어 팀의 MVP에게만 줄 수 있는 추천사 작성 기능을 통해, ‘수상에 유리한 좋은 팀원인지’ 파악할 수 있는 양적/질적 기준 제공.
+
+     ⇒ Wanteam은 기존의 경쟁 서비스들보다 고객의 문제를 더욱 잘 해결할 수 있음.
+
+
+
+<img width="1000" alt="스크린샷 2023-11-23 오후 11 08 42" src="https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/26367754-a97f-4d4a-aa1e-ce0c757b2d4f">
+
 
 <br>
 
 ### 2️⃣ 목표 시장
 
-| TAM      | SAM      | SOM     |
-| -------- | -------- | ------- |
-|          |          |         |
-| 000만 명 | 000만 명 | 00만 명 |
+| TAM(전체시장) | SAM(유효시장)| SOM(수익시장) |
+| --- | --- | --- |
+| 전국 대학교 재학생 수 | 대외활동, 공모전, 스터디 등에 참여하는 대학생 규모 | 능력 있고 검증된 팀원과 함께 팀을 이뤄 활동하고 싶은 취준 대학생 |
+| 약 240만 명 | 약 95만 명 | 약 8만 명 |
 
-> _앱 다운로드 건 수 00만 건(수익시장의 00%) 확보를 시작으로, 점차 시장을 넓혀갈 예정입니다._
->
-> <br>
+`TAM` 2023년 전국 대학교 재학생 수 2,393,128명
 
-### 3️⃣ 유저리서치 분석
+`SAM` 2022년 기준 대학생 대외활동 참여율 43%, 공모전 참여율 약 35%
+
+`SOM` 2023년 기준 대학생 대외활동 관련 어플리케이션 사용자 수 평균 약 80,000명
+
 
 <br>
 
 ## 👀 서비스 타겟층 정의
 
-00의 목표 타겟은 … 입니다.
+1. 고객 세분화 (Customer Segment)
 
-| 분류      | 1차 타겟 유저 | 2차 타겟 유저 |
-| --------- | ------------- | ------------- |
-| 타겟 설정 |               |               |
-| 관련 기능 |               |               |
+  1-1. 기준: ‘공모전/대회에서 좋은 성과를 내고 싶다’는 궁극적 목표에 대한 의지가 얼마나 강한가? <br></br>
+      (i) 도도독동료 팀이 처음 유저 인터뷰를 통해 발견한 불만사항: ‘합류 전 기대했던 모습과, 함께하게 된 팀원의 모습이 너무 다르다는 것’ → 하지만 ‘기대와 다르다’는 점이 직접적으로 불만으로 이어지는 것은 아님. <br></br>
+      (ii) 해당 내용이 고객의 입장에서 문제가 되는 근본적 이유: 고객이 ‘공모전/대회에서 좋은 성과를 내고 싶다’는 본질적 목표를 가지고 있기 때문. → 그러나 ‘기대했던 바와 다른 팀원’이 해당 목표 달성을 어렵게 만듦. → 고객은 이러한 문제 상황을 해결하고 궁극적 목표를 달성하고자 하는 니즈를 가지고 있음. <br></br>
+  1-2. 분류 <br></br>
+      - 라이트 유저 (Light User) : 성과에 대한 의지가 강력하기보다는, 참여 및 경험에 의의를 둠. <br></br>
+        공모전 특성과 자신의 상황에 맞는 팀원을 원함. 자신과 시너지를 낼 수 있는 팀원들을 만나 즐겁게 공모전/대회에 임하고자 함. <br></br>
+      - 헤비 유저 (Heavy User) : 성과에 대한 의지가 매우 강력함. <br></br>
+        자신의 상황과 잘 맞음은 물론, 다른 이들에게도 인정받는 최고의 역량을 가진 팀원과 함께함으로써 수상에 유리한 조건을 확보하여 좋은 성과를 내고자 함. <br></br>
+      ⇒ 서로 다른 니즈를 가진 라이트 유저, 헤비 유저는 Wanteam을 각기 다른 목적으로 사용할 것임. <br></br>
+        → Wanteam은 이러한 유저의 니즈와 사용 목적에 적절히 대응하는 서비스를 제공하도록 설계되었음 <br></br>
+
+2. 페르소나
+
+<img width="1000" alt="스크린샷 2023-11-23 오후 11 31 49" src="https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/9985562d-13c8-4163-b2d9-c7c059adc761">
+<img width="1000" alt="스크린샷 2023-11-23 오후 11 31 58" src="https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/8237119b-e072-49f7-b327-43b3b2105259">
+
+
+3. 서비스 플로우
+
+<img width="1000" alt="스크린샷 2023-11-23 오후 11 36 09" src="https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/6327fbb1-3b2d-4caa-8a50-1c7fd841c0e8">
+
 
 <br>
 
@@ -76,86 +219,182 @@
 
 ### **개요**
 
+Wanteam 서비스는 ‘공모전, 대회를 비롯한 대외활동을 함께할 검증된 팀원을 찾는 대학생’들이 겪는 ‘기대했던 것과 다른 팀원을 뽑게되어 고통받는 문제’ 를 ‘본 서비스에서 구성한 팀 회고 평가 방식 및 상호 확인’을 통하여 해결하고자 합니다.
+
 <br>
 
-### 핵심 기능
+### 핵심 기능 및 메뉴구조도
 
-**_팀 내의 논의 결과에 따라 메뉴구조도, 플로우차트, 서비스블루프린트 등의 기획문서를 작성하여 첨부해주세요._**
+#### 핵심 기능 소개
+
+
+1. 키워드 리뷰와 한 줄 추천사
+
+   Wanteam에서는 지원자들의 정보를, 직접 함께 활동했던 옛 동료들이 남겨준 리뷰를 통해 확인할 수있음. 이를 통해 고객은 수상을 위한 팀원을 모집하는 데 필요한 신뢰성 있는 정보를 확보하게 되는데, 이때 라이트 유저와 헤비 유저들은 서로 원하는 ‘신뢰성 있는 정보’의 종류가 다름.
+
+     1-1. 키워드 리뷰 : 라이트 유저들이 원하는 정보
+
+    공모전/대회에서 성과를 내는 것도 물론 좋지만, 모두에게 인정받는 최강의 팀원보다는, 공모전특성과 자신의 상황에 맞는, 보다 즐겁게 협업할 수 있으며 자신과 시너지를 낼 수 있는 팀원을원함. 이를 위해 Wanteam은 ‘지원자들의 장점과 성향’을 파악할 수 있는, 과거 함께했던 팀원이 남겨주는 키워드 리뷰 기능을 제공함.
+
+    Wanteam을 통해 팀원을 모은 팀은 활동 종료시, 함께 활동했던 팀원들 모두가 서로에게 ‘장점 키워드’ 및 ‘성향 키워드’ 리뷰를 남긴다. 해당 리뷰들은 리뷰를 받은 유저의 프로필에 누적되며, 그 유저의 프로필에 시각화되어 노출된다. 이를 Wanteam에서 팀을 구하는 유저들이 확인하게 되며, 주로 라이트, 헤비 유저들이       자신과 잘 맞을 팀원들을 찾는 데 사용할 정보이다.
+
+      - 장점 키워드<br></br>
+          팀 지원자가 어떤 장점을 가지고 있는지 보여준다. 같은 키워드에 대해 반복적으로 리뷰를 받을 수록 레벨이 상승하며, 팀원을 구하기 위해 리뷰 프로필을 보는 입장에서 어떤 장점을 가장 강력히 가지고 있는지 알 수 있다.<br></br>
+      - 성향 리뷰<br></br>
+          팀 지원자가 어떤 성향을 가지고 있는지 보여주며, 팀을 구하는 입장에서 자신과 적합한 성향의 팀원을 구하고 싶은 경우 적절한 정보를 제공한다. 리뷰로 각기 다른 성향을 받은 경우 그 평균 값이 표시되며 지원자가 구체적으로 어떤 성향을 얼마나 가지고 있는지 파악할 수 있다.
+
+    1-2. 한줄 추천사 : 헤비 유저들을 위한 서비스 제공
+    
+    헤비 유저들은 자신에게 잘 맞음은 기본이고, 수상 확률을 높일 수 있도록 가능한 최고의 팀원을 뽑고 싶어함. 직접 함께 활동해본 사람이 추천하는 팀원, 팀 활동에서 에이스로 꼽히는 팀원을 찾고 싶은 것. 이를 위해 Wanteam에서는 팀 활동 종료 시 팀원 각자가 팀에서 MVP를 1명씩 뽑아 ‘한 줄 추천사’를 작성하도록        함. 한 줄 추천사를 많이 받았다는 것은 과거 팀 활동에서 최고의 팀원으로 추천받은 경우가 많다는 것을 의미하며, 뽑는 입장에서 한 줄 추천사의 내용을 통해 그 팀원의 장점에 대해 더 자세히 이해하고 선발할 수 있음.<br></br>
+
+    Wanteam에서 모은 팀이 활동을 종료할 경우, 가장 추천하고 싶은 MVP를 골라 한 줄 추천사를 남기게 된다. 한 줄 추천사의 숫자는 곧 그 사람이 얼마나 많은 사람들에게 최고의 팀원이었는지를 뜻하며 헤비 유저들이 ‘함께하면 수상할 확률이 높은 좋은 팀원’을 판별하는 기준이 된다. 도도독동료 팀은 헤비 유저들이 지금껏 
+     지 못했던, 좋은 팀원을 판별하는 기준을 이용하기 위해 선뜻 유료 티켓을 구매하여 한줄 추천사를 열람하는데 사용할 것이라 판단했다.
+
+
+
+
+ 
+2. 공모전/대회에 참여할 팀원 구하기
+
+     우리의 타겟들은 우선 참여할 공모전을 선정한 다음, 가장 적절한 팀원을 구함. 이 고객여정에 맞추어, Wanteam 또한 참여할 공모전 리스트를 제공한 다음, 참여할 공모전을 특정하면 그 안에서 팀을 형성할 수 있음. 이 단계는 구체적으로 공모전을 선택하는 단계와, 팀원 및 팀을 선택하는 단계로 나뉨.
+
+    2-1. 공모전을 선택하는 단계
+
+   기획, 마케팅, 디자인, 개발 등 다양한 부류로 찾아볼 수 있는 공모전 리스트를 제공함. 유저들은 공모전에 대한 상세한 정보를 탐색하며 참여할 공모전을 선택할 수 있음.
+    
+    2-2. 팀 또는 팀원을 선택하는 단계
+
+    나갈 공모전을 골랐다면, 그 안에서 팀원 모집 중인 팀에 합류하거나, 팀을 직접 오픈 할 수도 있음. 팀장으로서 지원자의 프로필을 확인할 수 있고, 팀에 지원하기 전 팀장 및 이미 합류한 팀원들의 프로필을 확인할 수도 있음.
+
+3. 리뷰와 추천사
+   
+    3-1. 팀 활동 종료 후 각 팀원에게 작성하는 리뷰와 한 줄 추천사
+
+   Wanteam에서 팀원을 모집하면 팀은 활동 종료 시, 각 팀원에게 리뷰를 남겨야 함. 프로필의 리뷰를 보고 팀원을 모집하고, 활동 후 팀원에게 리뷰를 작성하는 선순환을 통해 Wanteam 유저들의 프로필 리뷰를 누적해 감.
+   
+    - 리뷰 작성 유도 방법: 타인이 자신에게 리뷰를 작성해 주었을 시 자동으로 알림 이메일이 발송됨. 타인에게 받은 리뷰를 확인하기 위해서는, 함께 활동했던 다른 모든 팀원들에게 한 명도 빠짐없이 리뷰를 작성해 주어야 함. 리뷰를 작성해주지 않은 팀원이 한 명이라도 존재할 시, 프로필에 신규 리뷰 내용이 아예 업데이트 되지 않음 → 자신에게 작성된 리뷰를 보기 위해서뿐만 아니라, 추후 팀 모집 활동 시 양질의 프로필로 어필하기 위해서 타인에게 리뷰를 남길 수밖에 없음.
+
+    3-2.가입 시 외부인에게 요청하는 추천사
+
+    첫 가입 시 리뷰 및 추천사가 전혀 없어 팀을 구하는 데 어려움을 겪을 신규 가입자를 고려하여, Wanteam 사용자가 아니더라도 함께 활동했던 경험이 있는 외부 지인에게 1번의 리뷰 및 추천사를 받을 수 있음. → 신규 가입 회원이어도 프로필 리뷰가 있는 상태에서 팀 구인을 시작할 수 있음.
+
+
 <br><br><br>
-
 ## 📊 서비스 비즈니스 모델
 
-|        | 관련 파트너 1 | 관련 파트너 2 | 내용 |
-| ------ | ------------- | ------------- | ---- |
-| STEP 1 |               |               |      |
-| STEP 2 |               |               |      |
+
+
+<img width="943" alt="스크린샷 2023-11-23 오후 11 24 23" src="https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/13d339d9-2fef-4ad6-ae7b-163d34df8a1f">
 
 <br><br>
 
 ## **🎨 디자인 무드보드**
 
+
+![원팀_디자인 시스템](https://github.com/Kusitms-28th-Meetup-D/.github/assets/77064618/e01a9b4a-b6d1-45da-8240-6b30c2f048c9)
+
+
+<img width="943" alt="스크린샷 2023-11-23 오후 11 26 01" src="https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/fa3db153-0ec2-4748-8740-4b359f10d45e">
+
+
+## **🎨 서비스 무드보드**
+
+<img width="943" alt="스크린샷 2023-11-23 오후 11 35 50" src="https://github.com/Kusitms-28th-Meetup-D/.github/assets/113091000/a3932067-e416-49a2-911c-10a871c5f5e3">
+
+
 <br><br>
 
 ## **🔍 System Architecture**
 
-// 시스템 아키텍쳐 이미지를 넣어주세요
-<br><br>
 
-## **💻 Technology**
-
-// 각 파트별 스택을 적어주세요
-
-- Web
-  - ![TypeScript](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white)
-  - ![React](https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=react&logoColor=white)
-    ![React-Query](https://img.shields.io/badge/reactquery-FF4154?style=flat-square&logo=reactquery&logoColor=white)
-    ![Axios](https://img.shields.io/badge/axios-DB5C3F?style=flat-square&logo=axios&logoColor=white)
-    ![Recoil](https://img.shields.io/badge/recoil-f26b00?style=flat-square&logo=recoil&logoColor=white)
-    ![Styled-Components](https://img.shields.io/badge/styledcomponents-DB7093?style=flat-square&logo=styledcomponents&logoColor=white)
-    ![Storybook](https://img.shields.io/badge/Storybook-FF4785?style=flat-square&logo=Storybook&logoColor=white)
-  - ![vite](https://img.shields.io/badge/vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![image](https://github.com/Kusitms-28th-Meetup-D/.github/assets/77064618/b31487de-eb5e-400b-b141-7e5d9817fb07)
 
 <br><br>
 
-- Server
-  - ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-000000.svg?style=flat-square&logo=intellij-idea&logoColor=white)
-    ![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=flat-square&logo=Java&logoColor=white)
-    ![Springboot](https://img.shields.io/badge/Springboot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
-    ![Shell Script](https://img.shields.io/badge/Shell_Script-%23121011.svg?style=flat-square&logo=gnu-bash&logoColor=white)
-    ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=flat-square&logo=Gradle&logoColor=white)
-    ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?style=flat-square&logo=spring&logoColor=white)
-    ![JWT](https://img.shields.io/badge/JWT-black?style=flat-square&logo=JSON%20web%20tokens)
-  - ![MySQL](https://img.shields.io/badge/MySQL-%2300f.svg?style=flat-square&logo=mysql&logoColor=white)
-    ![RDS](https://img.shields.io/badge/AWS%20RDS-527FFF?style=flat-square&logo=Amazon%20RDS&logoColor=white)
-    ![S3](https://img.shields.io/badge/AWS%20S3-569A31?style=flat-square&logo=Amazon%20S3&logoColor=white)
-    ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=flat-square&logo=Hibernate&logoColor=white)
-  - ![GitHub Actions](https://img.shields.io/badge/Github%20Actions-%232671E5.svg?style=flat-square&logo=githubactions&logoColor=white)
-    ![EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?style=flat-square&logo=Amazon%20EC2&logoColor=white)
-    ![Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?style=flat-square&logo=docker&logoColor=white)
-    ![Nginx](https://img.shields.io/badge/Nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white)
-    <br><br>
-- Co-working Tool
+## 🔑기술 스택
+
+### 🖥️Frontend 
+- ![TypeScript](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white)
+- ![React](https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=react&logoColor=white)
+      ![React-Query](https://img.shields.io/badge/reactquery-FF4154?style=flat-square&logo=reactquery&logoColor=white)
+      ![Axios](https://img.shields.io/badge/axios-DB5C3F?style=flat-square&logo=axios&logoColor=white)
+      ![Recoil](https://img.shields.io/badge/recoil-f26b00?style=flat-square&logo=recoil&logoColor=white)
+      ![Styled-Components](https://img.shields.io/badge/styledcomponents-DB7093?style=flat-square&logo=styledcomponents&logoColor=white)
+     
+- ![vite](https://img.shields.io/badge/vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+<br/>
+
+#### TypeScript
+- 동적 타입 체크를 통한 코드 안정성 향상 및 오탈자를 방지합니다.
+
+#### React
+- 가장 많이 사용되고 익숙한 라이브러리로, 개발 생산성을 위해 도입하였습니다.
+- 컴포넌트 기반 아키텍처: React는 UI를 컴포넌트로 나누어 개발하도록 돕는 컴포넌트 기반 아키텍처를 제공합니다. 이로써 코드를 재사용하고 유지보수하기 쉽습니다.
+- Virtual DOM: React의 가상 DOM은 성능을 최적화하고 브라우저 상의 DOM 조작을 최소화하여 빠른 웹 애플리케이션을 구축하는 데 도움을 줍니다.
+
+#### Styled-Components
+- 컴포넌트 재사용이 편리하고 유지보수가 간편합니다.
+- 컴포넌트 수준에서 스타일링을 관리하는 효과적인 방법을 제공합니다.
+
+#### Recoil
+- 전역 상태를 관리하기 위한 간단하고 직관적인 방법 제공하는 라이브러리입니다.
+
+#### Axios:
+- HTTP 요청 라이브러리: Axios는 HTTP 요청을 쉽게 보내고 응답을 처리할 수 있는 라이브러리로, RESTful API와 통신하기 위한 강력한 도구입니다.
+- Promise 기반: Axios는 Promises를 사용하여 비동기 작업을 처리하므로 코드가 간결하고 오류 처리가 효율적입니다.
+
+#### react-query
+- 자동으로 데이터를 캐싱하고, 주기적으로 갱신하여 최신 데이터를 유지한다.
+<br/><br/>
+  
+### 💻Backend
+- ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-000000.svg?style=flat-square&logo=intellij-idea&logoColor=white)
+      ![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=flat-square&logo=Java&logoColor=white)
+      ![Springboot](https://img.shields.io/badge/Springboot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+      ![Shell Script](https://img.shields.io/badge/Shell_Script-%23121011.svg?style=flat-square&logo=gnu-bash&logoColor=white)
+      ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=flat-square&logo=Gradle&logoColor=white)
+      ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?style=flat-square&logo=spring&logoColor=white)
+      ![JWT](https://img.shields.io/badge/JWT-black?style=flat-square&logo=JSON%20web%20tokens)
+- ![MySQL](https://img.shields.io/badge/MySQL-%2300f.svg?style=flat-square&logo=mysql&logoColor=white)
+      ![RDS](https://img.shields.io/badge/AWS%20RDS-527FFF?style=flat-square&logo=Amazon%20RDS&logoColor=white)
+      ![S3](https://img.shields.io/badge/AWS%20S3-569A31?style=flat-square&logo=Amazon%20S3&logoColor=white)
+      ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=flat-square&logo=Hibernate&logoColor=white)
+- ![GitHub Actions](https://img.shields.io/badge/Github%20Actions-%232671E5.svg?style=flat-square&logo=githubactions&logoColor=white)
+      ![EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?style=flat-square&logo=Amazon%20EC2&logoColor=white)
+      ![Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?style=flat-square&logo=docker&logoColor=white)
+      ![Nginx](https://img.shields.io/badge/Nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white)
+<br/>
+
+#### Spring Data JPA 
+- 자바에서 db bender에 종속되지 않고 객체 중심으로 애플리케이션 개발 가능합니다.
+#### AWS EC2
+- 스프링 애플리케이션 배포 서버로 프리티어를 통해 무료로 일정량 사용할 수 있습니다.,
+#### RDS mysql 
+- 일정량 무료로 사용할 수 있으며 클라우드 인스턴스화 할 수 있습니다.
+#### S3
+- 필요한 데이터를 어디서나 쉽게 저장하고 검색할 수 있도록 해줍니다.
+#### Docker 
+- CICD를 진행 할 때 실행 가능한 서버 애플리케이션을 도커를 통해 컨테이너화 시켜 서버 환경에서 쉽게 실행할 수 있게 합니다.
+#### Docker-compose 
+- EC2 인스턴스 내부에서 빌드할 docker image 쉽게 관리할 수 있게 합니다.
+#### git action 
+- Github에서 제공하는 CICD 프로세스로 젠킨스와 같은 별도의 파이프라인을 구축할 필요 없다는 장점이 있습니다.
+#### Spring Security 
+- Spring boot와 통합하여 사용자 인증과 인가에 대한 보안 요구사항을 쉽게 처리하도록 도와줍니다.
+
+<br/><br/>
+
+### 📑Co-working Tool
   - ![swagger](https://img.shields.io/badge/swagger-85EA2D.svg?style=flat-square&logo=swagger&logoColor=white)
-    ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=flat-square&logo=notion&logoColor=white)
-    ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
+      ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=flat-square&logo=notion&logoColor=white)
+      ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
 
-<br><br>
 
-### **🐾 기술 스택 선정 이유**
-
-// 각 파트별 기술 스택 선정 이유를 적어주세요
-
-### **📘 Web/Android 스택 선정 이유**
-
-s s
-<br><br>
-
-### **📗 Server 스택 선정 이유**
 
 <br><br>
 
 ## 🔖 Naming Rules
-
+### 🖥️Frontend
 - component : **PascalCase**
   - 최상위 태그 : **-Layout**
   - 차상위 태그 : **-Container**
@@ -166,11 +405,39 @@ s s
   - props : **PascalCaseProps**
   - api response : **PascalCaseResponse**
 
+### 💻Backend
+- **Packages**
+  - 항상 소문자로 생성하기
+- **Classes**
+  - 명사여야 한다.
+  - 복합 단어의 경우 각 단어의 첫글자는 대문자.
+  - 완전한 단어를 사용하고, 두 문자어와 약어는 피한다.
+- **Interfaces**
+  - 인터페이스 이름도 클래스 이름과 같은 대문자 규칙을 적용한다.
+- **Methods**
+  - 동사여야 한다.
+  - 복합 단어의 경우 첫 단어는 소문자로 시작한다.
+- **Constants**
+  - 클래스 상수로 선언된 변수들과 상수들의 이름은 모두 대문자로 쓰고 각 단어는 언더바 ("_")로 분리한다.
+-** Variables**
+  - 변수 이름의 첫번째 문자는 소문자여야 한다.
+  - 언더바 또는 달러 표시 문자로 시작하는 것이 허용 되기는 하지만, 사용하지 말자.
+  - 짧지만 의미있게 짓는다.
+  - 변수의 사용 의도를 알 수 있도록 의미적으로 짓는다.
+  - 한문자로만 이루어진 변수는 암시적으로만 사용하고 버릴 변수를 제외하고는 피한다.
+  - 임시 변수의 이름은 integer는 i,j,k,m,n 을 사용하고 character는 c,d,e를 사용한다.
+- **ETC**
+  - DB 테이블: **lower_snake_case**
+  - ENUM, 상수: **Upper_snake_case**
+  - 컬렉션(Collection): **복수형**을 사용하거나 **컬렉션을 명시한다**. (Ex. userList, users, userMap)
+  - LocalDateTime: 접미사에 **Date**를 붙인다.
+
 <br><br><br>
 
 ## **🗂️ Commit Convention**
 
-Ex) `git commit -m "feat(#8) : 앱 설치 플로팅 배너 추가"`
+
+Ex) `git commit -m "feat(#8) : 앱 설치 플로팅 배너 추가" `
 
 - `feat` : 새로운 기능 추가
 - `fix` : 버그 수정
@@ -184,10 +451,11 @@ Ex) `git commit -m "feat(#8) : 앱 설치 플로팅 배너 추가"`
 - `perf` : 성능 개선
 - `rename` : 파일 혹은 폴더명 변경
 
+
+
 <br>
 
 ## **🐬 Git Flow**
-
 - `main` : 출시 가능한 프로덕션 코드의 브랜치
 - `develop` : 다음 버전을 개발하는 브랜치
 - `feature` : 기능을 개발하는 브랜치
@@ -196,3 +464,8 @@ Ex) `git commit -m "feat(#8) : 앱 설치 플로팅 배너 추가"`
   브랜치 네이밍 : `feat/이슈번호`
 
 <br>
+
+## ERD 및 워크플로우
+
+![image](https://github.com/Kusitms-28th-Meetup-D/.github/assets/77064618/5f19432f-9a21-47f3-ac7c-d32be1d4bc54)
+![image](https://github.com/Kusitms-28th-Meetup-D/.github/assets/77064618/7e22fb9b-45b9-4fe6-9a04-ef615b8181b7)
