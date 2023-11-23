@@ -10,12 +10,10 @@ const TeamMembers = ({
   memberDatas,
   leftMember,
   cur,
-  max,
 }: {
   memberDatas?: ProfileProps[];
   leftMember?: number;
   cur?: number;
-  max?: number;
 }) => {
   return (
     <>
