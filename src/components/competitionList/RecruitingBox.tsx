@@ -60,6 +60,8 @@ const RecruitingProfile = styled.img`
   border-radius: 50%;
   border: 1px solid ${({ theme }) => theme.colors.primary40};
   margin-bottom: 1rem;
+
+  object-fit: cover;
 `;
 
 const RecruitingTitle = styled.div`

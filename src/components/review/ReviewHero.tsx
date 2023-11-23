@@ -4,22 +4,22 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useReviewUsers } from '../../hooks/review/useReviewUsers';
 import { userReviewResponse } from '../../interface/Review';
-import { reviewMemberIndexState, reviewState } from '../../recoil/atom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { reviewMemberIndexState } from '../../recoil/atom';
+import { useSetRecoilState } from 'recoil';
 
 const ReviewHero = () => {
   const [selectedHero, setSelectedHero] = useState('');
   const { teamId } = useParams();
   const { reviewUsers } = useReviewUsers(Number(teamId));
-  console.log(reviewUsers?.data.userReviewResponseDtoList);
+  // console.log(reviewUsers?.data.userReviewResponseDtoList);
 
-  const reviewRecoilData = useRecoilValue(reviewState);
+  // const reviewRecoilData = useRecoilValue(reviewState);
   const setReviewMemberIndex = useSetRecoilState(reviewMemberIndexState);
 
   const handleSelect = (hero: userReviewResponse, index: number) => {
     setReviewMemberIndex(index);
     setSelectedHero(hero.teamMemberName);
-    console.log('hero:', index, reviewRecoilData);
+    // console.log('hero:', index, reviewRecoilData);
   };
   return (
     <>

@@ -4,6 +4,7 @@ import { Keyword } from '../../interface/Profile';
 import ProfileNotReviewed from './ProfileNotReviewed';
 import { TextAnimation } from '../../styles/animation';
 import { motion } from 'framer-motion';
+import ProfileExistNotReview from './ProfileExistNotReview';
 
 const DETAIL =
   '키워드 옆의 레벨은 해당 키워드를 받은 횟수를 의미해요.\n키워드는 가장 많이 받은 순서대로 상위 5개까지만 노출돼요.';
@@ -11,13 +12,16 @@ const ProfileKeyword = ({
   keywords,
   name,
   isUserGetExternalReview,
+  isExistNotReviewTeam,
 }: {
   keywords?: Keyword[];
   name?: string;
   isUserGetExternalReview?: boolean;
+  isExistNotReviewTeam?: boolean;
 }) => {
   return (
     <ProfileKeywordContainer>
+      {isExistNotReviewTeam && <ProfileExistNotReview hasButton={false} />}
       <ProfileKeywordTitle>{name} 님의 장점 키워드</ProfileKeywordTitle>
       <ProfileKeywordDetail>{DETAIL}</ProfileKeywordDetail>
       {isUserGetExternalReview ? (
@@ -40,7 +44,9 @@ const ProfileKeyword = ({
     </ProfileKeywordContainer>
   );
 };
-const ProfileKeywordContainer = styled.div``;
+const ProfileKeywordContainer = styled.div`
+  position: relative;
+`;
 const ProfileKeywordTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray100};

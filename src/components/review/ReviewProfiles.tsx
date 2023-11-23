@@ -17,7 +17,8 @@ const ReviewProfiles = () => {
   const [reviewMemberIndex, setReviewMemberIndex] = useRecoilState(
     reviewMemberIndexState,
   );
-  console.log('현재 리뷰중인 index :', reviewMemberIndex);
+  reviewMemberIndex;
+  // console.log('현재 리뷰중인 index :', reviewMemberIndex);
 
   useEffect(() => {
     if (reviewUsers && reviewUsers.data.userReviewResponseDtoList.length > 0) {

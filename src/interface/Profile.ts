@@ -171,3 +171,12 @@ export interface ResponseIsUserGetExternalReview {
   message: string;
   data: IsUserGetExternalReviewData;
 }
+// 내가 리뷰를 안 남긴 팀이 있는지 여뷰 api
+export interface IsExistNotReviewTeamData {
+  userNotReview: boolean;
+}
+export interface ResponseIsExistNotReviewTeam {
+  status: number;
+  message: string;
+  data: IsExistNotReviewTeamData;
+}

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ProfileReviewContentsBox from './ProfileReviewContentsBox';
 import { Comment } from '../../interface/Profile';
 import ProfileNotReviewed from './ProfileNotReviewed';
+import ProfileExistNotReview from './ProfileExistNotReview';
 
 const ProfileReview = ({
   reviewData,
@@ -11,6 +12,7 @@ const ProfileReview = ({
   setIsUseModalVisible,
   isUserGetExternalReview,
   isMyProfile,
+  isExistNotReviewTeam,
 }: {
   reviewData?: Comment[];
   name?: string;
@@ -19,6 +21,7 @@ const ProfileReview = ({
   setIsUseModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   isUserGetExternalReview?: boolean;
   isMyProfile?: boolean;
+  isExistNotReviewTeam?: boolean;
 }) => {
   const DETAIL_LOCKED_TICKET = isLocked
     ? `티켓을 사용하면 ${name} 님의 한 줄 추천사를 언제든지 열람하실 수 있습니다.`
@@ -28,6 +31,8 @@ const ProfileReview = ({
   const LOCKED_TICKET_AMMOUNT = isLocked ? '?' : reviewData?.length;
   return (
     <ProfileReviewContainer>
+      {' '}
+      {isExistNotReviewTeam && <ProfileExistNotReview hasButton={false} />}
       <ProfileReviewTitle>{name} 님이 받은 한 줄 추천사</ProfileReviewTitle>
       {isUserGetExternalReview ? (
         <>
@@ -53,7 +58,9 @@ const ProfileReview = ({
   );
 };
 
-const ProfileReviewContainer = styled.div``;
+const ProfileReviewContainer = styled.div`
+  position: relative;
+`;
 const ProfileReviewTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray100};

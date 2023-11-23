@@ -75,9 +75,11 @@ const Container = styled.div<{
   padding: 1rem 3rem 1rem 3rem;
 `;
 const MemberImg = styled.img`
-  width: 7.8rem;
-  height: 7.8rem;
-  flex-shrink: 0;
+  width: 65%;
+  /* width: 7.8rem; */
+  /* height: 7.8rem; */
+  height: auto;
+  aspect-ratio: 1 / 1; /* 가로 세로 비율을 1:1로 유지 */
 
   border: 1px solid ${(props) => props.theme.colors.primary20};
   border-radius: 50%;

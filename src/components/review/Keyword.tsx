@@ -29,6 +29,8 @@ const KeywordBox = styled.div<selectedProps>`
   padding: 6px 14px;
   cursor: pointer;
 
+  white-space: nowrap;
+
   ${(props) =>
     props.selected &&
     css`
