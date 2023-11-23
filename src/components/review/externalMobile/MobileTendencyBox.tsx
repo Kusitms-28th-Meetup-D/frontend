@@ -5,6 +5,8 @@ import { ReviewContext } from '../../../pages/review/ExternalMobileReview';
 import { useRecoilState } from 'recoil';
 import { selectedTendencyAtom } from '../../../recoil/review';
 
+import starSrc from '/assets/images/review/star.svg';
+
 interface Question {
   id: number;
   title: string;
@@ -51,7 +53,7 @@ const MobileTendencyBox = ({ question }: MobileTendencyBoxProps) => {
       {question.map((item) => (
         <QuestionBox key={item.id}>
           <TendencyTitleBox>
-            <QuestionImg src="/public/assets/images/review/star.svg" />
+            <QuestionImg src={starSrc} />
             <TendencyTitle>{item.title}</TendencyTitle>
           </TendencyTitleBox>
           <KeywordBox>

@@ -53,7 +53,7 @@ const Request = () => {
   );
   if (isUserGetExternalReviewData?.data.data.alreadyReviewed) {
     navigate('/');
-    window.location.reload(); // 임시로 새로고침
+    // window.location.reload(); // 임시로 새로고침
   }
 
   return (
