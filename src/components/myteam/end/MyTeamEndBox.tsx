@@ -14,8 +14,10 @@ interface MyTeamEndBoxProps {
 const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
   // console.log(endTeam);
   const naviate = useNavigate();
-  const handlClick = () => {
-    naviate(`/review/${endTeam.teamId}/subjective`);
+  const handleClick = (isActive: boolean) => {
+    if (isActive) {
+      naviate(`/review/${endTeam.teamId}/subjective`);
+    }
   };
   const { isReviewedOnTeamData } = useIsReviewedOnTeam({
     teamId: endTeam.teamId,
@@ -36,7 +38,9 @@ const MyTeamEndBox = ({ endTeam }: MyTeamEndBoxProps) => {
                 alt={'myteam_end'}
               />
               <ButtonStyle
-                onClick={handlClick}
+                onClick={() =>
+                  handleClick(!isReviewedOnTeamData?.data.data.isReviewedBefore)
+                }
                 $isActive={!isReviewedOnTeamData?.data.data.isReviewedBefore}
               >
                 {' '}

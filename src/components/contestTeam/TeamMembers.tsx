@@ -10,12 +10,10 @@ const TeamMembers = ({
   memberDatas,
   leftMember,
   cur,
-  max,
 }: {
   memberDatas?: ProfileProps[];
   leftMember?: number;
   cur?: number;
-  max?: number;
 }) => {
   return (
     <>
@@ -43,8 +41,7 @@ const TeamMembers = ({
             </TeamMembersLeft>
           </TeamMembersTitle>
           <TeamMembersLeftInfo>
-            지금까지 정원 <span>{max}</span>명 중 <span>{cur}</span>명의 팀원이
-            합류했어요.
+            지금까지 <span>{cur! - 1}</span>명의 팀원이 합류했어요.
           </TeamMembersLeftInfo>
           <TeamMembersProfileContainer
             initial="hidden"
