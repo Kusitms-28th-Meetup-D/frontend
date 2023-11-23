@@ -47,6 +47,7 @@ const PopularTeamBoxContainer = styled.div<{ $index: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 
   width: 23.9rem;
   padding: 2.5rem 1.5rem;
