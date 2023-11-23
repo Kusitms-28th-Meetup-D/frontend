@@ -43,7 +43,7 @@ const ContestTeam = () => {
   useEffect(() => setHeaderSelected(Headers.list));
 
   return isLoading ? (
-    <div>로딩중</div>
+    <></>
   ) : (
     <TeamLayout>
       <JoinTeamModal
@@ -132,7 +132,7 @@ const ContestTeam = () => {
             <CustomButton>합류 신청하기 →</CustomButton>
             <CustomMessage>이미 지원이 반려된 팀입니다.</CustomMessage>
           </>
-        )}{' '}
+        )}
         {contestTeamDetailData?.data.data.status ==
           TEAM_DETAIL_STATUS._5_남이오픈한경우_내가지원완료_승인반려아님 && (
           <>
