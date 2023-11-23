@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 import PopularTeamBox from './PopularTeamBox';
-import { popularTeam } from '../../constants/main';
+import { MainPageTeam } from '../../interface/Main';
 
-const MainPopularTeam = () => {
+const MainPopularTeam = ({ teamData }: { teamData?: MainPageTeam[] }) => {
   return (
     <MainPopularTeamLayout>
       <MainPopularTeamBox>
@@ -11,8 +11,8 @@ const MainPopularTeam = () => {
           <h1>실시간으로 인기가 많은 팀에 지원해보세요.</h1>
 
           <PopularTeamListBox>
-            {popularTeam.map((team, index) => (
-              <PopularTeamBox key={team.id} index={index} {...team} />
+            {teamData?.map((team, index) => (
+              <PopularTeamBox key={index} index={index} {...team} />
             ))}
           </PopularTeamListBox>
         </MainPopularTeamContainer>
