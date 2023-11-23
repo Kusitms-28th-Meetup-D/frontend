@@ -1,16 +1,25 @@
 import { styled } from 'styled-components';
 import CompetitionBox from '../competitionList/CompetitionBox';
 import { MainPageContest } from '../../interface/Main';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
+import useObserver from '../../hooks/useObserver';
 
 const MainCompetition = ({
   contestData,
 }: {
   contestData?: MainPageContest[];
 }) => {
+  const { ref, animation } = useObserver();
+
   return (
     <MainCompetitionLayout>
       <MainCompetitionBox>
-        <MainCompetitionContainer>
+        <MainCompetitionContainer
+          ref={ref}
+          animate={animation}
+          variants={ContainerAnimation}
+        >
           <MainCompetitionTop>
             <div>
               <img src={'/assets/images/main/competition_fire.svg'} />
@@ -55,7 +64,7 @@ const MainCompetitionBox = styled.div`
   margin: 0 auto;
 `;
 
-const MainCompetitionContainer = styled.div`
+const MainCompetitionContainer = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 0;

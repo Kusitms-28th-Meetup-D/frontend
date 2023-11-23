@@ -1,11 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { motion } from 'framer-motion';
+import { TextAnimation } from '../../styles/animation';
 
 const RightBox = () => {
   const navigate = useNavigate();
 
   return (
-    <RightBoxContainer>
+    <RightBoxContainer
+      initial="hidden"
+      animate="visible"
+      variants={TextAnimation}
+    >
       <div>
         <h1>공모전･대회 공고 확인하고</h1>
         <h1>원하는 팀원 찾으러 가기</h1>
@@ -23,7 +29,7 @@ const RightBox = () => {
 
 export default RightBox;
 
-const RightBoxContainer = styled.div`
+const RightBoxContainer = styled(motion.div)`
   background: ${({ theme }) => theme.colors.white};
   border-radius: 24px;
   box-shadow: 0px 0px 10px rgba(88, 89, 117, 0.46);
