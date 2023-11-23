@@ -16,7 +16,7 @@ const Main = () => {
   useEffect(() => setHeaderSelected(Headers.none));
 
   const { mainPageInfoData } = useMainPageInfo();
-  console.log(mainPageInfoData);
+  console.log(mainPageInfoData,"@@");
   return (
     <>
       <MainSwiper />

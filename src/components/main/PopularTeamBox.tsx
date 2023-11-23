@@ -76,6 +76,7 @@ const PopularTeamBoxContainer = styled.div<{ $index: number }>`
     width: 10rem;
     height: auto;
     aspect-ratio: 1 / 1; /* 가로 세로 비율을 1:1로 유지 */
+    object-fit: cover;
   }
   h2 {
     ${({ theme }) => theme.fonts.subtitleS};
