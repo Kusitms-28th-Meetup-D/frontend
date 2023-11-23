@@ -130,6 +130,8 @@ const HeaderItem = styled.button<{ $isSelected: boolean }>`
       ? props.theme.colors.primary60
       : props.theme.colors.gray80};
 
+  white-space: nowrap;
+
   display: flex;
   justify-content: center;
   align-items: center;
