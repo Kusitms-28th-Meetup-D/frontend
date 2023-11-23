@@ -55,7 +55,9 @@ const MainSwiper = () => {
               <h1>공모전･대회 다 찾을 수 있어요</h1>
             </SwiperLeft>
             <SwiperImg
-              src={'/assets/images/main/swiper2.svg'}
+              src={
+                'https://wanteam-bucket.s3.ap-northeast-2.amazonaws.com/img4.svg'
+              }
               alt={'swiper_img'}
             />
           </SwiperContainer>

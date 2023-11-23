@@ -92,7 +92,11 @@ const Profile = () => {
         isUserGetExternalReview={
           isUserGetExternalReviewData?.data.data.alreadyReviewed
         }
-        isExistNotReviewTeam={isExistNotReviewTeamData?.data.data.userNotReview}
+        isExistNotReviewTeam={
+          (loginInfo?.data?.userId as unknown as string) ==
+            (userId as unknown as string) &&
+          isExistNotReviewTeamData?.data.data.userNotReview
+        }
       />
       <ProfilePersonality
         teamCurturesData={profileReviewData?.data.data.teamCultures}
@@ -101,7 +105,11 @@ const Profile = () => {
         isUserGetExternalReview={
           isUserGetExternalReviewData?.data.data.alreadyReviewed
         }
-        isExistNotReviewTeam={isExistNotReviewTeamData?.data.data.userNotReview}
+        isExistNotReviewTeam={
+          (loginInfo?.data?.userId as unknown as string) ==
+            (userId as unknown as string) &&
+          isExistNotReviewTeamData?.data.data.userNotReview
+        }
       />
       <ProfileReview
         reviewData={profileReviewData?.data.data.comments}
@@ -119,7 +127,11 @@ const Profile = () => {
           (loginInfo?.data?.userId as unknown as string) ==
           (userId as unknown as string)
         }
-        isExistNotReviewTeam={isExistNotReviewTeamData?.data.data.userNotReview}
+        isExistNotReviewTeam={
+          (loginInfo?.data?.userId as unknown as string) ==
+            (userId as unknown as string) &&
+          isExistNotReviewTeamData?.data.data.userNotReview
+        }
       />
     </ProfileLayout>
   );
