@@ -134,3 +134,16 @@ export interface RecoilReview {
   arr: number[][];
   recommendationComment?: string;
 }
+
+////유저가 해당 팀에 리뷰룰 넘겻는지 여부
+export interface RequestIsReviewedOnTeam {
+  teamId?: string;
+}
+export interface IsReviewedOnTeamData {
+  isReviewedBefore: boolean;
+}
+export interface ResponseIsReviewedOnTeam {
+  status: number;
+  message: string;
+  data: IsReviewedOnTeamData;
+}
