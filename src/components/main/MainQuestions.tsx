@@ -44,13 +44,19 @@ const QuestionScreen = styled.img`
 const SpeechBubble1 = styled.img`
   position: absolute;
   top: 14rem;
-  left: 5rem;
+  left: 8rem;
+
+  width: 50rem;
+  height: 10rem;
 `;
 
 const SpeechBubble2 = styled.img`
   position: absolute;
-  bottom: 5rem;
-  left: 14rem;
+  bottom: 2rem;
+  left: 18rem;
+
+  width: 20rem;
+  height: 30rem;
 `;
 
 const SpeechBubble3 = styled.img`
