@@ -14,7 +14,7 @@ const PopularTeamBox = ({
   index,
 }: PopularTeamBoxProps) => {
   return (
-    <PopularTeamBoxContainer $index={index}>
+    <PopularTeamBoxContainer $index={index} onClick={() => {}}>
       <h1>{title}</h1>
       <hr />
       <img src={'/assets/images/review/profile.svg'} />
@@ -30,6 +30,7 @@ const PopularTeamBoxContainer = styled.div<{ $index: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 
   width: 23.9rem;
   padding: 2.5rem 1.5rem;

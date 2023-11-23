@@ -82,7 +82,7 @@ const MemberImg = styled.img`
   aspect-ratio: 1 / 1; /* 가로 세로 비율을 1:1로 유지 */
 
   border: 1px solid ${(props) => props.theme.colors.primary20};
-  border-radius: 4rem;
+  border-radius: 50%;
 
   object-fit: cover;
 `;
@@ -91,8 +91,6 @@ const Name = styled.div`
   color: ${(props) => props.theme.colors.gray90};
   margin: 0.8rem 0;
   white-space: nowrap;
-
-  /* font-size: 130%; */
 `;
 const Hr = styled.div`
   width: 100%;
