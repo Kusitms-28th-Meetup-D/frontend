@@ -1,12 +1,21 @@
 import { styled } from 'styled-components';
 import PopularTeamBox from './PopularTeamBox';
 import { MainPageTeam } from '../../interface/Main';
+import useObserver from '../../hooks/useObserver';
+import { motion } from 'framer-motion';
+import { ContainerAnimation } from '../../styles/animation';
 
 const MainPopularTeam = ({ teamData }: { teamData?: MainPageTeam[] }) => {
+  const { ref, animation } = useObserver();
+
   return (
     <MainPopularTeamLayout>
       <MainPopularTeamBox>
-        <MainPopularTeamContainer>
+        <MainPopularTeamContainer
+          ref={ref}
+          animate={animation}
+          variants={ContainerAnimation}
+        >
           <img src={'/assets/images/main/popular_team_fire.svg'} />
           <h1>실시간으로 인기가 많은 팀에 지원해보세요.</h1>
 
@@ -37,12 +46,12 @@ const MainPopularTeamBox = styled.div`
   margin: 0 auto;
 `;
 
-const MainPopularTeamContainer = styled.div`
+const MainPopularTeamContainer = styled(motion.div)`
   position: absolute;
   top: 0;
   right: 0;
   width: 100vw;
-  padding: 7rem 0 7rem 40rem;
+  padding: 7rem 0 7rem 47rem;
 
   background: rgba(205, 206, 250, 0.2);
   margin-left: 20rem;
@@ -66,7 +75,6 @@ const MainPopularTeamContainer = styled.div`
 
 const PopularTeamListBox = styled.div`
   position: relative;
-
   display: flex;
   gap: 4rem;
 `;

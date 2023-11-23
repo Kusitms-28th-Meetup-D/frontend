@@ -1,4 +1,6 @@
 import { styled } from 'styled-components';
+import { motion } from 'framer-motion';
+import { TextAnimation } from '../../styles/animation';
 
 const LeftBoxContent = [
   { id: 0, title: '모집 중인 팀', content: '136개' },
@@ -8,7 +10,11 @@ const LeftBoxContent = [
 
 const LeftBox = () => {
   return (
-    <LeftBoxContainer>
+    <LeftBoxContainer
+      initial="hidden"
+      animate="visible"
+      variants={TextAnimation}
+    >
       {LeftBoxContent.map((content) => (
         <LeftBoxValue key={content.id}>
           <h3>{content.title}</h3>
@@ -21,7 +27,7 @@ const LeftBox = () => {
 
 export default LeftBox;
 
-const LeftBoxContainer = styled.div`
+const LeftBoxContainer = styled(motion.div)`
   background: ${({ theme }) => theme.colors.white};
   border-radius: 24px;
   box-shadow: 0px 0px 10px rgba(88, 89, 117, 0.46);

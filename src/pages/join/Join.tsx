@@ -4,7 +4,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { headerSelectedState, kakaoAccessTokenState } from '../../recoil/atom';
 import { Headers } from '../../constants/Header';
 
-import bgSrc from '/assets/images/join/join-bg.png';
+// import bgSrc from 'https://wanteam-bucket.s3.ap-northeast-2.amazonaws.com/img1.png';
 import starSrc from '/assets/images/common/star.svg';
 import TextInput from '../../components/join/TextInput';
 import { INPUT_PROPS } from '../../constants/Join';
@@ -126,7 +126,8 @@ export default Join;
 const JoinLayout = styled.div`
   width: 100%;
   height: 100%; //수정 필요
-  background: url(${bgSrc}) left top no-repeat;
+  background: url('https://wanteam-bucket.s3.ap-northeast-2.amazonaws.com/img1.png')
+    left top no-repeat;
   background-size: cover;
 
   display: flex;
