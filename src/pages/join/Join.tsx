@@ -115,7 +115,7 @@ const Join = () => {
           type="submit"
           $isActive={isAcvivateButton(buttonActiveCount)}
         >
-          원팀 시작하기 →
+          Wanteam 시작하기 →
         </StartButton>
       </JoinFormContainer>
     </JoinLayout>
