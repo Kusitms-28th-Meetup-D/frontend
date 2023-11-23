@@ -1,14 +1,34 @@
+import { motion } from 'framer-motion';
 import { styled } from 'styled-components';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
 
 const MainQuestions = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <MainQuestionsContainer>
       <h1>Wanteam이 궁금하다면?</h1>
       <h2>내가 원하는 팀원을 만나 공모전•대회에서 좋은 경험을 쌓으세요!</h2>
       <QuestionScreen src={'/assets/images/main/question_screen.svg'} />
-      <SpeechBubble1 src={'/assets/images/main/speech_bubble1.svg'} />
-      <SpeechBubble2 src={'/assets/images/main/speech_bubble2.svg'} />
-      <SpeechBubble3 src={'/assets/images/main/speech_bubble3.svg'} />
+      <SpeechBubble1
+        src={'/assets/images/main/speech_bubble1.svg'}
+        ref={ref}
+        animate={animation}
+        variants={ContainerAnimation}
+      />
+      <SpeechBubble2
+        src={'/assets/images/main/speech_bubble2.svg'}
+        ref={ref}
+        animate={animation}
+        variants={ContainerAnimation}
+      />
+      <SpeechBubble3
+        src={'/assets/images/main/speech_bubble3.svg'}
+        ref={ref}
+        animate={animation}
+        variants={ContainerAnimation}
+      />
     </MainQuestionsContainer>
   );
 };
@@ -41,7 +61,7 @@ const QuestionScreen = styled.img`
   width: 104rem;
 `;
 
-const SpeechBubble1 = styled.img`
+const SpeechBubble1 = styled(motion.img)`
   position: absolute;
   top: 14rem;
   left: 8rem;
@@ -50,7 +70,7 @@ const SpeechBubble1 = styled.img`
   height: 10rem;
 `;
 
-const SpeechBubble2 = styled.img`
+const SpeechBubble2 = styled(motion.img)`
   position: absolute;
   bottom: 2rem;
   left: 18rem;
@@ -59,7 +79,7 @@ const SpeechBubble2 = styled.img`
   height: 30rem;
 `;
 
-const SpeechBubble3 = styled.img`
+const SpeechBubble3 = styled(motion.img)`
   position: absolute;
   bottom: 5rem;
   right: 5.5rem;
