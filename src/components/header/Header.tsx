@@ -47,11 +47,16 @@ const Header = () => {
               <HeaderStar src={starSrc} />내 팀
             </HeaderItem>
             <HeaderItem
-              onClick={() =>
-                loginInfo.isLogin
-                  ? navigate(`/profile/${loginInfo.data?.userId}`)
-                  : setLoginModal(true)
-              }
+              onClick={() => {
+                // window.location.reload();
+
+                if (loginInfo.isLogin) {
+                  navigate(`/profile/${loginInfo.data?.userId}`);
+                  window.location.reload();
+                } else {
+                  setLoginModal(true);
+                }
+              }}
               $isSelected={headerSelectedIndex === Headers.myProfile}
             >
               <HeaderStar src={starSrc} />내 프로필

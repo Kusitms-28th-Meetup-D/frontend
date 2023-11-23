@@ -32,7 +32,12 @@ const LoginProfile = ({ userId }: { userId?: number }) => {
           티켓 충전
         </DroppableItem>
         <Hr />
-        <DroppableItem onClick={() => navigate(`/profile/${userId}`)}>
+        <DroppableItem
+          onClick={() => {
+            navigate(`/profile/${userId}`);
+            window.location.reload();
+          }}
+        >
           내 프로필
         </DroppableItem>
         <DroppableItem onClick={() => navigate('/profile/modify')}>
