@@ -12,9 +12,9 @@ const CompetitionBox = ({
   teamNum,
 }: MainPageContest) => {
   const navigate = useNavigate();
-
+  console.log(contestId);
   return (
-    <CompetitionBoxLayout onClick={() => navigate(`list/${contestId}`)}>
+    <CompetitionBoxLayout onClick={() => navigate(`/list/${contestId}`)}>
       <CompetitionTop>
         <CompetitionremainDay>D-{remainDay}</CompetitionremainDay>
         <CompetitionteamNum>모집 중인 팀 : {teamNum}팀</CompetitionteamNum>
