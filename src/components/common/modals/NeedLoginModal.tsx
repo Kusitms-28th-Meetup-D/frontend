@@ -36,9 +36,9 @@ const NeedLoginModal: React.FC<NeedLoginModalProps> = ({
       <LoginModalInner>
         <LoginModalimg src={loginSrc} />
 
-        <LoginModalTitle>비회원은 프로필을 볼 수 없어요</LoginModalTitle>
+        <LoginModalTitle>로그인 후 이용해주세요!</LoginModalTitle>
         <LoginModalContent>
-          지금 로그인하고 팀원들의 프로필을 자유롭게 둘러보세요!
+          Wanteam 서비스를 이용하시려면 로그인이 필요해요.
         </LoginModalContent>
       </LoginModalInner>
     </OneSquareButtonModal>
