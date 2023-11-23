@@ -8,7 +8,7 @@ const MainQuestions = () => {
       <QuestionScreen src={'/assets/images/main/question_screen.svg'} />
       <SpeechBubble1 src={'/assets/images/main/speech_bubble1.svg'} />
       <SpeechBubble2 src={'/assets/images/main/speech_bubble2.svg'} />
-      <SpeechBubble3 src={'/assets/images/main/speech_bubble3.png'} />
+      <SpeechBubble3 src={'/assets/images/main/speech_bubble3.svg'} />
     </MainQuestionsContainer>
   );
 };
@@ -58,6 +58,6 @@ const SpeechBubble3 = styled.img`
   bottom: 5rem;
   right: 5.5rem;
 
-  width: 52rem;
-  height: 12.9rem;
+  width: 72rem;
+  height: 19rem;
 `;
