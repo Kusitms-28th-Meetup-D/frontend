@@ -39,7 +39,7 @@ const ContestInfo = () => {
             <Description>
               <span>분야 : </span>
               {contestInfoData?.data.data.types.map((type, index) => (
-                <span key={index}>{type}, </span>
+                <span key={index}>{type} </span>
               ))}
             </Description>
           </ContestTextBox>

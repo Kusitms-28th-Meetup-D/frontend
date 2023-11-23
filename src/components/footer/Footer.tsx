@@ -52,6 +52,7 @@ export default Footer;
 const FooterContainer = styled.div`
   background-color: ${(props) => props.theme.colors.primary10};
   padding: 4rem 0;
+  z-index: 3;
 `;
 
 const FooterBox = styled.div`

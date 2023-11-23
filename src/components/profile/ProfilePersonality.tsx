@@ -6,20 +6,24 @@ import {
   WORK_METHOD_CATEGORY,
 } from '../../constants/Profile';
 import ProfileNotReviewed from './ProfileNotReviewed';
+import ProfileExistNotReview from './ProfileExistNotReview';
 
 const ProfilePersonality = ({
   teamCurturesData,
   workMethodsData,
   name,
   isUserGetExternalReview,
+  isExistNotReviewTeam,
 }: {
   teamCurturesData?: TeamCulture[];
   workMethodsData?: WorkMethod[];
   name?: string;
   isUserGetExternalReview?: boolean;
+  isExistNotReviewTeam?: boolean;
 }) => {
   return (
     <ProfilePersonalityContainer>
+      {isExistNotReviewTeam && <ProfileExistNotReview hasButton={true} />}
       <ProfilePersonalityTitle>{name} 님의 성향</ProfilePersonalityTitle>
       <ProfilePersonalityDetail>
         스펙트럼 위의 별은 {name} 님이 받은 후기의 평균치를 의미해요.
@@ -42,7 +46,9 @@ const ProfilePersonality = ({
   );
 };
 
-const ProfilePersonalityContainer = styled.div``;
+const ProfilePersonalityContainer = styled.div`
+  position: relative;
+`;
 const ProfilePersonalityTitle = styled.div`
   ${(props) => props.theme.fonts.heading3};
   color: ${(props) => props.theme.colors.gray100};
