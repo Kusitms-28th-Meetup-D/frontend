@@ -125,6 +125,18 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     font-size: 9px;
   }
+  @media only screen and (min-width: 768px) and (max-width: 1124px) {
+  html {
+    font-size: 6px; /* Adjust the font size for tablets as needed */
+  }
+}
+
+  @media only screen and (max-width: 768px) {
+  html {
+    font-size: 4px; /* Adjust the font size for smaller screens as needed */
+  }
+  }
+
   body {
     width: 100%;
     height: 100%;
