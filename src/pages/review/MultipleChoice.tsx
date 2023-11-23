@@ -13,7 +13,7 @@ import {
   SelectedTeamCultures,
   SelectedWorkMethods,
 } from '../../interface/Review';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useReviewUsers } from '../../hooks/review/useReviewUsers';
 import { useReviewsCreate } from '../../hooks/review/useReviewsCreate';
 import { useState } from 'react';
@@ -29,6 +29,8 @@ const MultipleChoice = () => {
   const [requestDTO, setRequestDTO] = useState<RequestReviews>();
 
   const handleUseCreateReview = useReviewsCreate(requestDTO as RequestReviews);
+
+  const navigate = useNavigate();
 
   // console.log('제출전 가공후 데이터', requestDTO);
   const handleSubmit = () => {
@@ -77,6 +79,7 @@ const MultipleChoice = () => {
 
     setTimeout(() => {
       handleUseCreateReview.mutate();
+      navigate(`/myteam/${teamId}/end`);
     }, 500);
   };
 

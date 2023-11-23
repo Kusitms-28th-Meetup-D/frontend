@@ -35,7 +35,16 @@ const Profile = () => {
   // 인증 필요
   const { IsTicketUsedData } = useIsTicketUsed(userId as string);
   const { TicketNumberData } = useTicketNumber();
-  useEffect(() => setHeaderSelected(Headers.myProfile));
+  useEffect(() => {
+    if (
+      (userId as unknown as string) ==
+      (loginInfo.data?.userId as unknown as string)
+    )
+      setHeaderSelected(Headers.myProfile);
+    else {
+      setHeaderSelected(Headers.none);
+    }
+  });
 
   const [isLackModalVisible, setIsLackModalVisible] = useState(false);
   const [isUseModalVisible, setIsUseModalVisible] = useState(false);
