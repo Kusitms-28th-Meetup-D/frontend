@@ -17,6 +17,7 @@ import useIsTicketUsed from '../../hooks/profile/useIsTicketUsed';
 import useTicketNumber from '../../hooks/profile/useTicketNumber';
 import ProfileTicketUseModal from '../../components/profile/profileTicketUse/ProfileTicketUseModal';
 import useIsUserGetExternalReview from '../../hooks/profile/useIsUserGetExternalReview';
+import useIsExistNotReviewTeam from '../../hooks/profile/useIsExistNotReviewTeam';
 
 const Profile = () => {
   const setHeaderSelected = useSetRecoilState(headerSelectedState);
@@ -33,6 +34,7 @@ const Profile = () => {
   );
 
   // 인증 필요
+  const { isExistNotReviewTeamData } = useIsExistNotReviewTeam();
   const { IsTicketUsedData } = useIsTicketUsed(userId as string);
   const { TicketNumberData } = useTicketNumber();
   useEffect(() => {
@@ -90,6 +92,7 @@ const Profile = () => {
         isUserGetExternalReview={
           isUserGetExternalReviewData?.data.data.alreadyReviewed
         }
+        isExistNotReviewTeam={isExistNotReviewTeamData?.data.data.userNotReview}
       />
       <ProfilePersonality
         teamCurturesData={profileReviewData?.data.data.teamCultures}
@@ -98,6 +101,7 @@ const Profile = () => {
         isUserGetExternalReview={
           isUserGetExternalReviewData?.data.data.alreadyReviewed
         }
+        isExistNotReviewTeam={isExistNotReviewTeamData?.data.data.userNotReview}
       />
       <ProfileReview
         reviewData={profileReviewData?.data.data.comments}
@@ -115,6 +119,7 @@ const Profile = () => {
           (loginInfo?.data?.userId as unknown as string) ==
           (userId as unknown as string)
         }
+        isExistNotReviewTeam={isExistNotReviewTeamData?.data.data.userNotReview}
       />
     </ProfileLayout>
   );
