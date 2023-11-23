@@ -23,7 +23,7 @@ const MyTeamCreateOpen = ({
   const [activityArea, setActivityArea] = useState(0);
   const isRecruitmentNumberValid =
     recruitmentNumber === undefined ||
-    (recruitmentNumber > 0 && recruitmentNumber <= 10);
+    (recruitmentNumber > 1 && recruitmentNumber <= 10);
 
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
