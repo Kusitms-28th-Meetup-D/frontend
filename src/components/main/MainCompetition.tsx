@@ -1,8 +1,12 @@
 import { styled } from 'styled-components';
 import CompetitionBox from '../competitionList/CompetitionBox';
-import { competitionList } from '../../constants/main';
+import { MainPageContest } from '../../interface/Main';
 
-const MainCompetition = () => {
+const MainCompetition = ({
+  contestData,
+}: {
+  contestData?: MainPageContest[];
+}) => {
   return (
     <MainCompetitionLayout>
       <MainCompetitionBox>
@@ -15,7 +19,7 @@ const MainCompetition = () => {
               <p>참여하고 싶은 공모전을 찾고 함께할 팀을 구해보세요.</p>
             </div>
             <CompetitionListBox>
-              {competitionList.map((competition) => (
+              {contestData?.slice(0, 3).map((competition) => (
                 <CompetitionBox key={competition.contestId} {...competition} />
               ))}
             </CompetitionListBox>
@@ -23,7 +27,7 @@ const MainCompetition = () => {
 
           <MainCompetitionBottom>
             <CompetitionListBox>
-              {competitionList.map((competition) => (
+              {contestData?.slice(3, 6).map((competition) => (
                 <CompetitionBox key={competition.contestId} {...competition} />
               ))}
             </CompetitionListBox>
