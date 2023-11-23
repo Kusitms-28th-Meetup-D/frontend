@@ -75,12 +75,12 @@ const Container = styled.div<{
   padding: 1rem 3rem 1rem 3rem;
 `;
 const MemberImg = styled.img`
-  width: 65%;
-  /* width: 7.8rem; */
-  /* height: 7.8rem; */
+  width: 7.8rem;
+  height: 7.8rem;
+  flex-shrink: 0;
 
   border: 1px solid ${(props) => props.theme.colors.primary20};
-  border-radius: 4rem;
+  border-radius: 50%;
 
   object-fit: cover;
 `;
@@ -89,8 +89,6 @@ const Name = styled.div`
   color: ${(props) => props.theme.colors.gray90};
   margin: 0.8rem 0;
   white-space: nowrap;
-
-  /* font-size: 130%; */
 `;
 const Hr = styled.div`
   width: 100%;
