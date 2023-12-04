@@ -22,7 +22,7 @@ const CONTENT = [
   '같이 동아리, 학회, 공모전 등 팀 프로젝트에 참여했던 지인에게\n아래 링크를 공유해 리뷰를 받아주세요!',
 ];
 const Request = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isPreviewModalVisible, setIsPreviewModalVisible] = useState(false);
   const [isJoinModalVisible, setIsJoinModalVisible] = useState(false);
   const [isKakaoSendSuccess, setIsKakaoSendSuccess] = useState(false);
