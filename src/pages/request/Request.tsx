@@ -13,7 +13,7 @@ import JoinCompleteModal from '../../components/join/JoinCompleteModal';
 import ModalInner from '../../components/request/ModalInner';
 import { RequestKakaoReviewButton } from '../../components/common/modals/NeedKakaoReviewModal';
 import useIsUserGetExternalReview from '../../hooks/profile/useIsUserGetExternalReview';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 const TITLE = '매력적인 프로필 완성을 위해 리뷰를 요청해보세요.';
 const CONTENT = [
   '나와 딱 맞는 탁월한 팀원을 한번에 찾고 싶다면,\n나보다 나를 더 잘 아는 동료에게 리뷰를 요청해 멋진 프로필을 완성하세요.',
