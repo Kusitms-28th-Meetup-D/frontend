@@ -131,12 +131,6 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
-  @media only screen and (max-width: 768px) {
-  html {
-    font-size: 4px; /* Adjust the font size for smaller screens as needed */
-  }
-  }
-
   body {
     width: 100%;
     height: 100%;

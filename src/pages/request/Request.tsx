@@ -52,7 +52,7 @@ const Request = () => {
     loginUserInfo?.data?.userId as unknown as string,
   );
   if (isUserGetExternalReviewData?.data.data.alreadyReviewed) {
-    navigate('/');
+    // navigate('/');
     // window.location.reload(); // 임시로 새로고침
   }
 
